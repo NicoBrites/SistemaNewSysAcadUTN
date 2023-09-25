@@ -10,18 +10,16 @@ using System.Windows.Forms;
 
 namespace SysAcad
 {
-    public partial class FormMenuAdministrador : Form
+    public partial class FormRegistroEstudiante : Form
     {
-        public FormMenuAdministrador()
+        public FormRegistroEstudiante()
         {
             InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            FormRegistroEstudiante formRegistroEstudiante = new();
-            formRegistroEstudiante.Show();
-            this.Hide();
+            
         }
     }
 }

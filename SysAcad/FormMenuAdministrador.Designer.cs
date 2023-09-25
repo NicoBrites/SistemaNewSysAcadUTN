@@ -28,12 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "FormMenuAdministrador";
+            btnRegistrarEstudiante = new Button();
+            SuspendLayout();
+            // 
+            // button1
+            // 
+            btnRegistrarEstudiante.Location = new Point(235, 59);
+            btnRegistrarEstudiante.Name = "btnRegistrarEstudiante";
+            btnRegistrarEstudiante.Size = new Size(363, 49);
+            btnRegistrarEstudiante.TabIndex = 0;
+            btnRegistrarEstudiante.Text = "Registrar estudiante";
+            btnRegistrarEstudiante.UseVisualStyleBackColor = true;
+            btnRegistrarEstudiante.Click += button1_Click;
+            // 
+            // FormMenuAdministrador
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(btnRegistrarEstudiante);
+            Name = "FormMenuAdministrador";
+            Text = "FormMenuAdministrador";
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private Button btnRegistrarEstudiante;
     }
 }

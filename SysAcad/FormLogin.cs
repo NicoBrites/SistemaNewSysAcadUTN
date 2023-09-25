@@ -27,7 +27,6 @@ namespace SysAcad
                 MessageBox.Show("Correo o contraseña incorrecta");
                 textContraseña.Text = string.Empty;
                 textCorreo.Text = string.Empty;
-
             }
         }
 

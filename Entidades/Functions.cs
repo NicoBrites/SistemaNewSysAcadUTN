@@ -54,7 +54,11 @@ namespace Entidades
             return default(T);
         }
 
+        public bool ValidadorEstudiante(int Dni, string contraseñaProvisoria)
+        {
 
+            return false;
+        }
     }
 
     
