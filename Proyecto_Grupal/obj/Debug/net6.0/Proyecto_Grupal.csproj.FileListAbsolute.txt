@@ -1,0 +1,5 @@
+C:\PruebaLabNet\Proyecto_Grupal\obj\Debug\net6.0\Proyecto_Grupal.csproj.AssemblyReference.cache
+C:\PruebaLabNet\Proyecto_Grupal\obj\Debug\net6.0\Proyecto_Grupal.GeneratedMSBuildEditorConfig.editorconfig
+C:\PruebaLabNet\Proyecto_Grupal\obj\Debug\net6.0\Proyecto_Grupal.AssemblyInfoInputs.cache
+C:\PruebaLabNet\Proyecto_Grupal\obj\Debug\net6.0\Proyecto_Grupal.AssemblyInfo.cs
+C:\PruebaLabNet\Proyecto_Grupal\obj\Debug\net6.0\Proyecto_Grupal.csproj.CoreCompileInputs.cache

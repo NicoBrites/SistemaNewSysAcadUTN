@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "Ugiaeq2Im1EW3+0XUalF5NLPsHNCf8UefXdknpNoAfiEOSDUNBny5jlJMYXysApi2VAAJlfAHfqjo3p7QQ/P9w==",
+  "success": true,
+  "projectFilePath": "C:\\PruebaLabNet\\SistemaNewSysAcadUTN\\SysAcad\\SysAcad.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\AdministraGod\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

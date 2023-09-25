@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "8VpnhMMsyAGfV4/fUtkYp3Dr4VEvhqxCPdX4HXoqs0VFszk4crhKinb5gwKlef5TUWM8ifmgzxPZDyPFMczyhA==",
+  "success": true,
+  "projectFilePath": "C:\\PruebaLabNet\\Proyecto_Grupal\\Proyecto_Grupal.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\AdministraGod\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
