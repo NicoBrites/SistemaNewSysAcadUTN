@@ -79,7 +79,6 @@
             textCorreo.Name = "textCorreo";
             textCorreo.Size = new Size(100, 23);
             textCorreo.TabIndex = 4;
-            textCorreo.Text = "Ingrese su correo";
             // 
             // textBox2
             // 
@@ -87,7 +86,6 @@
             textContraseña.Name = "textContraseña";
             textContraseña.Size = new Size(100, 23);
             textContraseña.TabIndex = 5;
-            textContraseña.Text = "Ingrese su contraseña";
             // 
             // FormLogin
             // 

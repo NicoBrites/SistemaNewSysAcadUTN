@@ -14,7 +14,7 @@ namespace Entidades
             : base(id, nombre, apellido, dni, clave, correo) 
         {
             _materia = materia;
-        
+            
         }
 
         public string Materia

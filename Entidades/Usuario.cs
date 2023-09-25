@@ -9,7 +9,6 @@
         public Usuario(string clave, string correo)
         {
             _clave = clave;
-
             _correo = correo;
         }
 
