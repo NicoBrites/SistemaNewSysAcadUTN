@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "7L22nhXBZrM/dLd/4HicnRzfVFFL1TgMT/t8oh0ud2tIjP4lA2tVCXTecnfDEI+5gDcZW53INM3tzJhVq4Y6AQ==",
+  "success": true,
+  "projectFilePath": "C:\\PruebaLabNet\\SistemaNewSysAcadUTN\\Proyecto_Grupal\\Logic\\Logic.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\AdministraGod\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

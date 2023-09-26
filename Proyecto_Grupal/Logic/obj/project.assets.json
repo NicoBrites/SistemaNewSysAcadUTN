@@ -1,7 +1,7 @@
 {
   "version": 3,
   "targets": {
-    "net6.0-windows7.0": {
+    "net6.0": {
       "Newtonsoft.Json/13.0.3": {
         "type": "package",
         "compile": {
@@ -26,19 +26,6 @@
         },
         "runtime": {
           "bin/placeholder/Entidades.dll": {}
-        }
-      },
-      "Logic/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "Entidades": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/Logic.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Logic.dll": {}
         }
       }
     }
@@ -76,19 +63,13 @@
     },
     "Entidades/1.0.0": {
       "type": "project",
-      "path": "../Entidades/Entidades.csproj",
-      "msbuildProject": "../Entidades/Entidades.csproj"
-    },
-    "Logic/1.0.0": {
-      "type": "project",
-      "path": "../Proyecto_Grupal/Logic/Logic.csproj",
-      "msbuildProject": "../Proyecto_Grupal/Logic/Logic.csproj"
+      "path": "../../Entidades/Entidades.csproj",
+      "msbuildProject": "../../Entidades/Entidades.csproj"
     }
   },
   "projectFileDependencyGroups": {
-    "net6.0-windows7.0": [
-      "Entidades >= 1.0.0",
-      "Logic >= 1.0.0"
+    "net6.0": [
+      "Entidades >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -98,11 +79,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\PruebaLabNet\\SistemaNewSysAcadUTN\\SysAcad\\SysAcad.csproj",
-      "projectName": "SysAcad",
-      "projectPath": "C:\\PruebaLabNet\\SistemaNewSysAcadUTN\\SysAcad\\SysAcad.csproj",
+      "projectUniqueName": "C:\\PruebaLabNet\\SistemaNewSysAcadUTN\\Proyecto_Grupal\\Logic\\Logic.csproj",
+      "projectName": "Logic",
+      "projectPath": "C:\\PruebaLabNet\\SistemaNewSysAcadUTN\\Proyecto_Grupal\\Logic\\Logic.csproj",
       "packagesPath": "C:\\Users\\AdministraGod\\.nuget\\packages\\",
-      "outputPath": "C:\\PruebaLabNet\\SistemaNewSysAcadUTN\\SysAcad\\obj\\",
+      "outputPath": "C:\\PruebaLabNet\\SistemaNewSysAcadUTN\\Proyecto_Grupal\\Logic\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -113,21 +94,18 @@
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "net6.0-windows"
+        "net6.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net6.0-windows7.0": {
-          "targetAlias": "net6.0-windows",
+        "net6.0": {
+          "targetAlias": "net6.0",
           "projectReferences": {
             "C:\\PruebaLabNet\\SistemaNewSysAcadUTN\\Entidades\\Entidades.csproj": {
               "projectPath": "C:\\PruebaLabNet\\SistemaNewSysAcadUTN\\Entidades\\Entidades.csproj"
-            },
-            "C:\\PruebaLabNet\\SistemaNewSysAcadUTN\\Proyecto_Grupal\\Logic\\Logic.csproj": {
-              "projectPath": "C:\\PruebaLabNet\\SistemaNewSysAcadUTN\\Proyecto_Grupal\\Logic\\Logic.csproj"
             }
           }
         }
@@ -139,8 +117,8 @@
       }
     },
     "frameworks": {
-      "net6.0-windows7.0": {
-        "targetAlias": "net6.0-windows",
+      "net6.0": {
+        "targetAlias": "net6.0",
         "imports": [
           "net461",
           "net462",
@@ -155,9 +133,6 @@
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
-          },
-          "Microsoft.WindowsDesktop.App.WindowsForms": {
-            "privateAssets": "none"
           }
         },
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"

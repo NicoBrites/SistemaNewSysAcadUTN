@@ -1,6 +1,6 @@
 ﻿namespace Entidades
 {
-    public class Usuario 
+    public  class Usuario 
     {
         private string _clave;
         private string _correo;

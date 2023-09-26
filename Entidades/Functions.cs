@@ -12,9 +12,10 @@ namespace Entidades
     {
         public Functions() { }
 
+
         public bool AutentificarUsuario(string correo, string contraseña)
         {
-            Administrador administrador = new(1, "hernesto", "asd", 2, "clave123", "correo123");
+            Administrador administrador = new(1, "Hernesto", "Hardcodeado", 2, "clave123", "correo123");
             if (correo == administrador.Correo && contraseña == administrador.Clave)
             {
                 return true;
@@ -22,7 +23,8 @@ namespace Entidades
              return false;
         }
 
-        public  string GuardarAJson<T>(T objetoAGuardar, string path)
+
+        public string GuardarAJson(Usuario objetoAGuardar, string path)
         {
             try
             {
@@ -36,22 +38,25 @@ namespace Entidades
             }
         }
 
-        public  T LeerJson<T>(string path)
+        public List<Usuario> LeerJson(string path)
         {
+            List<Usuario> data;
             if (File.Exists(path))
             {
                 try
                 {
+                    
                     string jsonString = File.ReadAllText(path);
-                    return JsonSerializer.Deserialize<T>(jsonString);
+                    data = JsonSerializer.Deserialize<List<Usuario>>(jsonString);
+                    return data;
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine($"Error al leer el archivo JSON: {ex.Message}");
                 }
             }
-
-            return default(T);
+            throw new Exception("No existe el archivo en el path ingresado");
+     
         }
 
         public bool ValidadorEstudiante(int Dni, string contraseñaProvisoria)

@@ -12,7 +12,7 @@ namespace SysAcad
             string correo = textCorreo.Text;
             string contraseña = textContraseña.Text;
 
-            Entidades.Functions funciones = new();
+            Logic.AutentificadorUsuario funciones = new();
 
             bool verificacion = funciones.AutentificarUsuario(correo, contraseña);
 

@@ -12,13 +12,11 @@ namespace Entidades
 
         private string _direccion;
 
-        private Enum _estado;
+        //private Enum _estado;
 
         private string _carrera;
 
         private string _historialAcademico;
-
-
 
         public Estudiantes(int id, string nombre, string apellido,
         int dni, int telefono, string direccion, Enum estado, string carrera,

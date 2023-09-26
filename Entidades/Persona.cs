@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-        public abstract class Persona : Usuario
+     public  class Persona : Usuario
     {
         private int _id;
         private string _nombre;
@@ -43,5 +43,5 @@ namespace Entidades
         { get { return _dni; } set { _dni = value; } }
 
 
-    }
+     }
 }
