@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Entidades;
 using Logic;
 
 namespace SysAcad
@@ -18,40 +19,31 @@ namespace SysAcad
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        public void button1_Click(object sender, EventArgs e)
         {
             ValidadorTextosVacios validador = new ValidadorTextosVacios();
+            GestorEstudiantes estudiantes = new GestorEstudiantes();
+
+
+            string nuevonombre = textNombre.Text;
+            string nuevoApellido = textApellido.Text;
+            string nuevaDireccion = textDireccion.Text;
+            string nuevoCorreoElectronico = textCorreoElectronico.Text;
+            string nuevaContraseñaProv = textContraseñaProv.Text;
+            string nuevoDni = textDni.Text;
+            string nuevoNumTelefono = textNumTelefono.Text;
+
             try
             {
-                int nuevoDni = Convert.ToInt32(textDni.Text);
-                int nuevoNumTelefono = Convert.ToInt32(textNumTelefono.Text);
+                estudiantes.CrearEstudiante(nuevonombre, nuevoApellido, nuevaDireccion, nuevoCorreoElectronico, nuevaContraseñaProv, nuevoDni, nuevoNumTelefono);
             }
-            catch
+            catch (Exception ex) 
             {
-                MessageBox.Show("No ingreso un numero valido en el Dni o el Telefono");
+               
+                MessageBox.Show(ex.Message);   
+                
             }
-
-            if (validador.ValidarTextosVacios(textNombre.Text) &&
-                validador.ValidarTextosVacios(textApellido.Text) &&
-                validador.ValidarTextosVacios(textDireccion.Text) &&
-                validador.ValidarTextosVacios(textCorreoElectronico.Text) &&
-                validador.ValidarTextosVacios(textContraseñaProv.Text))
-            {
-                string nuevonombre = textNombre.Text;
-                string nuevoApellido = textApellido.Text;
-                string nuevaDireccion = textDireccion.Text;
-                string nuevoCorreoElectronico = textCorreoElectronico.Text;
-                string nuevaContraseñaProv = textContraseñaProv.Text;
-            }
-            else
-            {
-                MessageBox.Show("Dejo alguna caja de texto vacia.");
-            }
-
-
-
-
-
+ 
 
         }
     }

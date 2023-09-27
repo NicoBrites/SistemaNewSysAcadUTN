@@ -7,7 +7,7 @@ namespace Logic
     {
         public Archivos() { }
 
-        public string GuardarAJson(Usuario objetoAGuardar, string path)
+        public string GuardarAJson<T>(T objetoAGuardar, string path)
         {
             try
             {
@@ -21,15 +21,15 @@ namespace Logic
             }
         }
 
-        public List<Usuario> LeerJson(string path)
+        public T LeerJson<T>(string path)
         {
-            List<Usuario> data;
+            T data;
             if (File.Exists(path))
             {
                 try
                 {
                     string jsonString = File.ReadAllText(path);
-                    data = JsonSerializer.Deserialize<List<Usuario>>(jsonString);
+                    data = JsonSerializer.Deserialize<T>(jsonString);
                     return data;
                 }
                 catch (Exception ex)
