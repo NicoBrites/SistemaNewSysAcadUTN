@@ -6,13 +6,13 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v6.0": {
-      "SysAcad/1.0.0": {
+      "Logic/1.0.0": {
         "dependencies": {
           "Entidades": "1.0.0",
-          "Logic": "1.0.0"
+          "Newtonsoft.Json": "13.0.3"
         },
         "runtime": {
-          "SysAcad.dll": {}
+          "Logic.dll": {}
         }
       },
       "Newtonsoft.Json/13.0.3": {
@@ -30,20 +30,11 @@
         "runtime": {
           "Entidades.dll": {}
         }
-      },
-      "Logic/1.0.0": {
-        "dependencies": {
-          "Entidades": "1.0.0",
-          "Newtonsoft.Json": "13.0.3"
-        },
-        "runtime": {
-          "Logic.dll": {}
-        }
       }
     }
   },
   "libraries": {
-    "SysAcad/1.0.0": {
+    "Logic/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -56,11 +47,6 @@
       "hashPath": "newtonsoft.json.13.0.3.nupkg.sha512"
     },
     "Entidades/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Logic/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

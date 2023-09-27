@@ -25,7 +25,6 @@ namespace Entidades
         {
             _telefono = telefono;
             _direccion = direccion;
-            _estado = estado;
             _carrera = carrera;
             _historialAcademico = historialAcademico;
 
@@ -41,12 +40,6 @@ namespace Entidades
         {
             get { return _direccion; }
             set { _direccion = value; }
-        }
-
-        public Enum Estado
-        {
-            get { return _estado; }
-            set { _estado = value; }
         }
 
         public string Carrera

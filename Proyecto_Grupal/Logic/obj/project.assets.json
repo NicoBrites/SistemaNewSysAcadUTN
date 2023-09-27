@@ -69,7 +69,8 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "Entidades >= 1.0.0"
+      "Entidades >= 1.0.0",
+      "Newtonsoft.Json >= 13.0.3"
     ]
   },
   "packageFolders": {
@@ -119,6 +120,12 @@
     "frameworks": {
       "net6.0": {
         "targetAlias": "net6.0",
+        "dependencies": {
+          "Newtonsoft.Json": {
+            "target": "Package",
+            "version": "[13.0.3, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",
