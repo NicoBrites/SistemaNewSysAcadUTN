@@ -21,7 +21,7 @@ namespace Logic
         {
             try
             {
-                string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\nuevoJson";
+                string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\Usuarios";
                 List<Estudiantes> _listaEstudiantes = _gestorArchivos.LeerJson<Estudiantes>(path);
                 return _listaEstudiantes;
             }
@@ -84,7 +84,7 @@ namespace Logic
                     }
                     ultimoId++;
 
-                    string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\nuevoJson";
+                    string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\Usuarios";
 
                     Estudiantes crearEstudiante = new Estudiantes(ultimoId, nuevoNombre, nuevoApellido, dniValidado,
                         numTelefonoValidado, nuevaDireccion, nuevaContraseñaProv, nuevoCorreoElectronico);
@@ -97,7 +97,7 @@ namespace Logic
                 {
                     if (e.Message == "No existe el archivo en el path ingresado")
                     {
-                        string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\nuevoJson";
+                        string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\Usuarios";
 
                         List<Estudiantes> listaNueva = new List<Estudiantes>();
 

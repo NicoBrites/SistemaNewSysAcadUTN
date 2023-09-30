@@ -23,5 +23,12 @@ namespace SysAcad
             formRegistroEstudiante.Show();
             this.Hide();
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            FormCursos formCursos = new();
+            formCursos.Show();
+            this.Hide();
+        }
     }
 }
