@@ -1,4 +1,5 @@
 ﻿using Entidades;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
 
@@ -20,7 +21,8 @@ namespace Logic
         {
             try
             {
-                List<Estudiantes> _listaEstudiantes = _gestorArchivos.LeerJson<List<Estudiantes>>("asd");
+                string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\nuevoJson";
+                List<Estudiantes> _listaEstudiantes = _gestorArchivos.LeerJson<Estudiantes>(path);
                 return _listaEstudiantes;
             }
             catch (Exception ex) 
@@ -67,7 +69,7 @@ namespace Logic
                 int numTelefonoValidado = Convert.ToInt32(nuevoNumTelefono);
                 try
                 {
-                    int ultimoId = -1;
+                    int ultimoId = 0;
                     List<Estudiantes> listaEstudiantes = GetEstudiantes();
                     foreach (Estudiantes estudiante in listaEstudiantes)
                     {
@@ -75,20 +77,20 @@ namespace Logic
                         {
                             throw new Exception("El correo electronico o DNI ya esta en uso");
                         }
-                        if (ultimoId > estudiante.Id)
+                        if (estudiante.Id > ultimoId)
                         {
                             ultimoId = estudiante.Id;
                         }
-                        else
-                        {
-                            ultimoId = 1;
-                        }
                     }
+                    ultimoId++;
+
                     string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\nuevoJson";
 
                     Estudiantes crearEstudiante = new Estudiantes(ultimoId, nuevoNombre, nuevoApellido, dniValidado,
                         numTelefonoValidado, nuevaDireccion, nuevaContraseñaProv, nuevoCorreoElectronico);
-                    string msj = _gestorArchivos.GuardarAJson(crearEstudiante, path);
+
+                    listaEstudiantes.Add(crearEstudiante);
+                    string msj = _gestorArchivos.GuardarAJson(listaEstudiantes, path);
 
                 }
                 catch (Exception e)
@@ -97,9 +99,12 @@ namespace Logic
                     {
                         string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\nuevoJson";
 
+                        List<Estudiantes> listaNueva = new List<Estudiantes>();
+
                         Estudiantes crearEstudiante = new Estudiantes(1, nuevoNombre, nuevoApellido, dniValidado,
                              numTelefonoValidado, nuevaDireccion, nuevaContraseñaProv, nuevoCorreoElectronico);
-                        string msj = _gestorArchivos.GuardarAJson(crearEstudiante, path);
+                        listaNueva.Add(crearEstudiante);
+                        string msj = _gestorArchivos.GuardarAJson(listaNueva, path);
                     }
                     else
                     {

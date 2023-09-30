@@ -1,1 +1,1 @@
-{"Telefono":321321,"Direccion":"3213123","Id":1,"Nombre":"Nuevo","Apellido":"nuevo","Dni":312321,"Clave":"312312","Correo":"312312"}
+[{"Telefono":123,"Direccion":"correo123","Id":1,"Nombre":"correo123","Apellido":"correo123","Dni":123,"Clave":"correo123","Correo":"correo123"},{"Telefono":123321,"Direccion":"perueba","Id":2,"Nombre":"perueba","Apellido":"perueba","Dni":123321321,"Clave":"perueba","Correo":"perueba"},{"Telefono":1233211,"Direccion":"perueba1","Id":3,"Nombre":"perueba1","Apellido":"perueba1","Dni":1233213211,"Clave":"perueba1","Correo":"perueba1"}]

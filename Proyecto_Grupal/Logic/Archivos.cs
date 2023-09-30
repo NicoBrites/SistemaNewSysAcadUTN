@@ -7,11 +7,13 @@ namespace Logic
     {
         public Archivos() { }
 
-        public string GuardarAJson<T>(T objetoAGuardar, string path)
+        public string GuardarAJson<T>(List<T> listaObjetoAGuardar, string path)
         {
             try
             {
-                string jsonString = JsonSerializer.Serialize(objetoAGuardar);
+
+                string jsonString = JsonSerializer.Serialize(listaObjetoAGuardar);
+
                 File.WriteAllText(path, jsonString);
                 return $"Se ha guardado correctamente como JSON en: {path}";
             }
@@ -21,15 +23,15 @@ namespace Logic
             }
         }
 
-        public T LeerJson<T>(string path)
+        public List<T> LeerJson<T>(string path)
         {
-            T data;
+            List<T> data;
             if (File.Exists(path))
             {
                 try
                 {
                     string jsonString = File.ReadAllText(path);
-                    data = JsonSerializer.Deserialize<T>(jsonString);
+                    data = JsonSerializer.Deserialize<List<T>>(jsonString);
                     return data;
                 }
                 catch (Exception ex)
