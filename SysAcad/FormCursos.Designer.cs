@@ -33,11 +33,11 @@
             btnModificarCursos = new Button();
             btnEliminarCursos = new Button();
             dataGridView1 = new DataGridView();
-            cursosBindingSource = new BindingSource(components);
             nombreDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             codigoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             descripcionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             cupoMaximoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            cursosBindingSource = new BindingSource(components);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)cursosBindingSource).BeginInit();
             SuspendLayout();
@@ -60,6 +60,7 @@
             btnModificarCursos.TabIndex = 1;
             btnModificarCursos.Text = "Modificar Cursos";
             btnModificarCursos.UseVisualStyleBackColor = true;
+            btnModificarCursos.Click += btnModificarCursos_Click;
             // 
             // btnEliminarCursos
             // 
@@ -80,10 +81,6 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(805, 377);
             dataGridView1.TabIndex = 3;
-            // 
-            // cursosBindingSource
-            // 
-            cursosBindingSource.DataSource = typeof(Entidades.Cursos);
             // 
             // nombreDataGridViewTextBoxColumn
             // 
@@ -108,6 +105,10 @@
             cupoMaximoDataGridViewTextBoxColumn.DataPropertyName = "CupoMaximo";
             cupoMaximoDataGridViewTextBoxColumn.HeaderText = "CupoMaximo";
             cupoMaximoDataGridViewTextBoxColumn.Name = "cupoMaximoDataGridViewTextBoxColumn";
+            // 
+            // cursosBindingSource
+            // 
+            cursosBindingSource.DataSource = typeof(Entidades.Cursos);
             // 
             // FormCursos
             // 

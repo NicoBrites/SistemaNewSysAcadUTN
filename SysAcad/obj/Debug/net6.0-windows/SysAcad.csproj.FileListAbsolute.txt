@@ -47,3 +47,4 @@ C:\PruebaLabNet\SistemaNewSysAcadUTN\SysAcad\bin\Debug\net6.0-windows\Logic.dll
 C:\PruebaLabNet\SistemaNewSysAcadUTN\SysAcad\bin\Debug\net6.0-windows\Logic.pdb
 C:\PruebaLabNet\SistemaNewSysAcadUTN\SysAcad\obj\Debug\net6.0-windows\SysAcad.FormCursos.resources
 C:\PruebaLabNet\SistemaNewSysAcadUTN\SysAcad\obj\Debug\net6.0-windows\SysAcad.FormCursosAgregar.resources
+C:\PruebaLabNet\SistemaNewSysAcadUTN\SysAcad\obj\Debug\net6.0-windows\SysAcad.FormCursosModificar.resources
