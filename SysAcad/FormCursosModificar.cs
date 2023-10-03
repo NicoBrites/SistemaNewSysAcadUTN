@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Logic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,5 +17,30 @@ namespace SysAcad
         {
             InitializeComponent();
         }
+
+        private void BtnAgregar_Click(object sender, EventArgs e)
+        {
+
+            GestorCursos cursos = new GestorCursos();
+
+            string nuevoNombre = textNombre.Text;
+            string nuevoCodigo = textCodigoNuevo.Text;
+            string nuevoDescripcion = textDescripcion.Text;
+            string nuevoCupoMax = textCupoMaximo.Text;
+            string codigoAnterior = textCodigo.Text;
+
+            try
+            {
+                cursos.ModificarCurso(nuevoNombre, nuevoCodigo, nuevoDescripcion, nuevoCupoMax, codigoAnterior);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+
+            }
+
+        }
+
     }
 }

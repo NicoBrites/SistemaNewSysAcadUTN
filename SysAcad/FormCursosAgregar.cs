@@ -21,9 +21,7 @@ namespace SysAcad
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
 
-            GestorEstudiantes estudiantes = new GestorEstudiantes();
             GestorCursos cursos = new GestorCursos();
-
 
             string nuevoNombre = textNombre.Text;
             string nuevoCodigo = textCodigo.Text;

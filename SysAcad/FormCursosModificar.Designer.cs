@@ -35,8 +35,10 @@
             label3 = new Label();
             label2 = new Label();
             textNombre = new TextBox();
-            BtnAgregar = new Button();
+            BtnModificar = new Button();
             label1 = new Label();
+            textCodigoNuevo = new TextBox();
+            label5 = new Label();
             SuspendLayout();
             // 
             // textCupoMaximo
@@ -55,8 +57,9 @@
             // 
             // textCodigo
             // 
-            textCodigo.Location = new Point(241, 208);
+            textCodigo.Location = new Point(94, 204);
             textCodigo.Name = "textCodigo";
+            textCodigo.ReadOnly = true;
             textCodigo.Size = new Size(100, 23);
             textCodigo.TabIndex = 15;
             // 
@@ -81,7 +84,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(241, 165);
+            label2.Location = new Point(94, 161);
             label2.Name = "label2";
             label2.Size = new Size(46, 15);
             label2.TabIndex = 12;
@@ -94,14 +97,15 @@
             textNombre.Size = new Size(100, 23);
             textNombre.TabIndex = 11;
             // 
-            // BtnAgregar
+            // BtnModificar
             // 
-            BtnAgregar.Location = new Point(266, 532);
-            BtnAgregar.Name = "BtnAgregar";
-            BtnAgregar.Size = new Size(75, 23);
-            BtnAgregar.TabIndex = 10;
-            BtnAgregar.Text = "Agregar";
-            BtnAgregar.UseVisualStyleBackColor = true;
+            BtnModificar.Location = new Point(266, 532);
+            BtnModificar.Name = "BtnModificar";
+            BtnModificar.Size = new Size(75, 23);
+            BtnModificar.TabIndex = 10;
+            BtnModificar.Text = "Agregar";
+            BtnModificar.UseVisualStyleBackColor = true;
+            BtnModificar.Click += BtnAgregar_Click;
             // 
             // label1
             // 
@@ -112,11 +116,29 @@
             label1.TabIndex = 9;
             label1.Text = "Nombre";
             // 
+            // textBox1
+            // 
+            textCodigoNuevo.Location = new Point(241, 204);
+            textCodigoNuevo.Name = "textBox1";
+            textCodigoNuevo.Size = new Size(100, 23);
+            textCodigoNuevo.TabIndex = 18;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(241, 161);
+            label5.Name = "label5";
+            label5.Size = new Size(38, 15);
+            label5.TabIndex = 19;
+            label5.Text = "Codigo nuevo";
+            // 
             // FormCursosModificar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(653, 636);
+            Controls.Add(label5);
+            Controls.Add(textCodigoNuevo);
             Controls.Add(textCupoMaximo);
             Controls.Add(textDescripcion);
             Controls.Add(textCodigo);
@@ -124,7 +146,7 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(textNombre);
-            Controls.Add(BtnAgregar);
+            Controls.Add(BtnModificar);
             Controls.Add(label1);
             Name = "FormCursosModificar";
             Text = "FormCursosModificar";
@@ -141,7 +163,9 @@
         private Label label3;
         private Label label2;
         public TextBox textNombre;
-        private Button BtnAgregar;
+        private Button BtnModificar;
         private Label label1;
+        private TextBox textCodigoNuevo;
+        private Label label5;
     }
 }

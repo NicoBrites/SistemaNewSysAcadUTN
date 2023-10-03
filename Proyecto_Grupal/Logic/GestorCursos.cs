@@ -70,9 +70,9 @@ namespace Logic
                     List<Cursos> listaCursos = GetCursos();
                     foreach (Cursos cursos in listaCursos)
                     {
-                        if (codigoValidado == cursos.Codigo || nuevoNombre == cursos.Nombre)
+                        if (codigoValidado == cursos.Codigo )
                         {
-                            throw new Exception("El codigo o nombre del curso ya esta en uso");
+                            throw new Exception("El codigo del curso ya esta en uso");
                         }
                     }
 
@@ -103,6 +103,44 @@ namespace Logic
                         throw new Exception(e.Message);
                     }
                 }
+            }
+            else
+            {
+                throw new Exception("Ingreso mal un dato o dejo alguna caja de texto vacia.");
+            }
+        }
+
+        public void ModificarCurso(string nuevoNombre, string nuevoCodigo, string nuevaDescripcion,
+        string nuevoCupoMaximo, string codigoAnterior)
+        {
+            if (ValidadorCursos(nuevoNombre, nuevoCodigo, nuevaDescripcion, nuevoCupoMaximo))
+            {
+
+            int codigoValidado = Convert.ToInt32(nuevoCodigo);
+            int cupoMaximoValidado = Convert.ToInt32(nuevoCupoMaximo);
+            int codigoAnteriorParseado = Convert.ToInt32(codigoAnterior);
+
+              
+                List<Cursos> listaCursos = GetCursos();
+                foreach (Cursos cursos in listaCursos)
+                {
+                    if (codigoAnteriorParseado != codigoValidado && codigoValidado == cursos.Codigo)
+                    {
+                        throw new Exception("El codigo del curso ya esta en uso en otro curso");
+                    }
+                    if (cursos.Codigo == codigoAnteriorParseado)
+                    {
+                        cursos.Nombre = nuevoNombre;
+                        cursos.Descripcion = nuevaDescripcion;
+                        cursos.Codigo = codigoValidado;
+                        cursos.CupoMaximo = cupoMaximoValidado;
+                    }
+                }
+
+                string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\Cursos";
+
+                string msj = _gestorArchivos.GuardarAJson(listaCursos, path);
+
             }
             else
             {
