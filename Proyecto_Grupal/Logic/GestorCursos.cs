@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace Logic
 {
@@ -148,7 +149,20 @@ namespace Logic
             }
         }
 
+        public void EliminarCurso(int codigo)
+        {
+           
+            List<Cursos> listaCursos = GetCursos();
 
+            Cursos cursoAEliminar = listaCursos.SingleOrDefault(obj => obj.Codigo == codigo);
+
+            listaCursos.Remove(cursoAEliminar);
+
+            string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\Cursos";
+
+            string msj = _gestorArchivos.GuardarAJson(listaCursos, path);
+
+        }
 
     }
 }

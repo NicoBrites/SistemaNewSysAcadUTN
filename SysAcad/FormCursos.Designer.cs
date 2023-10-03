@@ -70,6 +70,7 @@
             btnEliminarCursos.TabIndex = 2;
             btnEliminarCursos.Text = "Eliminar Cursos";
             btnEliminarCursos.UseVisualStyleBackColor = true;
+            btnEliminarCursos.Click += btnEliminarCursos_Click;
             // 
             // dataGridView1
             // 

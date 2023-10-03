@@ -85,5 +85,30 @@ namespace SysAcad
             }
         }
 
+        private void btnEliminarCursos_Click(object sender, EventArgs e)
+        {
+
+            GestorCursos cursos = new GestorCursos();
+
+            if (dataGridView1.SelectedCells.Count > 0)
+            {
+                int filaSeleccionadaIndex = dataGridView1.SelectedCells[0].RowIndex;
+
+                // Ahora puedes acceder a los valores de las celdas en la fila seleccionada.
+                string codigo = dataGridView1.Rows[filaSeleccionadaIndex].Cells["codigoDataGridViewTextBoxColumn"].Value.ToString();
+                string nombre = dataGridView1.Rows[filaSeleccionadaIndex].Cells["nombreDataGridViewTextBoxColumn"].Value.ToString();
+                string cupoMaximo = dataGridView1.Rows[filaSeleccionadaIndex].Cells["cupoMaximoDataGridViewTextBoxColumn"].Value.ToString();
+                string descripcion = dataGridView1.Rows[filaSeleccionadaIndex].Cells["descripcionDataGridViewTextBoxColumn"].Value.ToString();
+
+                // Haz lo que necesites con los valores de la fila seleccionada.
+                int cursoParseado = Convert.ToInt32(codigo);
+                cursos.EliminarCurso(cursoParseado);
+                this.Refresh();
+            }
+            else
+            {
+                MessageBox.Show("Ninguna celda seleccionada.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
     }
 }
