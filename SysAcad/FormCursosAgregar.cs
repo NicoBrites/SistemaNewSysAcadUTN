@@ -30,7 +30,14 @@ namespace SysAcad
 
             try
             {
-                cursos.CrearCurso(nuevoNombre,nuevoCodigo, nuevoDescripcion, nuevoCupoMax);
+                cursos.CrearCurso(nuevoNombre, nuevoCodigo, nuevoDescripcion, nuevoCupoMax);
+
+                MessageBox.Show("Se creo correctamente el curso", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                FormCursos formCursos = new();
+                formCursos.Show();
+
+                this.Hide();
             }
             catch (Exception ex)
             {
@@ -40,6 +47,14 @@ namespace SysAcad
             }
 
 
+        }
+
+        private void BtnVolver_Click(object sender, EventArgs e)
+        {
+            FormCursos formCursos = new();
+            formCursos.Show();
+
+            this.Hide();
         }
     }
 }

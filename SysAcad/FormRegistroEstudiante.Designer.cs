@@ -43,11 +43,12 @@
             textNumTelefono = new TextBox();
             textCorreoElectronico = new TextBox();
             textContraseñaProv = new TextBox();
+            btnVolver = new Button();
             SuspendLayout();
             // 
             // btnCrearEstudiante
             // 
-            btnCrearEstudiante.Location = new Point(283, 536);
+            btnCrearEstudiante.Location = new Point(124, 528);
             btnCrearEstudiante.Name = "btnCrearEstudiante";
             btnCrearEstudiante.Size = new Size(196, 26);
             btnCrearEstudiante.TabIndex = 0;
@@ -167,11 +168,22 @@
             textContraseñaProv.Size = new Size(100, 23);
             textContraseñaProv.TabIndex = 14;
             // 
+            // btnVolver
+            // 
+            btnVolver.Location = new Point(379, 528);
+            btnVolver.Name = "btnVolver";
+            btnVolver.Size = new Size(75, 23);
+            btnVolver.TabIndex = 15;
+            btnVolver.Text = "Volver";
+            btnVolver.UseVisualStyleBackColor = true;
+            btnVolver.Click += btnVolver_Click_1;
+            // 
             // FormRegistroEstudiante
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 583);
+            Controls.Add(btnVolver);
             Controls.Add(textContraseñaProv);
             Controls.Add(textCorreoElectronico);
             Controls.Add(textNumTelefono);
@@ -210,5 +222,6 @@
         private TextBox textNumTelefono;
         private TextBox textCorreoElectronico;
         private TextBox textContraseñaProv;
+        private Button btnVolver;
     }
 }

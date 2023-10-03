@@ -37,6 +37,7 @@
             textCodigo = new TextBox();
             textDescripcion = new TextBox();
             textCupoMaximo = new TextBox();
+            BtnVolver = new Button();
             SuspendLayout();
             // 
             // label1
@@ -50,7 +51,7 @@
             // 
             // BtnAgregar
             // 
-            BtnAgregar.Location = new Point(292, 504);
+            BtnAgregar.Location = new Point(238, 504);
             BtnAgregar.Name = "BtnAgregar";
             BtnAgregar.Size = new Size(75, 23);
             BtnAgregar.TabIndex = 1;
@@ -113,11 +114,22 @@
             textCupoMaximo.Size = new Size(100, 23);
             textCupoMaximo.TabIndex = 8;
             // 
+            // BtnVolver
+            // 
+            BtnVolver.Location = new Point(377, 504);
+            BtnVolver.Name = "BtnVolver";
+            BtnVolver.Size = new Size(75, 23);
+            BtnVolver.TabIndex = 9;
+            BtnVolver.Text = "Volver";
+            BtnVolver.UseVisualStyleBackColor = true;
+            BtnVolver.Click += BtnVolver_Click;
+            // 
             // FormCursosAgregar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 661);
+            Controls.Add(BtnVolver);
             Controls.Add(textCupoMaximo);
             Controls.Add(textDescripcion);
             Controls.Add(textCodigo);
@@ -144,5 +156,6 @@
         private TextBox textDescripcion;
         private TextBox textCupoMaximo;
         private Button BtnAgregar;
+        private Button BtnVolver;
     }
 }

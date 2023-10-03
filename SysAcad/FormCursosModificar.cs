@@ -42,5 +42,12 @@ namespace SysAcad
 
         }
 
+        private void BtnVolver_Click(object sender, EventArgs e)
+        {
+            FormCursos formCursos = new();
+            formCursos.Show();
+
+            this.Hide();
+        }
     }
 }

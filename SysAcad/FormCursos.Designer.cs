@@ -38,6 +38,7 @@
             descripcionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             cupoMaximoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             cursosBindingSource = new BindingSource(components);
+            btnVolver = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)cursosBindingSource).BeginInit();
             SuspendLayout();
@@ -111,11 +112,22 @@
             // 
             cursosBindingSource.DataSource = typeof(Entidades.Cursos);
             // 
+            // button1
+            // 
+            btnVolver.Location = new Point(538, 607);
+            btnVolver.Name = "btnVolver";
+            btnVolver.Size = new Size(75, 23);
+            btnVolver.TabIndex = 4;
+            btnVolver.Text = "Volver";
+            btnVolver.UseVisualStyleBackColor = true;
+            btnVolver.Click += btnVolver_Click_1;
+            // 
             // FormCursos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1186, 656);
+            Controls.Add(btnVolver);
             Controls.Add(dataGridView1);
             Controls.Add(btnEliminarCursos);
             Controls.Add(btnModificarCursos);
@@ -138,5 +150,6 @@
         private DataGridViewTextBoxColumn descripcionDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn cupoMaximoDataGridViewTextBoxColumn;
         private BindingSource cursosBindingSource;
+        private Button btnVolver;
     }
 }

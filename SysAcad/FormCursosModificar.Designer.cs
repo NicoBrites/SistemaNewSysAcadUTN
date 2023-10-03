@@ -39,6 +39,7 @@
             label1 = new Label();
             textCodigoNuevo = new TextBox();
             label5 = new Label();
+            BtnVolver = new Button();
             SuspendLayout();
             // 
             // textCupoMaximo
@@ -116,10 +117,10 @@
             label1.TabIndex = 9;
             label1.Text = "Nombre";
             // 
-            // textBox1
+            // textCodigoNuevo
             // 
             textCodigoNuevo.Location = new Point(241, 204);
-            textCodigoNuevo.Name = "textBox1";
+            textCodigoNuevo.Name = "textCodigoNuevo";
             textCodigoNuevo.Size = new Size(100, 23);
             textCodigoNuevo.TabIndex = 18;
             // 
@@ -128,15 +129,26 @@
             label5.AutoSize = true;
             label5.Location = new Point(241, 161);
             label5.Name = "label5";
-            label5.Size = new Size(38, 15);
+            label5.Size = new Size(82, 15);
             label5.TabIndex = 19;
             label5.Text = "Codigo nuevo";
+            // 
+            // button1
+            // 
+            BtnVolver.Location = new Point(378, 532);
+            BtnVolver.Name = "BtnVolver";
+            BtnVolver.Size = new Size(75, 23);
+            BtnVolver.TabIndex = 20;
+            BtnVolver.Text = "Volver";
+            BtnVolver.UseVisualStyleBackColor = true;
+            BtnVolver.Click += BtnVolver_Click;
             // 
             // FormCursosModificar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(653, 636);
+            Controls.Add(BtnVolver);
             Controls.Add(label5);
             Controls.Add(textCodigoNuevo);
             Controls.Add(textCupoMaximo);
@@ -167,5 +179,6 @@
         private Label label1;
         private TextBox textCodigoNuevo;
         private Label label5;
+        private Button BtnVolver;
     }
 }

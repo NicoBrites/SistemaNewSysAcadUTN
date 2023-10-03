@@ -36,15 +36,27 @@ namespace SysAcad
             try
             {
                 estudiantes.CrearEstudiante(nuevonombre, nuevoApellido, nuevaDireccion, nuevoCorreoElectronico, nuevaContraseñaProv, nuevoDni, nuevoNumTelefono);
-            }
-            catch (Exception ex) 
-            {
-               
-                MessageBox.Show(ex.Message);   
-                
-            }
- 
 
+                MessageBox.Show("Se creo el estudiante correctamente", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+
+
+        }
+
+        private void btnVolver_Click_1(object sender, EventArgs e)
+        {
+            FormMenuAdministrador formMenuAdministrador = new FormMenuAdministrador();
+
+            formMenuAdministrador.Show();
+
+            this.Hide();
         }
     }
 }
