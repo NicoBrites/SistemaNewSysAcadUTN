@@ -92,10 +92,10 @@ namespace Logic
         public Administrador AutentificarAdministradorNew(string correo, string contraseña)
         {
 
-            string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\Usuarioss";
-            JsonFormato json = _gestorArchivos.GestorJson(path);
+            string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\Usuariosss";
+            JsonUsuariosFormato json = _gestorArchivos.GestorJsonNew(path);
 
-            List<Administrador> administradores = json.DiccionarioAdministrador["Administradores"];
+            List<Administrador> administradores = json.Administradores;
 
             foreach (Administrador admin in administradores)
             {

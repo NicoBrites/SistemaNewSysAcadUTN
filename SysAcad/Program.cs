@@ -19,6 +19,8 @@ namespace SysAcad
             MetodosEstaticos.CrearAdministradorInicial();
 
             MetodosEstaticos.CrearAdministradorInicialNuevo();
+
+            MetodosEstaticos.CrearAdministradorInicialNuevoFormato();
             //CLASES INICIALIZADORAS PARA QUE NO EXPLOTE Y EXISTA LO MINIMO Y NECESARIO PAR EL 4
             
 

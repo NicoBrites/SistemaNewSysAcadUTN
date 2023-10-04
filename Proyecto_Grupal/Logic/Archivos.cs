@@ -107,8 +107,25 @@ namespace Logic
 
             throw new Exception("No existe el archivo en el path ingresado");
 
+        }
 
+        public JsonUsuariosFormato GestorJsonNew(string path)
+        {
+            if (File.Exists(path))
+            {
+                try
+                {
+                    string jsonString = File.ReadAllText(path);
+                    JsonUsuariosFormato json = JsonConvert.DeserializeObject<JsonUsuariosFormato>(jsonString);
+                    return json;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error al leer el archivo JSON: {ex.Message}");
+                }
+            }
 
+            throw new Exception("No existe el archivo en el path ingresado");
 
         }
     }
