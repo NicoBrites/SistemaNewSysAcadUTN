@@ -17,6 +17,8 @@ namespace SysAcad
 
             // VALIDAR QUE EXISTEN ARCHIVOS CON METODOS ESTATICOS
             MetodosEstaticos.CrearAdministradorInicial();
+
+            MetodosEstaticos.CrearAdministradorInicialNuevo();
             //CLASES INICIALIZADORAS PARA QUE NO EXPLOTE Y EXISTA LO MINIMO Y NECESARIO PAR EL 4
             
 

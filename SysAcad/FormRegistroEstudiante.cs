@@ -35,7 +35,7 @@ namespace SysAcad
 
             try
             {
-                estudiantes.CrearEstudiante(nuevonombre, nuevoApellido, nuevaDireccion, nuevoCorreoElectronico, nuevaContraseñaProv, nuevoDni, nuevoNumTelefono);
+                estudiantes.CrearEstudianteNew(nuevonombre, nuevoApellido, nuevaDireccion, nuevoCorreoElectronico, nuevaContraseñaProv, nuevoDni, nuevoNumTelefono);
 
                 MessageBox.Show("Se creo el estudiante correctamente", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

@@ -60,5 +60,82 @@ namespace Logic
 
             }
         }
+
+        public static void CrearAdministradorInicialNuevo()
+        {
+            Archivos archivos = new Archivos();
+            AutentificadorUsuario autentificadorUsuario = new AutentificadorUsuario();
+
+            bool hayAdministrador = false;
+            try
+            {
+                string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\Usuarioss";
+                JsonFormato json = archivos.GestorJson(path);
+
+                List<Administrador> administradores = json.DiccionarioAdministrador["Administradores"];
+                List<Estudiantes> estudiantes = json.DiccionarioEstudiantes["Estudiantes"];
+                List<Profesores> profesores = json.DiccionarioProfesores["Profesores"];
+
+                if (administradores.Count > 0) 
+                {
+                    hayAdministrador = true;
+                }
+                if (hayAdministrador == false)
+                {
+                   
+                    Administrador administrador = new Administrador(1, "Hernesto", "Guevara", 1, "clave123", "correo123");
+                    administradores.Add(administrador);
+
+                    JsonFormato jsonNuevo = new JsonFormato
+                    {
+                        DiccionarioAdministrador = new Dictionary<string, List<Administrador>>
+                    {
+                        { "Administradores", administradores }
+                    },
+                        DiccionarioEstudiantes = new Dictionary<string, List<Estudiantes>>
+                    {
+                        { "Estudiantes", estudiantes }
+                    },
+                        DiccionarioProfesores = new Dictionary<string, List<Profesores>>
+                    {
+                         {"Profesores"  ,profesores }
+                    }
+                    };
+              
+                    string msj = archivos.GuardarAJson(jsonNuevo, path);
+                }
+
+            }
+            catch (Exception)
+            {
+                
+                List<Administrador> administradores = new List<Administrador>();
+                Administrador administrador = new Administrador(1, "Hernesto", "Guevara", 1, "clave123", "correo123");
+                administradores.Add(administrador);
+
+                List<Estudiantes> estudiantes = new List<Estudiantes>();  
+                List<Profesores> profesores = new List<Profesores>();
+
+                JsonFormato jsonNuevo = new JsonFormato
+                {
+                    DiccionarioAdministrador = new Dictionary<string, List<Administrador>> 
+                    {
+                        { "Administradores", administradores }
+                    },
+                    DiccionarioEstudiantes = new Dictionary<string, List<Estudiantes>>
+                    { 
+                        { "Estudiantes", estudiantes } 
+                    },
+                    DiccionarioProfesores = new Dictionary<string, List<Profesores>> 
+                    {
+                         {"Profesores"  ,profesores } 
+                    }
+                };
+
+                string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\Usuarioss";
+
+                string msj = archivos.GuardarAJson(jsonNuevo, path);
+            }
+        }
     }
 }

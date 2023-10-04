@@ -84,7 +84,7 @@ namespace Logic
                     }
                     ultimoId++;
 
-                    string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\Usuarios";
+                    string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\Usuarioss";
 
                     Estudiantes nuevoEstudiante = new Estudiantes(ultimoId, nuevoNombre, nuevoApellido, dniValidado,
                         numTelefonoValidado, nuevaDireccion, nuevaContraseñaProv, nuevoCorreoElectronico);
@@ -97,13 +97,20 @@ namespace Logic
                 {
                     if (e.Message == "No existe el archivo en el path ingresado")
                     {
-                        string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\Usuarios";
+                        string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\Usuarioss";
 
                         List<Estudiantes> listaNueva = new List<Estudiantes>();
 
                         Estudiantes crearEstudiante = new Estudiantes(1, nuevoNombre, nuevoApellido, dniValidado,
                              numTelefonoValidado, nuevaDireccion, nuevaContraseñaProv, nuevoCorreoElectronico);
                         listaNueva.Add(crearEstudiante);
+                        JsonFormato json = new JsonFormato
+                        {
+                            DiccionarioAdministrador = new Dictionary<string, List<Administrador>>
+                            {
+
+                            }
+                        };
                         string msj = _gestorArchivos.GuardarAJson(listaNueva, path);
                     }
                     else
@@ -117,5 +124,68 @@ namespace Logic
                 throw new Exception("Ingreso mal un dato o dejo alguna caja de texto vacia.");
             }
         }
+
+
+        public void CrearEstudianteNew(string nuevoNombre, string nuevoApellido, string nuevaDireccion,
+        string nuevoCorreoElectronico, string nuevaContraseñaProv, string nuevoDni, string nuevoNumTelefono)
+        {
+            if (ValidadorEstudiante(nuevoNombre, nuevoApellido, nuevaDireccion, nuevoCorreoElectronico,
+                nuevaContraseñaProv, nuevoDni, nuevoNumTelefono))
+            {
+                int dniValidado = Convert.ToInt32(nuevoDni);
+                int numTelefonoValidado = Convert.ToInt32(nuevoNumTelefono);
+                
+                int ultimoId = 0;
+
+                string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\Usuarioss";
+                JsonFormato json = _gestorArchivos.GestorJson(path);
+
+                List<Administrador> administradores = json.DiccionarioAdministrador["Administradores"];
+                List<Estudiantes> estudiantes = json.DiccionarioEstudiantes["Estudiantes"];
+                List<Profesores> profesores = json.DiccionarioProfesores["Profesores"];
+
+                foreach (Estudiantes estudiante in estudiantes)
+                {
+                    if (nuevoCorreoElectronico == estudiante.Correo || dniValidado == estudiante.Dni)
+                    {
+                        throw new Exception("El correo electronico o DNI ya esta en uso");
+                    }
+                    if (estudiante.Id > ultimoId)
+                    {
+                        ultimoId = estudiante.Id;
+                    }
+                }
+                ultimoId++;
+
+                Estudiantes nuevoEstudiante = new Estudiantes(ultimoId, nuevoNombre, nuevoApellido, dniValidado,
+                    numTelefonoValidado, nuevaDireccion, nuevaContraseñaProv, nuevoCorreoElectronico);
+
+                estudiantes.Add(nuevoEstudiante);
+
+                JsonFormato jsonNuevo = new JsonFormato
+                {
+                    DiccionarioAdministrador = new Dictionary<string, List<Administrador>>
+                    {
+                        { "Administradores", administradores }
+                    },
+                    DiccionarioEstudiantes = new Dictionary<string, List<Estudiantes>>
+                    {
+                        { "Estudiantes", estudiantes }
+                    },
+                    DiccionarioProfesores = new Dictionary<string, List<Profesores>>
+                    {
+                        {"Profesores"  ,profesores }
+                    }
+                };
+
+                string msj = _gestorArchivos.GuardarAJson(jsonNuevo, path);               
+ 
+            }
+            else
+            {
+                throw new Exception("Ingreso mal un dato o dejo alguna caja de texto vacia.");
+            }
+        }
+
     }
 }

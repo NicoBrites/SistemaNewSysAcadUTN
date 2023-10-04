@@ -18,7 +18,7 @@ namespace SysAcad
 
              try
              {
-                Administrador administrador = funciones.AutentificarAdministrador(correo, contraseña);
+                Administrador administrador = funciones.AutentificarAdministradorNew(correo, contraseña);
 
                 if (administrador != null)
                 {
@@ -28,13 +28,13 @@ namespace SysAcad
                 }
                 else
                 {
-                    Estudiantes estudiantes = funciones.AutentificarEstudiante(correo, contraseña);
-                    if (estudiantes != null)
-                    {
+                    Estudiantes estudiante = funciones.AutentificarEstudiantesNew(correo, contraseña);
+                    if (estudiante != null)
+                    { 
                         FormMenuEstudiante formMenuEstudiante = new();
                         formMenuEstudiante.Show();
                         this.Hide();
-                    }
+                    }                
                 }
             }
             catch (Exception ex)
