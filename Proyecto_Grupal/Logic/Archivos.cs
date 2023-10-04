@@ -7,12 +7,12 @@ namespace Logic
     {
         public Archivos() { }
 
-        public string GuardarAJson<T>(List<T> listaObjetoAGuardar, string path)
+        public string GuardarAJson<T>(T listaObjetoAGuardar, string path)
         {
             try
             {
 
-                string jsonString = JsonSerializer.Serialize(listaObjetoAGuardar);
+                string jsonString = JsonSerializer.Serialize<T>(listaObjetoAGuardar);
 
                 File.WriteAllText(path, jsonString);
                 return $"Se ha guardado correctamente como JSON en: {path}";

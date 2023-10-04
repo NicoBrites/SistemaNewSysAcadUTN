@@ -95,8 +95,6 @@ namespace SysAcad
 
                     formCursos.Show();
                 }
-
-
             }
             else
             {

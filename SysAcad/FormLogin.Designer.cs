@@ -36,10 +36,10 @@
             textContraseña = new TextBox();
             SuspendLayout();
             // 
-            // button1
+            // btnInicioSesion
             // 
             btnInicioSesion.Location = new Point(223, 307);
-            btnInicioSesion.Name = "button1";
+            btnInicioSesion.Name = "btnInicioSesion";
             btnInicioSesion.Size = new Size(355, 106);
             btnInicioSesion.TabIndex = 0;
             btnInicioSesion.Text = "Iniciar Sesion";
@@ -51,7 +51,7 @@
             label1.AutoSize = true;
             label1.Location = new Point(292, 16);
             label1.Name = "label1";
-            label1.Size = new Size(38, 15);
+            label1.Size = new Size(89, 15);
             label1.TabIndex = 1;
             label1.Text = "SYS ACAD GOD";
             // 
@@ -60,7 +60,7 @@
             label2.AutoSize = true;
             label2.Location = new Point(222, 93);
             label2.Name = "label2";
-            label2.Size = new Size(38, 15);
+            label2.Size = new Size(43, 15);
             label2.TabIndex = 2;
             label2.Text = "Correo";
             // 
@@ -69,18 +69,18 @@
             label3.AutoSize = true;
             label3.Location = new Point(219, 192);
             label3.Name = "label3";
-            label3.Size = new Size(38, 15);
+            label3.Size = new Size(67, 15);
             label3.TabIndex = 3;
             label3.Text = "Contraseña";
             // 
-            // textBox1
+            // textCorreo
             // 
             textCorreo.Location = new Point(222, 121);
             textCorreo.Name = "textCorreo";
             textCorreo.Size = new Size(100, 23);
             textCorreo.TabIndex = 4;
             // 
-            // textBox2
+            // textContraseña
             // 
             textContraseña.Location = new Point(222, 231);
             textContraseña.Name = "textContraseña";

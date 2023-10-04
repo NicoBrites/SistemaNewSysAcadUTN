@@ -4,16 +4,76 @@ namespace Logic
 {
     public class AutentificadorUsuario
     {
-        public AutentificadorUsuario() { }
+        private Archivos _gestorArchivos;
 
-        public bool AutentificarUsuario(string correo, string contraseña)
+        public AutentificadorUsuario()
         {
-            Administrador administrador = new(1, "Hernesto", "Hardcodeado", 2, "clave123", "correo123");
-            if (correo == administrador.Correo && contraseña == administrador.Clave)
+            _gestorArchivos = new Archivos();
+        }
+       
+
+        public Usuario AutentificarUsuario(string correo, string contraseña)
+        {
+            List<Usuario> listaUsuarios = GetUsuarios();
+            foreach (Usuario usuario in listaUsuarios)
             {
-                return true;
+                if (correo == usuario.Correo && contraseña == usuario.Clave)
+                {
+                    return usuario;
+                }
             }
-            return false;
+            throw new Exception("No coincide la contraseña o el correo");
+        }
+
+        public Administrador AutentificarAdministrador(string correo, string contraseña)
+        {
+            List<Administrador> listaUsuarios = GetGeneric<Administrador>();
+            foreach (Administrador usuario in listaUsuarios)
+            {
+                if (correo == usuario.Correo && contraseña == usuario.Clave)
+                {
+                    return usuario;
+                }
+            }
+            throw new Exception("No coincide la contraseña o el correo");
+        }
+        public Estudiantes AutentificarEstudiante(string correo, string contraseña)
+        {
+            List<Estudiantes> listaUsuarios = GetGeneric<Estudiantes>();
+            foreach (Estudiantes usuario in listaUsuarios)
+            {
+                if (correo == usuario.Correo && contraseña == usuario.Clave)
+                {
+                    return usuario;
+                }
+            }
+            throw new Exception("No coincide la contraseña o el correo");
+        }
+        public List<Usuario> GetUsuarios ()
+       {
+            try
+            {
+                string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\Usuarios";
+                List<Usuario> listaUsuarios = _gestorArchivos.LeerJson<Usuario>(path);
+                return listaUsuarios;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public List<T> GetGeneric<T>()
+        {
+            try
+            {
+                string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\Usuarios";
+                List<T> listaUsuarios = _gestorArchivos.LeerJson<T>(path);
+                return listaUsuarios;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
     }

@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "Xwif5+cRq7UIiLyAgXnrBsxpUyKtBIwjq3OPVqZncIhWGoxeodu5MP6wb/5Y2YCBbD2mSp6IHqQLmu22vgCdWQ==",
+  "dgSpecHash": "TFtnvunpOj4k2XjOvKgwG8qxLyjghJ4fcrVwl5IUCOy3wW0lFCRl1qkGjDcJzI8Lz42X2RXHVCV/HFUoRsJnVQ==",
   "success": true,
   "projectFilePath": "C:\\PruebaLabNet\\SistemaNewSysAcadUTN\\Proyecto_Grupal\\Logic\\Logic.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\AdministraGod\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\AdministraGod\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
   ],
   "logs": []

@@ -1,3 +1,5 @@
+using Logic;
+
 namespace SysAcad
 {
     internal static class Program
@@ -14,9 +16,9 @@ namespace SysAcad
 
 
             // VALIDAR QUE EXISTEN ARCHIVOS CON METODOS ESTATICOS
-            
+            MetodosEstaticos.CrearAdministradorInicial();
             //CLASES INICIALIZADORAS PARA QUE NO EXPLOTE Y EXISTA LO MINIMO Y NECESARIO PAR EL 4
-
+            
 
 
             Application.Run(new FormLogin());

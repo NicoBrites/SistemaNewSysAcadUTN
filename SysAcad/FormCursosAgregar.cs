@@ -45,8 +45,6 @@ namespace SysAcad
                 MessageBox.Show(ex.Message);
 
             }
-
-
         }
 
         private void BtnVolver_Click(object sender, EventArgs e)

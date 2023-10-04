@@ -86,10 +86,10 @@ namespace Logic
 
                     string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\Usuarios";
 
-                    Estudiantes crearEstudiante = new Estudiantes(ultimoId, nuevoNombre, nuevoApellido, dniValidado,
+                    Estudiantes nuevoEstudiante = new Estudiantes(ultimoId, nuevoNombre, nuevoApellido, dniValidado,
                         numTelefonoValidado, nuevaDireccion, nuevaContraseñaProv, nuevoCorreoElectronico);
 
-                    listaEstudiantes.Add(crearEstudiante);
+                    listaEstudiantes.Add(nuevoEstudiante);
                     string msj = _gestorArchivos.GuardarAJson(listaEstudiantes, path);
 
                 }

@@ -25,8 +25,8 @@ namespace Logic
             try
             {
                 string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\Cursos";
-                List<Cursos> _listaCursos = _gestorArchivos.LeerJson<Cursos>(path);
-                return _listaCursos;
+                List<Cursos> listaCursos = _gestorArchivos.LeerJson<Cursos>(path);
+                return listaCursos;
             }
             catch (Exception ex)
             {
@@ -154,7 +154,7 @@ namespace Logic
            
             List<Cursos> listaCursos = GetCursos();
 
-            Cursos cursoAEliminar = listaCursos.SingleOrDefault(obj => obj.Codigo == codigo);
+            Cursos cursoAEliminar = listaCursos.Single(obj => obj.Codigo == codigo);
 
             listaCursos.Remove(cursoAEliminar);
 
