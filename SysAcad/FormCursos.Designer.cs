@@ -83,6 +83,7 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(805, 377);
             dataGridView1.TabIndex = 3;
+
             // 
             // nombreDataGridViewTextBoxColumn
             // 
@@ -112,7 +113,7 @@
             // 
             cursosBindingSource.DataSource = typeof(Entidades.Cursos);
             // 
-            // button1
+            // btnVolver
             // 
             btnVolver.Location = new Point(538, 607);
             btnVolver.Name = "btnVolver";

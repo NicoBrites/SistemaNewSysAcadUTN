@@ -49,3 +49,5 @@ C:\PruebaLabNet\SistemaNewSysAcadUTN\SysAcad\obj\Debug\net6.0-windows\SysAcad.Fo
 C:\PruebaLabNet\SistemaNewSysAcadUTN\SysAcad\obj\Debug\net6.0-windows\SysAcad.FormCursosAgregar.resources
 C:\PruebaLabNet\SistemaNewSysAcadUTN\SysAcad\obj\Debug\net6.0-windows\SysAcad.FormCursosModificar.resources
 C:\PruebaLabNet\SistemaNewSysAcadUTN\SysAcad\bin\Debug\net6.0-windows\BCrypt.Net-Next.dll
+C:\PruebaLabNet\SistemaNewSysAcadUTN\SysAcad\obj\Debug\net6.0-windows\SysAcad.FormCursosEstudiantes.resources
+C:\PruebaLabNet\SistemaNewSysAcadUTN\SysAcad\obj\Debug\net6.0-windows\SysAcad.FormMenuEstudiante.resources

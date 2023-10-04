@@ -24,7 +24,7 @@ namespace Logic
         {
             Archivos archivos = new Archivos();
             AutentificadorUsuario autentificadorUsuario = new AutentificadorUsuario();
-
+           
             bool hayAdministrador = false;
             try
             {
@@ -40,12 +40,12 @@ namespace Logic
                 }
                 if (hayAdministrador == false)
                 {
-
+                    
                     Administrador administrador = new Administrador(1, "Hernesto", "Guevara", 1, "clave123", "correo123");
-                    usuarios.Add(administrador);
+                    administradors.Add(administrador);
 
                     string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\Usuarios";
-                    string msj = archivos.GuardarAJson(usuarios, path);
+                    string msj = archivos.GuardarAJson(administradors, path);
                 }
             }
             catch (Exception) 

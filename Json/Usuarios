@@ -1,1 +1,1 @@
-[{"Nivel":1,"Id":1,"Nombre":"Hernesto","Apellido":"Guevara","Dni":0,"Clave":"clave123","Correo":"correo123"}]
+[{"Telefono":0,"Direccion":null,"Id":1,"Nombre":"Hernesto","Apellido":"Guevara","Dni":0,"Clave":"clave123","Correo":"correo123"},{"Telefono":456,"Direccion":"asd","Id":2,"Nombre":"estudiantito","Apellido":"estudiantito","Dni":388,"Clave":"clav123","Correo":"corr123"}]
