@@ -161,7 +161,7 @@ namespace Logic
                 {
 
                     Administrador administrador = new Administrador(1, "Hernesto", "Guevara", 1, "clave123", "correo123");
-                    administradores.Add(administrador);
+                    
 
                     JsonUsuariosFormato jsonNuevo = new JsonUsuariosFormato
                     {
@@ -169,6 +169,8 @@ namespace Logic
                         Estudiantes = new List<Estudiantes> { },
                         Profesores = new List<Profesores> { }
                     };
+
+                    administradores.Add(administrador);
 
                     string msj = archivos.GuardarAJson(jsonNuevo, path);
                 }

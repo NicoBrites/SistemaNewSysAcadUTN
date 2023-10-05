@@ -137,12 +137,12 @@ namespace Logic
                 
                 int ultimoId = 0;
 
-                string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\Usuarioss";
-                JsonFormato json = _gestorArchivos.GestorJson(path);
+                string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\Usuariosss";
+                JsonUsuariosFormato json = _gestorArchivos.GestorJsonNew(path);
 
-                List<Administrador> administradores = json.DiccionarioAdministrador["Administradores"];
-                List<Estudiantes> estudiantes = json.DiccionarioEstudiantes["Estudiantes"];
-                List<Profesores> profesores = json.DiccionarioProfesores["Profesores"];
+                List<Administrador> administradores = json.Administradores;
+                List<Estudiantes> estudiantes = json.Estudiantes;
+                List<Profesores> profesores = json.Profesores;
 
                 foreach (Estudiantes estudiante in estudiantes)
                 {
@@ -162,24 +162,14 @@ namespace Logic
 
                 estudiantes.Add(nuevoEstudiante);
 
-                JsonFormato jsonNuevo = new JsonFormato
+                JsonUsuariosFormato jsonNuevo = new JsonUsuariosFormato
                 {
-                    DiccionarioAdministrador = new Dictionary<string, List<Administrador>>
-                    {
-                        { "Administradores", administradores }
-                    },
-                    DiccionarioEstudiantes = new Dictionary<string, List<Estudiantes>>
-                    {
-                        { "Estudiantes", estudiantes }
-                    },
-                    DiccionarioProfesores = new Dictionary<string, List<Profesores>>
-                    {
-                        {"Profesores"  ,profesores }
-                    }
+                    Administradores = administradores,
+                    Estudiantes = estudiantes,
+                    Profesores = profesores
                 };
 
                 string msj = _gestorArchivos.GuardarAJson(jsonNuevo, path);               
- 
             }
             else
             {

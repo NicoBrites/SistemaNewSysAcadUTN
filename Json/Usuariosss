@@ -10,6 +10,17 @@
       "Correo": "correo123"
     }
   ],
-  "Estudiantes": [],
+  "Estudiantes": [
+    {
+      "Telefono": 123,
+      "Direccion": "nuev",
+      "Id": 1,
+      "Nombre": "nuev",
+      "Apellido": "nuev",
+      "Dni": 123,
+      "Clave": "clav123",
+      "Correo": "corr123"
+    }
+  ],
   "Profesores": []
 }

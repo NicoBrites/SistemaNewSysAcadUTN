@@ -18,23 +18,19 @@ namespace SysAcad
 
              try
              {
-                Administrador administrador = funciones.AutentificarAdministradorNew(correo, contraseña);
+                Object usuario = funciones.AutentificarUsuarioS(correo, contraseña);
 
-                if (administrador != null)
+                if (usuario is Administrador)
                 {
                     FormMenuAdministrador formMenuAdministrador = new();
                     formMenuAdministrador.Show();
                     this.Hide();
                 }
-                else
-                {
-                    Estudiantes estudiante = funciones.AutentificarEstudiantesNew(correo, contraseña);
-                    if (estudiante != null)
-                    { 
-                        FormMenuEstudiante formMenuEstudiante = new();
-                        formMenuEstudiante.Show();
-                        this.Hide();
-                    }                
+                else if (usuario is Estudiantes)
+                { 
+                    FormMenuEstudiante formMenuEstudiante = new();
+                    formMenuEstudiante.Show();
+                    this.Hide();                              
                 }
             }
             catch (Exception ex)

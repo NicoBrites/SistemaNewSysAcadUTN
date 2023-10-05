@@ -110,9 +110,9 @@ namespace Logic
         {
 
             string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\Usuarioss";
-            JsonFormato json = _gestorArchivos.GestorJson(path);
+            JsonUsuariosFormato json = _gestorArchivos.GestorJsonNew(path);
 
-            List<Estudiantes> estudiantes = json.DiccionarioEstudiantes["Estudiantes"];
+            List<Estudiantes> estudiantes = json.Estudiantes;
 
             foreach (Estudiantes estudiante in estudiantes)
             {
@@ -123,14 +123,30 @@ namespace Logic
             }
             throw new Exception("No coincide la contraseña o el correo");
         }
-        public Profesores AutentificarProfesorNew(string correo, string contraseña)
+        public Object AutentificarUsuarioS(string correo, string contraseña)
         {
 
-            string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\Usuarioss";
-            JsonFormato json = _gestorArchivos.GestorJson(path);
+            string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\Usuariosss";
+            JsonUsuariosFormato json = _gestorArchivos.GestorJsonNew(path);
 
-            List<Profesores> profesores = json.DiccionarioProfesores["Profesores"];
+            List<Administrador> administradores = json.Administradores;
+            List<Estudiantes> estudiantes = json.Estudiantes;
+            List<Profesores> profesores = json.Profesores;
 
+            foreach (Administrador admin in administradores)
+            {
+                if (correo == admin.Correo && contraseña == admin.Clave)
+                {
+                    return admin;
+                }
+            }
+            foreach (Estudiantes estudiante in estudiantes)
+            {
+                if (correo == estudiante.Correo && contraseña == estudiante.Clave)
+                {
+                    return estudiante;
+                }
+            }
             foreach (Profesores profesor in profesores)
             {
                 if (correo == profesor.Correo && contraseña == profesor.Clave)
