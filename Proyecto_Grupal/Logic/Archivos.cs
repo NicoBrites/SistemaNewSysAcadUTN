@@ -82,13 +82,6 @@ namespace Logic
             throw new Exception("No existe el archivo en el path ingresado");
         }
 
-
-        public void GuardarEstudianteEnJson(List<Estudiantes> estudiantes, string path) 
-        {
-            
-        
-        }
-
         public JsonFormato GestorJson(string path)
         {
             if (File.Exists(path))

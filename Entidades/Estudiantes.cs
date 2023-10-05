@@ -20,7 +20,6 @@ namespace Entidades
             _direccion = direccion;
         }
 
-
         public int Telefono
         {
             get { return _telefono; }

@@ -55,6 +55,7 @@
             textDescripcion.Name = "textDescripcion";
             textDescripcion.Size = new Size(100, 23);
             textDescripcion.TabIndex = 16;
+            textDescripcion.TextChanged += textDescripcion_TextChanged;
             // 
             // textCodigo
             // 
@@ -133,7 +134,7 @@
             label5.TabIndex = 19;
             label5.Text = "Codigo nuevo";
             // 
-            // button1
+            // BtnVolver
             // 
             BtnVolver.Location = new Point(378, 532);
             BtnVolver.Name = "BtnVolver";

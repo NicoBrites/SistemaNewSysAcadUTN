@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace SysAcad
 {
-    public partial class FormCursosEstudiantes : Form
+    public partial class FormEstudianteCursos : Form
     {
-        public FormCursosEstudiantes()
+        public FormEstudianteCursos()
         {
             InitializeComponent();
             GestorCursos cursos = new GestorCursos();
@@ -29,11 +29,14 @@ namespace SysAcad
             }
         }
 
-        private void FormCursosEstudiantes_Load(object sender, EventArgs e)
+        private void FormEstudianteCursos_Load(object sender, EventArgs e)
         {
 
         }
 
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
+        }
     }
 }

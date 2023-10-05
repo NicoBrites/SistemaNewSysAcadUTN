@@ -49,5 +49,10 @@ namespace SysAcad
 
             this.Hide();
         }
+
+        private void textDescripcion_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
