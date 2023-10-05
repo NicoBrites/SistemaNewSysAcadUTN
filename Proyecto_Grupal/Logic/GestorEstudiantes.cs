@@ -1,6 +1,7 @@
 ﻿using Entidades;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.Design;
 using System.IO;
 
 namespace Logic
@@ -30,38 +31,36 @@ namespace Logic
                 throw new Exception(ex.Message);
             }
         }
-        public bool ValidadorEstudiante(string nuevoNombre, string nuevoApellido, string nuevaDireccion,
-         string nuevoCorreoElectronico, string nuevaContraseñaProv, string nuevoDni, string nuevoNumTelefono)
+        public bool ValidadorEstudiante(EstudianteAValidar estudiante)
         {
-            try
+            int numero;
+
+            if (int.TryParse(estudiante.Telefono, out numero) && int.TryParse(estudiante.Dni, out numero))
             {
-                int dniValidado = Convert.ToInt32(nuevoDni);
-                int numTelefonoValidado = Convert.ToInt32(nuevoNumTelefono);
-            }
-            catch
-            {
-                //MessageBox.Show("No ingreso un numero valido en el Dni o el Telefono");
-                return false;
-            }
-            if (_validadorTextosVacios.ValidarTextosVacios(nuevoNombre) &&
-                _validadorTextosVacios.ValidarTextosVacios(nuevoApellido) &&
-                _validadorTextosVacios.ValidarTextosVacios(nuevaDireccion) &&
-                _validadorTextosVacios.ValidarTextosVacios(nuevoCorreoElectronico) &&
-                _validadorTextosVacios.ValidarTextosVacios(nuevaContraseñaProv))
-            {
-                return true;
+                if (_validadorTextosVacios.ValidarTextosVacios(estudiante.Nombre) &&
+               _validadorTextosVacios.ValidarTextosVacios(estudiante.Apellido) &&
+               _validadorTextosVacios.ValidarTextosVacios(estudiante.Direccion) &&
+               _validadorTextosVacios.ValidarTextosVacios(estudiante.Correo) &&
+               _validadorTextosVacios.ValidarTextosVacios(estudiante.Clave))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             else
-            {
-               // MessageBox.Show("Dejo alguna caja de texto vacia.");
+            { 
                 return false;
             }
+       
 
         }
 
         public void CrearEstudiante(string nuevoNombre, string nuevoApellido, string nuevaDireccion,
          string nuevoCorreoElectronico, string nuevaContraseñaProv, string nuevoDni, string nuevoNumTelefono)
-        {
+        {/*
             if (ValidadorEstudiante(nuevoNombre, nuevoApellido, nuevaDireccion, nuevoCorreoElectronico,
                 nuevaContraseñaProv, nuevoDni, nuevoNumTelefono))
             {
@@ -122,60 +121,47 @@ namespace Logic
             else
             {
                 throw new Exception("Ingreso mal un dato o dejo alguna caja de texto vacia.");
-            }
+            }*/
         }
 
 
-        public void CrearEstudianteNew(string nuevoNombre, string nuevoApellido, string nuevaDireccion,
-        string nuevoCorreoElectronico, string nuevaContraseñaProv, string nuevoDni, string nuevoNumTelefono)
-        {
-            if (ValidadorEstudiante(nuevoNombre, nuevoApellido, nuevaDireccion, nuevoCorreoElectronico,
-                nuevaContraseñaProv, nuevoDni, nuevoNumTelefono))
+        public void CrearEstudianteNew(Estudiantes nuevEstudiante)
+        {          
+            int ultimoId = 0;
+
+            string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\Usuariosss";
+            JsonUsuariosFormato json = _gestorArchivos.GestorJsonNew(path);
+
+            List<Administrador> administradores = json.Administradores;
+            List<Estudiantes> estudiantes = json.Estudiantes;
+            List<Profesores> profesores = json.Profesores;
+
+            foreach (Estudiantes estudiante in estudiantes)
             {
-                int dniValidado = Convert.ToInt32(nuevoDni);
-                int numTelefonoValidado = Convert.ToInt32(nuevoNumTelefono);
-                
-                int ultimoId = 0;
-
-                string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\Usuariosss";
-                JsonUsuariosFormato json = _gestorArchivos.GestorJsonNew(path);
-
-                List<Administrador> administradores = json.Administradores;
-                List<Estudiantes> estudiantes = json.Estudiantes;
-                List<Profesores> profesores = json.Profesores;
-
-                foreach (Estudiantes estudiante in estudiantes)
+                if (nuevEstudiante.Correo == estudiante.Correo || nuevEstudiante.Dni == estudiante.Dni)
                 {
-                    if (nuevoCorreoElectronico == estudiante.Correo || dniValidado == estudiante.Dni)
-                    {
-                        throw new Exception("El correo electronico o DNI ya esta en uso");
-                    }
-                    if (estudiante.Id > ultimoId)
-                    {
-                        ultimoId = estudiante.Id;
-                    }
+                    throw new Exception("El correo electronico o DNI ya esta en uso");
                 }
-                ultimoId++;
-
-                Estudiantes nuevoEstudiante = new Estudiantes(ultimoId, nuevoNombre, nuevoApellido, dniValidado,
-                    numTelefonoValidado, nuevaDireccion, nuevaContraseñaProv, nuevoCorreoElectronico);
-
-                estudiantes.Add(nuevoEstudiante);
-
-                JsonUsuariosFormato jsonNuevo = new JsonUsuariosFormato
+                if (estudiante.Id > ultimoId)
                 {
-                    Administradores = administradores,
-                    Estudiantes = estudiantes,
-                    Profesores = profesores
-                };
-
-                string msj = _gestorArchivos.GuardarAJson(jsonNuevo, path);               
+                    ultimoId = estudiante.Id;
+                }
             }
-            else
+            ultimoId++;
+
+            Estudiantes nuevoEstudiante = new Estudiantes(ultimoId, nuevEstudiante.Nombre, nuevEstudiante.Apellido, nuevEstudiante.Dni,
+                nuevEstudiante.Telefono, nuevEstudiante.Direccion, nuevEstudiante.Clave, nuevEstudiante.Correo);
+
+            estudiantes.Add(nuevoEstudiante);
+
+            JsonUsuariosFormato jsonNuevo = new JsonUsuariosFormato
             {
-                throw new Exception("Ingreso mal un dato o dejo alguna caja de texto vacia.");
-            }
-        }
+                Administradores = administradores,
+                Estudiantes = estudiantes,
+                Profesores = profesores
+            };
 
+            string msj = _gestorArchivos.GuardarAJson(jsonNuevo, path);               
+        }
     }
 }

@@ -20,6 +20,16 @@
       "Dni": 123,
       "Clave": "clav123",
       "Correo": "corr123"
+    },
+    {
+      "Telefono": 555,
+      "Direccion": "nuevito formato",
+      "Id": 2,
+      "Nombre": "nuevito formato",
+      "Apellido": "nuevito formato",
+      "Dni": 555,
+      "Clave": "cla123",
+      "Correo": "cor123"
     }
   ],
   "Profesores": []

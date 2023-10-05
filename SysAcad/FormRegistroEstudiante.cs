@@ -21,11 +21,9 @@ namespace SysAcad
 
         public void button1_Click(object sender, EventArgs e)
         {
-            ValidadorTextosVacios validador = new ValidadorTextosVacios();
             GestorEstudiantes estudiantes = new GestorEstudiantes();
 
-
-            string nuevonombre = textNombre.Text;
+            string nuevoNombre = textNombre.Text;
             string nuevoApellido = textApellido.Text;
             string nuevaDireccion = textDireccion.Text;
             string nuevoCorreoElectronico = textCorreoElectronico.Text;
@@ -33,6 +31,23 @@ namespace SysAcad
             string nuevoDni = textDni.Text;
             string nuevoNumTelefono = textNumTelefono.Text;
 
+  
+            if (estudiantes.ValidadorEstudiante(new EstudianteAValidar(nuevoNombre,nuevoApellido,nuevoDni,nuevoNumTelefono,nuevaDireccion,nuevaContraseñaProv,nuevoCorreoElectronico)))
+            {
+                int nuevoTelValidado = int.Parse(nuevoNumTelefono);
+                int nuevoDniValidado = int.Parse(nuevoDni);
+
+                estudiantes.CrearEstudianteNew(new Estudiantes(0, nuevoNombre, nuevoApellido, nuevoDniValidado, nuevoTelValidado, nuevaDireccion, nuevaContraseñaProv, nuevoCorreoElectronico));
+
+                MessageBox.Show("Se creo el estudiante correctamente", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            else
+            {
+                MessageBox.Show("Ingreso mal un dato o dejo alguna caja de texto vacia.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            /*
             try
             {
                 estudiantes.CrearEstudianteNew(nuevonombre, nuevoApellido, nuevaDireccion, nuevoCorreoElectronico, nuevaContraseñaProv, nuevoDni, nuevoNumTelefono);
@@ -45,7 +60,7 @@ namespace SysAcad
 
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            }
+            }*/
 
 
         }

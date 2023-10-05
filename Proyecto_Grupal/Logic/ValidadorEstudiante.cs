@@ -6,7 +6,7 @@ namespace Logic
     {
         public ValidadorEstudiante() { }
 
-        public bool ValidadarEstudiante(int Dni, string contraseñaProvisoria)
+        public bool ValidarEstudiante(int Dni, string contraseñaProvisoria)
         {
 
             return false;
