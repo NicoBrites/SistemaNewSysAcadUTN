@@ -151,7 +151,8 @@ namespace Logic
                 if (cursos.Codigo == cursoEnQueSeAgrega.Codigo)
                 {
                     cursos.CupoActual++;
-                    cursos._estudiantes.Add(estudiante); 
+                    //cursos._estudiantes = new List<EstudianteEnCursos>();
+                    cursos._estudiantes.Add(estudiante);
                 }
             }
 

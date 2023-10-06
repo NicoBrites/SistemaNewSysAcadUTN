@@ -30,6 +30,8 @@ namespace Entidades
             _cupoMaximo = cupoMaximo;
 
             _cupoActual = cupoActual;
+
+            _estudiantes = new List<EstudianteEnCursos>();
         }
 
         public string Nombre

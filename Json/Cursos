@@ -1,19 +1,31 @@
 [
   {
-    "_estudiantes": null,
+    "_estudiantes": [
+      {
+        "Id": 1,
+        "Nombre": "nuev",
+        "Apellido": "nuev"
+      }
+    ],
     "Nombre": "asdasd",
     "Codigo": 132,
     "Descripcion": "asd",
     "CupoMaximo": 123,
-    "CupoActual": 0
+    "CupoActual": 2
   },
   {
-    "_estudiantes": null,
+    "_estudiantes": [
+      {
+        "Id": 1,
+        "Nombre": "nuev",
+        "Apellido": "nuev"
+      }
+    ],
     "Nombre": "Cursito nuevo",
     "Codigo": 3,
     "Descripcion": "Cursito nuevo",
     "CupoMaximo": 10,
-    "CupoActual": 0
+    "CupoActual": 2
   },
   {
     "_estudiantes": null,
@@ -21,6 +33,14 @@
     "Codigo": 5,
     "Descripcion": "Otro cursito nuevo",
     "CupoMaximo": 5,
+    "CupoActual": 0
+  },
+  {
+    "_estudiantes": [],
+    "Nombre": "Curso con lista sin null",
+    "Codigo": 55,
+    "Descripcion": "sin null",
+    "CupoMaximo": 55,
     "CupoActual": 0
   }
 ]
