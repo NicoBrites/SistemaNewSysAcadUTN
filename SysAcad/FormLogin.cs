@@ -26,10 +26,14 @@ namespace SysAcad
                     formMenuAdministrador.Show();
                     this.Hide();
                 }
-                else if (usuario is Estudiantes)
+                else if (usuario is Estudiantes estudiante)
                 { 
                     FormMenuEstudiante formMenuEstudiante = new();
-                    formMenuEstudiante.Show();
+                    AddOwnedForm(formMenuEstudiante);
+
+                    formMenuEstudiante.estudiante = estudiante;
+                    
+                   formMenuEstudiante.Show();
                     this.Hide();                              
                 }
             }

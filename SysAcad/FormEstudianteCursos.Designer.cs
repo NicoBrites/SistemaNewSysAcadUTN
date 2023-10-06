@@ -1,4 +1,6 @@
-﻿namespace SysAcad
+﻿using Entidades;
+
+namespace SysAcad
 {
     partial class FormEstudianteCursos
     {
@@ -147,5 +149,6 @@
         private DataGridViewTextBoxColumn cupoMaximoDataGridViewTextBoxColumn;
         private BindingSource cursosBindingSource2;
         private DataGridViewTextBoxColumn CupoActual;
+        public Estudiantes estudiante;
     }
 }

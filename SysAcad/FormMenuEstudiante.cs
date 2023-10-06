@@ -20,6 +20,9 @@ namespace SysAcad
         private void btnInscripcionCurso_Click(object sender, EventArgs e)
         {
             FormEstudianteCursos formEstudianteCursos = new();
+            AddOwnedForm(formEstudianteCursos);
+
+            formEstudianteCursos.estudiante = estudiante;
             formEstudianteCursos.Show();
             this.Hide();
         }

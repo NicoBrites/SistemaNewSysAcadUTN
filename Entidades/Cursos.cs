@@ -16,9 +16,10 @@ namespace Entidades
 
         private int _cupoMaximo;
 
-        private int _cupoActual; 
+        private int _cupoActual;
+        public List<EstudianteEnCursos> _estudiantes {  get; set; }
 
-        public Cursos(string nombre, int codigo, string descripcion, int cupoMaximo, int cupoActual = 0)
+        public Cursos(string nombre, int codigo, string descripcion, int cupoMaximo, int cupoActual = 0 )
         {
             _nombre = nombre;
 
@@ -29,7 +30,6 @@ namespace Entidades
             _cupoMaximo = cupoMaximo;
 
             _cupoActual = cupoActual;
-
         }
 
         public string Nombre
@@ -56,7 +56,9 @@ namespace Entidades
             set { _cupoMaximo = value;}
         }
 
-        public int CupoActual { get { return _cupoActual; } set { _cupoActual = value; } }
+        public int CupoActual { get { return _cupoActual; } set { _cupoActual = value;} }
+
+
 
     }
 }

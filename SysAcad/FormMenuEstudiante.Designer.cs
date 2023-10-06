@@ -1,4 +1,6 @@
-﻿namespace SysAcad
+﻿using Entidades;
+
+namespace SysAcad
 {
     partial class FormMenuEstudiante
     {
@@ -29,6 +31,7 @@
         private void InitializeComponent()
         {
             btnInscripcionCurso = new Button();
+            
             SuspendLayout();
             // 
             // btnInscripcionCurso
@@ -55,5 +58,6 @@
         #endregion
 
         private Button btnInscripcionCurso;
+        public Estudiantes estudiante;
     }
 }

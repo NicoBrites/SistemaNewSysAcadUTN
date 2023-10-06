@@ -1,9 +1,26 @@
 [
   {
+    "_estudiantes": null,
     "Nombre": "asdasd",
     "Codigo": 132,
     "Descripcion": "asd",
     "CupoMaximo": 123,
+    "CupoActual": 0
+  },
+  {
+    "_estudiantes": null,
+    "Nombre": "Cursito nuevo",
+    "Codigo": 3,
+    "Descripcion": "Cursito nuevo",
+    "CupoMaximo": 10,
+    "CupoActual": 0
+  },
+  {
+    "_estudiantes": null,
+    "Nombre": "Otro cursito nuevo",
+    "Codigo": 5,
+    "Descripcion": "Otro cursito nuevo",
+    "CupoMaximo": 5,
     "CupoActual": 0
   }
 ]

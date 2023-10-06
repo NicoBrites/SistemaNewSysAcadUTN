@@ -142,9 +142,22 @@ namespace Logic
 
         }
 
-        public void AgregarAlumnoAlCurso()
+        public void AgregarAlumnoAlCurso(EstudianteEnCursos estudiante, Cursos cursoEnQueSeAgrega)
         {
+            List<Cursos> listaCursos = GetCursos();
 
+            foreach (Cursos cursos in listaCursos)
+            {
+                if (cursos.Codigo == cursoEnQueSeAgrega.Codigo)
+                {
+                    cursos.CupoActual++;
+                    cursos._estudiantes.Add(estudiante); 
+                }
+            }
+
+            string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\Cursos";
+
+            string msj = _gestorArchivos.GuardarAJson(listaCursos, path);
         }
     }
 }
