@@ -6,57 +6,35 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class Cursos
+    public class CursoAValidar
     {
         private string _nombre;
-
-        private int _codigo;
-
+        private string _codigo;
         private string _descripcion;
+        private string _cupoMaximo;
 
-        private int _cupoMaximo;
-
-        private int _cupoActual; 
-
-        public Cursos(string nombre, int codigo, string descripcion, int cupoMaximo, int cupoActual = 0)
+        public CursoAValidar(string nombre, string codigo, string descripcion, string cupoMaximo)
         {
             _nombre = nombre;
-
             _codigo = codigo;
-
             _descripcion = descripcion;
-
             _cupoMaximo = cupoMaximo;
-
-            _cupoActual = cupoActual;
-
         }
-
         public string Nombre
         {
             get { return _nombre; }
-            set { _nombre = value; }
         }
-
-        public int Codigo
+        public string Codigo
         {
             get { return _codigo; }
-            set { _codigo = value; }
         }
-
         public string Descripcion
         {
             get { return _descripcion; }
-            set { _descripcion = value; }
         }
-
-        public int CupoMaximo
+        public string CupoMaximo
         {
             get { return _cupoMaximo; }
-            set { _cupoMaximo = value;}
         }
-
-        public int CupoActual { get { return _cupoActual; } set { _cupoActual = value; } }
-
     }
 }

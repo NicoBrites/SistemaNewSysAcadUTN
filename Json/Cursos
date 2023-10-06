@@ -1,1 +1,9 @@
-[{"Nombre":"CURSITO NUEVO","Codigo":123,"Descripcion":"CURSITO NUEVOP","CupoMaximo":123},{"Nombre":"LO CORREGI GOD","Codigo":123123,"Descripcion":"lo modifique","CupoMaximo":15},{"Nombre":"Pindonga","Codigo":7,"Descripcion":"claramente una pindonga","CupoMaximo":5}]
+[
+  {
+    "Nombre": "asdasd",
+    "Codigo": 132,
+    "Descripcion": "asd",
+    "CupoMaximo": 123,
+    "CupoActual": 0
+  }
+]

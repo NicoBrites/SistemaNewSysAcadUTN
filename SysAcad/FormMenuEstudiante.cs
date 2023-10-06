@@ -16,5 +16,12 @@ namespace SysAcad
         {
             InitializeComponent();
         }
+
+        private void btnInscripcionCurso_Click(object sender, EventArgs e)
+        {
+            FormEstudianteCursos formEstudianteCursos = new();
+            formEstudianteCursos.Show();
+            this.Hide();
+        }
     }
 }

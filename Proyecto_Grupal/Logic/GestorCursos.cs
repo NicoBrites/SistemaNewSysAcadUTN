@@ -34,119 +34,97 @@ namespace Logic
             }
         }
 
-        public bool ValidadorCursos(string nuevoNombre, string nuevoCodigo, string nuevaDescripcion,
-         string nuevoCupoMaximo)
+        public bool ValidadorCursos(CursoAValidar curso)
         {
+            int numero;
+
+            if (int.TryParse(curso.CupoMaximo, out numero) && int.TryParse(curso.Codigo, out numero))
+            {
+                if (_validadorTextosVacios.ValidarTextosVacios(curso.Nombre) &&
+               _validadorTextosVacios.ValidarTextosVacios(curso.Descripcion))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
+        public void CrearCurso(Cursos curso)
+        {
+
             try
             {
-                int dniValidado = Convert.ToInt32(nuevoCodigo);
-                int numTelefonoValidado = Convert.ToInt32(nuevoCupoMaximo);
-            }
-            catch
-            {
-                //MessageBox.Show("No ingreso un numero valido en el Dni o el Telefono");
-                return false;
-            }
-            if (_validadorTextosVacios.ValidarTextosVacios(nuevoNombre) &&
-                _validadorTextosVacios.ValidarTextosVacios(nuevaDescripcion))
-            {
-                return true;
-            }
-            else
-            {
-                // MessageBox.Show("Dejo alguna caja de texto vacia.");
-                return false;
-            }
-        }
-
-        public void CrearCurso(string nuevoNombre, string nuevoCodigo, string nuevaDescripcion,
-        string nuevoCupoMaximo)
-        {
-            if (ValidadorCursos(nuevoNombre, nuevoCodigo, nuevaDescripcion, nuevoCupoMaximo))
-            {
-                int codigoValidado = Convert.ToInt32(nuevoCodigo);
-                int cupoMaximoValidado = Convert.ToInt32(nuevoCupoMaximo);
-                try
-                {
-                    List<Cursos> listaCursos = GetCursos();
-                    foreach (Cursos cursos in listaCursos)
-                    {
-                        if (codigoValidado == cursos.Codigo )
-                        {
-                            throw new Exception("El codigo del curso ya esta en uso");
-                        }
-                    }
-
-                    string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\Cursos";
-
-                    Cursos crearCurso = new Cursos(nuevoNombre, codigoValidado, nuevaDescripcion,
-                        cupoMaximoValidado);
-
-                    listaCursos.Add(crearCurso);
-                    string msj = _gestorArchivos.GuardarAJson(listaCursos, path);
-
-                }
-                catch (Exception e)
-                {
-                    if (e.Message == "No existe el archivo en el path ingresado")
-                    {
-                        string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\Cursos";
-
-                        List<Cursos> listaNueva = new List<Cursos>();
-
-                        Cursos crearCurso = new Cursos(nuevoNombre, codigoValidado, nuevaDescripcion,
-                       cupoMaximoValidado);
-                        listaNueva.Add(crearCurso);
-                        string msj = _gestorArchivos.GuardarAJson(listaNueva, path);
-                    }
-                    else
-                    {
-                        throw new Exception(e.Message);
-                    }
-                }
-            }
-            else
-            {
-                throw new Exception("Ingreso mal un dato o dejo alguna caja de texto vacia.");
-            }
-        }
-
-        public void ModificarCurso(string nuevoNombre, string nuevoCodigo, string nuevaDescripcion,
-        string nuevoCupoMaximo, string codigoAnterior)
-        {
-            if (ValidadorCursos(nuevoNombre, nuevoCodigo, nuevaDescripcion, nuevoCupoMaximo))
-            {
-
-            int codigoValidado = Convert.ToInt32(nuevoCodigo);
-            int cupoMaximoValidado = Convert.ToInt32(nuevoCupoMaximo);
-            int codigoAnteriorParseado = Convert.ToInt32(codigoAnterior);
-
-              
                 List<Cursos> listaCursos = GetCursos();
                 foreach (Cursos cursos in listaCursos)
                 {
-                    if (codigoAnteriorParseado != codigoValidado && codigoValidado == cursos.Codigo)
+                    if (curso.Codigo == cursos.Codigo )
                     {
-                        throw new Exception("El codigo del curso ya esta en uso en otro curso");
-                    }
-                    if (cursos.Codigo == codigoAnteriorParseado)
-                    {
-                        cursos.Nombre = nuevoNombre;
-                        cursos.Descripcion = nuevaDescripcion;
-                        cursos.Codigo = codigoValidado;
-                        cursos.CupoMaximo = cupoMaximoValidado;
+                        throw new Exception("El codigo del curso ya esta en uso");
                     }
                 }
 
                 string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\Cursos";
 
+                Cursos crearCurso = new Cursos(curso.Nombre, curso.Codigo, curso.Descripcion,
+                    curso.CupoMaximo);
+
+                listaCursos.Add(crearCurso);
                 string msj = _gestorArchivos.GuardarAJson(listaCursos, path);
 
             }
-            else
+            catch (Exception e)
             {
-                throw new Exception("Ingreso mal un dato o dejo alguna caja de texto vacia.");
+                if (e.Message == "No existe el archivo en el path ingresado")
+                {
+                    string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\Cursos";
+
+                    List<Cursos> listaNueva = new List<Cursos>();
+
+                    Cursos crearCurso = new Cursos(curso.Nombre, curso.Codigo, curso.Descripcion,
+                    curso.CupoMaximo);
+                    listaNueva.Add(crearCurso);
+                    string msj = _gestorArchivos.GuardarAJson(listaNueva, path);
+                }
+                else
+                {
+                    throw new Exception(e.Message);
+                }
             }
+
+        }
+
+        public void ModificarCurso(Cursos curso, string codigoAnterior)
+        {
+            int codigoAnteriorParseado = Convert.ToInt32(codigoAnterior);
+              
+            List<Cursos> listaCursos = GetCursos();
+            foreach (Cursos cursos in listaCursos)
+            {
+                if (codigoAnteriorParseado != curso.Codigo && curso.Codigo == cursos.Codigo)
+                {
+                    throw new Exception("El codigo del curso ya esta en uso en otro curso");
+                }
+                if (cursos.Codigo == codigoAnteriorParseado)
+                {
+                    cursos.Nombre = curso.Nombre;
+                    cursos.Descripcion = curso.Descripcion;
+                    cursos.Codigo = curso.Codigo;
+                    cursos.CupoMaximo = curso.CupoMaximo;
+                }
+            }
+
+            string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\Cursos";
+
+            string msj = _gestorArchivos.GuardarAJson(listaCursos, path);
+
         }
 
         public void EliminarCurso(int codigo)
@@ -164,5 +142,9 @@ namespace Logic
 
         }
 
+        public void AgregarAlumnoAlCurso()
+        {
+
+        }
     }
 }

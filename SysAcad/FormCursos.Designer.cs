@@ -33,14 +33,19 @@
             btnModificarCursos = new Button();
             btnEliminarCursos = new Button();
             dataGridView1 = new DataGridView();
+            cursosBindingSource2 = new BindingSource(components);
+            cursosBindingSource = new BindingSource(components);
+            btnVolver = new Button();
+            cursosBindingSource1 = new BindingSource(components);
             nombreDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             codigoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             descripcionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             cupoMaximoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            cursosBindingSource = new BindingSource(components);
-            btnVolver = new Button();
+            CupoActual = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)cursosBindingSource2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)cursosBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)cursosBindingSource1).BeginInit();
             SuspendLayout();
             // 
             // btnAgregarCursos
@@ -77,13 +82,35 @@
             // 
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { nombreDataGridViewTextBoxColumn, codigoDataGridViewTextBoxColumn, descripcionDataGridViewTextBoxColumn, cupoMaximoDataGridViewTextBoxColumn });
-            dataGridView1.DataSource = cursosBindingSource;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { nombreDataGridViewTextBoxColumn, codigoDataGridViewTextBoxColumn, descripcionDataGridViewTextBoxColumn, cupoMaximoDataGridViewTextBoxColumn, CupoActual });
+            dataGridView1.DataSource = cursosBindingSource2;
             dataGridView1.Location = new Point(166, 57);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(805, 377);
             dataGridView1.TabIndex = 3;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            // 
+            // cursosBindingSource2
+            // 
+            cursosBindingSource2.DataSource = typeof(Entidades.Cursos);
+            // 
+            // cursosBindingSource
+            // 
+            cursosBindingSource.DataSource = typeof(Entidades.Cursos);
+            // 
+            // btnVolver
+            // 
+            btnVolver.Location = new Point(538, 607);
+            btnVolver.Name = "btnVolver";
+            btnVolver.Size = new Size(75, 23);
+            btnVolver.TabIndex = 4;
+            btnVolver.Text = "Volver";
+            btnVolver.UseVisualStyleBackColor = true;
+            btnVolver.Click += btnVolver_Click_1;
+            // 
+            // cursosBindingSource1
+            // 
+            cursosBindingSource1.DataSource = typeof(Entidades.Cursos);
             // 
             // nombreDataGridViewTextBoxColumn
             // 
@@ -109,19 +136,11 @@
             cupoMaximoDataGridViewTextBoxColumn.HeaderText = "CupoMaximo";
             cupoMaximoDataGridViewTextBoxColumn.Name = "cupoMaximoDataGridViewTextBoxColumn";
             // 
-            // cursosBindingSource
+            // CupoActual
             // 
-            cursosBindingSource.DataSource = typeof(Entidades.Cursos);
-            // 
-            // btnVolver
-            // 
-            btnVolver.Location = new Point(538, 607);
-            btnVolver.Name = "btnVolver";
-            btnVolver.Size = new Size(75, 23);
-            btnVolver.TabIndex = 4;
-            btnVolver.Text = "Volver";
-            btnVolver.UseVisualStyleBackColor = true;
-            btnVolver.Click += btnVolver_Click_1;
+            CupoActual.DataPropertyName = "CupoActual";
+            CupoActual.HeaderText = "CupoActual";
+            CupoActual.Name = "CupoActual";
             // 
             // FormCursos
             // 
@@ -137,7 +156,9 @@
             Text = "FormCursos";
             Load += FormCursos_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)cursosBindingSource2).EndInit();
             ((System.ComponentModel.ISupportInitialize)cursosBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)cursosBindingSource1).EndInit();
             ResumeLayout(false);
         }
 
@@ -147,11 +168,14 @@
         private Button btnModificarCursos;
         private Button btnEliminarCursos;
         private DataGridView dataGridView1;
+        private BindingSource cursosBindingSource;
+        private Button btnVolver;
+        private BindingSource cursosBindingSource1;
+        private BindingSource cursosBindingSource2;
         private DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn codigoDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn descripcionDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn cupoMaximoDataGridViewTextBoxColumn;
-        private BindingSource cursosBindingSource;
-        private Button btnVolver;
+        private DataGridViewTextBoxColumn CupoActual;
     }
 }

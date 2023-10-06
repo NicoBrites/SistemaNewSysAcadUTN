@@ -39,6 +39,7 @@
             btnInscripcionCurso.TabIndex = 0;
             btnInscripcionCurso.Text = "Inscripcion a Cursos";
             btnInscripcionCurso.UseVisualStyleBackColor = true;
+            btnInscripcionCurso.Click += btnInscripcionCurso_Click;
             // 
             // FormMenuEstudiante
             // 

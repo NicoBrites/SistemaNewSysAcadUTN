@@ -1,4 +1,5 @@
-﻿using Logic;
+﻿using Entidades;
+using Logic;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,20 +31,28 @@ namespace SysAcad
 
             try
             {
-                cursos.CrearCurso(nuevoNombre, nuevoCodigo, nuevoDescripcion, nuevoCupoMax);
+                if (cursos.ValidadorCursos(new CursoAValidar(nuevoNombre, nuevoCodigo, nuevoDescripcion, nuevoCupoMax)))
+                {
+                    int nuevoCodigoValidado = int.Parse(nuevoCodigo);
+                    int nuevoCupoMaxValidado = int.Parse(nuevoCupoMax);
 
-                MessageBox.Show("Se creo correctamente el curso", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cursos.CrearCurso(new Cursos(nuevoNombre, nuevoCodigoValidado, nuevoDescripcion, nuevoCupoMaxValidado));
 
-                FormCursos formCursos = new();
-                formCursos.Show();
+                    MessageBox.Show("Se creo el estudiante correctamente", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                this.Hide();
+                    FormCursos formCursos = new();
+                    formCursos.Show();
+
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Ingreso mal un dato o dejo alguna caja de texto vacia.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch (Exception ex)
             {
-
-                MessageBox.Show(ex.Message);
-
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

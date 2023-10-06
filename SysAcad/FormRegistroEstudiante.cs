@@ -31,38 +31,27 @@ namespace SysAcad
             string nuevoDni = textDni.Text;
             string nuevoNumTelefono = textNumTelefono.Text;
 
-  
-            if (estudiantes.ValidadorEstudiante(new EstudianteAValidar(nuevoNombre,nuevoApellido,nuevoDni,nuevoNumTelefono,nuevaDireccion,nuevaContraseñaProv,nuevoCorreoElectronico)))
-            {
-                int nuevoTelValidado = int.Parse(nuevoNumTelefono);
-                int nuevoDniValidado = int.Parse(nuevoDni);
-
-                estudiantes.CrearEstudianteNew(new Estudiantes(0, nuevoNombre, nuevoApellido, nuevoDniValidado, nuevoTelValidado, nuevaDireccion, nuevaContraseñaProv, nuevoCorreoElectronico));
-
-                MessageBox.Show("Se creo el estudiante correctamente", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            }
-            else
-            {
-                MessageBox.Show("Ingreso mal un dato o dejo alguna caja de texto vacia.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            /*
             try
             {
-                estudiantes.CrearEstudianteNew(nuevonombre, nuevoApellido, nuevaDireccion, nuevoCorreoElectronico, nuevaContraseñaProv, nuevoDni, nuevoNumTelefono);
+                if (estudiantes.ValidadorEstudiante(new EstudianteAValidar(nuevoNombre, nuevoApellido, nuevoDni, nuevoNumTelefono, nuevaDireccion, nuevaContraseñaProv, nuevoCorreoElectronico)))
+                {
+                    int nuevoTelValidado = int.Parse(nuevoNumTelefono);
+                    int nuevoDniValidado = int.Parse(nuevoDni);
 
-                MessageBox.Show("Se creo el estudiante correctamente", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    estudiantes.CrearEstudianteNew(new Estudiantes(0, nuevoNombre, nuevoApellido, nuevoDniValidado, nuevoTelValidado, nuevaDireccion, nuevaContraseñaProv, nuevoCorreoElectronico));
 
+                    MessageBox.Show("Se creo el estudiante correctamente", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+                else
+                {
+                    MessageBox.Show("Ingreso mal un dato o dejo alguna caja de texto vacia.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            catch (Exception ex)
+            catch (Exception ex) 
             {
-
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            }*/
-
-
+            }
         }
 
         private void btnVolver_Click_1(object sender, EventArgs e)

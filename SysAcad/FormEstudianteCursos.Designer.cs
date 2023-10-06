@@ -30,31 +30,40 @@
         {
             components = new System.ComponentModel.Container();
             dataGridView1 = new DataGridView();
-            cursosBindingSource = new BindingSource(components);
+            Check = new DataGridViewCheckBoxColumn();
             nombreDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             codigoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             descripcionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             cupoMaximoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            cursosBindingSource2 = new BindingSource(components);
+            cursosBindingSource = new BindingSource(components);
+            btnInscribirse = new Button();
+            cursosBindingSource1 = new BindingSource(components);
+            CupoActual = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)cursosBindingSource2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)cursosBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)cursosBindingSource1).BeginInit();
             SuspendLayout();
             // 
             // dataGridView1
             // 
+            dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { nombreDataGridViewTextBoxColumn, codigoDataGridViewTextBoxColumn, descripcionDataGridViewTextBoxColumn, cupoMaximoDataGridViewTextBoxColumn });
-            dataGridView1.DataSource = cursosBindingSource;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Check, nombreDataGridViewTextBoxColumn, codigoDataGridViewTextBoxColumn, descripcionDataGridViewTextBoxColumn, cupoMaximoDataGridViewTextBoxColumn, CupoActual });
+            dataGridView1.DataSource = cursosBindingSource2;
             dataGridView1.Location = new Point(96, 27);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(556, 247);
+            dataGridView1.Size = new Size(660, 247);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
-            // cursosBindingSource
+            // Check
             // 
-            cursosBindingSource.DataSource = typeof(Entidades.Cursos);
+            Check.HeaderText = "Check";
+            Check.Name = "Check";
             // 
             // nombreDataGridViewTextBoxColumn
             // 
@@ -80,27 +89,63 @@
             cupoMaximoDataGridViewTextBoxColumn.HeaderText = "CupoMaximo";
             cupoMaximoDataGridViewTextBoxColumn.Name = "cupoMaximoDataGridViewTextBoxColumn";
             // 
+            // cursosBindingSource2
+            // 
+            cursosBindingSource2.DataSource = typeof(Entidades.Cursos);
+            // 
+            // cursosBindingSource
+            // 
+            cursosBindingSource.DataSource = typeof(Entidades.Cursos);
+            // 
+            // btnInscribirse
+            // 
+            btnInscribirse.Location = new Point(188, 381);
+            btnInscribirse.Name = "btnInscribirse";
+            btnInscribirse.Size = new Size(75, 23);
+            btnInscribirse.TabIndex = 1;
+            btnInscribirse.Text = "Inscribirse";
+            btnInscribirse.UseVisualStyleBackColor = true;
+            btnInscribirse.Click += button1_Click;
+            // 
+            // cursosBindingSource1
+            // 
+            cursosBindingSource1.DataSource = typeof(Entidades.Cursos);
+            // 
+            // CupoActual
+            // 
+            CupoActual.DataPropertyName = "CupoActual";
+            CupoActual.HeaderText = "CupoActual";
+            CupoActual.Name = "CupoActual";
+            // 
             // FormEstudianteCursos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnInscribirse);
             Controls.Add(dataGridView1);
             Name = "FormEstudianteCursos";
             Text = "FormEstudianteCursos";
             Load += FormEstudianteCursos_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)cursosBindingSource2).EndInit();
             ((System.ComponentModel.ISupportInitialize)cursosBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)cursosBindingSource1).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private DataGridView dataGridView1;
+        private BindingSource cursosBindingSource;
+        private DataGridViewCheckBoxColumn Check;
+        private Button btnInscribirse;
+        private BindingSource cursosBindingSource1;
         private DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn codigoDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn descripcionDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn cupoMaximoDataGridViewTextBoxColumn;
-        private BindingSource cursosBindingSource;
+        private BindingSource cursosBindingSource2;
+        private DataGridViewTextBoxColumn CupoActual;
     }
 }
