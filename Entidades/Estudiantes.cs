@@ -12,15 +12,12 @@ namespace Entidades
 
         private string _direccion;
 
-        public List<CursosEnEstudiantes> _cursos { get; set; }
-
         public Estudiantes(int id, string nombre, string apellido,
         int dni, int telefono, string direccion, string clave, string correo) 
             : base(id, nombre, apellido, dni, clave, correo)
         {
             _telefono = telefono;
             _direccion = direccion;
-            _cursos = new List<CursosEnEstudiantes>();
         }
 
         public int Telefono

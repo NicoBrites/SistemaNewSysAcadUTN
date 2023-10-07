@@ -8,11 +8,8 @@ namespace Entidades
 {
     public class EstudianteEnCursos
     {
-
         private int _id;
-
         private string _nombre;
-
         private string _apellido;
 
         public EstudianteEnCursos(int id, string nombre, string apellido) 

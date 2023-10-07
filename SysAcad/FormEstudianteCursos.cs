@@ -60,8 +60,8 @@ namespace SysAcad
                     {
                         try
                         {
-                            gestorCursos.AgregarAlumnoAlCurso(new EstudianteEnCursos(estudiante.Id, estudiante.Nombre, estudiante.Apellido),
-                                new Cursos(nombre, codigo, descripcion, cupoMaximo, cupoActual));
+                            /* gestorCursos.AgregarAlumnoAlCurso(new EstudianteEnCursos(estudiante.Id, estudiante.Nombre, estudiante.Apellido),
+                                 new Cursos(nombre, codigo, descripcion, cupoMaximo, cupoActual));*/
 
                             MessageBox.Show("Se inscribio a los cursos satisfactoriamente", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
@@ -75,6 +75,11 @@ namespace SysAcad
                         MessageBox.Show($"No hay cupo en la materia {nombre}, codigo {codigo}. No te podes inscribir.",
                             "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
+                }
+                else
+                {
+                    MessageBox.Show($"No selecciono ninguna materia",
+                              "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
             }

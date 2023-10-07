@@ -37,6 +37,19 @@ namespace Logic
                 throw new Exception(ex.Message);
             }
         }
+        public List<EstudiantePorCurso> GetEstudiantePorCurso()
+        {
+            try
+            {
+                string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\EstudiantePorCurso";
+                List<EstudiantePorCurso> listaEstudiantesCursos = _gestorArchivos.LeerJson<EstudiantePorCurso>(path);
+                return listaEstudiantesCursos;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
 
         public bool ValidadorCursos(CursoAValidar curso)
         {
@@ -152,34 +165,77 @@ namespace Logic
 
         }
 
-        public void AgregarAlumnoAlCurso(EstudianteEnCursos estudiante, Cursos cursoEnQueSeAgrega)
+        public void AgregarAlumnoAlCurso(Estudiantes estudiante, Cursos cursoEnQueSeAgrega)
         {
-            List<Cursos> listaCursos = GetCursos();
-
-            foreach (Cursos cursos in listaCursos)
+            try
             {
-                if (cursos.Codigo == cursoEnQueSeAgrega.Codigo)
+                List <EstudiantePorCurso> listaEstudiantesPorCurso = GetEstudiantePorCurso();
+
+                List<Cursos> listaCursos = GetCursos();
+
+                int cupoActual = DevolverCupoActual(cursoEnQueSeAgrega.Codigo, listaEstudiantesPorCurso);
+
+                foreach (Cursos cursos in listaCursos)
                 {
-                    if (cursos.CupoActual == cursos.CupoMaximo)
+                    if (cursos.Codigo == cursoEnQueSeAgrega.Codigo)
                     {
-                        throw new Exception($"No hay cupo en la materia {cursos.Nombre}, codigo {cursos.Codigo}. No te podes inscribir.");
-                    }  
-                    foreach (EstudianteEnCursos estudianteEnCursos in cursos._estudiantes)
-                    {
-                        if(estudianteEnCursos.Id == estudiante.Id) 
+                        if (cupoActual >= cursos.CupoMaximo)
                         {
-                            throw new Exception($"El estudiante ya esta inscripto en el curso {cursos.Nombre}");
+                            throw new Exception($"No hay cupo en la materia {cursos.Nombre}, codigo {cursos.Codigo}. No te podes inscribir.");
                         }
-                    }
-                    cursos.CupoActual++;
-                    cursos._estudiantes.Add(estudiante);  
-                    _gestorEstudiantes.AgregarCursoAEstudiante(estudiante.Id, new(cursoEnQueSeAgrega.Nombre, cursoEnQueSeAgrega.Codigo));
+                        foreach (EstudiantePorCurso estudiantePorCurso in listaEstudiantesPorCurso)
+                        {
+                            if (estudiantePorCurso.NombreCurso == cursoEnQueSeAgrega.Nombre && estudiantePorCurso.CodigoEstudiante == estudiante.Id) 
+                            {
+                                throw new Exception($"El estudiante ya esta inscripto en el curso {cursos.Nombre}");
+                            }
+                            if (estudiantePorCurso.DiaSemana == cursoEnQueSeAgrega.DiaSemana && estudiantePorCurso.Turno == cursoEnQueSeAgrega.Turno)
+                            {
+                                throw new Exception($"El estudiante ya esta inscripto en un curso ese dia en ese horario");
+                            }
+                           
+                        }
+                        string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\EstudiantePorCurso";
+                        listaEstudiantesPorCurso.Add(new EstudiantePorCurso(estudiante.Id, estudiante.Nombre, estudiante.Apellido, cursoEnQueSeAgrega.Codigo,
+                               cursoEnQueSeAgrega.Nombre, cursoEnQueSeAgrega.DiaSemana, cursoEnQueSeAgrega.Turno));
+                        _gestorArchivos.GuardarAJson(listaEstudiantesPorCurso, path);
+                    }                  
+                }             
+            }
+            catch(Exception ex) 
+            {
+                if (ex.Message == "No existe el archivo en el path ingresado")
+                {
+                    string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\EstudiantePorCurso";
+
+                    List<Cursos> listaNueva = new List<Cursos>();
+
+                    Cursos crearCurso = new Cursos(curso.Nombre, curso.Codigo, curso.Descripcion,
+                    curso.CupoMaximo, curso.DiaSemana, curso.Aula, curso.Turno);
+                    listaNueva.Add(crearCurso);
+                    string msj = _gestorArchivos.GuardarAJson(listaNueva, path);
+                }
+                else
+                {
+                    throw new Exception(e.Message);
+                }
+
+            }
+        }
+
+        public int DevolverCupoActual(int idCurso, List<EstudiantePorCurso> listaEstudiantePorCursos)
+        {
+            int contadorCupoActual = 0;
+            foreach (EstudiantePorCurso estudiantePorCurso in listaEstudiantePorCursos)
+            {
+                if (estudiantePorCurso.CodigoCurso == idCurso)
+                {
+                    contadorCupoActual++;
                 }
             }
+            return contadorCupoActual;
 
-            string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\Cursos";
-
-            string msj = _gestorArchivos.GuardarAJson(listaCursos, path);
         }
+
     }
 }

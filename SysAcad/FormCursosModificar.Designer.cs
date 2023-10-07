@@ -40,12 +40,12 @@
             textCodigoNuevo = new TextBox();
             label5 = new Label();
             BtnVolver = new Button();
-            textTurno = new TextBox();
-            textAula = new TextBox();
-            textDiaSemana = new TextBox();
             label7 = new Label();
             label6 = new Label();
             label8 = new Label();
+            comboBoxDias = new ComboBox();
+            comboBoxAulas = new ComboBox();
+            comboBoxTurnos = new ComboBox();
             SuspendLayout();
             // 
             // textCupoMaximo
@@ -150,27 +150,6 @@
             BtnVolver.UseVisualStyleBackColor = true;
             BtnVolver.Click += BtnVolver_Click;
             // 
-            // textTurno
-            // 
-            textTurno.Location = new Point(396, 390);
-            textTurno.Name = "textTurno";
-            textTurno.Size = new Size(100, 23);
-            textTurno.TabIndex = 26;
-            // 
-            // textAula
-            // 
-            textAula.Location = new Point(396, 298);
-            textAula.Name = "textAula";
-            textAula.Size = new Size(100, 23);
-            textAula.TabIndex = 25;
-            // 
-            // textDiaSemana
-            // 
-            textDiaSemana.Location = new Point(396, 204);
-            textDiaSemana.Name = "textDiaSemana";
-            textDiaSemana.Size = new Size(100, 23);
-            textDiaSemana.TabIndex = 24;
-            // 
             // label7
             // 
             label7.AutoSize = true;
@@ -198,14 +177,38 @@
             label8.TabIndex = 21;
             label8.Text = "Dia de la cursada";
             // 
+            // comboBox1
+            // 
+            comboBoxDias.FormattingEnabled = true;
+            comboBoxDias.Location = new Point(428, 204);
+            comboBoxDias.Name = "comboBox1";
+            comboBoxDias.Size = new Size(121, 23);
+            comboBoxDias.TabIndex = 24;
+            // 
+            // comboBox2
+            // 
+            comboBoxAulas.FormattingEnabled = true;
+            comboBoxAulas.Location = new Point(428, 298);
+            comboBoxAulas.Name = "comboBox2";
+            comboBoxAulas.Size = new Size(121, 23);
+            comboBoxAulas.TabIndex = 25;
+            // 
+            // comboBox3
+            // 
+            comboBoxTurnos.FormattingEnabled = true;
+            comboBoxTurnos.Location = new Point(428, 394);
+            comboBoxTurnos.Name = "comboBox3";
+            comboBoxTurnos.Size = new Size(121, 23);
+            comboBoxTurnos.TabIndex = 26;
+            // 
             // FormCursosModificar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(825, 636);
-            Controls.Add(textTurno);
-            Controls.Add(textAula);
-            Controls.Add(textDiaSemana);
+            Controls.Add(comboBoxTurnos);
+            Controls.Add(comboBoxAulas);
+            Controls.Add(comboBoxDias);
             Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label8);
@@ -241,11 +244,11 @@
         private TextBox textCodigoNuevo;
         private Label label5;
         private Button BtnVolver;
-        private TextBox textTurno;
-        private TextBox textAula;
-        private TextBox textDiaSemana;
         private Label label7;
         private Label label6;
         private Label label8;
+        private ComboBox comboBoxDias;
+        private ComboBox comboBoxAulas;
+        private ComboBox comboBoxTurnos;
     }
 }

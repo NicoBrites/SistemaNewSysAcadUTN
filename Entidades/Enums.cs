@@ -21,7 +21,8 @@ namespace Entidades
             Aula505,
             Aula606,
             Aula707,
-            Aula808
+            Aula808,
+            Virtual
         }
         public enum Turnos
         {

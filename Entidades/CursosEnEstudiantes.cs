@@ -11,8 +11,6 @@ namespace Entidades
         private string _nombre;
         private int _codigo;
 
-
-
         public CursosEnEstudiantes(string nombre, int codigo)
         {
             _nombre = nombre;

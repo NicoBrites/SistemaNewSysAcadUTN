@@ -41,9 +41,9 @@
             label5 = new Label();
             label6 = new Label();
             label7 = new Label();
-            textDiaSemana = new TextBox();
-            textAula = new TextBox();
-            textTurno = new TextBox();
+            comboBoxDias = new ComboBox();
+            comboBoxAulas = new ComboBox();
+            comboBoxTurnos = new ComboBox();
             SuspendLayout();
             // 
             // label1
@@ -133,9 +133,9 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(471, 137);
+            label5.Location = new Point(439, 137);
             label5.Name = "label5";
-            label5.Size = new Size(38, 15);
+            label5.Size = new Size(96, 15);
             label5.TabIndex = 10;
             label5.Text = "Dia de la cursada";
             // 
@@ -144,7 +144,7 @@
             label6.AutoSize = true;
             label6.Location = new Point(471, 256);
             label6.Name = "label6";
-            label6.Size = new Size(38, 15);
+            label6.Size = new Size(31, 15);
             label6.TabIndex = 11;
             label6.Text = "Aula";
             // 
@@ -157,35 +157,42 @@
             label7.TabIndex = 12;
             label7.Text = "Turno";
             // 
-            // textBox1
+            // comboBoxDias
             // 
-            textDiaSemana.Location = new Point(439, 180);
-            textDiaSemana.Name = "textBox1";
-            textDiaSemana.Size = new Size(100, 23);
-            textDiaSemana.TabIndex = 13;
+            comboBoxDias.FormattingEnabled = true;
+            comboBoxDias.Items.AddRange(new object[] { "Lunes", "Martes", "Miercoles", "Jueves", "Viernes" });
+            comboBoxDias.Location = new Point(439, 180);
+            comboBoxDias.Name = "comboBoxDias";
+            comboBoxDias.Size = new Size(121, 23);
+            comboBoxDias.TabIndex = 16;
+            comboBoxDias.SelectedIndexChanged += comboBoxDias_SelectedIndexChanged;
             // 
-            // textBox2
+            // comboBox1
             // 
-            textAula.Location = new Point(439, 274);
-            textAula.Name = "textBox2";
-            textAula.Size = new Size(100, 23);
-            textAula.TabIndex = 14;
+            comboBoxAulas.FormattingEnabled = true;
+            comboBoxAulas.Location = new Point(439, 274);
+            comboBoxAulas.Name = "comboBoxAulas";
+            comboBoxAulas.Size = new Size(121, 23);
+            comboBoxAulas.TabIndex = 17;
+            comboBoxAulas.Items.AddRange(new object[] { "Aula505", "Aula606", "Aula707", "Aula808"});
             // 
-            // textBox3
+            // comboBox2
             // 
-            textTurno.Location = new Point(439, 366);
-            textTurno.Name = "textBox3";
-            textTurno.Size = new Size(100, 23);
-            textTurno.TabIndex = 15;
+            comboBoxTurnos.FormattingEnabled = true;
+            comboBoxTurnos.Location = new Point(439, 366);
+            comboBoxTurnos.Name = "comboBoxTurnos";
+            comboBoxTurnos.Size = new Size(121, 23);
+            comboBoxTurnos.TabIndex = 18;
+            comboBoxTurnos.Items.AddRange(new object[] { "Mañana", "Tarde", "Noche" });
             // 
             // FormCursosAgregar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 661);
-            Controls.Add(textTurno);
-            Controls.Add(textAula);
-            Controls.Add(textDiaSemana);
+            Controls.Add(comboBoxTurnos);
+            Controls.Add(comboBoxAulas);
+            Controls.Add(comboBoxDias);
             Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label5);
@@ -220,8 +227,8 @@
         private Label label5;
         private Label label6;
         private Label label7;
-        private TextBox textDiaSemana;
-        private TextBox textAula;
-        private TextBox textTurno;
+        private ComboBox comboBoxDias;
+        private ComboBox comboBoxAulas;
+        private ComboBox comboBoxTurnos;
     }
 }
