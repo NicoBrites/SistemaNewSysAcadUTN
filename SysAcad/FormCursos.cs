@@ -108,11 +108,11 @@ namespace SysAcad
 
         private void btnVolver_Click_1(object sender, EventArgs e)
         {
-            FormCursos formCursos = new FormCursos();
+            FormMenuAdministrador formMenuAdministrador= new FormMenuAdministrador();
 
             this.Close();
 
-            formCursos.Show();
+            formMenuAdministrador.Show();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

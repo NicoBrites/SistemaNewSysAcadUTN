@@ -43,5 +43,14 @@
     "DiaSemana": "Jueves",
     "Aula": "Aula707",
     "Turno": "Tarde"
+  },
+  {
+    "Nombre": "Filosofia",
+    "Codigo": 9,
+    "Descripcion": "????",
+    "CupoMaximo": 50,
+    "DiaSemana": "Viernes",
+    "Aula": "Aula707",
+    "Turno": "Noche"
   }
 ]

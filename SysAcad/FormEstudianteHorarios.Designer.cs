@@ -40,6 +40,7 @@ namespace SysAcad
             turnoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             horariosDataGridBindingSource1 = new BindingSource(components);
             cursosBindingSource = new BindingSource(components);
+            btnVolver = new Button();
             ((System.ComponentModel.ISupportInitialize)horariosDataGridBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)horariosDataGridBindingSource1).BeginInit();
@@ -49,7 +50,7 @@ namespace SysAcad
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(466, 23);
+            label1.Location = new Point(262, 23);
             label1.Name = "label1";
             label1.Size = new Size(52, 15);
             label1.TabIndex = 1;
@@ -65,7 +66,7 @@ namespace SysAcad
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { nombreDataGridViewTextBoxColumn, diaSemanaDataGridViewTextBoxColumn, aulaDataGridViewTextBoxColumn, turnoDataGridViewTextBoxColumn });
             dataGridView1.DataSource = horariosDataGridBindingSource1;
-            dataGridView1.Location = new Point(273, 61);
+            dataGridView1.Location = new Point(84, 55);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(446, 150);
@@ -107,11 +108,22 @@ namespace SysAcad
             // 
             cursosBindingSource.DataSource = typeof(Cursos);
             // 
+            // button1
+            // 
+            btnVolver.Location = new Point(262, 233);
+            btnVolver.Name = "button1";
+            btnVolver.Size = new Size(75, 23);
+            btnVolver.TabIndex = 3;
+            btnVolver.Text = "Volver";
+            btnVolver.UseVisualStyleBackColor = true;
+            btnVolver.Click += button1_Click;
+            // 
             // FormEstudianteHorarios
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1126, 650);
+            ClientSize = new Size(616, 291);
+            Controls.Add(btnVolver);
             Controls.Add(dataGridView1);
             Controls.Add(label1);
             Name = "FormEstudianteHorarios";
@@ -136,5 +148,6 @@ namespace SysAcad
         private DataGridViewTextBoxColumn turnoDataGridViewTextBoxColumn;
         private BindingSource horariosDataGridBindingSource1;
         private BindingSource cursosBindingSource;
+        private Button btnVolver;
     }
 }

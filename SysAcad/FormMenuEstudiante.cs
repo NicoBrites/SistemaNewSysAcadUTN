@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Logic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -29,10 +30,20 @@ namespace SysAcad
 
         private void button1_Click(object sender, EventArgs e)
         {
-            FormEstudianteHorarios formEstudianteHorarios = new();
-            AddOwnedForm(formEstudianteHorarios);
+            GestorEstudiantes gestorEstudiantes = new GestorEstudiantes();
+            if (gestorEstudiantes.ValidarHorariosEstudiante(estudiante.Id))
+            {
+                FormEstudianteHorarios formEstudianteHorarios = new();
+                AddOwnedForm(formEstudianteHorarios);
 
-            formEstudianteHorarios.estudiante = estudiante;
+                formEstudianteHorarios.estudiante = estudiante;
+                formEstudianteHorarios.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("El estudiante no esta anotado a ninguna materia", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void FormMenuEstudiante_Load(object sender, EventArgs e)

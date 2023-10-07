@@ -32,11 +32,6 @@ namespace SysAcad
         {
             components = new System.ComponentModel.Container();
             dataGridView1 = new DataGridView();
-            cursosBindingSource2 = new BindingSource(components);
-            cursosBindingSource = new BindingSource(components);
-            btnInscribirse = new Button();
-            cursosBindingSource1 = new BindingSource(components);
-            cursosBindingSource3 = new BindingSource(components);
             Check = new DataGridViewCheckBoxColumn();
             nombreDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             codigoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -44,11 +39,17 @@ namespace SysAcad
             DiaSemana = new DataGridViewTextBoxColumn();
             Aula = new DataGridViewTextBoxColumn();
             Turno = new DataGridViewTextBoxColumn();
+            cursosBindingSource3 = new BindingSource(components);
+            cursosBindingSource2 = new BindingSource(components);
+            cursosBindingSource = new BindingSource(components);
+            btnInscribirse = new Button();
+            cursosBindingSource1 = new BindingSource(components);
+            btnVolver = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)cursosBindingSource3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)cursosBindingSource2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)cursosBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)cursosBindingSource1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)cursosBindingSource3).BeginInit();
             SuspendLayout();
             // 
             // dataGridView1
@@ -65,32 +66,6 @@ namespace SysAcad
             dataGridView1.Size = new Size(744, 247);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
-            // 
-            // cursosBindingSource2
-            // 
-            cursosBindingSource2.DataSource = typeof(Cursos);
-            // 
-            // cursosBindingSource
-            // 
-            cursosBindingSource.DataSource = typeof(Cursos);
-            // 
-            // btnInscribirse
-            // 
-            btnInscribirse.Location = new Point(188, 381);
-            btnInscribirse.Name = "btnInscribirse";
-            btnInscribirse.Size = new Size(75, 23);
-            btnInscribirse.TabIndex = 1;
-            btnInscribirse.Text = "Inscribirse";
-            btnInscribirse.UseVisualStyleBackColor = true;
-            btnInscribirse.Click += button1_Click;
-            // 
-            // cursosBindingSource1
-            // 
-            cursosBindingSource1.DataSource = typeof(Cursos);
-            // 
-            // cursosBindingSource3
-            // 
-            cursosBindingSource3.DataSource = typeof(Cursos);
             // 
             // Check
             // 
@@ -133,21 +108,58 @@ namespace SysAcad
             Turno.HeaderText = "Turno";
             Turno.Name = "Turno";
             // 
+            // cursosBindingSource3
+            // 
+            cursosBindingSource3.DataSource = typeof(Cursos);
+            // 
+            // cursosBindingSource2
+            // 
+            cursosBindingSource2.DataSource = typeof(Cursos);
+            // 
+            // cursosBindingSource
+            // 
+            cursosBindingSource.DataSource = typeof(Cursos);
+            // 
+            // btnInscribirse
+            // 
+            btnInscribirse.Location = new Point(188, 381);
+            btnInscribirse.Name = "btnInscribirse";
+            btnInscribirse.Size = new Size(75, 23);
+            btnInscribirse.TabIndex = 1;
+            btnInscribirse.Text = "Inscribirse";
+            btnInscribirse.UseVisualStyleBackColor = true;
+            btnInscribirse.Click += button1_Click;
+            // 
+            // cursosBindingSource1
+            // 
+            cursosBindingSource1.DataSource = typeof(Cursos);
+            // 
+            // btnVolver
+            // 
+            btnVolver.Location = new Point(454, 381);
+            btnVolver.Name = "btnVolver";
+            btnVolver.Size = new Size(75, 23);
+            btnVolver.TabIndex = 2;
+            btnVolver.Text = "Volver";
+            btnVolver.UseVisualStyleBackColor = true;
+            btnVolver.Click += btnVolver_Click;
+            // 
             // FormEstudianteCursos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnVolver);
             Controls.Add(btnInscribirse);
             Controls.Add(dataGridView1);
             Name = "FormEstudianteCursos";
             Text = "FormEstudianteCursos";
             Load += FormEstudianteCursos_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)cursosBindingSource3).EndInit();
             ((System.ComponentModel.ISupportInitialize)cursosBindingSource2).EndInit();
             ((System.ComponentModel.ISupportInitialize)cursosBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)cursosBindingSource1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)cursosBindingSource3).EndInit();
             ResumeLayout(false);
         }
 
@@ -167,5 +179,6 @@ namespace SysAcad
         private DataGridViewTextBoxColumn Aula;
         private DataGridViewTextBoxColumn Turno;
         private BindingSource cursosBindingSource3;
+        private Button btnVolver;
     }
 }

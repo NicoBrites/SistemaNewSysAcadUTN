@@ -11,11 +11,13 @@ namespace Logic
 
         private Archivos _gestorArchivos;
         private ValidadorTextosVacios _validadorTextosVacios;
+        private GestorCursos _gestorCursos; 
 
         public GestorEstudiantes()
         {
              _gestorArchivos = new Archivos();
             _validadorTextosVacios = new ValidadorTextosVacios();
+            _gestorCursos = new GestorCursos();
         }
 
         public List<Estudiantes> GetEstudiantes()
@@ -96,9 +98,18 @@ namespace Logic
             string msj = _gestorArchivos.GuardarAJson(jsonNuevo, path);               
         }
 
-        public bool DevolverCursosDelEstudiante(Estudiantes estudiante)
+        public bool ValidarHorariosEstudiante(int estudianteId)
         {
-            return true;
+            List<EstudiantePorCurso> estudiantesPorCursos = _gestorCursos.GetEstudiantePorCurso();
+
+            foreach(EstudiantePorCurso estudiantePorCurso in estudiantesPorCursos) 
+            { 
+                if (estudiantePorCurso.CodigoEstudiante == estudianteId)
+                {
+                    return true;
+                }          
+            }
+            return false;
         }
 
 

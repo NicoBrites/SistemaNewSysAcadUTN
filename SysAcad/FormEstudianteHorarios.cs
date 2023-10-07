@@ -18,33 +18,40 @@ namespace SysAcad
         public FormEstudianteHorarios()
         {
             InitializeComponent();
-
-            dataGridView1.DataSource = ArmarListaHorarios(estudiante);
-
-
-
         }
 
-        public List<HorariosDataGrid> ArmarListaHorarios(Estudiantes estudiante)
+        public List<HorariosDataGrid> ArmarListaHorarios(EstudianteEnCursos estudiante)
         {
             GestorCursos gestorCursos = new GestorCursos();
             List<HorariosDataGrid> horarios = new List<HorariosDataGrid>();
 
-            List<EstudiantePorCurso> estudiantesPorCurso = gestorCursos.GetEstudiantePorCurso(); 
+            List<EstudiantePorCurso> estudiantesPorCurso = gestorCursos.GetEstudiantePorCurso();
 
 
-            foreach(EstudiantePorCurso estudiantePorCurso in estudiantesPorCurso) 
+            foreach (EstudiantePorCurso estudiantePorCurso in estudiantesPorCurso)
             {
                 if (estudiantePorCurso.CodigoEstudiante == estudiante.Id)
                 {
                     horarios.Add(new HorariosDataGrid(estudiantePorCurso.Turno, estudiantePorCurso.NombreCurso, estudiantePorCurso.DiaSemana, estudiantePorCurso.Aula));
-                }        
+                }
             }
             return horarios;
         }
 
         private void FormEstudianteHorarios_Load(object sender, EventArgs e)
         {
+            List<HorariosDataGrid> list = ArmarListaHorarios(new EstudianteEnCursos(estudiante.Id, estudiante.Nombre, estudiante.Apellido));
+
+            dataGridView1.DataSource = list;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FormMenuEstudiante formMenuEstudiante = new FormMenuEstudiante();
+            AddOwnedForm(formMenuEstudiante);
+            formMenuEstudiante.estudiante = estudiante;
+            formMenuEstudiante.Show();
+            this.Hide();
 
         }
     }
