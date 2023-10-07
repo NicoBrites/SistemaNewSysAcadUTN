@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq;
+using static Entidades.Enums;
 
 namespace Logic
 {
@@ -44,7 +45,10 @@ namespace Logic
             if (int.TryParse(curso.CupoMaximo, out numero) && int.TryParse(curso.Codigo, out numero))
             {
                 if (_validadorTextosVacios.ValidarTextosVacios(curso.Nombre) &&
-               _validadorTextosVacios.ValidarTextosVacios(curso.Descripcion))
+               _validadorTextosVacios.ValidarTextosVacios(curso.Descripcion) &&
+                Enum.IsDefined(typeof(DiasSemana), curso.DiaSemana) &&
+                Enum.IsDefined(typeof(Aulas), curso.Aula) &&
+                Enum.IsDefined(typeof(Turnos), curso.Turno))
                 {
                     return true;
                 }
@@ -77,7 +81,7 @@ namespace Logic
                 string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\Cursos";
 
                 Cursos crearCurso = new Cursos(curso.Nombre, curso.Codigo, curso.Descripcion,
-                    curso.CupoMaximo);
+                    curso.CupoMaximo, curso.DiaSemana, curso.Aula, curso.Turno);
 
                 listaCursos.Add(crearCurso);
                 string msj = _gestorArchivos.GuardarAJson(listaCursos, path);
@@ -92,7 +96,7 @@ namespace Logic
                     List<Cursos> listaNueva = new List<Cursos>();
 
                     Cursos crearCurso = new Cursos(curso.Nombre, curso.Codigo, curso.Descripcion,
-                    curso.CupoMaximo);
+                    curso.CupoMaximo, curso.DiaSemana, curso.Aula, curso.Turno);
                     listaNueva.Add(crearCurso);
                     string msj = _gestorArchivos.GuardarAJson(listaNueva, path);
                 }
@@ -121,6 +125,9 @@ namespace Logic
                     cursos.Descripcion = curso.Descripcion;
                     cursos.Codigo = curso.Codigo;
                     cursos.CupoMaximo = curso.CupoMaximo;
+                    cursos.DiaSemana = curso.DiaSemana;
+                    cursos.Aula = curso.Aula;
+                    cursos.Turno = curso.Turno;
                 }
             }
 

@@ -40,6 +40,12 @@
             textCodigoNuevo = new TextBox();
             label5 = new Label();
             BtnVolver = new Button();
+            textTurno = new TextBox();
+            textAula = new TextBox();
+            textDiaSemana = new TextBox();
+            label7 = new Label();
+            label6 = new Label();
+            label8 = new Label();
             SuspendLayout();
             // 
             // textCupoMaximo
@@ -144,11 +150,65 @@
             BtnVolver.UseVisualStyleBackColor = true;
             BtnVolver.Click += BtnVolver_Click;
             // 
+            // textTurno
+            // 
+            textTurno.Location = new Point(396, 390);
+            textTurno.Name = "textTurno";
+            textTurno.Size = new Size(100, 23);
+            textTurno.TabIndex = 26;
+            // 
+            // textAula
+            // 
+            textAula.Location = new Point(396, 298);
+            textAula.Name = "textAula";
+            textAula.Size = new Size(100, 23);
+            textAula.TabIndex = 25;
+            // 
+            // textDiaSemana
+            // 
+            textDiaSemana.Location = new Point(396, 204);
+            textDiaSemana.Name = "textDiaSemana";
+            textDiaSemana.Size = new Size(100, 23);
+            textDiaSemana.TabIndex = 24;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(428, 349);
+            label7.Name = "label7";
+            label7.Size = new Size(38, 15);
+            label7.TabIndex = 23;
+            label7.Text = "Turno";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(428, 280);
+            label6.Name = "label6";
+            label6.Size = new Size(31, 15);
+            label6.TabIndex = 22;
+            label6.Text = "Aula";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(428, 161);
+            label8.Name = "label8";
+            label8.Size = new Size(96, 15);
+            label8.TabIndex = 21;
+            label8.Text = "Dia de la cursada";
+            // 
             // FormCursosModificar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(653, 636);
+            ClientSize = new Size(825, 636);
+            Controls.Add(textTurno);
+            Controls.Add(textAula);
+            Controls.Add(textDiaSemana);
+            Controls.Add(label7);
+            Controls.Add(label6);
+            Controls.Add(label8);
             Controls.Add(BtnVolver);
             Controls.Add(label5);
             Controls.Add(textCodigoNuevo);
@@ -181,5 +241,11 @@
         private TextBox textCodigoNuevo;
         private Label label5;
         private Button BtnVolver;
+        private TextBox textTurno;
+        private TextBox textAula;
+        private TextBox textDiaSemana;
+        private Label label7;
+        private Label label6;
+        private Label label8;
     }
 }

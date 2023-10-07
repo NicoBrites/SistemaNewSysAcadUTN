@@ -19,7 +19,14 @@ namespace Entidades
         private int _cupoActual;
         public List<EstudianteEnCursos> _estudiantes {  get; set; }
 
-        public Cursos(string nombre, int codigo, string descripcion, int cupoMaximo, int cupoActual = 0 )
+        private Enum _diaSemana;
+
+        private Enum _aula;
+
+        private Enum _turno;
+
+
+        public Cursos(string nombre, int codigo, string descripcion, int cupoMaximo, Enum diaSemana, Enum aula, Enum turno, int cupoActual = 0 )
         {
             _nombre = nombre;
 
@@ -32,6 +39,12 @@ namespace Entidades
             _cupoActual = cupoActual;
 
             _estudiantes = new List<EstudianteEnCursos>();
+
+            _diaSemana = diaSemana;
+
+            _aula = aula;
+
+            _turno = turno;
         }
 
         public string Nombre
@@ -60,7 +73,21 @@ namespace Entidades
 
         public int CupoActual { get { return _cupoActual; } set { _cupoActual = value;} }
 
-
+        public Enum DiaSemana
+        {
+            get { return _diaSemana; }
+            set { _diaSemana = value; }
+        }
+        public Enum Aula
+        {
+            get { return _aula; }
+            set { _aula = value; }
+        }
+        public Enum Turno
+        {
+            get { return _turno; }
+            set { _turno = value; }
+        }
 
     }
 }

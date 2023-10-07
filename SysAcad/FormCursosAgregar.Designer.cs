@@ -38,6 +38,12 @@
             textDescripcion = new TextBox();
             textCupoMaximo = new TextBox();
             BtnVolver = new Button();
+            label5 = new Label();
+            label6 = new Label();
+            label7 = new Label();
+            textDiaSemana = new TextBox();
+            textAula = new TextBox();
+            textTurno = new TextBox();
             SuspendLayout();
             // 
             // label1
@@ -124,11 +130,65 @@
             BtnVolver.UseVisualStyleBackColor = true;
             BtnVolver.Click += BtnVolver_Click;
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(471, 137);
+            label5.Name = "label5";
+            label5.Size = new Size(38, 15);
+            label5.TabIndex = 10;
+            label5.Text = "Dia de la cursada";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(471, 256);
+            label6.Name = "label6";
+            label6.Size = new Size(38, 15);
+            label6.TabIndex = 11;
+            label6.Text = "Aula";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(471, 325);
+            label7.Name = "label7";
+            label7.Size = new Size(38, 15);
+            label7.TabIndex = 12;
+            label7.Text = "Turno";
+            // 
+            // textBox1
+            // 
+            textDiaSemana.Location = new Point(439, 180);
+            textDiaSemana.Name = "textBox1";
+            textDiaSemana.Size = new Size(100, 23);
+            textDiaSemana.TabIndex = 13;
+            // 
+            // textBox2
+            // 
+            textAula.Location = new Point(439, 274);
+            textAula.Name = "textBox2";
+            textAula.Size = new Size(100, 23);
+            textAula.TabIndex = 14;
+            // 
+            // textBox3
+            // 
+            textTurno.Location = new Point(439, 366);
+            textTurno.Name = "textBox3";
+            textTurno.Size = new Size(100, 23);
+            textTurno.TabIndex = 15;
+            // 
             // FormCursosAgregar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 661);
+            Controls.Add(textTurno);
+            Controls.Add(textAula);
+            Controls.Add(textDiaSemana);
+            Controls.Add(label7);
+            Controls.Add(label6);
+            Controls.Add(label5);
             Controls.Add(BtnVolver);
             Controls.Add(textCupoMaximo);
             Controls.Add(textDescripcion);
@@ -157,5 +217,11 @@
         private TextBox textCupoMaximo;
         private Button BtnAgregar;
         private Button BtnVolver;
+        private Label label5;
+        private Label label6;
+        private Label label7;
+        private TextBox textDiaSemana;
+        private TextBox textAula;
+        private TextBox textTurno;
     }
 }

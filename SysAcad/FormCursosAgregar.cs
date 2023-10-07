@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Entidades.Enums;
 
 namespace SysAcad
 {
@@ -28,15 +29,21 @@ namespace SysAcad
             string nuevoCodigo = textCodigo.Text;
             string nuevoDescripcion = textDescripcion.Text;
             string nuevoCupoMax = textCupoMaximo.Text;
+            string diaSemana = textDiaSemana.Text;
+            string aula = textAula.Text;
+            string turno = textTurno.Text;
 
             try
             {
-                if (cursos.ValidadorCursos(new CursoAValidar(nuevoNombre, nuevoCodigo, nuevoDescripcion, nuevoCupoMax)))
+                if (cursos.ValidadorCursos(new CursoAValidar(nuevoNombre, nuevoCodigo, nuevoDescripcion, nuevoCupoMax, diaSemana, aula, turno)))
                 {
                     int nuevoCodigoValidado = int.Parse(nuevoCodigo);
                     int nuevoCupoMaxValidado = int.Parse(nuevoCupoMax);
-
-                    cursos.CrearCurso(new Cursos(nuevoNombre, nuevoCodigoValidado, nuevoDescripcion, nuevoCupoMaxValidado));
+                    DiasSemana enumDiaSemana = (DiasSemana)Enum.Parse(typeof(DiasSemana), diaSemana);
+                    Aulas enumAulas = (Aulas)Enum.Parse(typeof (Aulas), aula);
+                    Turnos enumTurno = (Turnos)Enum.Parse(typeof(Turnos), turno);
+               
+                    cursos.CrearCurso(new Cursos(nuevoNombre, nuevoCodigoValidado, nuevoDescripcion, nuevoCupoMaxValidado, enumDiaSemana, enumAulas, enumTurno));
 
                     MessageBox.Show("Se creo el estudiante correctamente", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -63,5 +70,6 @@ namespace SysAcad
 
             this.Hide();
         }
+
     }
 }

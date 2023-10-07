@@ -18,11 +18,16 @@ namespace Entidades
         }
         public enum Aulas
         {
-           Aula505,
-           Aula606,
-           Aula707,
-           Aula808
+            Aula505,
+            Aula606,
+            Aula707,
+            Aula808
         }
-
+        public enum Turnos
+        {
+            Mañana,
+            Tarde,
+            Noche
+        }
     }
 }
