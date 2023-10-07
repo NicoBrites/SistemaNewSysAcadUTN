@@ -50,5 +50,15 @@ namespace SysAcad
         {
 
         }
+
+        private void btnRealizarPagos_Click(object sender, EventArgs e)
+        {
+            FormEstudiantePagos formEstudiantePagos = new();
+            AddOwnedForm(formEstudiantePagos);
+
+            formEstudiantePagos.estudiante = estudiante;
+            formEstudiantePagos.Show();
+            this.Hide();
+        }
     }
 }

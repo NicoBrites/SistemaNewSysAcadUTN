@@ -32,6 +32,7 @@ namespace SysAcad
         {
             btnInscripcionCurso = new Button();
             btnConsultarHorario = new Button();
+            btnRealizarPagos = new Button();
             SuspendLayout();
             // 
             // btnInscripcionCurso
@@ -54,11 +55,22 @@ namespace SysAcad
             btnConsultarHorario.UseVisualStyleBackColor = true;
             btnConsultarHorario.Click += button1_Click;
             // 
+            // btnRealizarPagos
+            // 
+            btnRealizarPagos.Location = new Point(229, 202);
+            btnRealizarPagos.Name = "btnRealizarPagos";
+            btnRealizarPagos.Size = new Size(320, 46);
+            btnRealizarPagos.TabIndex = 2;
+            btnRealizarPagos.Text = "Realizar Horarios";
+            btnRealizarPagos.UseVisualStyleBackColor = true;
+            btnRealizarPagos.Click += btnRealizarPagos_Click;
+            // 
             // FormMenuEstudiante
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnRealizarPagos);
             Controls.Add(btnConsultarHorario);
             Controls.Add(btnInscripcionCurso);
             Name = "FormMenuEstudiante";
@@ -72,5 +84,6 @@ namespace SysAcad
         private Button btnInscripcionCurso;
         public Estudiantes estudiante;
         private Button btnConsultarHorario;
+        private Button btnRealizarPagos;
     }
 }
