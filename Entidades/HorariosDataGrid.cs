@@ -9,17 +9,20 @@ namespace Entidades
     public class HorariosDataGrid
     {
         private string _diaSemana;
-        private string _nombreYAula;
+        private string _nombre;
+        private string _aula;
         private string _turno;
 
-        public HorariosDataGrid(string turno, string nombreYAula, string diaSemana)
+        public HorariosDataGrid(string turno, string nombre, string diaSemana, string aula)
         {
             _turno = turno;
-            _nombreYAula = nombreYAula;
+            _nombre = nombre;
             _diaSemana = diaSemana;
+            _aula = aula;
         }
         public string Turno { get { return _turno; } }
-        public string NombreYAula { get {  return _nombreYAula; } }
+        public string Nombre { get {  return _nombre; } }   
         public string DiaSemana { get {  return _diaSemana; } }
+        public string Aula { get { return _aula;} }
     }
 }

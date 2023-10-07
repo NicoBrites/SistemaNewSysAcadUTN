@@ -52,7 +52,6 @@ namespace SysAcad
                     // Puedes acceder a los datos de la fila y trabajar con ellos.
                     int codigo = int.Parse(row.Cells["codigoDataGridViewTextBoxColumn"].Value.ToString());
                     string nombre = row.Cells["nombreDataGridViewTextBoxColumn"].Value.ToString();
-                    int cupoMaximo = int.Parse(row.Cells["cupoMaximoDataGridViewTextBoxColumn"].Value.ToString());
                     string descripcion = row.Cells["descripcionDataGridViewTextBoxColumn"].Value.ToString();
                     string diaSemana = dataGridView1.Rows[filaSeleccionadaIndex].Cells["DiaSemana"].Value.ToString();
                     string aula = dataGridView1.Rows[filaSeleccionadaIndex].Cells["Aula"].Value.ToString();
@@ -63,7 +62,7 @@ namespace SysAcad
                         try
                         {
                              gestorCursos.AgregarAlumnoAlCurso(new EstudianteEnCursos(estudiante.Id, estudiante.Nombre, estudiante.Apellido),
-                                 new Cursos(nombre, codigo, descripcion, cupoMaximo, diaSemana, aula, turno));
+                                 new CursosEnEstudiantes(nombre, codigo,  diaSemana, aula, turno));
 
                             MessageBox.Show("Se inscribio a los cursos satisfactoriamente", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }

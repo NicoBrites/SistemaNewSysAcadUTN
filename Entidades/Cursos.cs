@@ -22,7 +22,6 @@ namespace Entidades
 
         private string _turno;
 
-
         public Cursos(string nombre, int codigo, string descripcion, int cupoMaximo, string diaSemana, string aula, string turno)
         {
             _nombre = nombre;

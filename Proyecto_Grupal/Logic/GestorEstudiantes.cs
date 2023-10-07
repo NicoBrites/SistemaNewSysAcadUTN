@@ -98,7 +98,7 @@ namespace Logic
 
         public bool DevolverCursosDelEstudiante(Estudiantes estudiante)
         {
-
+            return true;
         }
 
 

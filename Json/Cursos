@@ -27,20 +27,20 @@
     "Turno": "Noche"
   },
   {
-    "Nombre": "peruba",
-    "Codigo": 4645465,
-    "Descripcion": "peruba",
-    "CupoMaximo": 50,
+    "Nombre": "Literatura",
+    "Codigo": 4,
+    "Descripcion": "parrafo",
+    "CupoMaximo": 10,
     "DiaSemana": "Martes",
     "Aula": "Aula707",
-    "Turno": "Noche"
+    "Turno": "Tarde"
   },
   {
-    "Nombre": "asd",
-    "Codigo": 123312,
-    "Descripcion": "asd",
-    "CupoMaximo": 123,
-    "DiaSemana": "Martes",
+    "Nombre": "Arquitectura",
+    "Codigo": 7,
+    "Descripcion": "7",
+    "CupoMaximo": 7,
+    "DiaSemana": "Jueves",
     "Aula": "Aula707",
     "Turno": "Tarde"
   }

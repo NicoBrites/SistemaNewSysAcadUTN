@@ -30,9 +30,20 @@ namespace SysAcad
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             label1 = new Label();
+            horariosDataGridBindingSource = new BindingSource(components);
             dataGridView1 = new DataGridView();
+            nombreDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            diaSemanaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            aulaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            turnoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            horariosDataGridBindingSource1 = new BindingSource(components);
+            cursosBindingSource = new BindingSource(components);
+            ((System.ComponentModel.ISupportInitialize)horariosDataGridBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)horariosDataGridBindingSource1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)cursosBindingSource).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -44,13 +55,57 @@ namespace SysAcad
             label1.TabIndex = 1;
             label1.Text = "Horarios";
             // 
+            // horariosDataGridBindingSource
+            // 
+            horariosDataGridBindingSource.DataSource = typeof(HorariosDataGrid);
+            // 
             // dataGridView1
             // 
+            dataGridView1.AutoGenerateColumns = false;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(305, 65);
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { nombreDataGridViewTextBoxColumn, diaSemanaDataGridViewTextBoxColumn, aulaDataGridViewTextBoxColumn, turnoDataGridViewTextBoxColumn });
+            dataGridView1.DataSource = horariosDataGridBindingSource1;
+            dataGridView1.Location = new Point(273, 61);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(240, 150);
+            dataGridView1.RowTemplate.Height = 25;
+            dataGridView1.Size = new Size(446, 150);
             dataGridView1.TabIndex = 2;
+            // 
+            // nombreDataGridViewTextBoxColumn
+            // 
+            nombreDataGridViewTextBoxColumn.DataPropertyName = "Nombre";
+            nombreDataGridViewTextBoxColumn.HeaderText = "Nombre";
+            nombreDataGridViewTextBoxColumn.Name = "nombreDataGridViewTextBoxColumn";
+            nombreDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // diaSemanaDataGridViewTextBoxColumn
+            // 
+            diaSemanaDataGridViewTextBoxColumn.DataPropertyName = "DiaSemana";
+            diaSemanaDataGridViewTextBoxColumn.HeaderText = "DiaSemana";
+            diaSemanaDataGridViewTextBoxColumn.Name = "diaSemanaDataGridViewTextBoxColumn";
+            diaSemanaDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // aulaDataGridViewTextBoxColumn
+            // 
+            aulaDataGridViewTextBoxColumn.DataPropertyName = "Aula";
+            aulaDataGridViewTextBoxColumn.HeaderText = "Aula";
+            aulaDataGridViewTextBoxColumn.Name = "aulaDataGridViewTextBoxColumn";
+            aulaDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // turnoDataGridViewTextBoxColumn
+            // 
+            turnoDataGridViewTextBoxColumn.DataPropertyName = "Turno";
+            turnoDataGridViewTextBoxColumn.HeaderText = "Turno";
+            turnoDataGridViewTextBoxColumn.Name = "turnoDataGridViewTextBoxColumn";
+            turnoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // horariosDataGridBindingSource1
+            // 
+            horariosDataGridBindingSource1.DataSource = typeof(HorariosDataGrid);
+            // 
+            // cursosBindingSource
+            // 
+            cursosBindingSource.DataSource = typeof(Cursos);
             // 
             // FormEstudianteHorarios
             // 
@@ -62,7 +117,10 @@ namespace SysAcad
             Name = "FormEstudianteHorarios";
             Text = "FormEstudianteHorarios";
             Load += FormEstudianteHorarios_Load;
+            ((System.ComponentModel.ISupportInitialize)horariosDataGridBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)horariosDataGridBindingSource1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)cursosBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -70,6 +128,13 @@ namespace SysAcad
         #endregion
         private Label label1;
         public Estudiantes estudiante;
+        private BindingSource horariosDataGridBindingSource;
         private DataGridView dataGridView1;
+        private DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn diaSemanaDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn aulaDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn turnoDataGridViewTextBoxColumn;
+        private BindingSource horariosDataGridBindingSource1;
+        private BindingSource cursosBindingSource;
     }
 }

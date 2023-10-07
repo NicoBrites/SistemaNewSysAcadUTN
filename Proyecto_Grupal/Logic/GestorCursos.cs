@@ -169,7 +169,7 @@ namespace Logic
 
         }
         public bool ValidadorAgregarAlumnosACurso(Cursos cursos, List<EstudiantePorCurso> listaEstudiantesPorCurso,
-            EstudianteEnCursos estudiante, Cursos cursoEnQueSeAgrega, int cupoActual)
+            EstudianteEnCursos estudiante, CursosEnEstudiantes cursoEnQueSeAgrega, int cupoActual)
         {         
             if (cupoActual >= cursos.CupoMaximo)
             {
@@ -190,7 +190,7 @@ namespace Logic
             return true;         
         }
 
-        public void AgregarAlumnoAlCurso(EstudianteEnCursos estudiante, Cursos cursoEnQueSeAgrega)
+        public void AgregarAlumnoAlCurso(EstudianteEnCursos estudiante, CursosEnEstudiantes cursoEnQueSeAgrega)
         {
             try
             {
@@ -207,7 +207,7 @@ namespace Logic
                         {
                             string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\EstudiantePorCurso";
                             listaEstudiantesPorCurso.Add(new EstudiantePorCurso(estudiante.Id, estudiante.Nombre, estudiante.Apellido, cursoEnQueSeAgrega.Codigo,
-                                   cursoEnQueSeAgrega.Nombre, cursoEnQueSeAgrega.DiaSemana, cursoEnQueSeAgrega.Turno));
+                                   cursoEnQueSeAgrega.Nombre, cursoEnQueSeAgrega.DiaSemana, cursoEnQueSeAgrega.Turno, cursoEnQueSeAgrega.Aula));
                             _gestorArchivos.GuardarAJson(listaEstudiantesPorCurso, path);
                             break;
                         }
@@ -223,7 +223,7 @@ namespace Logic
                     List<EstudiantePorCurso> listaEstudiantesPorCurso = new List<EstudiantePorCurso>();
 
                     listaEstudiantesPorCurso.Add(new EstudiantePorCurso(estudiante.Id, estudiante.Nombre, estudiante.Apellido, cursoEnQueSeAgrega.Codigo,
-                              cursoEnQueSeAgrega.Nombre, cursoEnQueSeAgrega.DiaSemana, cursoEnQueSeAgrega.Turno));
+                              cursoEnQueSeAgrega.Nombre, cursoEnQueSeAgrega.DiaSemana, cursoEnQueSeAgrega.Turno, cursoEnQueSeAgrega.Aula));
                     _gestorArchivos.GuardarAJson(listaEstudiantesPorCurso, path);
                 }
                 else
