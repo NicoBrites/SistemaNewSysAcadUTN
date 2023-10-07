@@ -168,13 +168,33 @@ namespace Logic
             string msj = _gestorArchivos.GuardarAJson(listaCursos, path);
 
         }
+        public bool ValidadorAgregarAlumnosACurso(Cursos cursos, List<EstudiantePorCurso> listaEstudiantesPorCurso,
+            EstudianteEnCursos estudiante, Cursos cursoEnQueSeAgrega, int cupoActual)
+        {         
+            if (cupoActual >= cursos.CupoMaximo)
+            {
+                throw new Exception($"No hay cupo en la materia {cursos.Nombre}, codigo {cursos.Codigo}. No te podes inscribir.");
+            }
+            foreach (EstudiantePorCurso estudiantePorCurso in listaEstudiantesPorCurso)
+            {
+                if (estudiantePorCurso.NombreCurso == cursoEnQueSeAgrega.Nombre && estudiantePorCurso.CodigoEstudiante == estudiante.Id)
+                {
+                    throw new Exception($"El estudiante ya esta inscripto en el curso {cursos.Nombre}");
+                }
+                if (estudiantePorCurso.DiaSemana == cursoEnQueSeAgrega.DiaSemana && estudiantePorCurso.Turno == cursoEnQueSeAgrega.Turno)
+                {
+                    throw new Exception($"El estudiante ya esta inscripto en un curso ese dia en ese horario");
+                }
+
+            }
+            return true;         
+        }
 
         public void AgregarAlumnoAlCurso(EstudianteEnCursos estudiante, Cursos cursoEnQueSeAgrega)
         {
             try
             {
                 List <EstudiantePorCurso> listaEstudiantesPorCurso = GetEstudiantePorCurso();
-
                 List<Cursos> listaCursos = GetCursos();
 
                 int cupoActual = DevolverCupoActual(cursoEnQueSeAgrega.Codigo, listaEstudiantesPorCurso);
@@ -183,26 +203,14 @@ namespace Logic
                 {
                     if (cursos.Codigo == cursoEnQueSeAgrega.Codigo)
                     {
-                        if (cupoActual >= cursos.CupoMaximo)
+                        if (ValidadorAgregarAlumnosACurso(cursos, listaEstudiantesPorCurso, estudiante, cursoEnQueSeAgrega, cupoActual)) 
                         {
-                            throw new Exception($"No hay cupo en la materia {cursos.Nombre}, codigo {cursos.Codigo}. No te podes inscribir.");
+                            string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\EstudiantePorCurso";
+                            listaEstudiantesPorCurso.Add(new EstudiantePorCurso(estudiante.Id, estudiante.Nombre, estudiante.Apellido, cursoEnQueSeAgrega.Codigo,
+                                   cursoEnQueSeAgrega.Nombre, cursoEnQueSeAgrega.DiaSemana, cursoEnQueSeAgrega.Turno));
+                            _gestorArchivos.GuardarAJson(listaEstudiantesPorCurso, path);
+                            break;
                         }
-                        foreach (EstudiantePorCurso estudiantePorCurso in listaEstudiantesPorCurso)
-                        {
-                            if (estudiantePorCurso.NombreCurso == cursoEnQueSeAgrega.Nombre && estudiantePorCurso.CodigoEstudiante == estudiante.Id) 
-                            {
-                                throw new Exception($"El estudiante ya esta inscripto en el curso {cursos.Nombre}");
-                            }
-                            if (estudiantePorCurso.DiaSemana == cursoEnQueSeAgrega.DiaSemana && estudiantePorCurso.Turno == cursoEnQueSeAgrega.Turno)
-                            {
-                                throw new Exception($"El estudiante ya esta inscripto en un curso ese dia en ese horario");
-                            }
-                           
-                        }
-                        string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\EstudiantePorCurso";
-                        listaEstudiantesPorCurso.Add(new EstudiantePorCurso(estudiante.Id, estudiante.Nombre, estudiante.Apellido, cursoEnQueSeAgrega.Codigo,
-                               cursoEnQueSeAgrega.Nombre, cursoEnQueSeAgrega.DiaSemana, cursoEnQueSeAgrega.Turno));
-                        _gestorArchivos.GuardarAJson(listaEstudiantesPorCurso, path);
                     }                  
                 }             
             }
@@ -239,6 +247,10 @@ namespace Logic
             return contadorCupoActual;
 
         }
+
+
+
+
 
     }
 }

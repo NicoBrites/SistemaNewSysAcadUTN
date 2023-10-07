@@ -29,6 +29,14 @@ namespace SysAcad
 
         private void button1_Click(object sender, EventArgs e)
         {
+            FormEstudianteHorarios formEstudianteHorarios = new();
+            AddOwnedForm(formEstudianteHorarios);
+
+            formEstudianteHorarios.estudiante = estudiante;
+        }
+
+        private void FormMenuEstudiante_Load(object sender, EventArgs e)
+        {
 
         }
     }

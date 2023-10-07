@@ -95,6 +95,13 @@ namespace Logic
 
             string msj = _gestorArchivos.GuardarAJson(jsonNuevo, path);               
         }
+
+        public bool DevolverCursosDelEstudiante(Estudiantes estudiante)
+        {
+
+        }
+
+
         /*
         public void AgregarCursoAEstudiante(int id, CursosEnEstudiantes curso)
         {

@@ -44,7 +44,7 @@ namespace SysAcad
             btnInscripcionCurso.UseVisualStyleBackColor = true;
             btnInscripcionCurso.Click += btnInscripcionCurso_Click;
             // 
-            // button1
+            // btnConsultarHorario
             // 
             btnConsultarHorario.Location = new Point(229, 122);
             btnConsultarHorario.Name = "btnConsultarHorario";
@@ -63,6 +63,7 @@ namespace SysAcad
             Controls.Add(btnInscripcionCurso);
             Name = "FormMenuEstudiante";
             Text = "FormMenuEstudiante";
+            Load += FormMenuEstudiante_Load;
             ResumeLayout(false);
         }
 
