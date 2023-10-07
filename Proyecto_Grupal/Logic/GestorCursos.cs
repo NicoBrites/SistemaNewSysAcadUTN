@@ -14,10 +14,13 @@ namespace Logic
 
         private ValidadorTextosVacios _validadorTextosVacios;
 
+        private GestorEstudiantes _gestorEstudiantes;
+
         public GestorCursos()
         {
             _gestorArchivos = new Archivos();
             _validadorTextosVacios = new ValidadorTextosVacios();
+            _gestorEstudiantes = new GestorEstudiantes();
         }
 
         public List<Cursos> GetCursos()
@@ -162,7 +165,8 @@ namespace Logic
                         }
                     }
                     cursos.CupoActual++;
-                    cursos._estudiantes.Add(estudiante);
+                    cursos._estudiantes.Add(estudiante);  
+                    _gestorEstudiantes.AgregarCursoAEstudiante(estudiante.Id, new(cursoEnQueSeAgrega.Nombre, cursoEnQueSeAgrega.Codigo));
                 }
             }
 

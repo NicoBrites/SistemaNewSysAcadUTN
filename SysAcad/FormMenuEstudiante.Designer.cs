@@ -31,7 +31,7 @@ namespace SysAcad
         private void InitializeComponent()
         {
             btnInscripcionCurso = new Button();
-            
+            btnConsultarHorario = new Button();
             SuspendLayout();
             // 
             // btnInscripcionCurso
@@ -44,11 +44,22 @@ namespace SysAcad
             btnInscripcionCurso.UseVisualStyleBackColor = true;
             btnInscripcionCurso.Click += btnInscripcionCurso_Click;
             // 
+            // button1
+            // 
+            btnConsultarHorario.Location = new Point(229, 122);
+            btnConsultarHorario.Name = "btnConsultarHorario";
+            btnConsultarHorario.Size = new Size(320, 46);
+            btnConsultarHorario.TabIndex = 1;
+            btnConsultarHorario.Text = "Consultar horarios";
+            btnConsultarHorario.UseVisualStyleBackColor = true;
+            btnConsultarHorario.Click += button1_Click;
+            // 
             // FormMenuEstudiante
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnConsultarHorario);
             Controls.Add(btnInscripcionCurso);
             Name = "FormMenuEstudiante";
             Text = "FormMenuEstudiante";
@@ -59,5 +70,6 @@ namespace SysAcad
 
         private Button btnInscripcionCurso;
         public Estudiantes estudiante;
+        private Button btnConsultarHorario;
     }
 }
