@@ -150,6 +150,17 @@ namespace Logic
             {
                 if (cursos.Codigo == cursoEnQueSeAgrega.Codigo)
                 {
+                    if (cursos.CupoActual == cursos.CupoMaximo)
+                    {
+                        throw new Exception($"No hay cupo en la materia {cursos.Nombre}, codigo {cursos.Codigo}. No te podes inscribir.");
+                    }  
+                    foreach (EstudianteEnCursos estudianteEnCursos in cursos._estudiantes)
+                    {
+                        if(estudianteEnCursos.Id == estudiante.Id) 
+                        {
+                            throw new Exception($"El estudiante ya esta inscripto en el curso {cursos.Nombre}");
+                        }
+                    }
                     cursos.CupoActual++;
                     cursos._estudiantes.Add(estudiante);
                 }
