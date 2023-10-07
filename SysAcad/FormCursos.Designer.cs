@@ -33,19 +33,24 @@
             btnModificarCursos = new Button();
             btnEliminarCursos = new Button();
             dataGridView1 = new DataGridView();
+            nombreDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            codigoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            descripcionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            DiaSemana = new DataGridViewTextBoxColumn();
+            Aula = new DataGridViewTextBoxColumn();
+            Turno = new DataGridViewTextBoxColumn();
+            cursosBindingSource3 = new BindingSource(components);
             cursosBindingSource2 = new BindingSource(components);
             cursosBindingSource = new BindingSource(components);
             btnVolver = new Button();
             cursosBindingSource1 = new BindingSource(components);
-            nombreDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            codigoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            descripcionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            cupoMaximoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            CupoActual = new DataGridViewTextBoxColumn();
+            cursosBindingSource4 = new BindingSource(components);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)cursosBindingSource3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)cursosBindingSource2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)cursosBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)cursosBindingSource1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)cursosBindingSource4).BeginInit();
             SuspendLayout();
             // 
             // btnAgregarCursos
@@ -82,13 +87,53 @@
             // 
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { nombreDataGridViewTextBoxColumn, codigoDataGridViewTextBoxColumn, descripcionDataGridViewTextBoxColumn, cupoMaximoDataGridViewTextBoxColumn, CupoActual });
-            dataGridView1.DataSource = cursosBindingSource2;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { nombreDataGridViewTextBoxColumn, codigoDataGridViewTextBoxColumn, descripcionDataGridViewTextBoxColumn, DiaSemana, Aula, Turno });
+            dataGridView1.DataSource = cursosBindingSource4;
             dataGridView1.Location = new Point(166, 57);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(805, 377);
+            dataGridView1.Size = new Size(645, 377);
             dataGridView1.TabIndex = 3;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            // 
+            // nombreDataGridViewTextBoxColumn
+            // 
+            nombreDataGridViewTextBoxColumn.DataPropertyName = "Nombre";
+            nombreDataGridViewTextBoxColumn.HeaderText = "Nombre";
+            nombreDataGridViewTextBoxColumn.Name = "nombreDataGridViewTextBoxColumn";
+            // 
+            // codigoDataGridViewTextBoxColumn
+            // 
+            codigoDataGridViewTextBoxColumn.DataPropertyName = "Codigo";
+            codigoDataGridViewTextBoxColumn.HeaderText = "Codigo";
+            codigoDataGridViewTextBoxColumn.Name = "codigoDataGridViewTextBoxColumn";
+            // 
+            // descripcionDataGridViewTextBoxColumn
+            // 
+            descripcionDataGridViewTextBoxColumn.DataPropertyName = "Descripcion";
+            descripcionDataGridViewTextBoxColumn.HeaderText = "Descripcion";
+            descripcionDataGridViewTextBoxColumn.Name = "descripcionDataGridViewTextBoxColumn";
+            // 
+            // DiaSemana
+            // 
+            DiaSemana.DataPropertyName = "DiaSemana";
+            DiaSemana.HeaderText = "DiaSemana";
+            DiaSemana.Name = "DiaSemana";
+            // 
+            // Aula
+            // 
+            Aula.DataPropertyName = "Aula";
+            Aula.HeaderText = "Aula";
+            Aula.Name = "Aula";
+            // 
+            // Turno
+            // 
+            Turno.DataPropertyName = "Turno";
+            Turno.HeaderText = "Turno";
+            Turno.Name = "Turno";
+            // 
+            // cursosBindingSource3
+            // 
+            cursosBindingSource3.DataSource = typeof(Entidades.Cursos);
             // 
             // cursosBindingSource2
             // 
@@ -112,35 +157,9 @@
             // 
             cursosBindingSource1.DataSource = typeof(Entidades.Cursos);
             // 
-            // nombreDataGridViewTextBoxColumn
+            // cursosBindingSource4
             // 
-            nombreDataGridViewTextBoxColumn.DataPropertyName = "Nombre";
-            nombreDataGridViewTextBoxColumn.HeaderText = "Nombre";
-            nombreDataGridViewTextBoxColumn.Name = "nombreDataGridViewTextBoxColumn";
-            // 
-            // codigoDataGridViewTextBoxColumn
-            // 
-            codigoDataGridViewTextBoxColumn.DataPropertyName = "Codigo";
-            codigoDataGridViewTextBoxColumn.HeaderText = "Codigo";
-            codigoDataGridViewTextBoxColumn.Name = "codigoDataGridViewTextBoxColumn";
-            // 
-            // descripcionDataGridViewTextBoxColumn
-            // 
-            descripcionDataGridViewTextBoxColumn.DataPropertyName = "Descripcion";
-            descripcionDataGridViewTextBoxColumn.HeaderText = "Descripcion";
-            descripcionDataGridViewTextBoxColumn.Name = "descripcionDataGridViewTextBoxColumn";
-            // 
-            // cupoMaximoDataGridViewTextBoxColumn
-            // 
-            cupoMaximoDataGridViewTextBoxColumn.DataPropertyName = "CupoMaximo";
-            cupoMaximoDataGridViewTextBoxColumn.HeaderText = "CupoMaximo";
-            cupoMaximoDataGridViewTextBoxColumn.Name = "cupoMaximoDataGridViewTextBoxColumn";
-            // 
-            // CupoActual
-            // 
-            CupoActual.DataPropertyName = "CupoActual";
-            CupoActual.HeaderText = "CupoActual";
-            CupoActual.Name = "CupoActual";
+            cursosBindingSource4.DataSource = typeof(Entidades.Cursos);
             // 
             // FormCursos
             // 
@@ -156,9 +175,11 @@
             Text = "FormCursos";
             Load += FormCursos_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)cursosBindingSource3).EndInit();
             ((System.ComponentModel.ISupportInitialize)cursosBindingSource2).EndInit();
             ((System.ComponentModel.ISupportInitialize)cursosBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)cursosBindingSource1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)cursosBindingSource4).EndInit();
             ResumeLayout(false);
         }
 
@@ -175,7 +196,10 @@
         private DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn codigoDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn descripcionDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn cupoMaximoDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn CupoActual;
+        private DataGridViewTextBoxColumn DiaSemana;
+        private DataGridViewTextBoxColumn Aula;
+        private DataGridViewTextBoxColumn Turno;
+        private BindingSource cursosBindingSource3;
+        private BindingSource cursosBindingSource4;
     }
 }

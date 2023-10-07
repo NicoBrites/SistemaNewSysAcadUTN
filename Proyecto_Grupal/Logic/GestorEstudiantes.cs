@@ -95,7 +95,7 @@ namespace Logic
 
             string msj = _gestorArchivos.GuardarAJson(jsonNuevo, path);               
         }
-
+        /*
         public void AgregarCursoAEstudiante(int id, CursosEnEstudiantes curso)
         {
             string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\Usuariosss";
@@ -122,6 +122,6 @@ namespace Logic
 
             string msj = _gestorArchivos.GuardarAJson(jsonNuevo, path);
 
-        }
+        }*/
     }
 }

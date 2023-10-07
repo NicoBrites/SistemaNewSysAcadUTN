@@ -46,8 +46,10 @@ namespace SysAcad
                 // Ahora puedes acceder a los valores de las celdas en la fila seleccionada.
                 string codigo = dataGridView1.Rows[filaSeleccionadaIndex].Cells["codigoDataGridViewTextBoxColumn"].Value.ToString();
                 string nombre = dataGridView1.Rows[filaSeleccionadaIndex].Cells["nombreDataGridViewTextBoxColumn"].Value.ToString();
-                string cupoMaximo = dataGridView1.Rows[filaSeleccionadaIndex].Cells["cupoMaximoDataGridViewTextBoxColumn"].Value.ToString();
                 string descripcion = dataGridView1.Rows[filaSeleccionadaIndex].Cells["descripcionDataGridViewTextBoxColumn"].Value.ToString();
+                string diaSemana = dataGridView1.Rows[filaSeleccionadaIndex].Cells["DiaSemana"].Value.ToString();
+                string aula = dataGridView1.Rows[filaSeleccionadaIndex].Cells["Aula"].Value.ToString();
+                string turno = dataGridView1.Rows[filaSeleccionadaIndex].Cells["Turno"].Value.ToString();
 
                 // Haz lo que necesites con los valores de la fila seleccionada.
                 FormCursosModificar formCursosModificar = new();
@@ -57,7 +59,9 @@ namespace SysAcad
                 formCursosModificar.textNombre.Text = nombre;
                 formCursosModificar.textCodigo.Text = codigo;
                 formCursosModificar.textDescripcion.Text = descripcion;
-                formCursosModificar.textCupoMaximo.Text = cupoMaximo;
+                formCursosModificar.comboBoxDias.Text = diaSemana;
+                formCursosModificar.comboBoxAulas.Text = aula;
+                formCursosModificar.comboBoxTurnos.Text = turno;
 
                 formCursosModificar.Show();
 

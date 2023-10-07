@@ -39,13 +39,14 @@ namespace SysAcad
                 {
                     int nuevoCodigoValidado = int.Parse(nuevoCodigo);
                     int nuevoCupoMaxValidado = int.Parse(nuevoCupoMax);
+                        /*
                     DiasSemana enumDiaSemana = (DiasSemana)Enum.Parse(typeof(DiasSemana), diaSemana);
                     Aulas enumAulas = (Aulas)Enum.Parse(typeof(Aulas), aula);
-                    Turnos enumTurno = (Turnos)Enum.Parse(typeof(Turnos), turno);
+                    Turnos enumTurno = (Turnos)Enum.Parse(typeof(Turnos), turno);*/
 
-                    cursos.CrearCurso(new Cursos(nuevoNombre, nuevoCodigoValidado, nuevoDescripcion, nuevoCupoMaxValidado, enumDiaSemana, enumAulas, enumTurno));
+                    cursos.CrearCurso(new Cursos(nuevoNombre, nuevoCodigoValidado, nuevoDescripcion, nuevoCupoMaxValidado, diaSemana, aula, turno));
 
-                    MessageBox.Show("Se creo el estudiante correctamente", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Se creo el curso correctamente", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     FormCursos formCursos = new();
                     formCursos.Show();
@@ -72,6 +73,11 @@ namespace SysAcad
         }
 
         private void comboBoxDias_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormCursosAgregar_Load(object sender, EventArgs e)
         {
 
         }

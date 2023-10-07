@@ -16,14 +16,14 @@ namespace Entidades
 
         private int _cupoMaximo;
 
-        private Enum _diaSemana;
+        private string _diaSemana;
 
-        private Enum _aula;
+        private string _aula;
 
-        private Enum _turno;
+        private string _turno;
 
 
-        public Cursos(string nombre, int codigo, string descripcion, int cupoMaximo, Enum diaSemana, Enum aula, Enum turno)
+        public Cursos(string nombre, int codigo, string descripcion, int cupoMaximo, string diaSemana, string aula, string turno)
         {
             _nombre = nombre;
 
@@ -64,17 +64,17 @@ namespace Entidades
             set { _cupoMaximo = value;}
         }
 
-        public Enum DiaSemana
+        public string DiaSemana
         {
             get { return _diaSemana; }
             set { _diaSemana = value; }
         }
-        public Enum Aula
+        public string Aula
         {
             get { return _aula; }
             set { _aula = value; }
         }
-        public Enum Turno
+        public string Turno
         {
             get { return _turno; }
             set { _turno = value; }

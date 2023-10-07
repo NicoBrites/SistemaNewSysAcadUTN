@@ -1,46 +1,47 @@
 [
   {
-    "_estudiantes": [
-      {
-        "Id": 1,
-        "Nombre": "nuev",
-        "Apellido": "nuev"
-      }
-    ],
-    "Nombre": "asdasd",
-    "Codigo": 132,
+    "Nombre": "Matematica",
+    "Codigo": 1,
+    "Descripcion": "2+2",
+    "CupoMaximo": 50,
+    "DiaSemana": "Martes",
+    "Aula": "Aula707",
+    "Turno": "Noche"
+  },
+  {
+    "Nombre": "Ingles",
+    "Codigo": 2,
+    "Descripcion": "what?",
+    "CupoMaximo": 50,
+    "DiaSemana": "Martes",
+    "Aula": "Aula606",
+    "Turno": "Noche"
+  },
+  {
+    "Nombre": "Metodologia",
+    "Codigo": 3,
+    "Descripcion": "A quien le importa",
+    "CupoMaximo": 50,
+    "DiaSemana": "Lunes",
+    "Aula": "Aula606",
+    "Turno": "Noche"
+  },
+  {
+    "Nombre": "peruba",
+    "Codigo": 4645465,
+    "Descripcion": "peruba",
+    "CupoMaximo": 50,
+    "DiaSemana": "Martes",
+    "Aula": "Aula707",
+    "Turno": "Noche"
+  },
+  {
+    "Nombre": "asd",
+    "Codigo": 123312,
     "Descripcion": "asd",
     "CupoMaximo": 123,
-    "CupoActual": 2
-  },
-  {
-    "_estudiantes": [
-      {
-        "Id": 1,
-        "Nombre": "nuev",
-        "Apellido": "nuev"
-      }
-    ],
-    "Nombre": "Cursito nuevo",
-    "Codigo": 3,
-    "Descripcion": "Cursito nuevo",
-    "CupoMaximo": 10,
-    "CupoActual": 2
-  },
-  {
-    "_estudiantes": null,
-    "Nombre": "Otro cursito nuevo",
-    "Codigo": 5,
-    "Descripcion": "Otro cursito nuevo",
-    "CupoMaximo": 5,
-    "CupoActual": 0
-  },
-  {
-    "_estudiantes": [],
-    "Nombre": "Curso con lista sin null",
-    "Codigo": 55,
-    "Descripcion": "sin null",
-    "CupoMaximo": 55,
-    "CupoActual": 0
+    "DiaSemana": "Martes",
+    "Aula": "Aula707",
+    "Turno": "Tarde"
   }
 ]

@@ -30,6 +30,16 @@
       "Dni": 555,
       "Clave": "cla123",
       "Correo": "cor123"
+    },
+    {
+      "Telefono": 456654,
+      "Direccion": "la villa",
+      "Id": 3,
+      "Nombre": "Cris",
+      "Apellido": "Nomeacuerdo",
+      "Dni": 465,
+      "Clave": "cla123",
+      "Correo": "cris123"
     }
   ],
   "Profesores": []

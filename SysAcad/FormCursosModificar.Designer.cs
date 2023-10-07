@@ -247,8 +247,8 @@
         private Label label7;
         private Label label6;
         private Label label8;
-        private ComboBox comboBoxDias;
-        private ComboBox comboBoxAulas;
-        private ComboBox comboBoxTurnos;
+        public ComboBox comboBoxDias;
+        public ComboBox comboBoxAulas;
+        public ComboBox comboBoxTurnos;
     }
 }

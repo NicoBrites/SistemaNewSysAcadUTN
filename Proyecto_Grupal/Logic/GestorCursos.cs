@@ -89,6 +89,10 @@ namespace Logic
                     {
                         throw new Exception("El codigo del curso ya esta en uso");
                     }
+                    if (curso.Aula == cursos.Aula && curso.Turno == cursos.Turno && curso.DiaSemana == cursos.DiaSemana)
+                    {
+                        throw new Exception("Ya hay un curso ese dia en ese turno en ese aula");
+                    }
                 }
 
                 string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\Cursos";
@@ -165,7 +169,7 @@ namespace Logic
 
         }
 
-        public void AgregarAlumnoAlCurso(Estudiantes estudiante, Cursos cursoEnQueSeAgrega)
+        public void AgregarAlumnoAlCurso(EstudianteEnCursos estudiante, Cursos cursoEnQueSeAgrega)
         {
             try
             {
@@ -208,16 +212,15 @@ namespace Logic
                 {
                     string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\EstudiantePorCurso";
 
-                    List<Cursos> listaNueva = new List<Cursos>();
+                    List<EstudiantePorCurso> listaEstudiantesPorCurso = new List<EstudiantePorCurso>();
 
-                    Cursos crearCurso = new Cursos(curso.Nombre, curso.Codigo, curso.Descripcion,
-                    curso.CupoMaximo, curso.DiaSemana, curso.Aula, curso.Turno);
-                    listaNueva.Add(crearCurso);
-                    string msj = _gestorArchivos.GuardarAJson(listaNueva, path);
+                    listaEstudiantesPorCurso.Add(new EstudiantePorCurso(estudiante.Id, estudiante.Nombre, estudiante.Apellido, cursoEnQueSeAgrega.Codigo,
+                              cursoEnQueSeAgrega.Nombre, cursoEnQueSeAgrega.DiaSemana, cursoEnQueSeAgrega.Turno));
+                    _gestorArchivos.GuardarAJson(listaEstudiantesPorCurso, path);
                 }
                 else
                 {
-                    throw new Exception(e.Message);
+                    throw new Exception(ex.Message);
                 }
 
             }

@@ -30,21 +30,21 @@ namespace SysAcad
             string nuevoDescripcion = textDescripcion.Text;
             string nuevoCupoMax = textCupoMaximo.Text;
             string codigoAnterior = textCodigo.Text;
-            string diaSemana = textDiaSemana.Text;
-            string aula = textAula.Text;
-            string turno = textTurno.Text;
+            string diaSemana = comboBoxDias.Text;
+            string aula = comboBoxAulas.Text;
+            string turno = comboBoxTurnos.Text;
 
             try
             {
                 if (cursos.ValidadorCursos(new CursoAValidar(nuevoNombre, nuevoCodigo, nuevoDescripcion, nuevoCupoMax, diaSemana, aula, turno)))
                 {
                     int nuevoCodigoValidado = int.Parse(nuevoCodigo);
-                    int nuevoCupoMaxValidado = int.Parse(nuevoCupoMax);
+                    int nuevoCupoMaxValidado = int.Parse(nuevoCupoMax);/*
                     DiasSemana enumDiaSemana = (DiasSemana)Enum.Parse(typeof(DiasSemana), diaSemana);
                     Aulas enumAulas = (Aulas)Enum.Parse(typeof(Aulas), aula);
-                    Turnos enumTurno = (Turnos)Enum.Parse(typeof(Turnos), turno);
+                    Turnos enumTurno = (Turnos)Enum.Parse(typeof(Turnos), turno);*/
 
-                    cursos.ModificarCurso(new Cursos(nuevoNombre, nuevoCodigoValidado, nuevoDescripcion, nuevoCupoMaxValidado, enumDiaSemana, enumAulas, enumTurno), codigoAnterior);
+                    cursos.ModificarCurso(new Cursos(nuevoNombre, nuevoCodigoValidado, nuevoDescripcion, nuevoCupoMaxValidado, diaSemana, aula, turno), codigoAnterior);
 
                     MessageBox.Show("Se creo el estudiante correctamente", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

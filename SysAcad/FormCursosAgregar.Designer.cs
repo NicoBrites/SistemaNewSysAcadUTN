@@ -167,23 +167,23 @@
             comboBoxDias.TabIndex = 16;
             comboBoxDias.SelectedIndexChanged += comboBoxDias_SelectedIndexChanged;
             // 
-            // comboBox1
+            // comboBoxAulas
             // 
             comboBoxAulas.FormattingEnabled = true;
+            comboBoxAulas.Items.AddRange(new object[] { "Aula505", "Aula606", "Aula707", "Aula808" });
             comboBoxAulas.Location = new Point(439, 274);
             comboBoxAulas.Name = "comboBoxAulas";
             comboBoxAulas.Size = new Size(121, 23);
             comboBoxAulas.TabIndex = 17;
-            comboBoxAulas.Items.AddRange(new object[] { "Aula505", "Aula606", "Aula707", "Aula808"});
             // 
-            // comboBox2
+            // comboBoxTurnos
             // 
             comboBoxTurnos.FormattingEnabled = true;
+            comboBoxTurnos.Items.AddRange(new object[] { "Mañana", "Tarde", "Noche" });
             comboBoxTurnos.Location = new Point(439, 366);
             comboBoxTurnos.Name = "comboBoxTurnos";
             comboBoxTurnos.Size = new Size(121, 23);
             comboBoxTurnos.TabIndex = 18;
-            comboBoxTurnos.Items.AddRange(new object[] { "Mañana", "Tarde", "Noche" });
             // 
             // FormCursosAgregar
             // 
@@ -208,6 +208,7 @@
             Controls.Add(label1);
             Name = "FormCursosAgregar";
             Text = "FormCursosAgregar";
+            Load += FormCursosAgregar_Load;
             ResumeLayout(false);
             PerformLayout();
         }

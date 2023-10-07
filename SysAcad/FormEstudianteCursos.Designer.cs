@@ -32,35 +32,65 @@ namespace SysAcad
         {
             components = new System.ComponentModel.Container();
             dataGridView1 = new DataGridView();
-            Check = new DataGridViewCheckBoxColumn();
-            nombreDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            codigoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            descripcionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            cupoMaximoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             cursosBindingSource2 = new BindingSource(components);
             cursosBindingSource = new BindingSource(components);
             btnInscribirse = new Button();
             cursosBindingSource1 = new BindingSource(components);
-            CupoActual = new DataGridViewTextBoxColumn();
+            cursosBindingSource3 = new BindingSource(components);
+            Check = new DataGridViewCheckBoxColumn();
+            nombreDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            codigoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            descripcionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            DiaSemana = new DataGridViewTextBoxColumn();
+            Aula = new DataGridViewTextBoxColumn();
+            Turno = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)cursosBindingSource2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)cursosBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)cursosBindingSource1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)cursosBindingSource3).BeginInit();
             SuspendLayout();
             // 
             // dataGridView1
             // 
             dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.AllowUserToOrderColumns = true;
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Check, nombreDataGridViewTextBoxColumn, codigoDataGridViewTextBoxColumn, descripcionDataGridViewTextBoxColumn, cupoMaximoDataGridViewTextBoxColumn, CupoActual });
-            dataGridView1.DataSource = cursosBindingSource2;
-            dataGridView1.Location = new Point(96, 27);
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Check, nombreDataGridViewTextBoxColumn, codigoDataGridViewTextBoxColumn, descripcionDataGridViewTextBoxColumn, DiaSemana, Aula, Turno });
+            dataGridView1.DataSource = cursosBindingSource3;
+            dataGridView1.Location = new Point(12, 27);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(660, 247);
+            dataGridView1.Size = new Size(744, 247);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            // 
+            // cursosBindingSource2
+            // 
+            cursosBindingSource2.DataSource = typeof(Cursos);
+            // 
+            // cursosBindingSource
+            // 
+            cursosBindingSource.DataSource = typeof(Cursos);
+            // 
+            // btnInscribirse
+            // 
+            btnInscribirse.Location = new Point(188, 381);
+            btnInscribirse.Name = "btnInscribirse";
+            btnInscribirse.Size = new Size(75, 23);
+            btnInscribirse.TabIndex = 1;
+            btnInscribirse.Text = "Inscribirse";
+            btnInscribirse.UseVisualStyleBackColor = true;
+            btnInscribirse.Click += button1_Click;
+            // 
+            // cursosBindingSource1
+            // 
+            cursosBindingSource1.DataSource = typeof(Cursos);
+            // 
+            // cursosBindingSource3
+            // 
+            cursosBindingSource3.DataSource = typeof(Cursos);
             // 
             // Check
             // 
@@ -85,39 +115,23 @@ namespace SysAcad
             descripcionDataGridViewTextBoxColumn.HeaderText = "Descripcion";
             descripcionDataGridViewTextBoxColumn.Name = "descripcionDataGridViewTextBoxColumn";
             // 
-            // cupoMaximoDataGridViewTextBoxColumn
+            // DiaSemana
             // 
-            cupoMaximoDataGridViewTextBoxColumn.DataPropertyName = "CupoMaximo";
-            cupoMaximoDataGridViewTextBoxColumn.HeaderText = "CupoMaximo";
-            cupoMaximoDataGridViewTextBoxColumn.Name = "cupoMaximoDataGridViewTextBoxColumn";
+            DiaSemana.DataPropertyName = "DiaSemana";
+            DiaSemana.HeaderText = "DiaSemana";
+            DiaSemana.Name = "DiaSemana";
             // 
-            // cursosBindingSource2
+            // Aula
             // 
-            cursosBindingSource2.DataSource = typeof(Entidades.Cursos);
+            Aula.DataPropertyName = "Aula";
+            Aula.HeaderText = "Aula";
+            Aula.Name = "Aula";
             // 
-            // cursosBindingSource
+            // Turno
             // 
-            cursosBindingSource.DataSource = typeof(Entidades.Cursos);
-            // 
-            // btnInscribirse
-            // 
-            btnInscribirse.Location = new Point(188, 381);
-            btnInscribirse.Name = "btnInscribirse";
-            btnInscribirse.Size = new Size(75, 23);
-            btnInscribirse.TabIndex = 1;
-            btnInscribirse.Text = "Inscribirse";
-            btnInscribirse.UseVisualStyleBackColor = true;
-            btnInscribirse.Click += button1_Click;
-            // 
-            // cursosBindingSource1
-            // 
-            cursosBindingSource1.DataSource = typeof(Entidades.Cursos);
-            // 
-            // CupoActual
-            // 
-            CupoActual.DataPropertyName = "CupoActual";
-            CupoActual.HeaderText = "CupoActual";
-            CupoActual.Name = "CupoActual";
+            Turno.DataPropertyName = "Turno";
+            Turno.HeaderText = "Turno";
+            Turno.Name = "Turno";
             // 
             // FormEstudianteCursos
             // 
@@ -133,6 +147,7 @@ namespace SysAcad
             ((System.ComponentModel.ISupportInitialize)cursosBindingSource2).EndInit();
             ((System.ComponentModel.ISupportInitialize)cursosBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)cursosBindingSource1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)cursosBindingSource3).EndInit();
             ResumeLayout(false);
         }
 
@@ -140,15 +155,17 @@ namespace SysAcad
 
         private DataGridView dataGridView1;
         private BindingSource cursosBindingSource;
-        private DataGridViewCheckBoxColumn Check;
         private Button btnInscribirse;
         private BindingSource cursosBindingSource1;
+        private BindingSource cursosBindingSource2;
+        public Estudiantes estudiante;
+        private DataGridViewCheckBoxColumn Check;
         private DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn codigoDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn descripcionDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn cupoMaximoDataGridViewTextBoxColumn;
-        private BindingSource cursosBindingSource2;
-        private DataGridViewTextBoxColumn CupoActual;
-        public Estudiantes estudiante;
+        private DataGridViewTextBoxColumn DiaSemana;
+        private DataGridViewTextBoxColumn Aula;
+        private DataGridViewTextBoxColumn Turno;
+        private BindingSource cursosBindingSource3;
     }
 }

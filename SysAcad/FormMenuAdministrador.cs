@@ -30,5 +30,12 @@ namespace SysAcad
             formCursos.Show();
             this.Hide();
         }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            FormLogin formlogin = new();
+            formlogin.Show();
+            this.Hide();
+        }
     }
 }

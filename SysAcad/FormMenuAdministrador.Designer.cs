@@ -30,6 +30,7 @@
         {
             btnRegistrarEstudiante = new Button();
             btnGestionarCursos = new Button();
+            button1 = new Button();
             SuspendLayout();
             // 
             // btnRegistrarEstudiante
@@ -42,7 +43,7 @@
             btnRegistrarEstudiante.UseVisualStyleBackColor = true;
             btnRegistrarEstudiante.Click += button1_Click;
             // 
-            // button1
+            // btnGestionarCursos
             // 
             btnGestionarCursos.Location = new Point(235, 141);
             btnGestionarCursos.Name = "btnGestionarCursos";
@@ -52,11 +53,22 @@
             btnGestionarCursos.UseVisualStyleBackColor = true;
             btnGestionarCursos.Click += button1_Click_1;
             // 
+            // button1
+            // 
+            button1.Location = new Point(378, 415);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 2;
+            button1.Text = "Cerrar Sesion";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click_2;
+            // 
             // FormMenuAdministrador
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(button1);
             Controls.Add(btnGestionarCursos);
             Controls.Add(btnRegistrarEstudiante);
             Name = "FormMenuAdministrador";
@@ -68,5 +80,6 @@
 
         private Button btnRegistrarEstudiante;
         private Button btnGestionarCursos;
+        private Button button1;
     }
 }
