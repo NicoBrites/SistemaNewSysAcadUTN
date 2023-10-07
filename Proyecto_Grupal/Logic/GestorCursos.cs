@@ -15,13 +15,11 @@ namespace Logic
 
         private ValidadorTextosVacios _validadorTextosVacios;
 
-        private GestorEstudiantes _gestorEstudiantes;
 
         public GestorCursos()
         {
             _gestorArchivos = new Archivos();
             _validadorTextosVacios = new ValidadorTextosVacios();
-            _gestorEstudiantes = new GestorEstudiantes();
         }
 
         public List<Cursos> GetCursos()
@@ -248,7 +246,19 @@ namespace Logic
 
         }
 
+        public bool ValidarHorariosEstudiante(int estudianteId)
+        {
+            List<EstudiantePorCurso> estudiantesPorCursos = GetEstudiantePorCurso();
 
+            foreach (EstudiantePorCurso estudiantePorCurso in estudiantesPorCursos)
+            {
+                if (estudiantePorCurso.CodigoEstudiante == estudianteId)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
 
 
 

@@ -98,19 +98,8 @@ namespace Logic
             string msj = _gestorArchivos.GuardarAJson(jsonNuevo, path);               
         }
 
-        public bool ValidarHorariosEstudiante(int estudianteId)
-        {
-            List<EstudiantePorCurso> estudiantesPorCursos = _gestorCursos.GetEstudiantePorCurso();
+       
 
-            foreach(EstudiantePorCurso estudiantePorCurso in estudiantesPorCursos) 
-            { 
-                if (estudiantePorCurso.CodigoEstudiante == estudianteId)
-                {
-                    return true;
-                }          
-            }
-            return false;
-        }
 
 
         /*

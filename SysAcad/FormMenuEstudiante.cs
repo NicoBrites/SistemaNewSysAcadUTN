@@ -30,7 +30,7 @@ namespace SysAcad
 
         private void button1_Click(object sender, EventArgs e)
         {
-            GestorEstudiantes gestorEstudiantes = new GestorEstudiantes();
+            GestorCursos gestorEstudiantes = new GestorCursos();
             if (gestorEstudiantes.ValidarHorariosEstudiante(estudiante.Id))
             {
                 FormEstudianteHorarios formEstudianteHorarios = new();
