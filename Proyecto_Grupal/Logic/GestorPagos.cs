@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Entidades.Enums;
 
 namespace Logic
 {
@@ -64,6 +65,36 @@ namespace Logic
             }
             return false;
 
+        }
+
+        public string GenerarComprobante( )
+        {
+
+            return new string(@"
+
+                    Gracias por tu compra
+                    Hola Nicolas mauricio,
+
+                    Hemos recibido correctamente tu pedido #92463 y lo estamos procesando:
+
+                    [Pedido #92463] (08/10/2023)
+                    Producto                  Cantidad    Precio
+                    TUP / TUSI OCTUBRE 2023   1	        $22.770, 00
+                    Subtotal:   $22.770, 00
+                    Método de pago: MercadoPago
+                    Total:  $22.770, 00
+                    DNI: 39389462
+
+                    Dirección de facturación
+                    Nicolas mauricio Brites vergara
+                    Avellaneda 788
+                    Adrogue
+                    Buenos Aires
+                    1846
+                    1553266710
+                    nicolas.britesv@gmail.com
+                    Gracias por tu compra.
+                    asd");
         }
     }
 }

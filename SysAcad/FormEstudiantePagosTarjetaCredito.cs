@@ -24,7 +24,12 @@ namespace SysAcad
             GestorPagos gestorPagos = new GestorPagos();
             if (gestorPagos.ValidadorTarjeta(GetDatosIngresados()))
             {
-                gestorPagos.PagarDeudas(listaPagosAPagar);
+                gestorPagos.PagarDeudas(listaPagosAPagar, );
+            }
+            else
+            {
+                MessageBox.Show($"Ingreso mal un dato o dejo vacio un espacio.",
+                                              "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -50,5 +55,6 @@ namespace SysAcad
             return new TarjetaAValidar(tipoTarjeta, numeroTarjeta, fechaCaducidadDia, fechaCaducidadAño, codigoSeguridad,
                 nombre, apellid, localidad, dirFacturacion, codigoPostal, telefono, dirFacturacion2);
         }
+
     }
 }
