@@ -12,9 +12,7 @@ namespace Logic
     public class GestorCursos
     {
         private Archivos _gestorArchivos;
-
         private ValidadorTextosVacios _validadorTextosVacios;
-
 
         public GestorCursos()
         {

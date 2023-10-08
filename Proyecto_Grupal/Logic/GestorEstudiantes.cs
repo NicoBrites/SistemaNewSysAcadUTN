@@ -11,13 +11,12 @@ namespace Logic
 
         private Archivos _gestorArchivos;
         private ValidadorTextosVacios _validadorTextosVacios;
-        private GestorCursos _gestorCursos; 
+
 
         public GestorEstudiantes()
         {
              _gestorArchivos = new Archivos();
             _validadorTextosVacios = new ValidadorTextosVacios();
-            _gestorCursos = new GestorCursos();
         }
 
         public List<Estudiantes> GetEstudiantes()
@@ -56,8 +55,6 @@ namespace Logic
             { 
                 return false;
             }
-       
-
         }
         public void CrearEstudianteNew(Estudiantes nuevEstudiante)
         {          
@@ -97,10 +94,6 @@ namespace Logic
 
             string msj = _gestorArchivos.GuardarAJson(jsonNuevo, path);               
         }
-
-       
-
-
 
         /*
         public void AgregarCursoAEstudiante(int id, CursosEnEstudiantes curso)

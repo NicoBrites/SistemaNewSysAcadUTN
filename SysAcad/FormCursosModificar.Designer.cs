@@ -177,27 +177,31 @@
             label8.TabIndex = 21;
             label8.Text = "Dia de la cursada";
             // 
-            // comboBox1
+            // comboBoxDias
             // 
             comboBoxDias.FormattingEnabled = true;
             comboBoxDias.Location = new Point(428, 204);
-            comboBoxDias.Name = "comboBox1";
+            comboBoxDias.Items.AddRange(new object[] { "Lunes", "Martes", "Miercoles", "Jueves", "Viernes" });
+            comboBoxDias.Name = "comboBoxDias";
             comboBoxDias.Size = new Size(121, 23);
             comboBoxDias.TabIndex = 24;
+            comboBoxDias.SelectedIndexChanged += comboBoxDias_SelectedIndexChanged;
             // 
-            // comboBox2
+            // comboBoxAulas
             // 
             comboBoxAulas.FormattingEnabled = true;
+            comboBoxAulas.Items.AddRange(new object[] { "Aula505", "Aula606", "Aula707", "Aula808" });
             comboBoxAulas.Location = new Point(428, 298);
-            comboBoxAulas.Name = "comboBox2";
+            comboBoxAulas.Name = "comboBoxAulas";
             comboBoxAulas.Size = new Size(121, 23);
             comboBoxAulas.TabIndex = 25;
             // 
-            // comboBox3
+            // comboBoxTurnos
             // 
             comboBoxTurnos.FormattingEnabled = true;
+            comboBoxTurnos.Items.AddRange(new object[] { "Mañana", "Tarde", "Noche" });
             comboBoxTurnos.Location = new Point(428, 394);
-            comboBoxTurnos.Name = "comboBox3";
+            comboBoxTurnos.Name = "comboBoxTurnos";
             comboBoxTurnos.Size = new Size(121, 23);
             comboBoxTurnos.TabIndex = 26;
             // 
@@ -226,6 +230,7 @@
             Controls.Add(label1);
             Name = "FormCursosModificar";
             Text = "FormCursosModificar";
+            Load += FormCursosModificar_Load;
             ResumeLayout(false);
             PerformLayout();
         }

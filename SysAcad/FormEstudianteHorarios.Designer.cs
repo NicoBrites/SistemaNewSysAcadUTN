@@ -71,6 +71,7 @@ namespace SysAcad
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(446, 150);
             dataGridView1.TabIndex = 2;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // nombreDataGridViewTextBoxColumn
             // 
@@ -108,10 +109,10 @@ namespace SysAcad
             // 
             cursosBindingSource.DataSource = typeof(Cursos);
             // 
-            // button1
+            // btnVolver
             // 
             btnVolver.Location = new Point(262, 233);
-            btnVolver.Name = "button1";
+            btnVolver.Name = "btnVolver";
             btnVolver.Size = new Size(75, 23);
             btnVolver.TabIndex = 3;
             btnVolver.Text = "Volver";

@@ -1,10 +1,9 @@
 ﻿namespace Entidades
 {
-    public  class Usuario 
+    public class Usuario 
     {
         private string _clave;
         private string _correo;
-
 
         public Usuario(string clave, string correo)
         {
@@ -23,8 +22,5 @@
             get { return _correo; }
             set { _correo = value; }
         }
-
-
     }
-
 }

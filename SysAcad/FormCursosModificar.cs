@@ -9,7 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static Entidades.Enums;
 
 namespace SysAcad
 {
@@ -74,6 +73,16 @@ namespace SysAcad
         }
 
         private void textDescripcion_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormCursosModificar_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxDias_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

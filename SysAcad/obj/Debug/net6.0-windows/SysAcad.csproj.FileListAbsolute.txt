@@ -37,6 +37,7 @@ C:\PruebaLabNet\SistemaNewSysAcadUTN\SysAcad\obj\Debug\net6.0-windows\SysAcad.Fo
 C:\PruebaLabNet\SistemaNewSysAcadUTN\SysAcad\obj\Debug\net6.0-windows\SysAcad.FormCursosModificar.resources
 C:\PruebaLabNet\SistemaNewSysAcadUTN\SysAcad\obj\Debug\net6.0-windows\SysAcad.FormEstudianteCursos.resources
 C:\PruebaLabNet\SistemaNewSysAcadUTN\SysAcad\obj\Debug\net6.0-windows\SysAcad.FormEstudianteHorarios.resources
+C:\PruebaLabNet\SistemaNewSysAcadUTN\SysAcad\obj\Debug\net6.0-windows\SysAcad.FormEstudiantePagos.resources
 C:\PruebaLabNet\SistemaNewSysAcadUTN\SysAcad\obj\Debug\net6.0-windows\SysAcad.FormLogin.resources
 C:\PruebaLabNet\SistemaNewSysAcadUTN\SysAcad\obj\Debug\net6.0-windows\SysAcad.FormMenuAdministrador.resources
 C:\PruebaLabNet\SistemaNewSysAcadUTN\SysAcad\obj\Debug\net6.0-windows\SysAcad.FormMenuEstudiante.resources
