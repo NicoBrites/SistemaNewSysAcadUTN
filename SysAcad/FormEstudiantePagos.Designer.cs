@@ -34,14 +34,14 @@ namespace SysAcad
             label1 = new Label();
             btnVolver = new Button();
             dataGridView1 = new DataGridView();
-            CheckBox = new DataGridViewCheckBoxColumn();
-            conceptoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            descripcionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            montoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             conseptoDePagoBindingSource = new BindingSource(components);
             horariosDataGridBindingSource = new BindingSource(components);
             btnPagar = new Button();
             comboBoxMetodoDePago = new ComboBox();
+            Check = new DataGridViewCheckBoxColumn();
+            conceptoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            descripcionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            montoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)conseptoDePagoBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)horariosDataGridBindingSource).BeginInit();
@@ -70,18 +70,46 @@ namespace SysAcad
             // 
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { CheckBox, conceptoDataGridViewTextBoxColumn, descripcionDataGridViewTextBoxColumn, montoDataGridViewTextBoxColumn });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Check, conceptoDataGridViewTextBoxColumn, descripcionDataGridViewTextBoxColumn, montoDataGridViewTextBoxColumn });
             dataGridView1.DataSource = conseptoDePagoBindingSource;
             dataGridView1.Location = new Point(12, 66);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(469, 150);
+            dataGridView1.Size = new Size(635, 150);
             dataGridView1.TabIndex = 2;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
-            // CheckBox
+            // conseptoDePagoBindingSource
             // 
-            CheckBox.HeaderText = "CheckBox";
-            CheckBox.Name = "CheckBox";
+            conseptoDePagoBindingSource.DataSource = typeof(ConseptoDePago);
+            // 
+            // horariosDataGridBindingSource
+            // 
+            horariosDataGridBindingSource.DataSource = typeof(HorariosDataGrid);
+            // 
+            // btnPagar
+            // 
+            btnPagar.Location = new Point(258, 376);
+            btnPagar.Name = "btnPagar";
+            btnPagar.Size = new Size(75, 23);
+            btnPagar.TabIndex = 3;
+            btnPagar.Text = "Pagar";
+            btnPagar.UseVisualStyleBackColor = true;
+            btnPagar.Click += button1_Click;
+            // 
+            // comboBoxMetodoDePago
+            // 
+            comboBoxMetodoDePago.FormattingEnabled = true;
+            comboBoxMetodoDePago.Items.AddRange(new object[] { "Tarjeta de credito", "Tarjeta de debito", "Transferencia bancaria" });
+            comboBoxMetodoDePago.Location = new Point(49, 271);
+            comboBoxMetodoDePago.Name = "comboBoxMetodoDePago";
+            comboBoxMetodoDePago.Size = new Size(121, 23);
+            comboBoxMetodoDePago.TabIndex = 4;
+            // 
+            // Check
+            // 
+            Check.HeaderText = "Check";
+            Check.Name = "Check";
             // 
             // conceptoDataGridViewTextBoxColumn
             // 
@@ -103,33 +131,6 @@ namespace SysAcad
             montoDataGridViewTextBoxColumn.HeaderText = "Monto";
             montoDataGridViewTextBoxColumn.Name = "montoDataGridViewTextBoxColumn";
             montoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // conseptoDePagoBindingSource
-            // 
-            conseptoDePagoBindingSource.DataSource = typeof(ConseptoDePago);
-            // 
-            // horariosDataGridBindingSource
-            // 
-            horariosDataGridBindingSource.DataSource = typeof(HorariosDataGrid);
-            // 
-            // btnPagar
-            // 
-            btnPagar.Location = new Point(258, 376);
-            btnPagar.Name = "btnPagar";
-            btnPagar.Size = new Size(75, 23);
-            btnPagar.TabIndex = 3;
-            btnPagar.Text = "Pagar";
-            btnPagar.UseVisualStyleBackColor = true;
-            btnPagar.Click += button1_Click;
-            // 
-            // comboBox1
-            // 
-            comboBoxMetodoDePago.FormattingEnabled = true;
-            comboBoxMetodoDePago.Items.AddRange(new object[] { "Tarjeta de credito", "Tarjeta de debito", "Transferencia bancaria" });
-            comboBoxMetodoDePago.Location = new Point(49, 271);
-            comboBoxMetodoDePago.Name = "comboBoxMetodoDePago";
-            comboBoxMetodoDePago.Size = new Size(121, 23);
-            comboBoxMetodoDePago.TabIndex = 4;
             // 
             // FormEstudiantePagos
             // 
@@ -157,13 +158,13 @@ namespace SysAcad
         private Button btnVolver;
         public Estudiantes estudiante;
         private DataGridView dataGridView1;
-        private DataGridViewCheckBoxColumn CheckBox;
-        private DataGridViewTextBoxColumn conceptoDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn descripcionDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn montoDataGridViewTextBoxColumn;
         private BindingSource conseptoDePagoBindingSource;
         private BindingSource horariosDataGridBindingSource;
         private Button btnPagar;
         private ComboBox comboBoxMetodoDePago;
+        private DataGridViewCheckBoxColumn Check;
+        private DataGridViewTextBoxColumn conceptoDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn descripcionDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn montoDataGridViewTextBoxColumn;
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace SysAcad
+﻿using Entidades;
+
+namespace SysAcad
 {
     partial class FormEstudiantePagosTarjetaCredito
     {
@@ -63,7 +65,6 @@
             comboBoxTipoTarjeta.Name = "comboBoxTipoTarjeta";
             comboBoxTipoTarjeta.Size = new Size(121, 23);
             comboBoxTipoTarjeta.TabIndex = 0;
-            comboBoxTipoTarjeta.SelectedIndexChanged += comboBoxTipoTarjeta_SelectedIndexChanged;
             // 
             // metodoPago
             // 
@@ -73,7 +74,6 @@
             metodoPago.Size = new Size(171, 15);
             metodoPago.TabIndex = 1;
             metodoPago.Text = "Selecciona un metodo de pago";
-            metodoPago.Click += label1_Click;
             // 
             // numeroTarjeta
             // 
@@ -90,7 +90,6 @@
             textNumeroTarjeta.Name = "textNumeroTarjeta";
             textNumeroTarjeta.Size = new Size(100, 23);
             textNumeroTarjeta.TabIndex = 3;
-            textNumeroTarjeta.TextChanged += textNumeroTarjeta_TextChanged;
             // 
             // fechaCaducidad
             // 
@@ -108,7 +107,6 @@
             comboBoxFechaCaducidad.Name = "comboBoxFechaCaducidad";
             comboBoxFechaCaducidad.Size = new Size(38, 23);
             comboBoxFechaCaducidad.TabIndex = 5;
-            comboBoxFechaCaducidad.SelectedIndexChanged += comboBoxFechaCaducidad_SelectedIndexChanged;
             // 
             // textFechaCaducidad
             // 
@@ -116,7 +114,6 @@
             textFechaCaducidad.Name = "textFechaCaducidad";
             textFechaCaducidad.Size = new Size(65, 23);
             textFechaCaducidad.TabIndex = 6;
-            textFechaCaducidad.TextChanged += textFechaCaducidad_TextChanged;
             // 
             // textCodigoSeguridad
             // 
@@ -124,7 +121,6 @@
             textCodigoSeguridad.Name = "textCodigoSeguridad";
             textCodigoSeguridad.Size = new Size(48, 23);
             textCodigoSeguridad.TabIndex = 17;
-            textCodigoSeguridad.TextChanged += textCodigoSeguridad_TextChanged;
             // 
             // codigoSeguridad
             // 
@@ -170,7 +166,6 @@
             localidad.Size = new Size(58, 15);
             localidad.TabIndex = 14;
             localidad.Text = "Localidad";
-            localidad.Click += label3_Click;
             // 
             // textNombre
             // 
@@ -178,7 +173,6 @@
             textNombre.Name = "textNombre";
             textNombre.Size = new Size(100, 23);
             textNombre.TabIndex = 15;
-            textNombre.TextChanged += textNombre_TextChanged;
             // 
             // direccionDeFacturacion
             // 
@@ -195,7 +189,6 @@
             textApellido.Name = "textApellido";
             textApellido.Size = new Size(100, 23);
             textApellido.TabIndex = 19;
-            textApellido.TextChanged += textApellido_TextChanged;
             // 
             // textLocalidad
             // 
@@ -203,7 +196,6 @@
             textLocalidad.Name = "textLocalidad";
             textLocalidad.Size = new Size(100, 23);
             textLocalidad.TabIndex = 13;
-            textLocalidad.TextChanged += textLocalidad_TextChanged;
             // 
             // textDireccionFacturacion
             // 
@@ -211,7 +203,6 @@
             textDireccionFacturacion.Name = "textDireccionFacturacion";
             textDireccionFacturacion.Size = new Size(213, 23);
             textDireccionFacturacion.TabIndex = 11;
-            textDireccionFacturacion.TextChanged += textDireccionFacturacion_TextChanged;
             // 
             // codigoPostal
             // 
@@ -237,7 +228,6 @@
             textDireccionFact2.Name = "textDireccionFact2";
             textDireccionFact2.Size = new Size(213, 23);
             textDireccionFact2.TabIndex = 21;
-            textDireccionFact2.TextChanged += textDireccionFact2_TextChanged;
             // 
             // telefono
             // 
@@ -254,7 +244,6 @@
             textTelefono.Name = "textTelefono";
             textTelefono.Size = new Size(213, 23);
             textTelefono.TabIndex = 23;
-            textTelefono.TextChanged += textTelefono_TextChanged;
             // 
             // btnConfirmar
             // 
@@ -264,6 +253,7 @@
             btnConfirmar.TabIndex = 24;
             btnConfirmar.Text = "Confirmar";
             btnConfirmar.UseVisualStyleBackColor = true;
+            btnConfirmar.Click += btnConfirmar_Click;
             // 
             // btnCancelar
             // 
@@ -273,6 +263,7 @@
             btnCancelar.TabIndex = 25;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // textCodigoPostal
             // 
@@ -280,7 +271,6 @@
             textCodigoPostal.Name = "textCodigoPostal";
             textCodigoPostal.Size = new Size(100, 23);
             textCodigoPostal.TabIndex = 26;
-            textCodigoPostal.TextChanged += textCodigoPostal_TextChanged;
             // 
             // FormEstudiantePagosTarjetaCredito
             // 
@@ -347,5 +337,6 @@
         private Button btnConfirmar;
         private Button btnCancelar;
         private TextBox textCodigoPostal;
+        public List<ConseptoDePago> listaPagosAPagar;
     }
 }

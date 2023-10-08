@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Entidades;
+using Logic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,74 +19,36 @@ namespace SysAcad
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void btnConfirmar_Click(object sender, EventArgs e)
         {
-
+            GestorPagos gestorPagos = new GestorPagos();
+            if (gestorPagos.ValidadorTarjeta(GetDatosIngresados()))
+            {
+                gestorPagos.PagarDeudas(listaPagosAPagar);
+            }
         }
 
-        private void label3_Click(object sender, EventArgs e)
+        private void btnCancelar_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
-        private void textNumeroTarjeta_TextChanged(object sender, EventArgs e)
+        private TarjetaAValidar GetDatosIngresados()
         {
-
-        }
-
-        private void textDireccionFacturacion_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textCodigoSeguridad_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBoxTipoTarjeta_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBoxFechaCaducidad_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textFechaCaducidad_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textLocalidad_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textNombre_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textApellido_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textDireccionFact2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textTelefono_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textCodigoPostal_TextChanged(object sender, EventArgs e)
-        {
-
+            string tipoTarjeta = comboBoxTipoTarjeta.Text;
+            string numeroTarjeta = textNumeroTarjeta.Text;
+            string fechaCaducidadDia = comboBoxFechaCaducidad.Text;
+            string fechaCaducidadAño = textFechaCaducidad.Text;
+            string codigoSeguridad = textCodigoSeguridad.Text;
+            string nombre = textNombre.Text;
+            string apellid = textApellido.Text; 
+            string localidad = textLocalidad.Text;  
+            string dirFacturacion = textDireccionFacturacion.Text;
+            string dirFacturacion2 = textDireccionFact2.Text;
+            string codigoPostal = textCodigoPostal.Text;    
+            string telefono = textTelefono.Text;
+            return new TarjetaAValidar(tipoTarjeta, numeroTarjeta, fechaCaducidadDia, fechaCaducidadAño, codigoSeguridad,
+                nombre, apellid, localidad, dirFacturacion, codigoPostal, telefono, dirFacturacion2);
         }
     }
 }
