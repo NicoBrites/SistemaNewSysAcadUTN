@@ -67,34 +67,32 @@ namespace Logic
 
         }
 
-        public string GenerarComprobante( )
+        public string GenerarComprobante(TarjetaAValidar tarjeta, int montoTotal, int cantidad, Estudiantes estudiante )
         {
+            Random random = new Random();
+            int numeroPedido = random.Next( 0, 10000 );
+            DateTime fechaActual = DateTime.Now;
 
-            return new string(@"
+            return new string(@$"
 
                     Gracias por tu compra
-                    Hola Nicolas mauricio,
+                    Hola {estudiante.Nombre} {estudiante.Apellido},
 
-                    Hemos recibido correctamente tu pedido #92463 y lo estamos procesando:
+                    Hemos recibido correctamente tu pedido #{numeroPedido} y lo estamos procesando:
 
-                    [Pedido #92463] (08/10/2023)
+                    [Pedido #{numeroPedido}] ({fechaActual})
                     Producto                  Cantidad    Precio
-                    TUP / TUSI OCTUBRE 2023   1	        $22.770, 00
-                    Subtotal:   $22.770, 00
-                    Método de pago: MercadoPago
-                    Total:  $22.770, 00
-                    DNI: 39389462
+                    TUP / TUSI CUOTA 2023     {cantidad}   ${montoTotal}
+                    Método de pago: {tarjeta.MetodoPago}
+                    Total:  ${montoTotal}
+                    DNI: {estudiante.Dni}
 
                     Dirección de facturación
-                    Nicolas mauricio Brites vergara
-                    Avellaneda 788
-                    Adrogue
-                    Buenos Aires
-                    1846
-                    1553266710
-                    nicolas.britesv@gmail.com
-                    Gracias por tu compra.
-                    asd");
+                    {tarjeta.Nombre} {tarjeta.Apellido}
+                    {tarjeta.DirFacturacion}
+                    {tarjeta.CodigoPostal}
+                    {tarjeta.Telefono}
+                    Gracias por tu compra.");
         }
     }
 }
