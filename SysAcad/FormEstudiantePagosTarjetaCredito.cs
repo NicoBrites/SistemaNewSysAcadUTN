@@ -26,5 +26,65 @@ namespace SysAcad
         {
 
         }
+
+        private void textNumeroTarjeta_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textDireccionFacturacion_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textCodigoSeguridad_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxTipoTarjeta_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxFechaCaducidad_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textFechaCaducidad_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textLocalidad_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textNombre_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textApellido_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textDireccionFact2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textTelefono_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textCodigoPostal_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

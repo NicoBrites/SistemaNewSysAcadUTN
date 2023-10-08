@@ -28,41 +28,42 @@
         /// </summary>
         private void InitializeComponent()
         {
-            comboBox1 = new ComboBox();
+            comboBoxTipoTarjeta = new ComboBox();
             metodoPago = new Label();
             numeroTarjeta = new Label();
-            textBox1 = new TextBox();
+            textNumeroTarjeta = new TextBox();
             fechaCaducidad = new Label();
-            comboBox2 = new ComboBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
+            comboBoxFechaCaducidad = new ComboBox();
+            textFechaCaducidad = new TextBox();
+            textCodigoSeguridad = new TextBox();
             codigoSeguridad = new Label();
             informacionFacturacion = new Label();
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
-            textBox6 = new TextBox();
-            label5 = new Label();
-            textBox8 = new TextBox();
-            textBox5 = new TextBox();
-            textBox4 = new TextBox();
-            label4 = new Label();
-            textBox7 = new TextBox();
-            label6 = new Label();
-            textBox9 = new TextBox();
-            label7 = new Label();
-            textBox10 = new TextBox();
-            button1 = new Button();
-            button2 = new Button();
+            nombre = new Label();
+            apellido = new Label();
+            localidad = new Label();
+            textNombre = new TextBox();
+            direccionDeFacturacion = new Label();
+            textApellido = new TextBox();
+            textLocalidad = new TextBox();
+            textDireccionFacturacion = new TextBox();
+            codigoPostal = new Label();
+            direccionDeFacturacion2 = new Label();
+            textDireccionFact2 = new TextBox();
+            telefono = new Label();
+            textTelefono = new TextBox();
+            btnConfirmar = new Button();
+            btnCancelar = new Button();
+            textCodigoPostal = new TextBox();
             SuspendLayout();
             // 
-            // comboBox1
+            // comboBoxTipoTarjeta
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(25, 44);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(121, 23);
-            comboBox1.TabIndex = 0;
+            comboBoxTipoTarjeta.FormattingEnabled = true;
+            comboBoxTipoTarjeta.Location = new Point(25, 44);
+            comboBoxTipoTarjeta.Name = "comboBoxTipoTarjeta";
+            comboBoxTipoTarjeta.Size = new Size(121, 23);
+            comboBoxTipoTarjeta.TabIndex = 0;
+            comboBoxTipoTarjeta.SelectedIndexChanged += comboBoxTipoTarjeta_SelectedIndexChanged;
             // 
             // metodoPago
             // 
@@ -83,12 +84,13 @@
             numeroTarjeta.TabIndex = 2;
             numeroTarjeta.Text = "Numero de tarjeta";
             // 
-            // textBox1
+            // textNumeroTarjeta
             // 
-            textBox1.Location = new Point(25, 109);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
-            textBox1.TabIndex = 3;
+            textNumeroTarjeta.Location = new Point(25, 109);
+            textNumeroTarjeta.Name = "textNumeroTarjeta";
+            textNumeroTarjeta.Size = new Size(100, 23);
+            textNumeroTarjeta.TabIndex = 3;
+            textNumeroTarjeta.TextChanged += textNumeroTarjeta_TextChanged;
             // 
             // fechaCaducidad
             // 
@@ -99,27 +101,30 @@
             fechaCaducidad.TabIndex = 4;
             fechaCaducidad.Text = "Fecha de caducidad";
             // 
-            // comboBox2
+            // comboBoxFechaCaducidad
             // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(174, 109);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(38, 23);
-            comboBox2.TabIndex = 5;
+            comboBoxFechaCaducidad.FormattingEnabled = true;
+            comboBoxFechaCaducidad.Location = new Point(174, 109);
+            comboBoxFechaCaducidad.Name = "comboBoxFechaCaducidad";
+            comboBoxFechaCaducidad.Size = new Size(38, 23);
+            comboBoxFechaCaducidad.TabIndex = 5;
+            comboBoxFechaCaducidad.SelectedIndexChanged += comboBoxFechaCaducidad_SelectedIndexChanged;
             // 
-            // textBox2
+            // textFechaCaducidad
             // 
-            textBox2.Location = new Point(218, 109);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(65, 23);
-            textBox2.TabIndex = 6;
+            textFechaCaducidad.Location = new Point(218, 109);
+            textFechaCaducidad.Name = "textFechaCaducidad";
+            textFechaCaducidad.Size = new Size(65, 23);
+            textFechaCaducidad.TabIndex = 6;
+            textFechaCaducidad.TextChanged += textFechaCaducidad_TextChanged;
             // 
-            // textBox3
+            // textCodigoSeguridad
             // 
-            textBox3.Location = new Point(304, 109);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(39, 23);
-            textBox3.TabIndex = 7;
+            textCodigoSeguridad.Location = new Point(304, 109);
+            textCodigoSeguridad.Name = "textCodigoSeguridad";
+            textCodigoSeguridad.Size = new Size(48, 23);
+            textCodigoSeguridad.TabIndex = 17;
+            textCodigoSeguridad.TextChanged += textCodigoSeguridad_TextChanged;
             // 
             // codigoSeguridad
             // 
@@ -139,168 +144,175 @@
             informacionFacturacion.TabIndex = 9;
             informacionFacturacion.Text = "Informacion de facturacion";
             // 
-            // label1
+            // nombre
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(25, 200);
-            label1.Name = "label1";
-            label1.Size = new Size(38, 15);
-            label1.TabIndex = 10;
-            label1.Text = "label1";
+            nombre.AutoSize = true;
+            nombre.Location = new Point(25, 200);
+            nombre.Name = "nombre";
+            nombre.Size = new Size(51, 15);
+            nombre.TabIndex = 10;
+            nombre.Text = "Nombre";
             // 
-            // label2
+            // apellido
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(138, 200);
-            label2.Name = "label2";
-            label2.Size = new Size(38, 15);
-            label2.TabIndex = 12;
-            label2.Text = "label2";
+            apellido.AutoSize = true;
+            apellido.Location = new Point(138, 200);
+            apellido.Name = "apellido";
+            apellido.Size = new Size(51, 15);
+            apellido.TabIndex = 12;
+            apellido.Text = "Apellido";
             // 
-            // label3
+            // localidad
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(322, 200);
-            label3.Name = "label3";
-            label3.Size = new Size(38, 15);
-            label3.TabIndex = 14;
-            label3.Text = "label3";
-            label3.Click += label3_Click;
+            localidad.AutoSize = true;
+            localidad.Location = new Point(322, 200);
+            localidad.Name = "localidad";
+            localidad.Size = new Size(58, 15);
+            localidad.TabIndex = 14;
+            localidad.Text = "Localidad";
+            localidad.Click += label3_Click;
             // 
-            // textBox6
+            // textNombre
             // 
-            textBox6.Location = new Point(321, 228);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(100, 23);
-            textBox6.TabIndex = 15;
+            textNombre.Location = new Point(25, 227);
+            textNombre.Name = "textNombre";
+            textNombre.Size = new Size(100, 23);
+            textNombre.TabIndex = 15;
+            textNombre.TextChanged += textNombre_TextChanged;
             // 
-            // label5
+            // direccionDeFacturacion
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(321, 263);
-            label5.Name = "label5";
-            label5.Size = new Size(38, 15);
-            label5.TabIndex = 18;
-            label5.Text = "label5";
+            direccionDeFacturacion.AutoSize = true;
+            direccionDeFacturacion.Location = new Point(25, 263);
+            direccionDeFacturacion.Name = "direccionDeFacturacion";
+            direccionDeFacturacion.Size = new Size(136, 15);
+            direccionDeFacturacion.TabIndex = 18;
+            direccionDeFacturacion.Text = "Direccion de facturacion";
             // 
-            // textBox8
+            // textApellido
             // 
-            textBox8.Location = new Point(321, 281);
-            textBox8.Name = "textBox8";
-            textBox8.Size = new Size(100, 23);
-            textBox8.TabIndex = 19;
+            textApellido.Location = new Point(138, 227);
+            textApellido.Name = "textApellido";
+            textApellido.Size = new Size(100, 23);
+            textApellido.TabIndex = 19;
+            textApellido.TextChanged += textApellido_TextChanged;
             // 
-            // textBox5
+            // textLocalidad
             // 
-            textBox5.Location = new Point(138, 228);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(100, 23);
-            textBox5.TabIndex = 13;
+            textLocalidad.Location = new Point(322, 227);
+            textLocalidad.Name = "textLocalidad";
+            textLocalidad.Size = new Size(100, 23);
+            textLocalidad.TabIndex = 13;
+            textLocalidad.TextChanged += textLocalidad_TextChanged;
             // 
-            // textBox4
+            // textDireccionFacturacion
             // 
-            textBox4.Location = new Point(25, 228);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(100, 23);
-            textBox4.TabIndex = 11;
+            textDireccionFacturacion.Location = new Point(25, 281);
+            textDireccionFacturacion.Name = "textDireccionFacturacion";
+            textDireccionFacturacion.Size = new Size(213, 23);
+            textDireccionFacturacion.TabIndex = 11;
+            textDireccionFacturacion.TextChanged += textDireccionFacturacion_TextChanged;
             // 
-            // label4
+            // codigoPostal
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(25, 263);
-            label4.Name = "label4";
-            label4.Size = new Size(38, 15);
-            label4.TabIndex = 16;
-            label4.Text = "label4";
+            codigoPostal.AutoSize = true;
+            codigoPostal.Location = new Point(322, 263);
+            codigoPostal.Name = "codigoPostal";
+            codigoPostal.Size = new Size(81, 15);
+            codigoPostal.TabIndex = 16;
+            codigoPostal.Text = "Codigo postal";
             // 
-            // textBox7
+            // direccionDeFacturacion2
             // 
-            textBox7.Location = new Point(25, 281);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(213, 23);
-            textBox7.TabIndex = 17;
+            direccionDeFacturacion2.AutoSize = true;
+            direccionDeFacturacion2.Location = new Point(25, 321);
+            direccionDeFacturacion2.Name = "direccionDeFacturacion2";
+            direccionDeFacturacion2.Size = new Size(220, 15);
+            direccionDeFacturacion2.TabIndex = 20;
+            direccionDeFacturacion2.Text = "Direccion de facturacion (segunda linea)";
             // 
-            // label6
+            // textDireccionFact2
             // 
-            label6.AutoSize = true;
-            label6.Location = new Point(25, 321);
-            label6.Name = "label6";
-            label6.Size = new Size(38, 15);
-            label6.TabIndex = 20;
-            label6.Text = "label6";
+            textDireccionFact2.Location = new Point(25, 339);
+            textDireccionFact2.Name = "textDireccionFact2";
+            textDireccionFact2.Size = new Size(213, 23);
+            textDireccionFact2.TabIndex = 21;
+            textDireccionFact2.TextChanged += textDireccionFact2_TextChanged;
             // 
-            // textBox9
+            // telefono
             // 
-            textBox9.Location = new Point(25, 339);
-            textBox9.Name = "textBox9";
-            textBox9.Size = new Size(213, 23);
-            textBox9.TabIndex = 21;
+            telefono.AutoSize = true;
+            telefono.Location = new Point(25, 379);
+            telefono.Name = "telefono";
+            telefono.Size = new Size(52, 15);
+            telefono.TabIndex = 22;
+            telefono.Text = "Telefono";
             // 
-            // label7
+            // textTelefono
             // 
-            label7.AutoSize = true;
-            label7.Location = new Point(25, 379);
-            label7.Name = "label7";
-            label7.Size = new Size(38, 15);
-            label7.TabIndex = 22;
-            label7.Text = "label7";
+            textTelefono.Location = new Point(25, 397);
+            textTelefono.Name = "textTelefono";
+            textTelefono.Size = new Size(213, 23);
+            textTelefono.TabIndex = 23;
+            textTelefono.TextChanged += textTelefono_TextChanged;
             // 
-            // textBox10
+            // btnConfirmar
             // 
-            textBox10.Location = new Point(25, 397);
-            textBox10.Name = "textBox10";
-            textBox10.Size = new Size(213, 23);
-            textBox10.TabIndex = 23;
+            btnConfirmar.Location = new Point(321, 339);
+            btnConfirmar.Name = "btnConfirmar";
+            btnConfirmar.Size = new Size(114, 23);
+            btnConfirmar.TabIndex = 24;
+            btnConfirmar.Text = "Confirmar";
+            btnConfirmar.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnCancelar
             // 
-            button1.Location = new Point(321, 339);
-            button1.Name = "button1";
-            button1.Size = new Size(114, 23);
-            button1.TabIndex = 24;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
+            btnCancelar.Location = new Point(321, 397);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(114, 23);
+            btnCancelar.TabIndex = 25;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // textCodigoPostal
             // 
-            button2.Location = new Point(321, 397);
-            button2.Name = "button2";
-            button2.Size = new Size(114, 23);
-            button2.TabIndex = 25;
-            button2.Text = "button2";
-            button2.UseVisualStyleBackColor = true;
+            textCodigoPostal.Location = new Point(321, 281);
+            textCodigoPostal.Name = "textCodigoPostal";
+            textCodigoPostal.Size = new Size(100, 23);
+            textCodigoPostal.TabIndex = 26;
+            textCodigoPostal.TextChanged += textCodigoPostal_TextChanged;
             // 
             // FormEstudiantePagosTarjetaCredito
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(509, 450);
-            Controls.Add(button2);
-            Controls.Add(button1);
-            Controls.Add(textBox10);
-            Controls.Add(label7);
-            Controls.Add(textBox9);
-            Controls.Add(label6);
-            Controls.Add(textBox8);
-            Controls.Add(label5);
-            Controls.Add(textBox7);
-            Controls.Add(label4);
-            Controls.Add(textBox6);
-            Controls.Add(label3);
-            Controls.Add(textBox5);
-            Controls.Add(label2);
-            Controls.Add(textBox4);
-            Controls.Add(label1);
+            Controls.Add(textCodigoPostal);
+            Controls.Add(btnCancelar);
+            Controls.Add(btnConfirmar);
+            Controls.Add(textTelefono);
+            Controls.Add(telefono);
+            Controls.Add(textDireccionFact2);
+            Controls.Add(direccionDeFacturacion2);
+            Controls.Add(textApellido);
+            Controls.Add(direccionDeFacturacion);
+            Controls.Add(codigoPostal);
+            Controls.Add(textNombre);
+            Controls.Add(localidad);
+            Controls.Add(textLocalidad);
+            Controls.Add(apellido);
+            Controls.Add(textDireccionFacturacion);
+            Controls.Add(nombre);
             Controls.Add(informacionFacturacion);
             Controls.Add(codigoSeguridad);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
-            Controls.Add(comboBox2);
+            Controls.Add(textCodigoSeguridad);
+            Controls.Add(textFechaCaducidad);
+            Controls.Add(comboBoxFechaCaducidad);
             Controls.Add(fechaCaducidad);
-            Controls.Add(textBox1);
+            Controls.Add(textNumeroTarjeta);
             Controls.Add(numeroTarjeta);
             Controls.Add(metodoPago);
-            Controls.Add(comboBox1);
+            Controls.Add(comboBoxTipoTarjeta);
             Name = "FormEstudiantePagosTarjetaCredito";
             Text = "FormEstudiantePagosTarjetaCredito";
             ResumeLayout(false);
@@ -309,31 +321,31 @@
 
         #endregion
 
-        private ComboBox comboBox1;
+        private ComboBox comboBoxTipoTarjeta;
         private Label metodoPago;
         private Label numeroTarjeta;
-        private TextBox textBox1;
+        private TextBox textNumeroTarjeta;
         private Label fechaCaducidad;
-        private ComboBox comboBox2;
-        private TextBox textBox2;
-        private TextBox textBox3;
+        private ComboBox comboBoxFechaCaducidad;
+        private TextBox textFechaCaducidad;
         private Label codigoSeguridad;
         private Label informacionFacturacion;
-        private Label label1;
-        private Label label2;
-        private Label label3;
-        private TextBox textBox6;
-        private Label label5;
-        private TextBox textBox8;
-        private TextBox textBox5;
-        private TextBox textBox4;
-        private Label label4;
-        private TextBox textBox7;
-        private Label label6;
-        private TextBox textBox9;
-        private Label label7;
-        private TextBox textBox10;
-        private Button button1;
-        private Button button2;
+        private Label nombre;
+        private Label apellido;
+        private Label localidad;
+        private TextBox textNombre;
+        private Label direccionDeFacturacion;
+        private TextBox textApellido;
+        private TextBox textLocalidad;
+        private TextBox textDireccionFacturacion;
+        private Label codigoPostal;
+        private TextBox textCodigoSeguridad;
+        private Label direccionDeFacturacion2;
+        private TextBox textDireccionFact2;
+        private Label telefono;
+        private TextBox textTelefono;
+        private Button btnConfirmar;
+        private Button btnCancelar;
+        private TextBox textCodigoPostal;
     }
 }
