@@ -31,7 +31,7 @@ namespace SysAcad
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            //int sumaTotal
             bool noCheck = true;
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
@@ -51,6 +51,7 @@ namespace SysAcad
 
                     try
                     {
+
                         //gestorCursos.AgregarAlumnoAlCurso(new EstudianteEnCursos(estudiante.Id, estudiante.Nombre, estudiante.Apellido),
                         //  new CursosEnEstudiantes(nombre, codigo, diaSemana, aula, turno));
 
