@@ -7,11 +7,20 @@ namespace Logic
         private Archivos _gestorArchivos;
         private ValidadorTextosVacios _validadorTextosVacios;
 
+        /// <summary>
+        /// Constructor de la clase GestorEstudiantes.
+        /// </summary>
         public GestorEstudiantes()
         {
              _gestorArchivos = new Archivos();
             _validadorTextosVacios = new ValidadorTextosVacios();
         }
+
+        /// <summary>
+        /// Valida si los datos de un estudiante son válidos.
+        /// </summary>
+        /// <param name="estudiante">Objeto EstudianteAValidar que representa los datos del estudiante a validar.</param>
+        /// <returns>True si los datos son válidos, False si no lo son.</returns>
         public bool ValidadorEstudiante(EstudianteAValidar estudiante)
         {
             int numero;
@@ -36,6 +45,12 @@ namespace Logic
                 return false;
             }
         }
+
+        /// <summary>
+        /// Crea un nuevo estudiante y lo agrega a la lista de estudiantes.
+        /// </summary>
+        /// <param name="nuevEstudiante">Objeto Estudiantes que representa al nuevo estudiante a crear.</param>
+        /// <exception cref="Exception">Se lanza una excepción si el correo electrónico o DNI ya están en uso.</exception>
         public void CrearEstudianteNew(Estudiantes nuevEstudiante)
         {          
             int ultimoId = 0;

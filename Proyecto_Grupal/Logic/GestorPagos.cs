@@ -7,12 +7,22 @@ namespace Logic
         private Archivos _gestorArchivos;
         private ValidadorTextosVacios _validadorTextosVacios;
 
+        /// <summary>
+        /// Constructor de la clase GestorPagos.
+        /// </summary>
         public GestorPagos() 
         {
             _gestorArchivos = new Archivos();
             _validadorTextosVacios = new ValidadorTextosVacios();     
         }
 
+        /// <summary>
+        /// Realiza un pago utilizando una tarjeta de crédito o débito.
+        /// </summary>
+        /// <param name="conceptosDePago">Lista de conceptos de pago que se están abonando.</param>
+        /// <param name="estudiante">Objeto Estudiantes que representa al estudiante que realiza el pago.</param>
+        /// <param name="tarjeta">Objeto TarjetaAValidar que contiene la información de la tarjeta utilizada para el pago.</param>
+        /// <returns>Un comprobante de pago.</returns>
         public string PagarDeudas(List<ConseptoDePago> conseptosDePagos, Estudiantes estudiante, TarjetaAValidar tarjeta)
         {
             int cantidad = 0;
@@ -27,6 +37,10 @@ namespace Logic
             return GenerarComprobanteTarjeta(tarjeta, montoTotal, cantidad, estudiante);
         }
 
+        /// <summary>
+        /// Obtiene una lista de conceptos de pago disponibles.
+        /// </summary>
+        /// <returns>Lista de objetos ConceptoDePago.</returns>
         public List<ConseptoDePago> GetConseptoDePagos()
         {
             List<ConseptoDePago> listaDeudas = new List<ConseptoDePago>
@@ -47,6 +61,11 @@ namespace Logic
             return listaDeudas;
         }
 
+        /// <summary>
+        /// Valida los datos de una tarjeta de crédito o débito.
+        /// </summary>
+        /// <param name="tarjeta">Objeto TarjetaAValidar que contiene la información de la tarjeta a validar.</param>
+        /// <returns>True si los datos son válidos, False si no lo son.</returns>
         public bool ValidadorTarjeta(TarjetaAValidar tarjeta)
         {
             long numeroTarjeta;
@@ -70,9 +89,16 @@ namespace Logic
                 }
             }
             return false;
-
         }
 
+        /// <summary>
+        /// Genera un comprobante de pago con la información proporcionada.
+        /// </summary>
+        /// <param name="tarjeta">Objeto TarjetaAValidar que contiene la información de la tarjeta utilizada para el pago.</param>
+        /// <param name="montoTotal">Monto total del pago.</param>
+        /// <param name="cantidad">Cantidad de conceptos de pago abonados.</param>
+        /// <param name="estudiante">Objeto Estudiantes que representa al estudiante que realiza el pago.</param>
+        /// <returns>Un comprobante de pago en formato de texto.</returns>
         public string GenerarComprobanteTarjeta(TarjetaAValidar tarjeta, int montoTotal, int cantidad, Estudiantes estudiante )
         {
             Random random = new Random();

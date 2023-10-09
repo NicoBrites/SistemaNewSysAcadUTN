@@ -4,15 +4,32 @@ namespace Logic
 {
     public static class MetodosEstaticos
     {
+
+        /// <summary>
+        /// Genera un hash seguro de una contraseña utilizando el algoritmo BCrypt.
+        /// </summary>
+        /// <param name="contraseña">Contraseña a ser hasheada.</param>
+        /// <returns>El hash seguro de la contraseña.</returns>
         public static string GetHash(string contraseña)
         {
             return BCrypt.Net.BCrypt.EnhancedHashPassword(contraseña, 8);
         }
+
+        /// <summary>
+        /// Compara una contraseña con un hash para verificar si coinciden.
+        /// </summary>
+        /// <param name="contraseña">Contraseña a ser comparada.</param>
+        /// <param name="hash">Hash contra el cual se compara la contraseña.</param>
+        /// <returns>True si la contraseña coincide con el hash, False si no coincide.</returns>
         public static bool CompararHash(string contraseña, string hash)
         {
             return BCrypt.Net.BCrypt.EnhancedVerify(contraseña, hash);
 
         }
+
+        /// <summary>
+        /// Crea un administrador inicial en el formato de datos correspondiente si no existe ninguno en la base de datos.
+        /// </summary>
         public static void CrearAdministradorInicialNuevoFormato()
         {
             Archivos archivos = new Archivos();
