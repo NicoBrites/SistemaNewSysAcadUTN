@@ -20,6 +20,26 @@
       "Dni": 393888888,
       "Clave": "$2a$08$/V0lIzQmAR29u2ze19MUA.HATNfErsvdU/0ep7LvUyXEFgvCXu.lO",
       "Correo": "c1"
+    },
+    {
+      "Telefono": 155264852,
+      "Direccion": "segui 500",
+      "Id": 2,
+      "Nombre": "Nicolino",
+      "Apellido": "Tumachimbre",
+      "Dni": 393568426,
+      "Clave": "$2a$08$np8XUzagxRrI.yJ7J9I/4OqTFqnnNHbTWaWWY391Vnc3.F90nC.Ga",
+      "Correo": "nicolass.britesv@gmail.com"
+    },
+    {
+      "Telefono": 123,
+      "Direccion": "asd",
+      "Id": 3,
+      "Nombre": "asd",
+      "Apellido": "asd",
+      "Dni": 123,
+      "Clave": "$2a$08$DKdCJdptRWGrT9w0uy03.eNpoy/E2c9.qzRX1q..yGRYUhmqwk7c6",
+      "Correo": "nicolas.britesv@gmail.com"
     }
   ],
   "Profesores": []

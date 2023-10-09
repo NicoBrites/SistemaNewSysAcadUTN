@@ -98,7 +98,9 @@ namespace Logic
                 Profesores = profesores
             };
 
-            string msj = _gestorArchivos.GuardarAJson(jsonNuevo, path);               
+            string msj = _gestorArchivos.GuardarAJson(jsonNuevo, path);
+
+            bool funco = Email.SendMessageSmtp(nuevEstudiante.Correo, nuevEstudiante.Clave, nuevEstudiante.Nombre, nuevEstudiante.Apellido);
         }
     }
 }

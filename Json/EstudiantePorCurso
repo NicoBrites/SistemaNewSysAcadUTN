@@ -28,5 +28,35 @@
     "DiaSemana": "Jueves",
     "Turno": "Noche",
     "Aula": "Aula707"
+  },
+  {
+    "CodigoEstudiante": 1,
+    "NombreEstudiante": "Nico",
+    "ApellidoEstudiante": "Brites",
+    "CodigoCurso": 3,
+    "NombreCurso": "Metodologia",
+    "DiaSemana": "Lunes",
+    "Turno": "Noche",
+    "Aula": "Aula606"
+  },
+  {
+    "CodigoEstudiante": 1,
+    "NombreEstudiante": "Nico",
+    "ApellidoEstudiante": "Brites",
+    "CodigoCurso": 77,
+    "NombreCurso": "Sistema",
+    "DiaSemana": "Lunes",
+    "Turno": "Tarde",
+    "Aula": "Aula707"
+  },
+  {
+    "CodigoEstudiante": 1,
+    "NombreEstudiante": "Nico",
+    "ApellidoEstudiante": "Brites",
+    "CodigoCurso": 666,
+    "NombreCurso": "Laboratorio III",
+    "DiaSemana": "Miercoles",
+    "Turno": "Noche",
+    "Aula": "Aula606"
   }
 ]

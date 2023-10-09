@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogin));
             btnInicioSesion = new Button();
-            label1 = new Label();
             label2 = new Label();
             label3 = new Label();
             textCorreo = new TextBox();
@@ -39,27 +38,20 @@
             // 
             // btnInicioSesion
             // 
+            btnInicioSesion.BackColor = SystemColors.ControlDarkDark;
             btnInicioSesion.FlatStyle = FlatStyle.Flat;
             btnInicioSesion.Location = new Point(223, 307);
             btnInicioSesion.Name = "btnInicioSesion";
             btnInicioSesion.Size = new Size(355, 106);
             btnInicioSesion.TabIndex = 0;
             btnInicioSesion.Text = "Iniciar Sesion";
-            btnInicioSesion.UseVisualStyleBackColor = true;
+            btnInicioSesion.UseVisualStyleBackColor = false;
             btnInicioSesion.Click += button1_Click;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(312, 54);
-            label1.Name = "label1";
-            label1.Size = new Size(89, 15);
-            label1.TabIndex = 1;
-            label1.Text = "SYS ACAD GOD";
             // 
             // label2
             // 
             label2.AutoSize = true;
+            label2.BackColor = SystemColors.ActiveCaption;
             label2.Location = new Point(223, 139);
             label2.Name = "label2";
             label2.Size = new Size(43, 15);
@@ -69,6 +61,7 @@
             // label3
             // 
             label3.AutoSize = true;
+            label3.BackColor = SystemColors.ActiveCaption;
             label3.Location = new Point(223, 216);
             label3.Name = "label3";
             label3.Size = new Size(67, 15);
@@ -77,6 +70,7 @@
             // 
             // textCorreo
             // 
+            textCorreo.BackColor = SystemColors.WindowFrame;
             textCorreo.Location = new Point(223, 168);
             textCorreo.Name = "textCorreo";
             textCorreo.Size = new Size(100, 23);
@@ -84,6 +78,7 @@
             // 
             // textContraseña
             // 
+            textContraseña.BackColor = SystemColors.WindowFrame;
             textContraseña.Location = new Point(223, 252);
             textContraseña.Name = "textContraseña";
             textContraseña.PasswordChar = '*';
@@ -100,7 +95,6 @@
             Controls.Add(textCorreo);
             Controls.Add(label3);
             Controls.Add(label2);
-            Controls.Add(label1);
             Controls.Add(btnInicioSesion);
             Name = "FormLogin";
             Text = "Sys Acad Godeto";
@@ -111,7 +105,6 @@
         #endregion
 
         private Button btnInicioSesion;
-        private Label label1;
         private Label label2;
         private Label label3;
         private TextBox textCorreo;

@@ -170,7 +170,7 @@
             // comboBoxAulas
             // 
             comboBoxAulas.FormattingEnabled = true;
-            comboBoxAulas.Items.AddRange(new object[] { "Aula505", "Aula606", "Aula707", "Aula808" });
+            comboBoxAulas.Items.AddRange(new object[] { "Aula505", "Aula606", "Aula707", "Aula808", "Virtual" });
             comboBoxAulas.Location = new Point(215, 194);
             comboBoxAulas.Name = "comboBoxAulas";
             comboBoxAulas.Size = new Size(121, 23);

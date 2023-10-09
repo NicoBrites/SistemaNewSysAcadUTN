@@ -180,7 +180,7 @@
             // comboBoxDias
             // 
             comboBoxDias.FormattingEnabled = true;
-            comboBoxDias.Items.AddRange(new object[] { "Lunes", "Martes", "Miercoles", "Jueves", "Viernes" });
+            comboBoxDias.Items.AddRange(new object[] { "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Virtual" });
             comboBoxDias.Location = new Point(261, 141);
             comboBoxDias.Name = "comboBoxDias";
             comboBoxDias.Size = new Size(121, 23);

@@ -8,7 +8,7 @@ namespace Logic
         /// Envia un email de confirmacion al usuario registrado
         /// </summary>
         /// <param name="email"></param>
-        public static string SendMessageSmtp(string email, string contraseña, string nombre, string apellido)
+        public static bool SendMessageSmtp(string email, string contraseña, string nombre, string apellido)
         {
             MimeMessage mail = new MimeMessage();
             mail.From.Add(new MailboxAddress("Sistema Sysacad", "foo@sandbox54c0a3c56b0042a2801b8f6c5cebe46a.mailgun.org"));
@@ -16,7 +16,7 @@ namespace Logic
             mail.Subject = "Registro de alumno";
             mail.Body = new TextPart("plain")
             {
-                Text = @$"Registro exitoso, bienvenido al nuevo SistemaSysacad. Tu contraseña es: {contraseña} y tu usario es tu DNI",
+                Text = @$"Registro exitoso, bienvenido al nuevo SistemaSysacad. Tu contraseña es: {contraseña} y tu usario es tu Correo",
             };
             try
             {
@@ -32,12 +32,11 @@ namespace Logic
                     client.Disconnect(true);
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
-
-                return "El mail registrado no se encuentra valido en mailgun";
+                return false;
             }
-            return "Email entregado";
+            return true;
         }
     }
 }
