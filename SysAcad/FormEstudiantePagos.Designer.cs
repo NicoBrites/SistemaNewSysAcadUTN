@@ -34,14 +34,15 @@ namespace SysAcad
             label1 = new Label();
             btnVolver = new Button();
             dataGridView1 = new DataGridView();
-            conseptoDePagoBindingSource = new BindingSource(components);
-            horariosDataGridBindingSource = new BindingSource(components);
-            btnPagar = new Button();
-            comboBoxMetodoDePago = new ComboBox();
             Check = new DataGridViewCheckBoxColumn();
             conceptoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             descripcionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             montoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            conseptoDePagoBindingSource = new BindingSource(components);
+            horariosDataGridBindingSource = new BindingSource(components);
+            btnPagar = new Button();
+            comboBoxMetodoDePago = new ComboBox();
+            pagoEstudiante = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)conseptoDePagoBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)horariosDataGridBindingSource).BeginInit();
@@ -70,7 +71,7 @@ namespace SysAcad
             // 
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Check, conceptoDataGridViewTextBoxColumn, descripcionDataGridViewTextBoxColumn, montoDataGridViewTextBoxColumn });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Check, conceptoDataGridViewTextBoxColumn, descripcionDataGridViewTextBoxColumn, montoDataGridViewTextBoxColumn, pagoEstudiante });
             dataGridView1.DataSource = conseptoDePagoBindingSource;
             dataGridView1.Location = new Point(12, 66);
             dataGridView1.Name = "dataGridView1";
@@ -78,6 +79,32 @@ namespace SysAcad
             dataGridView1.Size = new Size(635, 150);
             dataGridView1.TabIndex = 2;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            // 
+            // Check
+            // 
+            Check.HeaderText = "Check";
+            Check.Name = "Check";
+            // 
+            // conceptoDataGridViewTextBoxColumn
+            // 
+            conceptoDataGridViewTextBoxColumn.DataPropertyName = "Concepto";
+            conceptoDataGridViewTextBoxColumn.HeaderText = "Concepto";
+            conceptoDataGridViewTextBoxColumn.Name = "conceptoDataGridViewTextBoxColumn";
+            conceptoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // descripcionDataGridViewTextBoxColumn
+            // 
+            descripcionDataGridViewTextBoxColumn.DataPropertyName = "Descripcion";
+            descripcionDataGridViewTextBoxColumn.HeaderText = "Descripcion";
+            descripcionDataGridViewTextBoxColumn.Name = "descripcionDataGridViewTextBoxColumn";
+            descripcionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // montoDataGridViewTextBoxColumn
+            // 
+            montoDataGridViewTextBoxColumn.DataPropertyName = "Monto";
+            montoDataGridViewTextBoxColumn.HeaderText = "Monto";
+            montoDataGridViewTextBoxColumn.Name = "montoDataGridViewTextBoxColumn";
+            montoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // conseptoDePagoBindingSource
             // 
@@ -106,31 +133,10 @@ namespace SysAcad
             comboBoxMetodoDePago.Size = new Size(121, 23);
             comboBoxMetodoDePago.TabIndex = 4;
             // 
-            // Check
+            // pagoEstudiante
             // 
-            Check.HeaderText = "Check";
-            Check.Name = "Check";
-            // 
-            // conceptoDataGridViewTextBoxColumn
-            // 
-            conceptoDataGridViewTextBoxColumn.DataPropertyName = "Concepto";
-            conceptoDataGridViewTextBoxColumn.HeaderText = "Concepto";
-            conceptoDataGridViewTextBoxColumn.Name = "conceptoDataGridViewTextBoxColumn";
-            conceptoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // descripcionDataGridViewTextBoxColumn
-            // 
-            descripcionDataGridViewTextBoxColumn.DataPropertyName = "Descripcion";
-            descripcionDataGridViewTextBoxColumn.HeaderText = "Descripcion";
-            descripcionDataGridViewTextBoxColumn.Name = "descripcionDataGridViewTextBoxColumn";
-            descripcionDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // montoDataGridViewTextBoxColumn
-            // 
-            montoDataGridViewTextBoxColumn.DataPropertyName = "Monto";
-            montoDataGridViewTextBoxColumn.HeaderText = "Monto";
-            montoDataGridViewTextBoxColumn.Name = "montoDataGridViewTextBoxColumn";
-            montoDataGridViewTextBoxColumn.ReadOnly = true;
+            pagoEstudiante.HeaderText = "Pago del estudiante";
+            pagoEstudiante.Name = "pagoEstudiante";
             // 
             // FormEstudiantePagos
             // 
@@ -166,5 +172,6 @@ namespace SysAcad
         private DataGridViewTextBoxColumn conceptoDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn descripcionDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn montoDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn pagoEstudiante;
     }
 }

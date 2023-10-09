@@ -338,5 +338,6 @@ namespace SysAcad
         private Button btnCancelar;
         private TextBox textCodigoPostal;
         public List<ConseptoDePago> listaPagosAPagar;
+        public Estudiantes estudiante;
     }
 }

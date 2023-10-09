@@ -54,3 +54,4 @@ C:\PruebaLabNet\SistemaNewSysAcadUTN\SysAcad\obj\Debug\net6.0-windows\SysAcad.pd
 C:\PruebaLabNet\SistemaNewSysAcadUTN\SysAcad\obj\Debug\net6.0-windows\SysAcad.genruntimeconfig.cache
 C:\PruebaLabNet\SistemaNewSysAcadUTN\SysAcad\obj\Debug\net6.0-windows\ref\SysAcad.dll
 C:\PruebaLabNet\SistemaNewSysAcadUTN\SysAcad\obj\Debug\net6.0-windows\SysAcad.FormEstudiantePagosTarjetaCredito.resources
+C:\PruebaLabNet\SistemaNewSysAcadUTN\SysAcad\obj\Debug\net6.0-windows\SysAcad.FormComprobanteDePago.resources

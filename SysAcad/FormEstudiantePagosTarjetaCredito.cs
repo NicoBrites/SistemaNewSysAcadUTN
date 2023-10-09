@@ -22,9 +22,15 @@ namespace SysAcad
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
             GestorPagos gestorPagos = new GestorPagos();
-            if (gestorPagos.ValidadorTarjeta(GetDatosIngresados()))
+            TarjetaAValidar tarjeta = GetDatosIngresados();
+            if (gestorPagos.ValidadorTarjeta(tarjeta))
             {
-                gestorPagos.PagarDeudas(listaPagosAPagar, );
+                string comprobanteDePago = gestorPagos.PagarDeudas(listaPagosAPagar, estudiante, tarjeta);
+                FormComprobanteDePago formComprobanteDePago = new FormComprobanteDePago();
+                AddOwnedForm(formComprobanteDePago);
+                formComprobanteDePago.comprobanteDePago.Text = comprobanteDePago;
+                formComprobanteDePago.Show();
+               
             }
             else
             {

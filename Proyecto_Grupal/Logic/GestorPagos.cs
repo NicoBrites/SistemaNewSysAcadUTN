@@ -19,9 +19,18 @@ namespace Logic
             _validadorTextosVacios = new ValidadorTextosVacios();     
         }
 
-        public void PagarDeudas(List<ConseptoDePago> conseptosDePagos)
+        public string PagarDeudas(List<ConseptoDePago> conseptosDePagos, Estudiantes estudiante, TarjetaAValidar tarjeta)
         {
-            
+            int cantidad = 0;
+            int montoTotal = 0;
+
+            foreach(ConseptoDePago conseptoDePago in conseptosDePagos)
+            {
+                montoTotal += conseptoDePago.Monto;
+                cantidad++;
+            }
+
+            return GenerarComprobanteTarjeta(tarjeta, montoTotal, cantidad, estudiante);
 
         }
 
@@ -67,32 +76,31 @@ namespace Logic
 
         }
 
-        public string GenerarComprobante(TarjetaAValidar tarjeta, int montoTotal, int cantidad, Estudiantes estudiante )
+        public string GenerarComprobanteTarjeta(TarjetaAValidar tarjeta, int montoTotal, int cantidad, Estudiantes estudiante )
         {
             Random random = new Random();
             int numeroPedido = random.Next( 0, 10000 );
             DateTime fechaActual = DateTime.Now;
 
             return new string(@$"
+Gracias por tu compra
+Hola {estudiante.Nombre} {estudiante.Apellido},
 
-                    Gracias por tu compra
-                    Hola {estudiante.Nombre} {estudiante.Apellido},
+Hemos recibido correctamente tu pedido #{numeroPedido} y lo estamos procesando:
 
-                    Hemos recibido correctamente tu pedido #{numeroPedido} y lo estamos procesando:
+[Pedido #{numeroPedido}] ({fechaActual})
+Producto                  Cantidad    Precio
+CUOTAS 2023     {cantidad}   ${montoTotal}
+Método de pago: {tarjeta.MetodoPago}
+Total:  ${montoTotal}
+DNI: {estudiante.Dni}
 
-                    [Pedido #{numeroPedido}] ({fechaActual})
-                    Producto                  Cantidad    Precio
-                    TUP / TUSI CUOTA 2023     {cantidad}   ${montoTotal}
-                    Método de pago: {tarjeta.MetodoPago}
-                    Total:  ${montoTotal}
-                    DNI: {estudiante.Dni}
-
-                    Dirección de facturación
-                    {tarjeta.Nombre} {tarjeta.Apellido}
-                    {tarjeta.DirFacturacion}
-                    {tarjeta.CodigoPostal}
-                    {tarjeta.Telefono}
-                    Gracias por tu compra.");
+Dirección de facturación
+{tarjeta.Nombre} {tarjeta.Apellido}
+{tarjeta.DirFacturacion}
+{tarjeta.CodigoPostal}
+{tarjeta.Telefono}
+Gracias por tu compra.");
         }
     }
 }
