@@ -55,8 +55,7 @@ namespace Logic
                     Console.WriteLine($"Error al leer el archivo JSON: {ex.Message}");
                 }
             }
-
-            throw new Exception("No existe el archivo en el path ingresado");
+            throw new ExcepcionPropia("No existe el archivo en el path ingresado");
         }
 
         /// <summary>
@@ -79,7 +78,7 @@ namespace Logic
                     Console.WriteLine($"Error al leer el archivo JSON: {ex.Message}");
                 }
             }
-            throw new Exception("No existe el archivo en el path ingresado");
+            throw new ExcepcionPropia("No existe el archivo en el path ingresado");
         }
     }
 }

@@ -30,6 +30,10 @@ namespace Logic
                 List<Cursos> listaCursos = _gestorArchivos.LeerJson<Cursos>(path);
                 return listaCursos;
             }
+            catch (ExcepcionPropia ex)
+            {
+                throw new ExcepcionPropia(ex.Message);
+            }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
@@ -48,6 +52,10 @@ namespace Logic
                 string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\EstudiantePorCurso";
                 List<EstudiantePorCurso> listaEstudiantesCursos = _gestorArchivos.LeerJson<EstudiantePorCurso>(path);
                 return listaEstudiantesCursos;
+            }
+            catch (ExcepcionPropia ex)
+            {
+                throw new ExcepcionPropia(ex.Message);
             }
             catch (Exception ex)
             {
@@ -113,12 +121,9 @@ namespace Logic
 
                 listaCursos.Add(crearCurso);
                 string msj = _gestorArchivos.GuardarAJson(listaCursos, path);
-
             }
-            catch (Exception e)
+            catch (ExcepcionPropia )
             {
-                if (e.Message == "No existe el archivo en el path ingresado")
-                {
                     string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\Cursos";
 
                     List<Cursos> listaNueva = new List<Cursos>();
@@ -126,12 +131,11 @@ namespace Logic
                     Cursos crearCurso = new Cursos(curso.Nombre, curso.Codigo, curso.Descripcion,
                     curso.CupoMaximo, curso.DiaSemana, curso.Aula, curso.Turno);
                     listaNueva.Add(crearCurso);
-                    string msj = _gestorArchivos.GuardarAJson(listaNueva, path);
-                }
-                else
-                {
-                    throw new Exception(e.Message);
-                }
+                    string msj = _gestorArchivos.GuardarAJson(listaNueva, path);       
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
             }
 
         }
@@ -233,7 +237,7 @@ namespace Logic
         {
             try
             {
-                List <EstudiantePorCurso> listaEstudiantesPorCurso = GetEstudiantePorCurso();
+                List<EstudiantePorCurso> listaEstudiantesPorCurso = GetEstudiantePorCurso();
                 List<Cursos> listaCursos = GetCursos();
 
                 int cupoActual = DevolverCupoActual(cursoEnQueSeAgrega.Codigo, listaEstudiantesPorCurso);
@@ -242,7 +246,7 @@ namespace Logic
                 {
                     if (cursos.Codigo == cursoEnQueSeAgrega.Codigo)
                     {
-                        if (ValidadorAgregarAlumnosACurso(cursos, listaEstudiantesPorCurso, estudiante, cursoEnQueSeAgrega, cupoActual)) 
+                        if (ValidadorAgregarAlumnosACurso(cursos, listaEstudiantesPorCurso, estudiante, cursoEnQueSeAgrega, cupoActual))
                         {
                             string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\EstudiantePorCurso";
                             listaEstudiantesPorCurso.Add(new EstudiantePorCurso(estudiante.Id, estudiante.Nombre, estudiante.Apellido, cursoEnQueSeAgrega.Codigo,
@@ -250,27 +254,23 @@ namespace Logic
                             _gestorArchivos.GuardarAJson(listaEstudiantesPorCurso, path);
                             break;
                         }
-                    }                  
-                }             
+                    }
+                }
             }
-            catch(Exception ex) 
+            catch (ExcepcionPropia)
             {
-                if (ex.Message == "No existe el archivo en el path ingresado")
-                {
-                    string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\EstudiantePorCurso";
+                string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\EstudiantePorCurso";
 
-                    List<EstudiantePorCurso> listaEstudiantesPorCurso = new List<EstudiantePorCurso>();
+                List<EstudiantePorCurso> listaEstudiantesPorCurso = new List<EstudiantePorCurso>();
 
-                    listaEstudiantesPorCurso.Add(new EstudiantePorCurso(estudiante.Id, estudiante.Nombre, estudiante.Apellido, cursoEnQueSeAgrega.Codigo,
-                              cursoEnQueSeAgrega.Nombre, cursoEnQueSeAgrega.DiaSemana, cursoEnQueSeAgrega.Turno, cursoEnQueSeAgrega.Aula));
-                    _gestorArchivos.GuardarAJson(listaEstudiantesPorCurso, path);
-                }
-                else
-                {
-                    throw new Exception(ex.Message);
-                }
-
+                listaEstudiantesPorCurso.Add(new EstudiantePorCurso(estudiante.Id, estudiante.Nombre, estudiante.Apellido, cursoEnQueSeAgrega.Codigo,
+                            cursoEnQueSeAgrega.Nombre, cursoEnQueSeAgrega.DiaSemana, cursoEnQueSeAgrega.Turno, cursoEnQueSeAgrega.Aula));
+                _gestorArchivos.GuardarAJson(listaEstudiantesPorCurso, path);
             }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }          
         }
 
         /// <summary>

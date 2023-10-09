@@ -4,7 +4,6 @@ namespace Logic
 {
     public class GestorPagos
     {
-        private Archivos _gestorArchivos;
         private ValidadorTextosVacios _validadorTextosVacios;
 
         /// <summary>
@@ -12,7 +11,6 @@ namespace Logic
         /// </summary>
         public GestorPagos() 
         {
-            _gestorArchivos = new Archivos();
             _validadorTextosVacios = new ValidadorTextosVacios();     
         }
 
@@ -41,7 +39,7 @@ namespace Logic
         /// Obtiene una lista de conceptos de pago disponibles.
         /// </summary>
         /// <returns>Lista de objetos ConceptoDePago.</returns>
-        public List<ConseptoDePago> GetConseptoDePagos()
+        public List<ConseptoDePago> ConseptoDePagos()
         {
             List<ConseptoDePago> listaDeudas = new List<ConseptoDePago>
             {
@@ -125,6 +123,10 @@ Dirección de facturación
 {tarjeta.Telefono}
 Gracias por tu compra.");
         }
+        /// <summary>
+        /// Genera un comprobante de pago.
+        /// </summary>
+        /// <returns>Un comprobante de pago en formato de texto.</returns>
         public string GenerarCuentaTransferencia()
         {
             return @"Alias: TIENDA.TECNOLOGICA.NACIONAL
