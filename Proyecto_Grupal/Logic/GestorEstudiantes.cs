@@ -11,24 +11,10 @@ namespace Logic
         private Archivos _gestorArchivos;
         private ValidadorTextosVacios _validadorTextosVacios;
 
-
         public GestorEstudiantes()
         {
              _gestorArchivos = new Archivos();
             _validadorTextosVacios = new ValidadorTextosVacios();
-        }
-        public List<Estudiantes> GetEstudiantes()
-        {
-            try
-            {
-                string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\Usuarios";
-                List<Estudiantes> _listaEstudiantes = _gestorArchivos.LeerJson<Estudiantes>(path);
-                return _listaEstudiantes;
-            }
-            catch (Exception ex) 
-            {
-                throw new Exception(ex.Message);
-            }
         }
         public bool ValidadorEstudiante(EstudianteAValidar estudiante)
         {
@@ -92,34 +78,5 @@ namespace Logic
 
             string msj = _gestorArchivos.GuardarAJson(jsonNuevo, path);               
         }
-
-        /*
-        public void AgregarCursoAEstudiante(int id, CursosEnEstudiantes curso)
-        {
-            string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\Usuariosss";
-            JsonUsuariosFormato json = _gestorArchivos.GestorJsonNew(path);
-
-            List<Administrador> administradores = json.Administradores;
-            List<Estudiantes> estudiantes = json.Estudiantes;
-            List<Profesores> profesores = json.Profesores;
-
-            foreach (Estudiantes estudiante in estudiantes)
-            {
-                if (estudiante.Id == id)
-                {
-                    estudiante._cursos.Add(curso);
-                }
-            }
-
-            JsonUsuariosFormato jsonNuevo = new JsonUsuariosFormato
-            {
-                Administradores = administradores,
-                Estudiantes = estudiantes,
-                Profesores = profesores
-            };
-
-            string msj = _gestorArchivos.GuardarAJson(jsonNuevo, path);
-
-        }*/
     }
 }

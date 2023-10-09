@@ -31,7 +31,6 @@ namespace Logic
             }
 
             return GenerarComprobanteTarjeta(tarjeta, montoTotal, cantidad, estudiante);
-
         }
 
         public List<ConseptoDePago> GetConseptoDePagos()

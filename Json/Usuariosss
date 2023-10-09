@@ -40,6 +40,16 @@
       "Dni": 465,
       "Clave": "cla123",
       "Correo": "cris123"
+    },
+    {
+      "Telefono": 153366989,
+      "Direccion": "asd 45",
+      "Id": 4,
+      "Nombre": "Serchi",
+      "Apellido": "God",
+      "Dni": 135,
+      "Clave": "c1",
+      "Correo": "c1"
     }
   ],
   "Profesores": []
