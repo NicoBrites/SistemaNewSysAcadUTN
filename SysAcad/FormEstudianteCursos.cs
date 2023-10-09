@@ -31,7 +31,7 @@ namespace SysAcad
         private void button1_Click(object sender, EventArgs e)
         {
             GestorCursos gestorCursos = new GestorCursos();
-            int contador = -1;   
+            int contador = -1;
             bool noCheck = true;
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {

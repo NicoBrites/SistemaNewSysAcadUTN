@@ -229,7 +229,7 @@
             Controls.Add(BtnModificar);
             Controls.Add(label1);
             Name = "FormCursosModificar";
-            Text = "FormCursosModificar";
+            Text = "Cursos";
             Load += FormCursosModificar_Load;
             ResumeLayout(false);
             PerformLayout();

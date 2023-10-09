@@ -39,18 +39,18 @@
             DiaSemana = new DataGridViewTextBoxColumn();
             Aula = new DataGridViewTextBoxColumn();
             Turno = new DataGridViewTextBoxColumn();
+            cursosBindingSource4 = new BindingSource(components);
             cursosBindingSource3 = new BindingSource(components);
             cursosBindingSource2 = new BindingSource(components);
             cursosBindingSource = new BindingSource(components);
             btnVolver = new Button();
             cursosBindingSource1 = new BindingSource(components);
-            cursosBindingSource4 = new BindingSource(components);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)cursosBindingSource4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)cursosBindingSource3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)cursosBindingSource2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)cursosBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)cursosBindingSource1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)cursosBindingSource4).BeginInit();
             SuspendLayout();
             // 
             // btnAgregarCursos
@@ -131,6 +131,10 @@
             Turno.HeaderText = "Turno";
             Turno.Name = "Turno";
             // 
+            // cursosBindingSource4
+            // 
+            cursosBindingSource4.DataSource = typeof(Entidades.Cursos);
+            // 
             // cursosBindingSource3
             // 
             cursosBindingSource3.DataSource = typeof(Entidades.Cursos);
@@ -157,10 +161,6 @@
             // 
             cursosBindingSource1.DataSource = typeof(Entidades.Cursos);
             // 
-            // cursosBindingSource4
-            // 
-            cursosBindingSource4.DataSource = typeof(Entidades.Cursos);
-            // 
             // FormCursos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -172,14 +172,14 @@
             Controls.Add(btnModificarCursos);
             Controls.Add(btnAgregarCursos);
             Name = "FormCursos";
-            Text = "FormCursos";
+            Text = "Cursos";
             Load += FormCursos_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)cursosBindingSource4).EndInit();
             ((System.ComponentModel.ISupportInitialize)cursosBindingSource3).EndInit();
             ((System.ComponentModel.ISupportInitialize)cursosBindingSource2).EndInit();
             ((System.ComponentModel.ISupportInitialize)cursosBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)cursosBindingSource1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)cursosBindingSource4).EndInit();
             ResumeLayout(false);
         }
 

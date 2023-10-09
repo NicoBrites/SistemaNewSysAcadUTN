@@ -22,7 +22,7 @@ namespace SysAcad
                 formComprobanteDePago.comprobanteDePago.Text = comprobanteDePago;
                 formComprobanteDePago.estudiante = estudiante;
                 formComprobanteDePago.Show();
-               
+
             }
             else
             {
@@ -44,11 +44,11 @@ namespace SysAcad
             string fechaCaducidadAño = textFechaCaducidad.Text;
             string codigoSeguridad = textCodigoSeguridad.Text;
             string nombre = textNombre.Text;
-            string apellid = textApellido.Text; 
-            string localidad = textLocalidad.Text;  
+            string apellid = textApellido.Text;
+            string localidad = textLocalidad.Text;
             string dirFacturacion = textDireccionFacturacion.Text;
             string dirFacturacion2 = textDireccionFact2.Text;
-            string codigoPostal = textCodigoPostal.Text;    
+            string codigoPostal = textCodigoPostal.Text;
             string telefono = textTelefono.Text;
             return new TarjetaAValidar(tipoTarjeta, numeroTarjeta, fechaCaducidadDia, fechaCaducidadAño, codigoSeguridad,
                 nombre, apellid, localidad, dirFacturacion, codigoPostal, telefono, dirFacturacion2);

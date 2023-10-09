@@ -82,7 +82,7 @@ namespace SysAcad
                             listaPagosAPagar.Clear();
                             break;
 
-                        }                 
+                        }
                     }
                 }
                 if (comboBoxMetodoDePago.Text == "Tarjeta de credito" || comboBoxMetodoDePago.Text == "Tarjeta de debito")
@@ -126,7 +126,7 @@ namespace SysAcad
             {
                 MessageBox.Show($"No selecciono ningun metodo de pago.",
                                         "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }                   
+            }
         }
     }
 }

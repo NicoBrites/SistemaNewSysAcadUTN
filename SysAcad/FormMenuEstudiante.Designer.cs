@@ -66,7 +66,7 @@ namespace SysAcad
             btnRealizarPagos.UseVisualStyleBackColor = true;
             btnRealizarPagos.Click += btnRealizarPagos_Click;
             // 
-            // button1
+            // btnCerrarSesion
             // 
             btnCerrarSesion.Location = new Point(289, 398);
             btnCerrarSesion.Name = "btnCerrarSesion";
@@ -86,7 +86,7 @@ namespace SysAcad
             Controls.Add(btnConsultarHorario);
             Controls.Add(btnInscripcionCurso);
             Name = "FormMenuEstudiante";
-            Text = "FormMenuEstudiante";
+            Text = "Menu Estudiante";
             ResumeLayout(false);
         }
 

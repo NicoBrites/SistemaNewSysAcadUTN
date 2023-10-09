@@ -128,7 +128,7 @@ namespace SysAcad
             Controls.Add(dataGridView1);
             Controls.Add(label1);
             Name = "FormEstudianteHorarios";
-            Text = "FormEstudianteHorarios";
+            Text = "Horarios";
             Load += FormEstudianteHorarios_Load;
             ((System.ComponentModel.ISupportInitialize)horariosDataGridBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();

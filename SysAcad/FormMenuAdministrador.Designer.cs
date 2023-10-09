@@ -2,12 +2,12 @@
 
 namespace SysAcad
 {
-    public partial class FormMenuAdministrador 
+    public partial class FormMenuAdministrador
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -74,7 +74,7 @@ namespace SysAcad
             Controls.Add(btnGestionarCursos);
             Controls.Add(btnRegistrarEstudiante);
             Name = "FormMenuAdministrador";
-            Text = "FormMenuAdministrador";
+            Text = "Menu Administrador";
             ResumeLayout(false);
         }
 

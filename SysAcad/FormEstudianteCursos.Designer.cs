@@ -152,7 +152,7 @@ namespace SysAcad
             Controls.Add(btnInscribirse);
             Controls.Add(dataGridView1);
             Name = "FormEstudianteCursos";
-            Text = "FormEstudianteCursos";
+            Text = "Cursos";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)cursosBindingSource3).EndInit();
             ((System.ComponentModel.ISupportInitialize)cursosBindingSource2).EndInit();

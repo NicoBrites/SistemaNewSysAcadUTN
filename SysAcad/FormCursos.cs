@@ -108,7 +108,7 @@ namespace SysAcad
 
         private void btnVolver_Click_1(object sender, EventArgs e)
         {
-            FormMenuAdministrador formMenuAdministrador= new FormMenuAdministrador();
+            FormMenuAdministrador formMenuAdministrador = new FormMenuAdministrador();
 
             this.Hide();
 

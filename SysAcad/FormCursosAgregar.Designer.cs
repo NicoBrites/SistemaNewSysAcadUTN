@@ -207,7 +207,7 @@
             Controls.Add(BtnAgregar);
             Controls.Add(label1);
             Name = "FormCursosAgregar";
-            Text = "FormCursosAgregar";
+            Text = "Cursos ";
             Load += FormCursosAgregar_Load;
             ResumeLayout(false);
             PerformLayout();
