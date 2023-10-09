@@ -76,11 +76,13 @@ namespace SysAcad
                             {
                                 MessageBox.Show($"No ingreso un monto mayor a lo que debe pagar en {concepto}",
                                                  "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                break;
                             }
                         }
                         else
                         {
                             MessageBox.Show($"No ingreso un valor en el pago de estudiante","Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            break;
                         }
                         // Ejemplo: Obtener el valor de una celda en una columna específica (por ejemplo, la columna "Nombre"):                     
                     }

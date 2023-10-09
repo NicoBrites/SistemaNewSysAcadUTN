@@ -93,7 +93,7 @@ Hemos recibido correctamente tu pedido #{numeroPedido} y lo estamos procesando:
 
 [Pedido #{numeroPedido}] ({fechaActual})
 Producto                  Cantidad    Precio
-CUOTAS 2023     {cantidad}   ${montoTotal}
+CUOTAS 2023          {cantidad}          ${montoTotal}
 Método de pago: {tarjeta.MetodoPago}
 Total:  ${montoTotal}
 DNI: {estudiante.Dni}
