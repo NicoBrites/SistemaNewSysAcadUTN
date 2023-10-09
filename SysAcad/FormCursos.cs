@@ -95,7 +95,7 @@ namespace SysAcad
                     cursos.EliminarCurso(cursoParseado);
                     FormCursos formCursos = new FormCursos();
 
-                    this.Close();
+                    this.Hide();
 
                     formCursos.Show();
                 }
@@ -110,7 +110,7 @@ namespace SysAcad
         {
             FormMenuAdministrador formMenuAdministrador= new FormMenuAdministrador();
 
-            this.Close();
+            this.Hide();
 
             formMenuAdministrador.Show();
         }

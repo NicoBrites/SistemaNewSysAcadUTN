@@ -25,29 +25,39 @@ namespace SysAcad
 
             formEstudianteCursos.estudiante = estudiante;
             formEstudianteCursos.Show();
-            this.Hide();
+            this.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             GestorCursos gestorEstudiantes = new GestorCursos();
-            if (gestorEstudiantes.ValidarHorariosEstudiante(estudiante.Id))
+            try
             {
-                FormEstudianteHorarios formEstudianteHorarios = new();
-                AddOwnedForm(formEstudianteHorarios);
+                if (gestorEstudiantes.ValidarHorariosEstudiante(estudiante.Id))
+                {
+                    FormEstudianteHorarios formEstudianteHorarios = new();
+                    AddOwnedForm(formEstudianteHorarios);
 
-                formEstudianteHorarios.estudiante = estudiante;
-                formEstudianteHorarios.Show();
-                this.Hide();
+                    formEstudianteHorarios.estudiante = estudiante;
+                    formEstudianteHorarios.Show();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("El estudiante no esta anotado a ninguna materia", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
-            else
+            catch (Exception ex) 
             {
-                MessageBox.Show("El estudiante no esta anotado a ninguna materia", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (ex.Message == "No existe el archivo en el path ingresado")
+                {
+                    MessageBox.Show("No hay ningun estudiante anotado a ningun curso", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }           
             }
-        }
-
-        private void FormMenuEstudiante_Load(object sender, EventArgs e)
-        {
 
         }
 
@@ -58,7 +68,7 @@ namespace SysAcad
 
             formEstudiantePagos.estudiante = estudiante;
             formEstudiantePagos.Show();
-            this.Hide();
+            this.Close();
         }
     }
 }

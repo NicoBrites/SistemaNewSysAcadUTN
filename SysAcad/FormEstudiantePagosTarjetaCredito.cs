@@ -1,14 +1,5 @@
 ﻿using Entidades;
 using Logic;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace SysAcad
 {
@@ -29,6 +20,7 @@ namespace SysAcad
                 FormComprobanteDePago formComprobanteDePago = new FormComprobanteDePago();
                 AddOwnedForm(formComprobanteDePago);
                 formComprobanteDePago.comprobanteDePago.Text = comprobanteDePago;
+                formComprobanteDePago.estudiante = estudiante;
                 formComprobanteDePago.Show();
                
             }
@@ -41,7 +33,7 @@ namespace SysAcad
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
         }
 
         private TarjetaAValidar GetDatosIngresados()

@@ -1,4 +1,6 @@
-﻿namespace SysAcad
+﻿using Entidades;
+
+namespace SysAcad
 {
     partial class FormComprobanteDePago
     {
@@ -40,7 +42,6 @@
             comprobanteDePago.Size = new Size(38, 15);
             comprobanteDePago.TabIndex = 0;
             comprobanteDePago.Text = "label1";
-            comprobanteDePago.Click += label1_Click;
             // 
             // button1
             // 
@@ -68,6 +69,7 @@
         #endregion
 
         public Label comprobanteDePago;
+        public Estudiantes estudiante;
         private Button btnVolver;
     }
 }

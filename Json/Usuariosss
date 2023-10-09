@@ -10,6 +10,17 @@
       "Correo": "correo123"
     }
   ],
-  "Estudiantes": [],
+  "Estudiantes": [
+    {
+      "Telefono": 15532667,
+      "Direccion": "Segui 500",
+      "Id": 1,
+      "Nombre": "Nico",
+      "Apellido": "Brites",
+      "Dni": 393888888,
+      "Clave": "$2a$08$/V0lIzQmAR29u2ze19MUA.HATNfErsvdU/0ep7LvUyXEFgvCXu.lO",
+      "Correo": "c1"
+    }
+  ],
   "Profesores": []
 }

@@ -1,0 +1,32 @@
+[
+  {
+    "CodigoEstudiante": 1,
+    "NombreEstudiante": "Nico",
+    "ApellidoEstudiante": "Brites",
+    "CodigoCurso": 1,
+    "NombreCurso": "Matematica",
+    "DiaSemana": "Martes",
+    "Turno": "Noche",
+    "Aula": "Aula707"
+  },
+  {
+    "CodigoEstudiante": 1,
+    "NombreEstudiante": "Nico",
+    "ApellidoEstudiante": "Brites",
+    "CodigoCurso": 4,
+    "NombreCurso": "Literatura",
+    "DiaSemana": "Martes",
+    "Turno": "Tarde",
+    "Aula": "Aula707"
+  },
+  {
+    "CodigoEstudiante": 1,
+    "NombreEstudiante": "Nico",
+    "ApellidoEstudiante": "Brites",
+    "CodigoCurso": 15,
+    "NombreCurso": "Filosofia 2",
+    "DiaSemana": "Jueves",
+    "Turno": "Noche",
+    "Aula": "Aula707"
+  }
+]

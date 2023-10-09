@@ -17,14 +17,13 @@ namespace SysAcad
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             FormEstudiantePagos formEstudiantePagos = new FormEstudiantePagos();
+            AddOwnedForm(formEstudiantePagos);
+
+            formEstudiantePagos.estudiante = estudiante;
+
             formEstudiantePagos.Show();
             this.Hide();
         }

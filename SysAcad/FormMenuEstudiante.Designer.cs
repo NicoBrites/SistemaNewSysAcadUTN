@@ -75,7 +75,6 @@ namespace SysAcad
             Controls.Add(btnInscripcionCurso);
             Name = "FormMenuEstudiante";
             Text = "FormMenuEstudiante";
-            Load += FormMenuEstudiante_Load;
             ResumeLayout(false);
         }
 
