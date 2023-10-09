@@ -48,7 +48,7 @@
             // 
             // btnCrearEstudiante
             // 
-            btnCrearEstudiante.Location = new Point(124, 528);
+            btnCrearEstudiante.Location = new Point(139, 383);
             btnCrearEstudiante.Name = "btnCrearEstudiante";
             btnCrearEstudiante.Size = new Size(196, 26);
             btnCrearEstudiante.TabIndex = 0;
@@ -59,7 +59,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(184, 47);
+            label1.Location = new Point(183, 47);
             label1.Name = "label1";
             label1.Size = new Size(51, 15);
             label1.TabIndex = 1;
@@ -68,7 +68,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(191, 114);
+            label2.Location = new Point(183, 91);
             label2.Name = "label2";
             label2.Size = new Size(51, 15);
             label2.TabIndex = 2;
@@ -77,7 +77,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(183, 180);
+            label3.Location = new Point(183, 135);
             label3.Name = "label3";
             label3.Size = new Size(25, 15);
             label3.TabIndex = 3;
@@ -86,7 +86,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(191, 263);
+            label4.Location = new Point(183, 179);
             label4.Name = "label4";
             label4.Size = new Size(57, 15);
             label4.TabIndex = 4;
@@ -95,7 +95,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(192, 345);
+            label5.Location = new Point(183, 223);
             label5.Name = "label5";
             label5.Size = new Size(114, 15);
             label5.TabIndex = 5;
@@ -104,7 +104,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(191, 415);
+            label6.Location = new Point(183, 267);
             label6.Name = "label6";
             label6.Size = new Size(105, 15);
             label6.TabIndex = 6;
@@ -113,7 +113,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(192, 468);
+            label7.Location = new Point(183, 311);
             label7.Name = "label7";
             label7.Size = new Size(128, 15);
             label7.TabIndex = 7;
@@ -128,49 +128,49 @@
             // 
             // textApellido
             // 
-            textApellido.Location = new Point(183, 132);
+            textApellido.Location = new Point(183, 109);
             textApellido.Name = "textApellido";
             textApellido.Size = new Size(100, 23);
             textApellido.TabIndex = 9;
             // 
             // textDni
             // 
-            textDni.Location = new Point(183, 215);
+            textDni.Location = new Point(183, 153);
             textDni.Name = "textDni";
             textDni.Size = new Size(100, 23);
             textDni.TabIndex = 10;
             // 
             // textDireccion
             // 
-            textDireccion.Location = new Point(183, 291);
+            textDireccion.Location = new Point(183, 197);
             textDireccion.Name = "textDireccion";
             textDireccion.Size = new Size(100, 23);
             textDireccion.TabIndex = 11;
             // 
             // textNumTelefono
             // 
-            textNumTelefono.Location = new Point(183, 373);
+            textNumTelefono.Location = new Point(183, 241);
             textNumTelefono.Name = "textNumTelefono";
             textNumTelefono.Size = new Size(100, 23);
             textNumTelefono.TabIndex = 12;
             // 
             // textCorreoElectronico
             // 
-            textCorreoElectronico.Location = new Point(191, 433);
+            textCorreoElectronico.Location = new Point(183, 285);
             textCorreoElectronico.Name = "textCorreoElectronico";
             textCorreoElectronico.Size = new Size(100, 23);
             textCorreoElectronico.TabIndex = 13;
             // 
             // textContraseñaProv
             // 
-            textContraseñaProv.Location = new Point(191, 486);
+            textContraseñaProv.Location = new Point(183, 329);
             textContraseñaProv.Name = "textContraseñaProv";
             textContraseñaProv.Size = new Size(100, 23);
             textContraseñaProv.TabIndex = 14;
             // 
             // btnVolver
             // 
-            btnVolver.Location = new Point(379, 528);
+            btnVolver.Location = new Point(198, 415);
             btnVolver.Name = "btnVolver";
             btnVolver.Size = new Size(75, 23);
             btnVolver.TabIndex = 15;
@@ -182,7 +182,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 583);
+            ClientSize = new Size(480, 477);
             Controls.Add(btnVolver);
             Controls.Add(textContraseñaProv);
             Controls.Add(textCorreoElectronico);

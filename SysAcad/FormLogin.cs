@@ -26,7 +26,7 @@ namespace SysAcad
                 {
                     FormMenuAdministrador formMenuAdministrador = new();
                     formMenuAdministrador.Show();
-                    this.Close();
+                    this.Hide();
                 }
                 else if (usuario is Estudiantes estudiante)
                 {

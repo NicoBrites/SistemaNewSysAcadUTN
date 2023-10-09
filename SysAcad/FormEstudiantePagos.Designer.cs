@@ -38,11 +38,12 @@ namespace SysAcad
             conceptoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             descripcionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             montoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            pagoEstudiante = new DataGridViewTextBoxColumn();
             conseptoDePagoBindingSource = new BindingSource(components);
             horariosDataGridBindingSource = new BindingSource(components);
             btnPagar = new Button();
             comboBoxMetodoDePago = new ComboBox();
-            pagoEstudiante = new DataGridViewTextBoxColumn();
+            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)conseptoDePagoBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)horariosDataGridBindingSource).BeginInit();
@@ -59,7 +60,7 @@ namespace SysAcad
             // 
             // btnVolver
             // 
-            btnVolver.Location = new Point(476, 376);
+            btnVolver.Location = new Point(181, 376);
             btnVolver.Name = "btnVolver";
             btnVolver.Size = new Size(75, 23);
             btnVolver.TabIndex = 1;
@@ -106,6 +107,11 @@ namespace SysAcad
             montoDataGridViewTextBoxColumn.Name = "montoDataGridViewTextBoxColumn";
             montoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // pagoEstudiante
+            // 
+            pagoEstudiante.HeaderText = "Pago del estudiante";
+            pagoEstudiante.Name = "pagoEstudiante";
+            // 
             // conseptoDePagoBindingSource
             // 
             conseptoDePagoBindingSource.DataSource = typeof(ConseptoDePago);
@@ -116,7 +122,7 @@ namespace SysAcad
             // 
             // btnPagar
             // 
-            btnPagar.Location = new Point(258, 376);
+            btnPagar.Location = new Point(49, 376);
             btnPagar.Name = "btnPagar";
             btnPagar.Size = new Size(75, 23);
             btnPagar.TabIndex = 3;
@@ -127,22 +133,28 @@ namespace SysAcad
             // comboBoxMetodoDePago
             // 
             comboBoxMetodoDePago.FormattingEnabled = true;
-            comboBoxMetodoDePago.Items.AddRange(new object[] { "Tarjeta de credito", "Tarjeta de debito" }); // "Transferencia bancaria"
+            comboBoxMetodoDePago.Items.AddRange(new object[] { "Tarjeta de credito", "Tarjeta de debito" });
             comboBoxMetodoDePago.Location = new Point(49, 271);
             comboBoxMetodoDePago.Name = "comboBoxMetodoDePago";
             comboBoxMetodoDePago.Size = new Size(121, 23);
             comboBoxMetodoDePago.TabIndex = 4;
+            comboBoxMetodoDePago.SelectedIndexChanged += comboBoxMetodoDePago_SelectedIndexChanged;
             // 
-            // pagoEstudiante
+            // label2
             // 
-            pagoEstudiante.HeaderText = "Pago del estudiante";
-            pagoEstudiante.Name = "pagoEstudiante";
+            label2.AutoSize = true;
+            label2.Location = new Point(411, 244);
+            label2.Name = "label2";
+            label2.Size = new Size(38, 15);
+            label2.TabIndex = 5;
+            label2.Text = "label2";
             // 
             // FormEstudiantePagos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label2);
             Controls.Add(comboBoxMetodoDePago);
             Controls.Add(btnPagar);
             Controls.Add(dataGridView1);
@@ -173,5 +185,6 @@ namespace SysAcad
         private DataGridViewTextBoxColumn descripcionDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn montoDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn pagoEstudiante;
+        private Label label2;
     }
 }

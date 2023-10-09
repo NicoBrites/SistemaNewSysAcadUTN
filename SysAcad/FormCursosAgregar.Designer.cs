@@ -49,7 +49,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(277, 35);
+            label1.Location = new Point(63, 54);
             label1.Name = "label1";
             label1.Size = new Size(51, 15);
             label1.TabIndex = 0;
@@ -57,7 +57,7 @@
             // 
             // BtnAgregar
             // 
-            BtnAgregar.Location = new Point(238, 504);
+            BtnAgregar.Location = new Point(71, 307);
             BtnAgregar.Name = "BtnAgregar";
             BtnAgregar.Size = new Size(75, 23);
             BtnAgregar.TabIndex = 1;
@@ -67,7 +67,7 @@
             // 
             // textNombre
             // 
-            textNombre.Location = new Point(267, 76);
+            textNombre.Location = new Point(63, 82);
             textNombre.Name = "textNombre";
             textNombre.Size = new Size(100, 23);
             textNombre.TabIndex = 2;
@@ -75,7 +75,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(267, 137);
+            label2.Location = new Point(63, 108);
             label2.Name = "label2";
             label2.Size = new Size(46, 15);
             label2.TabIndex = 3;
@@ -84,7 +84,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(277, 256);
+            label3.Location = new Point(63, 164);
             label3.Name = "label3";
             label3.Size = new Size(69, 15);
             label3.TabIndex = 4;
@@ -93,7 +93,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(277, 325);
+            label4.Location = new Point(63, 234);
             label4.Name = "label4";
             label4.Size = new Size(83, 15);
             label4.TabIndex = 5;
@@ -101,28 +101,28 @@
             // 
             // textCodigo
             // 
-            textCodigo.Location = new Point(267, 180);
+            textCodigo.Location = new Point(63, 129);
             textCodigo.Name = "textCodigo";
             textCodigo.Size = new Size(100, 23);
             textCodigo.TabIndex = 6;
             // 
             // textDescripcion
             // 
-            textDescripcion.Location = new Point(267, 274);
+            textDescripcion.Location = new Point(63, 194);
             textDescripcion.Name = "textDescripcion";
             textDescripcion.Size = new Size(100, 23);
             textDescripcion.TabIndex = 7;
             // 
             // textCupoMaximo
             // 
-            textCupoMaximo.Location = new Point(267, 366);
+            textCupoMaximo.Location = new Point(63, 256);
             textCupoMaximo.Name = "textCupoMaximo";
             textCupoMaximo.Size = new Size(100, 23);
             textCupoMaximo.TabIndex = 8;
             // 
             // BtnVolver
             // 
-            BtnVolver.Location = new Point(377, 504);
+            BtnVolver.Location = new Point(227, 307);
             BtnVolver.Name = "BtnVolver";
             BtnVolver.Size = new Size(75, 23);
             BtnVolver.TabIndex = 9;
@@ -133,7 +133,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(439, 137);
+            label5.Location = new Point(215, 108);
             label5.Name = "label5";
             label5.Size = new Size(96, 15);
             label5.TabIndex = 10;
@@ -142,7 +142,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(471, 256);
+            label6.Location = new Point(215, 164);
             label6.Name = "label6";
             label6.Size = new Size(31, 15);
             label6.TabIndex = 11;
@@ -151,7 +151,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(471, 325);
+            label7.Location = new Point(215, 234);
             label7.Name = "label7";
             label7.Size = new Size(38, 15);
             label7.TabIndex = 12;
@@ -161,7 +161,7 @@
             // 
             comboBoxDias.FormattingEnabled = true;
             comboBoxDias.Items.AddRange(new object[] { "Lunes", "Martes", "Miercoles", "Jueves", "Viernes" });
-            comboBoxDias.Location = new Point(439, 180);
+            comboBoxDias.Location = new Point(215, 129);
             comboBoxDias.Name = "comboBoxDias";
             comboBoxDias.Size = new Size(121, 23);
             comboBoxDias.TabIndex = 16;
@@ -171,7 +171,7 @@
             // 
             comboBoxAulas.FormattingEnabled = true;
             comboBoxAulas.Items.AddRange(new object[] { "Aula505", "Aula606", "Aula707", "Aula808" });
-            comboBoxAulas.Location = new Point(439, 274);
+            comboBoxAulas.Location = new Point(215, 194);
             comboBoxAulas.Name = "comboBoxAulas";
             comboBoxAulas.Size = new Size(121, 23);
             comboBoxAulas.TabIndex = 17;
@@ -180,7 +180,7 @@
             // 
             comboBoxTurnos.FormattingEnabled = true;
             comboBoxTurnos.Items.AddRange(new object[] { "Mañana", "Tarde", "Noche" });
-            comboBoxTurnos.Location = new Point(439, 366);
+            comboBoxTurnos.Location = new Point(215, 256);
             comboBoxTurnos.Name = "comboBoxTurnos";
             comboBoxTurnos.Size = new Size(121, 23);
             comboBoxTurnos.TabIndex = 18;
@@ -189,7 +189,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 661);
+            ClientSize = new Size(395, 377);
             Controls.Add(comboBoxTurnos);
             Controls.Add(comboBoxAulas);
             Controls.Add(comboBoxDias);

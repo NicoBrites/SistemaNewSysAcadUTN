@@ -25,7 +25,7 @@ namespace SysAcad
 
             formEstudianteCursos.estudiante = estudiante;
             formEstudianteCursos.Show();
-            this.Close();
+            this.Hide();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -40,14 +40,14 @@ namespace SysAcad
 
                     formEstudianteHorarios.estudiante = estudiante;
                     formEstudianteHorarios.Show();
-                    this.Close();
+                    this.Hide();
                 }
                 else
                 {
                     MessageBox.Show("El estudiante no esta anotado a ninguna materia", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 if (ex.Message == "No existe el archivo en el path ingresado")
                 {
@@ -56,7 +56,7 @@ namespace SysAcad
                 else
                 {
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }           
+                }
             }
 
         }
@@ -68,7 +68,14 @@ namespace SysAcad
 
             formEstudiantePagos.estudiante = estudiante;
             formEstudiantePagos.Show();
-            this.Close();
+            this.Hide();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            FormLogin formlogin = new();
+            formlogin.Show();
+            this.Hide();
         }
     }
 }

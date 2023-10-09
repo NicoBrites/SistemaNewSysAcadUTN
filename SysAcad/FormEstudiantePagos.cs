@@ -45,14 +45,14 @@ namespace SysAcad
             else
             {
                 bool noCheck = true;
-                bool todoFunciona = false;
+                bool fallo = false;
                 List<ConseptoDePago> listaPagosAPagar = new List<ConseptoDePago> { };
                 GestorPagos gestorPagos = new GestorPagos();
                 ValidadorTextosVacios validadorTextosVacios = new ValidadorTextosVacios();
-                
+
 
                 foreach (DataGridViewRow row in dataGridView1.Rows)
-                {                  
+                {
                     if (row.Cells["Check"].Value != null && (bool)row.Cells["Check"].Value == true)
                     {
                         noCheck = false;
@@ -70,19 +70,21 @@ namespace SysAcad
                             if (validadorTextosVacios.ValidarTextosVacios(pagoEstudiante) && int.Parse(pagoEstudiante) >= monto)
                             {
                                 listaPagosAPagar.Add(new ConseptoDePago(concepto, descripcion, monto));
-                                todoFunciona = true;
                             }
                             else
                             {
                                 MessageBox.Show($"No ingreso un monto mayor a lo que debe pagar en {concepto}",
                                                  "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                fallo = true;
                                 break;
                             }
                         }
                         else
                         {
-                            MessageBox.Show($"No ingreso un valor en el pago de estudiante","Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show($"No ingreso un valor en el pago de estudiante", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            fallo = true;
                             break;
+                           
                         }
                         // Ejemplo: Obtener el valor de una celda en una columna específica (por ejemplo, la columna "Nombre"):                     
                     }
@@ -96,7 +98,7 @@ namespace SysAcad
                     }
                     else
                     {
-                        if (todoFunciona)
+                        if (fallo == false && listaPagosAPagar.Count > 0 )
                         {
                             FormEstudiantePagosTarjetaCredito formEstudiantePagosTarjetaCredito = new FormEstudiantePagosTarjetaCredito();
                             AddOwnedForm(formEstudiantePagosTarjetaCredito);
@@ -116,8 +118,8 @@ namespace SysAcad
                     }
                     else
                     {
-                        if (todoFunciona)
-                        {/*
+                        if (fallo == false && listaPagosAPagar.Count > 0)
+                        { /*
                             FormEstudiantePagosTarjetaCredito formEstudiantePagosTarjetaCredito = new FormEstudiantePagosTarjetaCredito();
                             AddOwnedForm(formEstudiantePagosTarjetaCredito);
 
@@ -132,18 +134,15 @@ namespace SysAcad
                     MessageBox.Show($"No selecciono ningun metodo de pago.",
                                             "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                
+
             }
         }
-
-        private void FormEstudiantePagos_Load(object sender, EventArgs e)
+        private void comboBoxMetodoDePago_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (comboBoxMetodoDePago.Text == "Transferencia Bancaria")
+            {
 
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
+            }
         }
     }
 }

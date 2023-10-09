@@ -55,9 +55,9 @@
             // 
             // button1
             // 
-            button1.Location = new Point(378, 415);
+            button1.Location = new Point(308, 415);
             button1.Name = "button1";
-            button1.Size = new Size(75, 23);
+            button1.Size = new Size(206, 23);
             button1.TabIndex = 2;
             button1.Text = "Cerrar Sesion";
             button1.UseVisualStyleBackColor = true;

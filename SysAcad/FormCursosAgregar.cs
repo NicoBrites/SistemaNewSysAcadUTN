@@ -39,10 +39,10 @@ namespace SysAcad
                 {
                     int nuevoCodigoValidado = int.Parse(nuevoCodigo);
                     int nuevoCupoMaxValidado = int.Parse(nuevoCupoMax);
-                        /*
-                    DiasSemana enumDiaSemana = (DiasSemana)Enum.Parse(typeof(DiasSemana), diaSemana);
-                    Aulas enumAulas = (Aulas)Enum.Parse(typeof(Aulas), aula);
-                    Turnos enumTurno = (Turnos)Enum.Parse(typeof(Turnos), turno);*/
+                    /*
+                DiasSemana enumDiaSemana = (DiasSemana)Enum.Parse(typeof(DiasSemana), diaSemana);
+                Aulas enumAulas = (Aulas)Enum.Parse(typeof(Aulas), aula);
+                Turnos enumTurno = (Turnos)Enum.Parse(typeof(Turnos), turno);*/
 
                     cursos.CrearCurso(new Cursos(nuevoNombre, nuevoCodigoValidado, nuevoDescripcion, nuevoCupoMaxValidado, diaSemana, aula, turno));
 
