@@ -1,8 +1,4 @@
 ﻿using Entidades;
-using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.Design;
-using System.IO;
 
 namespace Logic
 {
@@ -10,13 +6,11 @@ namespace Logic
     {
         private Archivos _gestorArchivos;
         private ValidadorTextosVacios _validadorTextosVacios;
-        private Hash _hash;
 
         public GestorEstudiantes()
         {
              _gestorArchivos = new Archivos();
             _validadorTextosVacios = new ValidadorTextosVacios();
-            _hash = new Hash();
         }
         public bool ValidadorEstudiante(EstudianteAValidar estudiante)
         {

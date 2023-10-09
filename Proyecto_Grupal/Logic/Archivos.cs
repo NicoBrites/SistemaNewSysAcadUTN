@@ -1,7 +1,5 @@
 ﻿using Entidades;
-//using System.Text.Json;
 using Newtonsoft.Json;
-using System.IO;
 
 
 namespace Logic
@@ -61,7 +59,6 @@ namespace Logic
             }
 
             throw new Exception("No existe el archivo en el path ingresado");
-
         }
     }
 }
