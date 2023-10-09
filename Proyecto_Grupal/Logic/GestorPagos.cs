@@ -69,7 +69,8 @@ namespace Logic
             long numeroTarjeta;
             int numero;
             int fechaAño;
-            if (long.TryParse(tarjeta.NumeroTarjeta, out numeroTarjeta) && int.TryParse(tarjeta.CodigoSeguridad, out numero) &&
+            int codigoSeguridad;
+            if (long.TryParse(tarjeta.NumeroTarjeta, out numeroTarjeta) && int.TryParse(tarjeta.CodigoSeguridad, out codigoSeguridad) &&
                 int.TryParse(tarjeta.CodigoPostal, out numero) && int.TryParse(tarjeta.Telefono, out numero)&&
                 int.TryParse(tarjeta.FechaAñoCaducidad, out fechaAño))
             {
@@ -80,7 +81,9 @@ namespace Logic
                     _validadorTextosVacios.ValidarTextosVacios(tarjeta.Localidad) &&
                     _validadorTextosVacios.ValidarTextosVacios(tarjeta.DirFacturacion))
                 {
-                    if (fechaAño>= DateTime.Today.Year && fechaAño < 2048)
+                    if (fechaAño>= DateTime.Today.Year && fechaAño < 2048
+                        && numeroTarjeta.ToString().Length == 16 &&
+                        codigoSeguridad.ToString().Length == 3)
                     {
                         return true;
                     }

@@ -19,7 +19,7 @@ namespace SysAcad
             InitializeComponent();
             GestorPagos gestorPagos = new GestorPagos();
 
-            List<ConseptoDePago> conseptosDePagos = gestorPagos.GetConseptoDePagos();
+            List<ConseptoDePago> conseptosDePagos = gestorPagos.ConseptoDePagos();
             dataGridView1.DataSource = conseptosDePagos;
 
         }

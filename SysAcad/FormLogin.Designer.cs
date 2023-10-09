@@ -39,6 +39,7 @@
             // 
             // btnInicioSesion
             // 
+            btnInicioSesion.FlatStyle = FlatStyle.Flat;
             btnInicioSesion.Location = new Point(223, 307);
             btnInicioSesion.Name = "btnInicioSesion";
             btnInicioSesion.Size = new Size(355, 106);
@@ -46,12 +47,11 @@
             btnInicioSesion.Text = "Iniciar Sesion";
             btnInicioSesion.UseVisualStyleBackColor = true;
             btnInicioSesion.Click += button1_Click;
-            btnInicioSesion.FlatStyle = FlatStyle.Flat;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(292, 16);
+            label1.Location = new Point(312, 54);
             label1.Name = "label1";
             label1.Size = new Size(89, 15);
             label1.TabIndex = 1;
@@ -60,7 +60,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(222, 93);
+            label2.Location = new Point(223, 139);
             label2.Name = "label2";
             label2.Size = new Size(43, 15);
             label2.TabIndex = 2;
@@ -69,7 +69,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(219, 192);
+            label3.Location = new Point(223, 216);
             label3.Name = "label3";
             label3.Size = new Size(67, 15);
             label3.TabIndex = 3;
@@ -77,7 +77,7 @@
             // 
             // textCorreo
             // 
-            textCorreo.Location = new Point(222, 121);
+            textCorreo.Location = new Point(223, 168);
             textCorreo.Name = "textCorreo";
             textCorreo.Size = new Size(100, 23);
             textCorreo.TabIndex = 4;

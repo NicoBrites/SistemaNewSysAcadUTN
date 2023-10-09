@@ -1,4 +1,5 @@
 ﻿using Entidades;
+using System.Text.RegularExpressions;
 
 namespace Logic
 {
@@ -30,20 +31,30 @@ namespace Logic
                 if (_validadorTextosVacios.ValidarTextosVacios(estudiante.Nombre) &&
                _validadorTextosVacios.ValidarTextosVacios(estudiante.Apellido) &&
                _validadorTextosVacios.ValidarTextosVacios(estudiante.Direccion) &&
-               _validadorTextosVacios.ValidarTextosVacios(estudiante.Correo) &&
                _validadorTextosVacios.ValidarTextosVacios(estudiante.Clave))
                 {
-                    return true;
+                    if (ValidarEmail(estudiante.Correo))
+                    {
+                        return true;
+                    }
                 }
-                else
-                {
-                    return false;
-                }
-            }
-            else
-            { 
-                return false;
-            }
+            }            
+            return false;           
+        }
+
+        /// <summary>
+        /// Valida una dirección de correo electrónico con Regex.
+        /// </summary>
+        /// <param name="email">La dirección de correo electrónico a validar.</param>
+        /// <returns>
+        ///   <c>true</c> si la dirección de correo electrónico es válida según el formato básico;
+        ///   de lo contrario, <c>false</c>.
+        /// </returns>
+        public bool ValidarEmail(string email)
+        {
+            string pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+
+            return Regex.IsMatch(email, pattern);
         }
 
         /// <summary>

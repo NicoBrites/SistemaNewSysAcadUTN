@@ -55,7 +55,6 @@ namespace Logic
                     string claveConHash = GetHash("clave123");
                     Administrador administrador = new Administrador(1, "Hernesto", "Guevara", 1, claveConHash, "correo123");
 
-
                     JsonUsuariosFormato jsonNuevo = new JsonUsuariosFormato
                     {
                         Administradores = new List<Administrador> { },

@@ -82,15 +82,9 @@ namespace Logic
                 {
                     return true;
                 }
-                else
-                {
-                    return false;
-                }
             }
-            else
-            {
-                return false;
-            }
+            return false;
+            
         }
 
         /// <summary>
