@@ -174,7 +174,9 @@ namespace Logic
                 if (estudiantePorCurso.DiaSemana == cursoEnQueSeAgrega.DiaSemana && estudiantePorCurso.Turno == cursoEnQueSeAgrega.Turno &&
                     estudiantePorCurso.CodigoEstudiante == estudiante.Id )
                 {
-                    throw new Exception($"El estudiante ya esta inscripto en un curso ese dia en ese horario");
+                    throw new Exception($"El estudiante no se pudo inscribir a {cursoEnQueSeAgrega.Nombre}" +
+                        $" porque ya esta inscripto en un curso el " +
+                        $"{estudiantePorCurso.DiaSemana} en el turno {estudiantePorCurso.Turno}");
                 }
 
             }

@@ -28,5 +28,15 @@
     "DiaSemana": "Jueves",
     "Turno": "Tarde",
     "Aula": "Aula707"
+  },
+  {
+    "CodigoEstudiante": 4,
+    "NombreEstudiante": "Serchi",
+    "ApellidoEstudiante": "God",
+    "CodigoCurso": 15,
+    "NombreCurso": "Filosofia 2",
+    "DiaSemana": "Jueves",
+    "Turno": "Noche",
+    "Aula": "Aula707"
   }
 ]
