@@ -127,7 +127,7 @@ namespace SysAcad
             // comboBoxMetodoDePago
             // 
             comboBoxMetodoDePago.FormattingEnabled = true;
-            comboBoxMetodoDePago.Items.AddRange(new object[] { "Tarjeta de credito", "Tarjeta de debito", "Transferencia bancaria" });
+            comboBoxMetodoDePago.Items.AddRange(new object[] { "Tarjeta de credito", "Tarjeta de debito" }); // "Transferencia bancaria"
             comboBoxMetodoDePago.Location = new Point(49, 271);
             comboBoxMetodoDePago.Name = "comboBoxMetodoDePago";
             comboBoxMetodoDePago.Size = new Size(121, 23);

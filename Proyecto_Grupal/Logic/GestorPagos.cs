@@ -58,18 +58,22 @@ namespace Logic
         {
             long numeroTarjeta;
             int numero;
+            int fechaAño;
             if (long.TryParse(tarjeta.NumeroTarjeta, out numeroTarjeta) && int.TryParse(tarjeta.CodigoSeguridad, out numero) &&
-                int.TryParse(tarjeta.CodigoPostal, out numero) && int.TryParse(tarjeta.Telefono, out numero))
+                int.TryParse(tarjeta.CodigoPostal, out numero) && int.TryParse(tarjeta.Telefono, out numero)&&
+                int.TryParse(tarjeta.FechaAñoCaducidad, out fechaAño))
             {
                 if (_validadorTextosVacios.ValidarTextosVacios(tarjeta.MetodoPago) &&
                     _validadorTextosVacios.ValidarTextosVacios(tarjeta.FechaDiaCaducidad) &&
-                    _validadorTextosVacios.ValidarTextosVacios(tarjeta.FechaAñoCaducidad) &&
                     _validadorTextosVacios.ValidarTextosVacios(tarjeta.Nombre) &&
                     _validadorTextosVacios.ValidarTextosVacios(tarjeta.Apellido) &&
                     _validadorTextosVacios.ValidarTextosVacios(tarjeta.Localidad) &&
                     _validadorTextosVacios.ValidarTextosVacios(tarjeta.DirFacturacion))
                 {
-                    return true;
+                    if (fechaAño>= DateTime.Today.Year && fechaAño < 2048)
+                    {
+                        return true;
+                    }
                 }
             }
             return false;

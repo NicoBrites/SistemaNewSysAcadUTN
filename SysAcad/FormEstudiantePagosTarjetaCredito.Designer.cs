@@ -61,6 +61,7 @@ namespace SysAcad
             // comboBoxTipoTarjeta
             // 
             comboBoxTipoTarjeta.FormattingEnabled = true;
+            comboBoxTipoTarjeta.Items.AddRange(new object[] { "Visa", "Master Card" });
             comboBoxTipoTarjeta.Location = new Point(25, 44);
             comboBoxTipoTarjeta.Name = "comboBoxTipoTarjeta";
             comboBoxTipoTarjeta.Size = new Size(121, 23);
@@ -103,6 +104,8 @@ namespace SysAcad
             // comboBoxFechaCaducidad
             // 
             comboBoxFechaCaducidad.FormattingEnabled = true;
+            comboBoxFechaCaducidad.Items.AddRange(new object[] { "01", "02", "03", "04", "05",
+                "06", "07", "08", "09", "10", "11", "12"});
             comboBoxFechaCaducidad.Location = new Point(174, 109);
             comboBoxFechaCaducidad.Name = "comboBoxFechaCaducidad";
             comboBoxFechaCaducidad.Size = new Size(38, 23);

@@ -8,7 +8,6 @@ namespace Logic
 {
     public class GestorEstudiantes
     {
-
         private Archivos _gestorArchivos;
         private ValidadorTextosVacios _validadorTextosVacios;
 
@@ -18,7 +17,6 @@ namespace Logic
              _gestorArchivos = new Archivos();
             _validadorTextosVacios = new ValidadorTextosVacios();
         }
-
         public List<Estudiantes> GetEstudiantes()
         {
             try

@@ -71,11 +71,8 @@ namespace Logic
                 return false;
             }
         }
-
-
         public void CrearCurso(Cursos curso)
         {
-
             try
             {
                 List<Cursos> listaCursos = GetCursos();
@@ -90,7 +87,6 @@ namespace Logic
                         throw new Exception("Ya hay un curso ese dia en ese turno en ese aula");
                     }
                 }
-
                 string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\Cursos";
 
                 Cursos crearCurso = new Cursos(curso.Nombre, curso.Codigo, curso.Descripcion,
@@ -143,11 +139,9 @@ namespace Logic
                     cursos.Turno = curso.Turno;
                 }
             }
-
             string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\Cursos";
 
             string msj = _gestorArchivos.GuardarAJson(listaCursos, path);
-
         }
 
         public void EliminarCurso(int codigo)
@@ -185,7 +179,6 @@ namespace Logic
             }
             return true;         
         }
-
         public void AgregarAlumnoAlCurso(EstudianteEnCursos estudiante, CursosEnEstudiantes cursoEnQueSeAgrega)
         {
             try
@@ -229,7 +222,6 @@ namespace Logic
 
             }
         }
-
         public int DevolverCupoActual(int idCurso, List<EstudiantePorCurso> listaEstudiantePorCursos)
         {
             int contadorCupoActual = 0;
@@ -241,7 +233,6 @@ namespace Logic
                 }
             }
             return contadorCupoActual;
-
         }
 
         public bool ValidarHorariosEstudiante(int estudianteId)
