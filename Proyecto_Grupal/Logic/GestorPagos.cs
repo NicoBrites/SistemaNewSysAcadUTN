@@ -125,5 +125,18 @@ Dirección de facturación
 {tarjeta.Telefono}
 Gracias por tu compra.");
         }
+        public string GenerarCuentaTransferencia()
+        {
+            return @"Alias: TIENDA.TECNOLOGICA.NACIONAL
+Banco: Citibank
+Tipo de cuenta: Cuenta corriente en pesos
+Numero de cuenta: 0/908725/452
+CBU: 0168888810000090458621556
+A nombre de: Hernesto Hugo UTN
+CUIT: 30-4561231-8";
+        }
+
     }
+
+   
 }

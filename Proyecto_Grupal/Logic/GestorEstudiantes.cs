@@ -77,7 +77,7 @@ namespace Logic
             string claveConHash = MetodosEstaticos.GetHash(nuevEstudiante.Clave);
             Estudiantes nuevoEstudiante = new Estudiantes(ultimoId, nuevEstudiante.Nombre, nuevEstudiante.Apellido, nuevEstudiante.Dni,
                 nuevEstudiante.Telefono, nuevEstudiante.Direccion, claveConHash, nuevEstudiante.Correo);
-
+         
             estudiantes.Add(nuevoEstudiante);
 
             JsonUsuariosFormato jsonNuevo = new JsonUsuariosFormato

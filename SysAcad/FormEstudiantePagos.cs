@@ -37,19 +37,14 @@ namespace SysAcad
         private void button1_Click(object sender, EventArgs e)
         {
 
-            if (comboBoxMetodoDePago.Text == "")
-            {
-                MessageBox.Show($"No selecciono el metodopago.",
-                                              "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
+            if (comboBoxMetodoDePago.Text == "Tarjeta de credito" || comboBoxMetodoDePago.Text == "Tarjeta de debito" ||
+                comboBoxMetodoDePago.Text == "Transferencia bancaria")
             {
                 bool noCheck = true;
                 bool fallo = false;
                 List<ConseptoDePago> listaPagosAPagar = new List<ConseptoDePago> { };
                 GestorPagos gestorPagos = new GestorPagos();
                 ValidadorTextosVacios validadorTextosVacios = new ValidadorTextosVacios();
-
 
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
@@ -74,8 +69,9 @@ namespace SysAcad
                             else
                             {
                                 MessageBox.Show($"No ingreso un monto mayor a lo que debe pagar en {concepto}",
-                                                 "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 fallo = true;
+                                listaPagosAPagar.Clear();
                                 break;
                             }
                         }
@@ -83,10 +79,10 @@ namespace SysAcad
                         {
                             MessageBox.Show($"No ingreso un valor en el pago de estudiante", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             fallo = true;
+                            listaPagosAPagar.Clear();
                             break;
-                           
-                        }
-                        // Ejemplo: Obtener el valor de una celda en una columna específica (por ejemplo, la columna "Nombre"):                     
+
+                        }                 
                     }
                 }
                 if (comboBoxMetodoDePago.Text == "Tarjeta de credito" || comboBoxMetodoDePago.Text == "Tarjeta de debito")
@@ -94,11 +90,11 @@ namespace SysAcad
                     if (noCheck)
                     {
                         MessageBox.Show($"No selecciono ningun concepto de pago.",
-                                                  "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        if (fallo == false && listaPagosAPagar.Count > 0 )
+                        if (fallo == false && listaPagosAPagar.Count > 0)
                         {
                             FormEstudiantePagosTarjetaCredito formEstudiantePagosTarjetaCredito = new FormEstudiantePagosTarjetaCredito();
                             AddOwnedForm(formEstudiantePagosTarjetaCredito);
@@ -109,40 +105,28 @@ namespace SysAcad
                         }
                     }
                 }
-                else if (comboBoxMetodoDePago.Text == "Transferencia bancaria")
+                else
                 {
                     if (noCheck)
                     {
                         MessageBox.Show($"No selecciono ningun concepto de pago.",
-                                                  "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
                         if (fallo == false && listaPagosAPagar.Count > 0)
-                        { /*
-                            FormEstudiantePagosTarjetaCredito formEstudiantePagosTarjetaCredito = new FormEstudiantePagosTarjetaCredito();
-                            AddOwnedForm(formEstudiantePagosTarjetaCredito);
-
-                            formEstudiantePagosTarjetaCredito.listaPagosAPagar = listaPagosAPagar;
-                            formEstudiantePagosTarjetaCredito.estudiante = estudiante;
-                            formEstudiantePagosTarjetaCredito.Show();*/
+                        {
+                            label2.Text = gestorPagos.GenerarCuentaTransferencia();
+                            label2.Visible = true;
                         }
                     }
                 }
-                else
-                {
-                    MessageBox.Show($"No selecciono ningun metodo de pago.",
-                                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-
             }
-        }
-        private void comboBoxMetodoDePago_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (comboBoxMetodoDePago.Text == "Transferencia Bancaria")
+            else
             {
-
-            }
+                MessageBox.Show($"No selecciono ningun metodo de pago.",
+                                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }                   
         }
     }
 }

@@ -79,7 +79,6 @@ namespace SysAcad
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(635, 150);
             dataGridView1.TabIndex = 2;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // Check
             // 
@@ -133,12 +132,11 @@ namespace SysAcad
             // comboBoxMetodoDePago
             // 
             comboBoxMetodoDePago.FormattingEnabled = true;
-            comboBoxMetodoDePago.Items.AddRange(new object[] { "Tarjeta de credito", "Tarjeta de debito" });
+            comboBoxMetodoDePago.Items.AddRange(new object[] { "Tarjeta de credito", "Tarjeta de debito", "Transferencia bancaria" });
             comboBoxMetodoDePago.Location = new Point(49, 271);
             comboBoxMetodoDePago.Name = "comboBoxMetodoDePago";
             comboBoxMetodoDePago.Size = new Size(121, 23);
             comboBoxMetodoDePago.TabIndex = 4;
-            comboBoxMetodoDePago.SelectedIndexChanged += comboBoxMetodoDePago_SelectedIndexChanged;
             // 
             // label2
             // 
@@ -148,6 +146,7 @@ namespace SysAcad
             label2.Size = new Size(38, 15);
             label2.TabIndex = 5;
             label2.Text = "label2";
+            label2.Visible = false;
             // 
             // FormEstudiantePagos
             // 
@@ -162,7 +161,6 @@ namespace SysAcad
             Controls.Add(label1);
             Name = "FormEstudiantePagos";
             Text = "FormEstudiantePagos";
-            Load += FormEstudiantePagos_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)conseptoDePagoBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)horariosDataGridBindingSource).EndInit();
