@@ -1,42 +1,32 @@
 [
   {
-    "CodigoEstudiante": 3,
-    "NombreEstudiante": "Cris",
-    "ApellidoEstudiante": "Nomeacuerdo",
-    "CodigoCurso": 2,
-    "NombreCurso": "Ingles",
-    "DiaSemana": "Martes",
-    "Turno": "Aula606",
-    "Aula": "Noche"
-  },
-  {
-    "CodigoEstudiante": 3,
-    "NombreEstudiante": "Cris",
-    "ApellidoEstudiante": "Nomeacuerdo",
+    "CodigoEstudiante": 4,
+    "NombreEstudiante": "Serchi",
+    "ApellidoEstudiante": "God",
     "CodigoCurso": 1,
     "NombreCurso": "Matematica",
-    "DiaSemana": "Jueves",
-    "Turno": "Aula707",
-    "Aula": "Tarde"
+    "DiaSemana": "Martes",
+    "Turno": "Noche",
+    "Aula": "Aula707"
   },
   {
-    "CodigoEstudiante": 3,
-    "NombreEstudiante": "Cris",
-    "ApellidoEstudiante": "Nomeacuerdo",
+    "CodigoEstudiante": 4,
+    "NombreEstudiante": "Serchi",
+    "ApellidoEstudiante": "God",
     "CodigoCurso": 3,
     "NombreCurso": "Metodologia",
-    "DiaSemana": "Martes",
-    "Turno": "Aula707",
-    "Aula": "Tarde"
+    "DiaSemana": "Lunes",
+    "Turno": "Noche",
+    "Aula": "Aula606"
   },
   {
-    "CodigoEstudiante": 3,
-    "NombreEstudiante": "Cris",
-    "ApellidoEstudiante": "Nomeacuerdo",
-    "CodigoCurso": 9,
-    "NombreCurso": "Filosofia",
-    "DiaSemana": "Viernes",
-    "Turno": "Aula707",
-    "Aula": "Noche"
+    "CodigoEstudiante": 4,
+    "NombreEstudiante": "Serchi",
+    "ApellidoEstudiante": "God",
+    "CodigoCurso": 7,
+    "NombreCurso": "Arquitectura",
+    "DiaSemana": "Jueves",
+    "Turno": "Tarde",
+    "Aula": "Aula707"
   }
 ]
