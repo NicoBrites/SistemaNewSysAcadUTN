@@ -6,51 +6,10 @@
       "Nombre": "Hernesto",
       "Apellido": "Guevara",
       "Dni": 0,
-      "Clave": "clave123",
+      "Clave": "$2a$08$1TUQavIoMfhefUr.5c2zmeeN97WYk8Q6SuFeIQqvXRhtfWV7h1cWG",
       "Correo": "correo123"
     }
   ],
-  "Estudiantes": [
-    {
-      "Telefono": 123,
-      "Direccion": "nuev",
-      "Id": 1,
-      "Nombre": "nuev",
-      "Apellido": "nuev",
-      "Dni": 123,
-      "Clave": "clav123",
-      "Correo": "corr123"
-    },
-    {
-      "Telefono": 555,
-      "Direccion": "nuevito formato",
-      "Id": 2,
-      "Nombre": "nuevito formato",
-      "Apellido": "nuevito formato",
-      "Dni": 555,
-      "Clave": "cla123",
-      "Correo": "cor123"
-    },
-    {
-      "Telefono": 456654,
-      "Direccion": "la villa",
-      "Id": 3,
-      "Nombre": "Cris",
-      "Apellido": "Nomeacuerdo",
-      "Dni": 465,
-      "Clave": "cla123",
-      "Correo": "cris123"
-    },
-    {
-      "Telefono": 153366989,
-      "Direccion": "asd 45",
-      "Id": 4,
-      "Nombre": "Serchi",
-      "Apellido": "God",
-      "Dni": 135,
-      "Clave": "c1",
-      "Correo": "c1"
-    }
-  ],
+  "Estudiantes": [],
   "Profesores": []
 }

@@ -84,6 +84,7 @@
             // 
             textContraseña.Location = new Point(222, 231);
             textContraseña.Name = "textContraseña";
+            textContraseña.PasswordChar = '*';
             textContraseña.Size = new Size(100, 23);
             textContraseña.TabIndex = 5;
             // 
@@ -100,7 +101,6 @@
             Controls.Add(btnInicioSesion);
             Name = "FormLogin";
             Text = "Sys Acad Godeto";
-            Load += FormLogin_Load;
             ResumeLayout(false);
             PerformLayout();
         }

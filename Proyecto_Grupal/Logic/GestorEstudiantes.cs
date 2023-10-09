@@ -10,11 +10,13 @@ namespace Logic
     {
         private Archivos _gestorArchivos;
         private ValidadorTextosVacios _validadorTextosVacios;
+        private Hash _hash;
 
         public GestorEstudiantes()
         {
              _gestorArchivos = new Archivos();
             _validadorTextosVacios = new ValidadorTextosVacios();
+            _hash = new Hash();
         }
         public bool ValidadorEstudiante(EstudianteAValidar estudiante)
         {
@@ -63,9 +65,9 @@ namespace Logic
                 }
             }
             ultimoId++;
-
+            string claveConHash = MetodosEstaticos.GetHash(nuevEstudiante.Clave);
             Estudiantes nuevoEstudiante = new Estudiantes(ultimoId, nuevEstudiante.Nombre, nuevEstudiante.Apellido, nuevEstudiante.Dni,
-                nuevEstudiante.Telefono, nuevEstudiante.Direccion, nuevEstudiante.Clave, nuevEstudiante.Correo);
+                nuevEstudiante.Telefono, nuevEstudiante.Direccion, claveConHash, nuevEstudiante.Correo);
 
             estudiantes.Add(nuevoEstudiante);
 

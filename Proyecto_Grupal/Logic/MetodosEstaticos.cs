@@ -12,15 +12,13 @@ namespace Logic
     {
         public static string GetHash(string contraseña)
         {
-            return BCrypt.Net.BCrypt.EnhancedHashPassword(contraseña, 14);
+            return BCrypt.Net.BCrypt.EnhancedHashPassword(contraseña, 8);
         }
-
-        public static bool CompararHash(string contraseña,  string hash) 
+        public static bool CompararHash(string contraseña, string hash)
         {
             return BCrypt.Net.BCrypt.EnhancedVerify(contraseña, hash);
-        
-        }
 
+        }
         public static void CrearAdministradorInicialNuevoFormato()
         {
             Archivos archivos = new Archivos();
@@ -43,8 +41,9 @@ namespace Logic
                 if (hayAdministrador == false)
                 {
 
-                    Administrador administrador = new Administrador(1, "Hernesto", "Guevara", 1, "clave123", "correo123");
-                    
+                    string claveConHash = GetHash("clave123");
+                    Administrador administrador = new Administrador(1, "Hernesto", "Guevara", 1, claveConHash, "correo123");
+
 
                     JsonUsuariosFormato jsonNuevo = new JsonUsuariosFormato
                     {
@@ -68,7 +67,8 @@ namespace Logic
                     Profesores = new List<Profesores> { }
                 };
 
-                Administrador administrador = new Administrador(1, "Hernesto", "Guevara", 1, "clave123", "correo123");
+                string claveConHash = GetHash("clave123");
+                Administrador administrador = new Administrador(1, "Hernesto", "Guevara", 1, claveConHash, "correo123");
 
                 jsonNuevo.Administradores.Add(administrador);
 

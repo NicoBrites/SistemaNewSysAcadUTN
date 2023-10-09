@@ -23,14 +23,14 @@ namespace Logic
 
             foreach (Administrador admin in administradores)
             {
-                if (correo == admin.Correo && contraseña == admin.Clave)
+                if (correo == admin.Correo && MetodosEstaticos.CompararHash(contraseña,admin.Clave))
                 {
                     return admin;
                 }
             }
             foreach (Estudiantes estudiante in estudiantes)
             {
-                if (correo == estudiante.Correo && contraseña == estudiante.Clave)
+                if (correo == estudiante.Correo && MetodosEstaticos.CompararHash(contraseña, estudiante.Clave))
                 {
                     return estudiante;
                 }
