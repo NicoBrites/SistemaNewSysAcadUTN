@@ -12,7 +12,7 @@ using Logic;
 
 namespace SysAcad
 {
-    public partial class FormRegistroEstudiante : Form
+    public partial class FormRegistroEstudiante : FormPadre
     {
         public FormRegistroEstudiante()
         {

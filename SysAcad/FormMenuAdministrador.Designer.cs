@@ -1,6 +1,8 @@
-﻿namespace SysAcad
+﻿using System.ComponentModel;
+
+namespace SysAcad
 {
-    partial class FormMenuAdministrador
+    public partial class FormMenuAdministrador 
     {
         /// <summary>
         /// Required designer variable.
@@ -81,5 +83,6 @@
         private Button btnRegistrarEstudiante;
         private Button btnGestionarCursos;
         private Button button1;
+
     }
 }

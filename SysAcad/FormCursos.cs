@@ -13,7 +13,7 @@ using Logic;
 
 namespace SysAcad
 {
-    public partial class FormCursos : Form
+    public partial class FormCursos : FormPadre
     {
         public FormCursos()
         {

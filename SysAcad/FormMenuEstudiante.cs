@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace SysAcad
 {
-    public partial class FormMenuEstudiante : Form
+    public partial class FormMenuEstudiante : FormPadre
     {
         public FormMenuEstudiante()
         {

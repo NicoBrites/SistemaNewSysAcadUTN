@@ -65,7 +65,6 @@ namespace SysAcad
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(744, 247);
             dataGridView1.TabIndex = 0;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // Check
             // 
@@ -154,7 +153,6 @@ namespace SysAcad
             Controls.Add(dataGridView1);
             Name = "FormEstudianteCursos";
             Text = "FormEstudianteCursos";
-            Load += FormEstudianteCursos_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)cursosBindingSource3).EndInit();
             ((System.ComponentModel.ISupportInitialize)cursosBindingSource2).EndInit();

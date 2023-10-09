@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace SysAcad
 {
-    public partial class FormEstudiantePagos : Form
+    public partial class FormEstudiantePagos : FormPadre
     {
         public FormEstudiantePagos()
         {

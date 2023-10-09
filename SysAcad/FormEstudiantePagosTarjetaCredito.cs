@@ -3,7 +3,7 @@ using Logic;
 
 namespace SysAcad
 {
-    public partial class FormEstudiantePagosTarjetaCredito : Form
+    public partial class FormEstudiantePagosTarjetaCredito : FormPadre
     {
         public FormEstudiantePagosTarjetaCredito()
         {

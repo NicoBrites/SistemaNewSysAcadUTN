@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace SysAcad
 {
-    public partial class FormComprobanteDePago : Form
+    public partial class FormComprobanteDePago : FormPadre
     {
         public FormComprobanteDePago()
         {

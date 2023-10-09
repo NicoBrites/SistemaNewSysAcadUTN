@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace SysAcad
 {
-    public partial class FormEstudianteCursos : Form
+    public partial class FormEstudianteCursos : FormPadre
     {
         public FormEstudianteCursos()
         {
@@ -28,17 +28,6 @@ namespace SysAcad
                 // MessageBox.Show("No se encontro la lista de cursos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void FormEstudianteCursos_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             GestorCursos gestorCursos = new GestorCursos();

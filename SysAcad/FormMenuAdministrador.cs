@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace SysAcad
 {
-    public partial class FormMenuAdministrador : Form
+    public partial class FormMenuAdministrador : FormPadre
     {
         public FormMenuAdministrador()
         {

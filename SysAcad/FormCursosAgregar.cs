@@ -13,7 +13,7 @@ using static Entidades.Enums;
 
 namespace SysAcad
 {
-    public partial class FormCursosAgregar : Form
+    public partial class FormCursosAgregar : FormPadre
     {
         public FormCursosAgregar()
         {

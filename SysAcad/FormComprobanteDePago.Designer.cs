@@ -37,16 +37,16 @@ namespace SysAcad
             // comprobanteDePago
             // 
             comprobanteDePago.AutoSize = true;
-            comprobanteDePago.Location = new Point(164, 42);
+            comprobanteDePago.Location = new Point(29, 19);
             comprobanteDePago.Name = "comprobanteDePago";
             comprobanteDePago.Size = new Size(38, 15);
             comprobanteDePago.TabIndex = 0;
             comprobanteDePago.Text = "label1";
             // 
-            // button1
+            // btnVolver
             // 
-            btnVolver.Location = new Point(358, 416);
-            btnVolver.Name = "button1";
+            btnVolver.Location = new Point(144, 323);
+            btnVolver.Name = "btnVolver";
             btnVolver.Size = new Size(75, 23);
             btnVolver.TabIndex = 1;
             btnVolver.Text = "Volver";
@@ -57,7 +57,7 @@ namespace SysAcad
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 501);
+            ClientSize = new Size(371, 368);
             Controls.Add(btnVolver);
             Controls.Add(comprobanteDePago);
             Name = "FormComprobanteDePago";

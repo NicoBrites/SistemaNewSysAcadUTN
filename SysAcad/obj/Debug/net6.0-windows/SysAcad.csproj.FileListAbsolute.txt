@@ -64,3 +64,7 @@ C:\PruebaLabNet\SistemaNewSysAcadUTN\SysAcad\bin\Debug\net6.0-windows\System.Tex
 C:\PruebaLabNet\SistemaNewSysAcadUTN\SysAcad\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\System.Security.Cryptography.Pkcs.dll
 C:\PruebaLabNet\SistemaNewSysAcadUTN\SysAcad\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\System.Text.Encoding.CodePages.dll
 C:\PruebaLabNet\SistemaNewSysAcadUTN\SysAcad\obj\Debug\net6.0-windows\SysAcad.Properties.Resources.resources
+C:\PruebaLabNet\SistemaNewSysAcadUTN\SysAcad\bin\Debug\net6.0-windows\dje-NE\SysAcad.resources.dll
+C:\PruebaLabNet\SistemaNewSysAcadUTN\SysAcad\obj\Debug\net6.0-windows\SysAcad.FormPadre.resources
+C:\PruebaLabNet\SistemaNewSysAcadUTN\SysAcad\obj\Debug\net6.0-windows\SysAcad.FormPadre.dje-NE.resources
+C:\PruebaLabNet\SistemaNewSysAcadUTN\SysAcad\obj\Debug\net6.0-windows\dje-NE\SysAcad.resources.dll

@@ -15,6 +15,11 @@
         },
         "runtime": {
           "SysAcad.dll": {}
+        },
+        "resources": {
+          "dje-NE/SysAcad.resources.dll": {
+            "locale": "dje-NE"
+          }
         }
       },
       "BCrypt.Net-Next/4.0.3": {
