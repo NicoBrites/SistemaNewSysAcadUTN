@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogin));
             btnInicioSesion = new Button();
             label1 = new Label();
             label2 = new Label();
@@ -45,6 +46,7 @@
             btnInicioSesion.Text = "Iniciar Sesion";
             btnInicioSesion.UseVisualStyleBackColor = true;
             btnInicioSesion.Click += button1_Click;
+            btnInicioSesion.FlatStyle = FlatStyle.Flat;
             // 
             // label1
             // 
@@ -82,7 +84,7 @@
             // 
             // textContraseña
             // 
-            textContraseña.Location = new Point(222, 231);
+            textContraseña.Location = new Point(223, 252);
             textContraseña.Name = "textContraseña";
             textContraseña.PasswordChar = '*';
             textContraseña.Size = new Size(100, 23);
@@ -92,7 +94,8 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            ClientSize = new Size(800, 600);
             Controls.Add(textContraseña);
             Controls.Add(textCorreo);
             Controls.Add(label3);

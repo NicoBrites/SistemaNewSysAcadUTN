@@ -1,4 +1,6 @@
 using Entidades;
+using System.Windows.Forms;
+
 namespace SysAcad
 {
     public partial class FormLogin : Form

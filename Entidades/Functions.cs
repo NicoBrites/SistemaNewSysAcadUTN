@@ -1,6 +1,6 @@
 ﻿
 namespace Entidades
-{
+{/*
     public class Functions
     {
         public Functions() { }
@@ -61,5 +61,5 @@ namespace Entidades
 
 
 
-    }
+    }*/
 }

@@ -55,3 +55,12 @@ C:\PruebaLabNet\SistemaNewSysAcadUTN\SysAcad\obj\Debug\net6.0-windows\SysAcad.ge
 C:\PruebaLabNet\SistemaNewSysAcadUTN\SysAcad\obj\Debug\net6.0-windows\ref\SysAcad.dll
 C:\PruebaLabNet\SistemaNewSysAcadUTN\SysAcad\obj\Debug\net6.0-windows\SysAcad.FormEstudiantePagosTarjetaCredito.resources
 C:\PruebaLabNet\SistemaNewSysAcadUTN\SysAcad\obj\Debug\net6.0-windows\SysAcad.FormComprobanteDePago.resources
+C:\PruebaLabNet\SistemaNewSysAcadUTN\SysAcad\bin\Debug\net6.0-windows\BouncyCastle.Cryptography.dll
+C:\PruebaLabNet\SistemaNewSysAcadUTN\SysAcad\bin\Debug\net6.0-windows\MailKit.dll
+C:\PruebaLabNet\SistemaNewSysAcadUTN\SysAcad\bin\Debug\net6.0-windows\MimeKit.dll
+C:\PruebaLabNet\SistemaNewSysAcadUTN\SysAcad\bin\Debug\net6.0-windows\System.Formats.Asn1.dll
+C:\PruebaLabNet\SistemaNewSysAcadUTN\SysAcad\bin\Debug\net6.0-windows\System.Security.Cryptography.Pkcs.dll
+C:\PruebaLabNet\SistemaNewSysAcadUTN\SysAcad\bin\Debug\net6.0-windows\System.Text.Encoding.CodePages.dll
+C:\PruebaLabNet\SistemaNewSysAcadUTN\SysAcad\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\System.Security.Cryptography.Pkcs.dll
+C:\PruebaLabNet\SistemaNewSysAcadUTN\SysAcad\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\System.Text.Encoding.CodePages.dll
+C:\PruebaLabNet\SistemaNewSysAcadUTN\SysAcad\obj\Debug\net6.0-windows\SysAcad.Properties.Resources.resources
