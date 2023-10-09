@@ -6,7 +6,18 @@ namespace Logic
 {
     public class Archivos
     {
+        /// <summary>
+        /// Constructor de la clase Archivos.
+        /// </summary>
         public Archivos() { }
+
+        /// <summary>
+        /// Guarda una lista de objetos en formato JSON en el archivo especificado.
+        /// </summary>
+        /// <typeparam name="T">Tipo de objeto a guardar en formato JSON.</typeparam>
+        /// <param name="listaObjetoAGuardar">Lista de objetos a guardar en formato JSON.</param>
+        /// <param name="path">Ruta del archivo donde se guardará el JSON.</param>
+        /// <returns>Un mensaje que indica si la operación de guardado fue exitosa o si ocurrió un error.</returns>
         public string GuardarAJson<T>(T listaObjetoAGuardar, string path)
         {
             try
@@ -22,6 +33,12 @@ namespace Logic
             }
         }
 
+        /// <summary>
+        /// Lee un archivo JSON y deserializa su contenido en una lista de objetos del tipo especificado.
+        /// </summary>
+        /// <typeparam name="T">Tipo de objeto a deserializar desde JSON.</typeparam>
+        /// <param name="path">Ruta del archivo JSON a leer.</param>
+        /// <returns>Una lista de objetos del tipo especificado.</returns>
         public List<T> LeerJson<T>(string path)
         {
             List<T> data;
@@ -42,6 +59,11 @@ namespace Logic
             throw new Exception("No existe el archivo en el path ingresado");
         }
 
+        /// <summary>
+        /// Lee un archivo JSON y deserializa su contenido en un objeto del tipo JsonUsuariosFormato.
+        /// </summary>
+        /// <param name="path">Ruta del archivo JSON a leer.</param>
+        /// <returns>Un objeto del tipo JsonUsuariosFormato.</returns>
         public JsonUsuariosFormato GestorJsonNew(string path)
         {
             if (File.Exists(path))
@@ -57,7 +79,6 @@ namespace Logic
                     Console.WriteLine($"Error al leer el archivo JSON: {ex.Message}");
                 }
             }
-
             throw new Exception("No existe el archivo en el path ingresado");
         }
     }

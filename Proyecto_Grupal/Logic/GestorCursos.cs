@@ -8,12 +8,20 @@ namespace Logic
         private Archivos _gestorArchivos;
         private ValidadorTextosVacios _validadorTextosVacios;
 
+        /// <summary>
+        /// Constructor de la clase GestorCursos. Inicializa el gestor de archivos y el validador de textos vacíos.
+        /// </summary>
         public GestorCursos()
         {
             _gestorArchivos = new Archivos();
             _validadorTextosVacios = new ValidadorTextosVacios();
         }
 
+        /// <summary>
+        /// Obtiene una lista de cursos desde un archivo JSON.
+        /// </summary>
+        /// <returns>Una lista de objetos de tipo Cursos.</returns>
+        /// <exception cref="Exception">Se lanza si ocurre un error al leer el archivo JSON.</exception>
         public List<Cursos> GetCursos()
         {
             try
@@ -27,6 +35,12 @@ namespace Logic
                 throw new Exception(ex.Message);
             }
         }
+
+        /// <summary>
+        /// Obtiene una lista de estudiantes por curso desde un archivo JSON.
+        /// </summary>
+        /// <returns>Una lista de objetos de tipo EstudiantePorCurso.</returns>
+        /// <exception cref="Exception">Se lanza si ocurre un error al leer el archivo JSON.</exception>
         public List<EstudiantePorCurso> GetEstudiantePorCurso()
         {
             try
@@ -41,6 +55,11 @@ namespace Logic
             }
         }
 
+        /// <summary>
+        /// Valida si los datos de un curso son válidos antes de crearlo.
+        /// </summary>
+        /// <param name="curso">Objeto CursoAValidar a validar.</param>
+        /// <returns>True si los datos son válidos, False si no lo son.</returns>
         public bool ValidadorCursos(CursoAValidar curso)
         {
             int numero;
@@ -65,6 +84,12 @@ namespace Logic
                 return false;
             }
         }
+
+        /// <summary>
+        /// Crea un nuevo curso y lo guarda en un archivo JSON.
+        /// </summary>
+        /// <param name="curso">Objeto Cursos que representa el curso a crear.</param>
+        /// <exception cref="Exception">Se lanza una excepción si ocurre un error al crear o guardar el curso.</exception>
         public void CrearCurso(Cursos curso)
         {
             try
@@ -111,6 +136,12 @@ namespace Logic
 
         }
 
+        /// <summary>
+        /// Modifica un curso existente y actualiza la información en el archivo JSON.
+        /// </summary>
+        /// <param name="curso">Objeto Cursos que representa el curso modificado.</param>
+        /// <param name="codigoAnterior">Código anterior del curso.</param>
+        /// <exception cref="Exception">Se lanza una excepción si ocurre un error al modificar o guardar el curso.</exception>
         public void ModificarCurso(Cursos curso, string codigoAnterior)
         {
             int codigoAnteriorParseado = Convert.ToInt32(codigoAnterior);
@@ -138,6 +169,10 @@ namespace Logic
             string msj = _gestorArchivos.GuardarAJson(listaCursos, path);
         }
 
+        /// <summary>
+        /// Elimina un curso existente y actualiza la lista en el archivo JSON.
+        /// </summary>
+        /// <param name="codigo">Código del curso a eliminar.</param>
         public void EliminarCurso(int codigo)
         {
            
@@ -152,6 +187,17 @@ namespace Logic
             string msj = _gestorArchivos.GuardarAJson(listaCursos, path);
 
         }
+
+        /// <summary>
+        /// Valida si un estudiante puede ser inscrito en un curso.
+        /// </summary>
+        /// <param name="cursos">Curso al que se intenta inscribir al estudiante.</param>
+        /// <param name="listaEstudiantesPorCurso">Lista de estudiantes inscritos en cursos.</param>
+        /// <param name="estudiante">Objeto EstudianteEnCursos que representa al estudiante.</param>
+        /// <param name="cursoEnQueSeAgrega">Objeto CursosEnEstudiantes que representa el curso al que se intenta inscribir.</param>
+        /// <param name="cupoActual">El cupo actual del curso al que se intenta inscribir.</param>
+        /// <returns>True si el estudiante puede ser inscrito, de lo contrario, lanza excepciones.</returns>
+        /// <exception cref="Exception">Se lanzan excepciones con mensajes descriptivos si no se cumplen las condiciones.</exception>
         public bool ValidadorAgregarAlumnosACurso(Cursos cursos, List<EstudiantePorCurso> listaEstudiantesPorCurso,
             EstudianteEnCursos estudiante, CursosEnEstudiantes cursoEnQueSeAgrega, int cupoActual)
         {         
@@ -176,6 +222,13 @@ namespace Logic
             }
             return true;         
         }
+
+        /// <summary>
+        /// Agrega un estudiante a un curso y actualiza la lista de inscripciones en un archivo JSON.
+        /// </summary>
+        /// <param name="estudiante">Objeto EstudianteEnCursos que representa al estudiante a inscribir.</param>
+        /// <param name="cursoEnQueSeAgrega">Objeto CursosEnEstudiantes que representa el curso al que se inscribe el estudiante.</param>
+        /// <exception cref="Exception">Se lanza una excepción si ocurre un error al agregar el estudiante o guardar los cambios.</exception>
         public void AgregarAlumnoAlCurso(EstudianteEnCursos estudiante, CursosEnEstudiantes cursoEnQueSeAgrega)
         {
             try
@@ -219,6 +272,13 @@ namespace Logic
 
             }
         }
+
+        /// <summary>
+        /// Devuelve el número de estudiantes inscritos en un curso específico.
+        /// </summary>
+        /// <param name="idCurso">El código del curso del que se desea obtener el cupo actual.</param>
+        /// <param name="listaEstudiantePorCursos">Lista de inscripciones de estudiantes en cursos.</param>
+        /// <returns>El número de estudiantes inscritos en el curso especificado.</returns>
         public int DevolverCupoActual(int idCurso, List<EstudiantePorCurso> listaEstudiantePorCursos)
         {
             int contadorCupoActual = 0;
@@ -232,6 +292,11 @@ namespace Logic
             return contadorCupoActual;
         }
 
+        /// <summary>
+        /// Valida si un estudiante tiene horarios de cursos registrados en el sistema.
+        /// </summary>
+        /// <param name="estudianteId">El ID del estudiante del que se desea validar los horarios.</param>
+        /// <returns>True si el estudiante tiene horarios registrados, False si no los tiene.</returns>
         public bool ValidarHorariosEstudiante(int estudianteId)
         {
             List<EstudiantePorCurso> estudiantesPorCursos = GetEstudiantePorCurso();
@@ -245,8 +310,5 @@ namespace Logic
             }
             return false;
         }
-
-
-
     }
 }
