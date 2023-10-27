@@ -25,16 +25,5 @@ namespace Entidades
             get { return _direccion; }
             set { _direccion = value; }
         }
-
-        static void PagarCuotas()
-        {
-
-        }
-
-        static void GestionarMaterias()
-        {
-
-        }
-
     }
 }

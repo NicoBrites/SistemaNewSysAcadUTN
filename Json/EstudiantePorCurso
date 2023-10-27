@@ -58,5 +58,35 @@
     "DiaSemana": "Miercoles",
     "Turno": "Noche",
     "Aula": "Aula606"
+  },
+  {
+    "CodigoEstudiante": 5,
+    "NombreEstudiante": "PrurbaMail",
+    "ApellidoEstudiante": "Cito",
+    "CodigoCurso": 3,
+    "NombreCurso": "Metodologia",
+    "DiaSemana": "Lunes",
+    "Turno": "Noche",
+    "Aula": "Aula606"
+  },
+  {
+    "CodigoEstudiante": 5,
+    "NombreEstudiante": "PrurbaMail",
+    "ApellidoEstudiante": "Cito",
+    "CodigoCurso": 666,
+    "NombreCurso": "Laboratorio III",
+    "DiaSemana": "Miercoles",
+    "Turno": "Noche",
+    "Aula": "Aula606"
+  },
+  {
+    "CodigoEstudiante": 5,
+    "NombreEstudiante": "PrurbaMail",
+    "ApellidoEstudiante": "Cito",
+    "CodigoCurso": 1,
+    "NombreCurso": "Matematica",
+    "DiaSemana": "Martes",
+    "Turno": "Noche",
+    "Aula": "Aula707"
   }
 ]

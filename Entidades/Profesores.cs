@@ -11,18 +11,8 @@ namespace Entidades
             _materia = materia;
             
         }
-
         public string Materia
         { get { return _materia; } set { _materia = value; } }
-        static void DarClase() 
-        { 
 
-        }
-
-        static void TomarExamen() { }
-       
-        static void TomarAsistencia() { }
-
-        static void CargarNotas() { }
     }
 }

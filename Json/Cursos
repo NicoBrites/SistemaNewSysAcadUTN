@@ -70,5 +70,14 @@
     "DiaSemana": "Miercoles",
     "Aula": "Aula606",
     "Turno": "Noche"
+  },
+  {
+    "Nombre": "Prueba",
+    "Codigo": 321,
+    "Descripcion": "Prueba",
+    "CupoMaximo": 80,
+    "DiaSemana": "Miercoles",
+    "Aula": "Virtual",
+    "Turno": "Mañana"
   }
 ]

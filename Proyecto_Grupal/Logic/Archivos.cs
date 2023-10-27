@@ -42,20 +42,22 @@ namespace Logic
         public List<T> LeerJson<T>(string path)
         {
             List<T> data;
-            if (File.Exists(path))
+            if (!File.Exists(path))
             {
-                try
-                {
-                    string jsonString = File.ReadAllText(path);
-                    data = JsonConvert.DeserializeObject<List<T>>(jsonString);
-                    return data;
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Error al leer el archivo JSON: {ex.Message}");
-                }
+                throw new ExcepcionPropia("No existe el archivo en el path ingresado");
+              
             }
-            throw new ExcepcionPropia("No existe el archivo en el path ingresado");
+            try
+            {
+                string jsonString = File.ReadAllText(path);
+                data = JsonConvert.DeserializeObject<List<T>>(jsonString);
+                return data;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al leer el archivo JSON: {ex.Message}");
+            }
+
         }
 
         /// <summary>
@@ -65,20 +67,21 @@ namespace Logic
         /// <returns>Un objeto del tipo JsonUsuariosFormato.</returns>
         public JsonUsuariosFormato GestorJsonNew(string path)
         {
-            if (File.Exists(path))
+            if (!File.Exists(path))
             {
-                try
-                {
-                    string jsonString = File.ReadAllText(path);
-                    JsonUsuariosFormato json = JsonConvert.DeserializeObject<JsonUsuariosFormato>(jsonString);
-                    return json;
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Error al leer el archivo JSON: {ex.Message}");
-                }
+                throw new ExcepcionPropia("No existe el archivo en el path ingresado");           
             }
-            throw new ExcepcionPropia("No existe el archivo en el path ingresado");
+            try
+            {
+                string jsonString = File.ReadAllText(path);
+                JsonUsuariosFormato json = JsonConvert.DeserializeObject<JsonUsuariosFormato>(jsonString);
+                return json;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message ); 
+            }
+
         }
     }
 }

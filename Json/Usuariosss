@@ -40,6 +40,36 @@
       "Dni": 123,
       "Clave": "$2a$08$DKdCJdptRWGrT9w0uy03.eNpoy/E2c9.qzRX1q..yGRYUhmqwk7c6",
       "Correo": "nicolas.britesv@gmail.com"
+    },
+    {
+      "Telefono": 152654545,
+      "Direccion": "avellane 555",
+      "Id": 4,
+      "Nombre": "Juan",
+      "Apellido": "Cito",
+      "Dni": 38956428,
+      "Clave": "$2a$08$ji8crVddPSycIn6pVoceb.OEW1DBXzlkq4ouPdkbcBbkupR27/bsi",
+      "Correo": "correo@asd.com"
+    },
+    {
+      "Telefono": 152654545,
+      "Direccion": "avellane 555",
+      "Id": 5,
+      "Nombre": "PrurbaMail",
+      "Apellido": "Cito",
+      "Dni": 38956425,
+      "Clave": "$2a$08$4cJUde.F.HT1qh1BOCkhp.KTknWIZbVem5K.QRDS4CfvM3sl7Z2Wy",
+      "Correo": "felibustosomg@gmail.com"
+    },
+    {
+      "Telefono": 152468574,
+      "Direccion": "prueba horario",
+      "Id": 6,
+      "Nombre": "prueba horario",
+      "Apellido": "prueba horario",
+      "Dni": 38945621,
+      "Clave": "$2a$08$km/qIImiiEAioRTKEzWiXubnyeLQ5p7ByEm8IExisgiEgG1iYMoeC",
+      "Correo": "c@1.com"
     }
   ],
   "Profesores": []
