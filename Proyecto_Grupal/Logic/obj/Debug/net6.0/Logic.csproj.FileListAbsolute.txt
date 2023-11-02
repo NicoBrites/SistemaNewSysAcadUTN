@@ -1,8 +1,10 @@
 C:\PruebaLabNet\SistemaNewSysAcadUTN\Proyecto_Grupal\Logic\bin\Debug\net6.0\Logic.deps.json
 C:\PruebaLabNet\SistemaNewSysAcadUTN\Proyecto_Grupal\Logic\bin\Debug\net6.0\Logic.dll
 C:\PruebaLabNet\SistemaNewSysAcadUTN\Proyecto_Grupal\Logic\bin\Debug\net6.0\Logic.pdb
+C:\PruebaLabNet\SistemaNewSysAcadUTN\Proyecto_Grupal\Logic\bin\Debug\net6.0\DB.dll
 C:\PruebaLabNet\SistemaNewSysAcadUTN\Proyecto_Grupal\Logic\bin\Debug\net6.0\Entidades.dll
 C:\PruebaLabNet\SistemaNewSysAcadUTN\Proyecto_Grupal\Logic\bin\Debug\net6.0\Entidades.pdb
+C:\PruebaLabNet\SistemaNewSysAcadUTN\Proyecto_Grupal\Logic\bin\Debug\net6.0\DB.pdb
 C:\PruebaLabNet\SistemaNewSysAcadUTN\Proyecto_Grupal\Logic\obj\Debug\net6.0\Logic.csproj.AssemblyReference.cache
 C:\PruebaLabNet\SistemaNewSysAcadUTN\Proyecto_Grupal\Logic\obj\Debug\net6.0\Logic.GeneratedMSBuildEditorConfig.editorconfig
 C:\PruebaLabNet\SistemaNewSysAcadUTN\Proyecto_Grupal\Logic\obj\Debug\net6.0\Logic.AssemblyInfoInputs.cache
@@ -13,5 +15,3 @@ C:\PruebaLabNet\SistemaNewSysAcadUTN\Proyecto_Grupal\Logic\obj\Debug\net6.0\Logi
 C:\PruebaLabNet\SistemaNewSysAcadUTN\Proyecto_Grupal\Logic\obj\Debug\net6.0\refint\Logic.dll
 C:\PruebaLabNet\SistemaNewSysAcadUTN\Proyecto_Grupal\Logic\obj\Debug\net6.0\Logic.pdb
 C:\PruebaLabNet\SistemaNewSysAcadUTN\Proyecto_Grupal\Logic\obj\Debug\net6.0\ref\Logic.dll
-C:\PruebaLabNet\SistemaNewSysAcadUTN\Proyecto_Grupal\Logic\bin\Debug\net6.0\DB.dll
-C:\PruebaLabNet\SistemaNewSysAcadUTN\Proyecto_Grupal\Logic\bin\Debug\net6.0\DB.pdb

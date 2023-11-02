@@ -102,5 +102,37 @@ namespace Logic
 
             //bool funco = Email.SendMessageSmtp(nuevEstudiante.Correo, nuevEstudiante.Clave, nuevEstudiante.Nombre, nuevEstudiante.Apellido);
         }
+
+        public void CrearEstudianteNewDB(Estudiantes nuevEstudiante)
+        {
+            int ultimoId = 0;
+
+            JsonUsuariosFormato json = DB.DB.ReturnAllUsers();
+
+            List<Estudiantes> estudiantes = json.Estudiantes;
+
+            foreach (Estudiantes estudiante in estudiantes)
+            {
+                if (nuevEstudiante.Correo == estudiante.Correo || nuevEstudiante.Dni == estudiante.Dni)
+                {
+                    throw new Exception("El correo electronico o DNI ya esta en uso");
+                }
+                if (estudiante.Id > ultimoId)
+                {
+                    ultimoId = estudiante.Id;
+                }
+            }
+            ultimoId++;
+            string claveConHash = MetodosEstaticos.GetHash(nuevEstudiante.Clave);
+
+            var query = "INSERT INTO Usuarios (TipoEntidad, ID, Nombre, Apellido, Dni, Telefono, Direccion, Clave, Correo)" +
+                      $"VALUES ('Estudiantes', '{ultimoId}', '{nuevEstudiante.Nombre}'," +
+                      $" '{nuevEstudiante.Apellido}', '{nuevEstudiante.Dni}', '{nuevEstudiante.Telefono}', '{nuevEstudiante.Direccion}'," +
+                      $" '{claveConHash}', '{nuevEstudiante.Correo}');";
+
+            DB.DB.Guardar(query);
+
+            //bool funco = Email.SendMessageSmtp(nuevEstudiante.Correo, nuevEstudiante.Clave, nuevEstudiante.Nombre, nuevEstudiante.Apellido);
+        }
     }
 }
