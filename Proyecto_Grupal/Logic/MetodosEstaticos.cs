@@ -97,7 +97,6 @@ namespace Logic
 
                 List<Administrador> administradores = json.Administradores;
 
-
                 if (administradores.Count > 0)
                 {
                     hayAdministrador = true;
@@ -106,10 +105,9 @@ namespace Logic
                 {
 
                     string claveConHash = GetHash("clave123");
-                    Administrador administrador = new Administrador(1, "Hernesto", "Guevara", 1, claveConHash, "correo123");
 
-                    var query = "INSERT INTO Usuarios (TipoEntidad, ID, Nombre, Apellido, Dni, Clave, Correo)" +
-                        "VALUES ('Administradores', 1, 'Hernesto', 'Guevara', 0, '$2a$08$1TUQavIoMfhefUr.5c2zmeeN97WYk8Q6SuFeIQqvXRhtfWV7h1cWG', 'correo123');";
+                    var query = "INSERT INTO Usuarios (TipoEntidad, ID, Nombre, Apellido, Dni, Clave, Correo, Nivel)" +
+                        $"VALUES ('Administradores', 1, 'Hernesto', 'Guevara', 0, '{claveConHash}', 'correo123', 1);";
 
                     DB.DB.Guardar(query);
                 }
@@ -119,10 +117,9 @@ namespace Logic
             {
 
                 string claveConHash = GetHash("clave123");
-                Administrador administrador = new Administrador(1, "Hernesto", "Guevara", 1, claveConHash, "correo123");
 
                 var query = "INSERT INTO Personas (TipoEntidad, ID, Nombre, Apellido, Dni, Clave, Correo)" +
-                    "VALUES ('Administradores', 1, 'Hernesto', 'Guevara', 0, '$2a$08$1TUQavIoMfhefUr.5c2zmeeN97WYk8Q6SuFeIQqvXRhtfWV7h1cWG', 'correo123');";
+                    $"VALUES ('Administradores', 1, 'Hernesto', 'Guevara', 0, '{claveConHash}', 'correo123');";
 
                 DB.DB.Guardar(query);
 

@@ -76,12 +76,8 @@ namespace DB
             try
             {
                 conexion.Open();
-                //var query = $"INSERT INTO asdasd (nombre) VALUES ('{texto}')";
-                //var query = $"INSERT INTO asdasd (nombre) VALUES (@0)";
 
                 comando.CommandText = query;
-
-                //comando.Parameters.AddWithValue("@0", texto);
 
                 var filasAfectadas = comando.ExecuteNonQuery();
 
@@ -96,7 +92,6 @@ namespace DB
 
         public static JsonUsuariosFormato ReturnAllUsers()
         {
-            Console.WriteLine("asd");
 
             JsonUsuariosFormato jsonNuevo = new JsonUsuariosFormato
             {
@@ -104,6 +99,7 @@ namespace DB
                 Estudiantes = new List<Estudiantes> { },
                 Profesores = new List<Profesores> { }
             };
+
             try
             {
                 conexion.Open();
@@ -119,21 +115,23 @@ namespace DB
                         {
                             var nombre = reader["Nombre"].ToString();
                             var apellido = reader["Apellido"].ToString();
-                            var dni = Convert.ToInt32(reader["Dni"]);
-                            var telefono = Convert.ToInt32(reader["Telefono"]);
-                            var direccion = reader["Direccion"].ToString();
-                            var nivel = Convert.ToInt32(reader["Nivel"]);
+                            var dni = Convert.ToInt32(reader["Dni"]);                          
                             var correo = reader["Correo"].ToString();
                             var clave = reader["Clave"].ToString();
                             var id = Convert.ToInt32(reader["ID"]);
                             var tipoEntidad = reader["TipoEntidad"].ToString();
                             
-                            if (tipoEntidad == "Administrador")
+                            if (tipoEntidad == "Administradores")
                             {
+                                var nivel = Convert.ToInt32(reader["Nivel"]);
+
                                 jsonNuevo.Administradores.Add(new Administrador(id, nombre, apellido, nivel, clave, correo));
                             }
-                            if (tipoEntidad == "Estudiante")
+                            if (tipoEntidad == "Estudiantes")
                             {
+                                var telefono = Convert.ToInt32(reader["Telefono"]);
+                                var direccion = reader["Direccion"].ToString();
+
                                 jsonNuevo.Estudiantes.Add(new Estudiantes(id,nombre,apellido,dni,telefono,direccion,clave,correo));
                             }
                         }
@@ -143,11 +141,10 @@ namespace DB
                         return jsonNuevo;
                     }
                 }
-                //comando.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
-
+                return jsonNuevo;
             }
             finally { conexion.Close(); }
 
