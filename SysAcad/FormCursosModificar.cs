@@ -43,7 +43,7 @@ namespace SysAcad
                     Aulas enumAulas = (Aulas)Enum.Parse(typeof(Aulas), aula);
                     Turnos enumTurno = (Turnos)Enum.Parse(typeof(Turnos), turno);*/
 
-                    cursos.ModificarCurso(new Cursos(nuevoNombre, nuevoCodigoValidado, nuevoDescripcion, nuevoCupoMaxValidado, diaSemana, aula, turno), codigoAnterior);
+                    cursos.ModificarCursoDB(new Cursos(nuevoNombre, nuevoCodigoValidado, nuevoDescripcion, nuevoCupoMaxValidado, diaSemana, aula, turno), codigoAnterior);
 
                     MessageBox.Show("Se modifico el curso correctamente", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

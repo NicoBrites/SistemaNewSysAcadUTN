@@ -92,7 +92,7 @@ namespace SysAcad
 
                 if (resultado == DialogResult.Yes)
                 {
-                    cursos.EliminarCurso(cursoParseado);
+                    cursos.EliminarCursoDB(cursoParseado);
                     FormCursos formCursos = new FormCursos();
 
                     this.Hide();

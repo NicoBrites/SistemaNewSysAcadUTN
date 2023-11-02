@@ -1,4 +1,6 @@
 ﻿using Entidades;
+using Microsoft.VisualBasic;
+using System.Collections.Generic;
 using static Entidades.Enums;
 
 namespace Logic
@@ -167,11 +169,6 @@ namespace Logic
                         throw new Exception("Ya hay un curso ese dia en ese turno en ese aula");
                     }
                 }
-              
-
-                Cursos crearCurso = new Cursos(curso.Nombre, curso.Codigo, curso.Descripcion,
-                    curso.CupoMaximo, curso.DiaSemana, curso.Aula, curso.Turno);
-
 
                 var query = "INSERT INTO Cursos (Codigo, Nombre, Descripcion, CupoMaximo, DiaSemana, Aula, Turno)" +
                     $"VALUES ('{curso.Codigo}', '{curso.Nombre}', '{curso.Descripcion}', '{curso.CupoMaximo}'," +
@@ -181,9 +178,6 @@ namespace Logic
             }
             catch (ExcepcionPropia)
             {
-                Cursos crearCurso = new Cursos(curso.Nombre, curso.Codigo, curso.Descripcion,
-                   curso.CupoMaximo, curso.DiaSemana, curso.Aula, curso.Turno);
-
 
                 var query = "INSERT INTO Cursos (Codigo, Nombre, Descripcion, CupoMaximo, DiaSemana, Aula, Turno)" +
                     $"VALUES ('{curso.Codigo}', '{curso.Nombre}', '{curso.Descripcion}', '{curso.CupoMaximo}'," +
@@ -208,12 +202,16 @@ namespace Logic
         {
             int codigoAnteriorParseado = Convert.ToInt32(codigoAnterior);
               
-            List<Cursos> listaCursos = GetCursos();
+            List<Cursos> listaCursos = GetCursosDB();
             foreach (Cursos cursos in listaCursos)
             {
                 if (codigoAnteriorParseado != curso.Codigo && curso.Codigo == cursos.Codigo)
                 {
                     throw new Exception("El codigo del curso ya esta en uso en otro curso");
+                }
+                if (curso.Aula == cursos.Aula && curso.Turno == cursos.Turno && curso.DiaSemana == cursos.DiaSemana)
+                {
+                    throw new Exception("Ya hay un curso ese dia en ese turno en ese aula");
                 }
                 if (cursos.Codigo == codigoAnteriorParseado)
                 {
@@ -229,6 +227,33 @@ namespace Logic
             string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\Cursos";
 
             string msj = _gestorArchivos.GuardarAJson(listaCursos, path);
+
+        }
+
+        public void ModificarCursoDB(Cursos curso, string codigoAnterior)
+        {
+            int codigoAnteriorParseado = Convert.ToInt32(codigoAnterior);
+
+            List<Cursos> listaCursos = GetCursos();
+            foreach (Cursos cursos in listaCursos)
+            {
+                if (codigoAnteriorParseado != curso.Codigo && curso.Codigo == cursos.Codigo)
+                {
+                    throw new Exception("El codigo del curso ya esta en uso en otro curso");
+                }
+                if (curso.Aula == cursos.Aula && curso.Turno == cursos.Turno && curso.DiaSemana == cursos.DiaSemana)
+                {
+                    throw new Exception("Ya hay un curso ese dia en ese turno en ese aula");
+                }
+ 
+            }
+
+            var query = "UPDATE Cursos " +
+              $"SET Nombre = '{curso.Nombre}', Descripcion = '{curso.Descripcion}', Codigo = '{curso.Codigo}'," +
+              $" CupoMaximo = '{curso.CupoMaximo}', DiaSemana = '{curso.DiaSemana}', Aula = '{curso.Aula}', Turno = '{curso.Turno}'" +
+              $"WHERE Codigo = {codigoAnteriorParseado};";
+
+            DB.DB.Guardar(query);
         }
 
         /// <summary>
@@ -247,6 +272,16 @@ namespace Logic
             string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\Cursos";
 
             string msj = _gestorArchivos.GuardarAJson(listaCursos, path);
+
+        }
+
+        public void EliminarCursoDB(int codigo)
+        {
+
+            var query = "DELETE FROM Cursos " +
+                        $"WHERE Codigo = {codigo}; ";
+
+            DB.DB.Guardar(query);
 
         }
 
