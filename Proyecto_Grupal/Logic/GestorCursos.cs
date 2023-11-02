@@ -82,6 +82,23 @@ namespace Logic
             }
         }
 
+        public List<EstudiantePorCurso> GetEstudiantePorCursoDB()
+        {
+            try
+            {
+                List<EstudiantePorCurso> listaEstudiantesCursos = DB.DB.ReturnAllEstudiantesPorCurso();
+                return listaEstudiantesCursos;
+            }
+            catch (ExcepcionPropia ex)
+            {
+                throw new ExcepcionPropia(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         /// <summary>
         /// Valida si los datos de un curso son válidos antes de crearlo.
         /// </summary>
@@ -364,6 +381,46 @@ namespace Logic
             {
                 throw new Exception(ex.Message);
             }          
+        }
+        public void AgregarAlumnoAlCursoDB(EstudianteEnCursos estudiante, CursosEnEstudiantes cursoEnQueSeAgrega)
+        {
+            try
+            {
+                List<EstudiantePorCurso> listaEstudiantesPorCurso = GetEstudiantePorCursoDB();
+                List<Cursos> listaCursos = GetCursosDB();
+
+                int cupoActual = DevolverCupoActual(cursoEnQueSeAgrega.Codigo, listaEstudiantesPorCurso);
+
+                foreach (Cursos cursos in listaCursos)
+                {
+                    if (cursos.Codigo == cursoEnQueSeAgrega.Codigo)
+                    {
+                        if (ValidadorAgregarAlumnosACurso(cursos, listaEstudiantesPorCurso, estudiante, cursoEnQueSeAgrega, cupoActual))
+                        {
+                            var query = "INSERT INTO EstudiantePorCurso (CodigoEstudiante, NombreEstudiante, ApellidoEstudiante," +
+                                " CodigoCurso, NombreCurso, DiaSemana, Aula, Turno)" +
+                                    $"VALUES ('{estudiante.Id}', '{estudiante.Nombre}', '{estudiante.Apellido}', '{cursoEnQueSeAgrega.Codigo}'," +
+                                    $" '{cursoEnQueSeAgrega.Nombre}', '{cursoEnQueSeAgrega.DiaSemana}', '{cursoEnQueSeAgrega.Aula}', '{cursoEnQueSeAgrega.Turno}');";
+
+                            DB.DB.Guardar(query);
+                            break;
+                        }
+                    }
+                }
+            }
+            catch (ExcepcionPropia)
+            {
+                var query = "INSERT INTO EstudiantePorCurso (CodigoEstudiante, NombreEstudiante, ApellidoEstudiante," +
+                            " CodigoCurso, NombreCurso, DiaSemana, Aula, Turno)" +
+                            $"VALUES ('{estudiante.Id}', '{estudiante.Nombre}', '{estudiante.Apellido}', '{cursoEnQueSeAgrega.Codigo}'," +
+                            $" '{cursoEnQueSeAgrega.Nombre}', '{cursoEnQueSeAgrega.DiaSemana}', '{cursoEnQueSeAgrega.Aula}' '{cursoEnQueSeAgrega.Turno}');";
+
+                DB.DB.Guardar(query);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         /// <summary>

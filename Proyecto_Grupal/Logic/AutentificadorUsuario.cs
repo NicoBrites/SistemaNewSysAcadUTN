@@ -59,8 +59,7 @@ namespace Logic
         public Object AutentificarUsuarioSDB(string correo, string contraseña)
         {
 
-            string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\Usuariosss";
-            JsonUsuariosFormato json = _gestorArchivos.GestorJsonNew(path);
+            JsonUsuariosFormato json = DB.DB.ReturnAllUsers();
 
             List<Administrador> administradores = json.Administradores;
             List<Estudiantes> estudiantes = json.Estudiantes;

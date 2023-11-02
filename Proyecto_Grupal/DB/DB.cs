@@ -85,7 +85,7 @@ namespace DB
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                throw new Exception(ex.Message);
             }
             finally { conexion.Close(); }
         }
@@ -194,6 +194,52 @@ namespace DB
             finally { conexion.Close(); }
 
             return listaCursos;
+        }
+
+        public static List<EstudiantePorCurso> ReturnAllEstudiantesPorCurso()
+        {
+
+            var listaEstudiantesPorCurso = new List<EstudiantePorCurso>();
+
+            try
+            {
+                conexion.Open();
+
+                var query = "SELECT * FROM EstudiantePorCurso";
+                comando.CommandText = query;
+
+                using (var reader = comando.ExecuteReader())
+                {
+                    if (reader != null)
+                    {
+                        while (reader.Read())
+                        {
+                            var nombreEstudiante = reader["Nombre"].ToString();
+                            var apellidoEstudiante = reader["ApellidoEstudiante"].ToString();
+                            var codigoEstudiante = Convert.ToInt32(reader["CodigoEstudiante"]);
+                            var nombreCurso = reader["NombreCurso"].ToString();
+                            var diaSemana = reader["DiaSemana"].ToString();
+                            var codigoCurso = Convert.ToInt32(reader["CodigoCurso"]);
+                            var aula = reader["Aula"].ToString();
+                            var turno = reader["Turno"].ToString();
+
+                            listaEstudiantesPorCurso.Add(new EstudiantePorCurso(codigoEstudiante,nombreEstudiante,apellidoEstudiante,codigoCurso,nombreCurso, diaSemana, turno, aula));
+
+                        }
+                    }
+                    else
+                    {
+                        return listaEstudiantesPorCurso;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return listaEstudiantesPorCurso;
+            }
+            finally { conexion.Close(); }
+
+            return listaEstudiantesPorCurso;
         }
     }   
 }

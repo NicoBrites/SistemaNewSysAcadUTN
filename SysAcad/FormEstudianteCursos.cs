@@ -20,7 +20,7 @@ namespace SysAcad
             GestorCursos cursos = new GestorCursos();
             try
             {
-                List<Cursos> listaCursos = cursos.GetCursos();
+                List<Cursos> listaCursos = cursos.GetCursosDB();
                 dataGridView1.DataSource = listaCursos;
             }
             catch { }
@@ -53,7 +53,7 @@ namespace SysAcad
 
                     try
                     {
-                        gestorCursos.AgregarAlumnoAlCurso(new EstudianteEnCursos(estudiante.Id, estudiante.Nombre, estudiante.Apellido),
+                        gestorCursos.AgregarAlumnoAlCursoDB(new EstudianteEnCursos(estudiante.Id, estudiante.Nombre, estudiante.Apellido),
                             new CursosEnEstudiantes(nombre, codigo, diaSemana, turno, aula));
 
                         MessageBox.Show($"Se inscribio a {nombre} satisfactoriamente ", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -82,6 +82,11 @@ namespace SysAcad
             formMenuEstudiante.estudiante = estudiante;
             formMenuEstudiante.Show();
             this.Hide();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
