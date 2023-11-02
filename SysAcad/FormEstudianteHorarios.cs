@@ -25,7 +25,7 @@ namespace SysAcad
             GestorCursos gestorCursos = new GestorCursos();
             List<HorariosDataGrid> horarios = new List<HorariosDataGrid>();
 
-            List<EstudiantePorCurso> estudiantesPorCurso = gestorCursos.GetEstudiantePorCurso();
+            List<EstudiantePorCurso> estudiantesPorCurso = gestorCursos.GetEstudiantePorCursoDB();
 
 
             foreach (EstudiantePorCurso estudiantePorCurso in estudiantesPorCurso)

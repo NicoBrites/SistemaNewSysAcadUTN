@@ -214,7 +214,7 @@ namespace DB
                     {
                         while (reader.Read())
                         {
-                            var nombreEstudiante = reader["Nombre"].ToString();
+                            var nombreEstudiante = reader["NombreEstudiante"].ToString();
                             var apellidoEstudiante = reader["ApellidoEstudiante"].ToString();
                             var codigoEstudiante = Convert.ToInt32(reader["CodigoEstudiante"]);
                             var nombreCurso = reader["NombreCurso"].ToString();

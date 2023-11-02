@@ -449,7 +449,7 @@ namespace Logic
         /// <returns>True si el estudiante tiene horarios registrados, False si no los tiene.</returns>
         public bool ValidarHorariosEstudiante(int estudianteId)
         {
-            List<EstudiantePorCurso> estudiantesPorCursos = GetEstudiantePorCurso();
+            List<EstudiantePorCurso> estudiantesPorCursos = GetEstudiantePorCursoDB();
 
             foreach (EstudiantePorCurso estudiantePorCurso in estudiantesPorCursos)
             {
