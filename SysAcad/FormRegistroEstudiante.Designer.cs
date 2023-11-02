@@ -201,6 +201,7 @@
             Controls.Add(btnCrearEstudiante);
             Name = "FormRegistroEstudiante";
             Text = "FormRegistroEstudiante";
+            Load += FormRegistroEstudiante_Load;
             ResumeLayout(false);
             PerformLayout();
         }

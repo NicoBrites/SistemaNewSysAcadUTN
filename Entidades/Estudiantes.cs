@@ -1,7 +1,7 @@
 ﻿
 namespace Entidades
 {
-    public class Estudiantes : Persona
+    public class Estudiantes: Persona
     {
         private int _telefono;
 

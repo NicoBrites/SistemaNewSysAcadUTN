@@ -1,4 +1,6 @@
 ﻿
+using Microsoft.Data.SqlClient;
+
 namespace Entidades
 {
     public class Cursos
@@ -73,6 +75,11 @@ namespace Entidades
             get { return _turno; }
             set { _turno = value; }
         }
-
+        /*
+        public static explicit operator Cursos(SqlDataReader v)
+        {
+            //throw new NotImplementedException();
+            //return new Cursos(v["nombre"], v["codigo"]);
+        }*/
     }
 }

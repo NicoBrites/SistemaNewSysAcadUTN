@@ -62,5 +62,10 @@ namespace SysAcad
 
             this.Hide();
         }
+
+        private void FormRegistroEstudiante_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

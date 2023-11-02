@@ -1,3 +1,4 @@
+using Entidades;
 using Logic;
 
 namespace SysAcad
@@ -15,9 +16,10 @@ namespace SysAcad
             ApplicationConfiguration.Initialize();
 
             // VALIDAR QUE EXISTEN ARCHIVOS CON METODOS ESTATICOS
-            MetodosEstaticos.CrearAdministradorInicialNuevoFormato();
+            MetodosEstaticos.CrearAdministradorInicialEnDB();
             //CLASES INICIALIZADORAS PARA QUE NO EXPLOTE Y EXISTA LO MINIMO Y NECESARIO PAR EL 4
-            
+            //DB.Query();
+
             Application.Run(new FormLogin());
         }
     }

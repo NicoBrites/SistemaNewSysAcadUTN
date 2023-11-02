@@ -161,6 +161,7 @@ namespace SysAcad
             Controls.Add(label1);
             Name = "FormEstudiantePagos";
             Text = "Pagos";
+            Load += FormEstudiantePagos_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)conseptoDePagoBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)horariosDataGridBindingSource).EndInit();

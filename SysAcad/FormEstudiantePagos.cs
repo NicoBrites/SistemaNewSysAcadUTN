@@ -128,5 +128,10 @@ namespace SysAcad
                                         "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void FormEstudiantePagos_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

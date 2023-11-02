@@ -56,6 +56,7 @@ namespace Logic
             catch (Exception ex)
             {
                 Console.WriteLine($"Error al leer el archivo JSON: {ex.Message}");
+                throw new Exception(ex.Message);
             }
 
         }

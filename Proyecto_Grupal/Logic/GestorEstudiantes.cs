@@ -100,7 +100,7 @@ namespace Logic
 
             string msj = _gestorArchivos.GuardarAJson(jsonNuevo, path);
 
-            bool funco = Email.SendMessageSmtp(nuevEstudiante.Correo, nuevEstudiante.Clave, nuevEstudiante.Nombre, nuevEstudiante.Apellido);
+            //bool funco = Email.SendMessageSmtp(nuevEstudiante.Correo, nuevEstudiante.Clave, nuevEstudiante.Nombre, nuevEstudiante.Apellido);
         }
     }
 }

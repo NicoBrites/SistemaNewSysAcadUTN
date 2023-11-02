@@ -87,5 +87,47 @@ namespace Logic
                 string msj = archivos.GuardarAJson(jsonNuevo, path);
             }
         }
+        public static void CrearAdministradorInicialEnDB()
+        {
+
+            bool hayAdministrador = false;
+            try
+            {
+                JsonUsuariosFormato json = DB.DB.ReturnAllUsers();
+
+                List<Administrador> administradores = json.Administradores;
+
+
+                if (administradores.Count > 0)
+                {
+                    hayAdministrador = true;
+                }
+                if (hayAdministrador == false)
+                {
+
+                    string claveConHash = GetHash("clave123");
+                    Administrador administrador = new Administrador(1, "Hernesto", "Guevara", 1, claveConHash, "correo123");
+
+                    var query = "INSERT INTO Usuarios (TipoEntidad, ID, Nombre, Apellido, Dni, Clave, Correo)" +
+                        "VALUES ('Administradores', 1, 'Hernesto', 'Guevara', 0, '$2a$08$1TUQavIoMfhefUr.5c2zmeeN97WYk8Q6SuFeIQqvXRhtfWV7h1cWG', 'correo123');";
+
+                    DB.DB.Guardar(query);
+                }
+
+            }
+            catch (Exception)
+            {
+
+                string claveConHash = GetHash("clave123");
+                Administrador administrador = new Administrador(1, "Hernesto", "Guevara", 1, claveConHash, "correo123");
+
+                var query = "INSERT INTO Personas (TipoEntidad, ID, Nombre, Apellido, Dni, Clave, Correo)" +
+                    "VALUES ('Administradores', 1, 'Hernesto', 'Guevara', 0, '$2a$08$1TUQavIoMfhefUr.5c2zmeeN97WYk8Q6SuFeIQqvXRhtfWV7h1cWG', 'correo123');";
+
+                DB.DB.Guardar(query);
+
+            }
+
+        }
     }
 }
