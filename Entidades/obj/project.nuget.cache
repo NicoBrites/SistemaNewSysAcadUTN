@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zAtpe1SmDqwN3Jqvk2/GF7tYv4vCYWWQ7BNdJ//YedTtR/XTF+8aWoGQ48lUhxBA/jexy33/yBqO4tMVBJ+0lQ==",
+  "dgSpecHash": "AdGaRB3yT5MmFVKWYJx2S4A/fH09WtTFtxN23OFzVrLVJxXPc5AgBtFnNYJtBYqc90c11NF+Y78BR++857dlCA==",
   "success": true,
-  "projectFilePath": "C:\\PruebaLabNet\\SistemaNewSysAcadUTN\\Entidades\\Entidades.csproj",
+  "projectFilePath": "C:\\Users\\AdministraGod\\Desktop\\proyectoUTN\\SistemaNewSysAcadUTN\\Entidades\\Entidades.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\AdministraGod\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\AdministraGod\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

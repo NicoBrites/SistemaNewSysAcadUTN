@@ -2371,11 +2371,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\PruebaLabNet\\SistemaNewSysAcadUTN\\SysAcad\\SysAcad.csproj",
+      "projectUniqueName": "C:\\Users\\AdministraGod\\Desktop\\proyectoUTN\\SistemaNewSysAcadUTN\\SysAcad\\SysAcad.csproj",
       "projectName": "SysAcad",
-      "projectPath": "C:\\PruebaLabNet\\SistemaNewSysAcadUTN\\SysAcad\\SysAcad.csproj",
+      "projectPath": "C:\\Users\\AdministraGod\\Desktop\\proyectoUTN\\SistemaNewSysAcadUTN\\SysAcad\\SysAcad.csproj",
       "packagesPath": "C:\\Users\\AdministraGod\\.nuget\\packages\\",
-      "outputPath": "C:\\PruebaLabNet\\SistemaNewSysAcadUTN\\SysAcad\\obj\\",
+      "outputPath": "C:\\Users\\AdministraGod\\Desktop\\proyectoUTN\\SistemaNewSysAcadUTN\\SysAcad\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -2396,11 +2396,11 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "projectReferences": {
-            "C:\\PruebaLabNet\\SistemaNewSysAcadUTN\\Entidades\\Entidades.csproj": {
-              "projectPath": "C:\\PruebaLabNet\\SistemaNewSysAcadUTN\\Entidades\\Entidades.csproj"
+            "C:\\Users\\AdministraGod\\Desktop\\proyectoUTN\\SistemaNewSysAcadUTN\\Entidades\\Entidades.csproj": {
+              "projectPath": "C:\\Users\\AdministraGod\\Desktop\\proyectoUTN\\SistemaNewSysAcadUTN\\Entidades\\Entidades.csproj"
             },
-            "C:\\PruebaLabNet\\SistemaNewSysAcadUTN\\Proyecto_Grupal\\Logic\\Logic.csproj": {
-              "projectPath": "C:\\PruebaLabNet\\SistemaNewSysAcadUTN\\Proyecto_Grupal\\Logic\\Logic.csproj"
+            "C:\\Users\\AdministraGod\\Desktop\\proyectoUTN\\SistemaNewSysAcadUTN\\Proyecto_Grupal\\Logic\\Logic.csproj": {
+              "projectPath": "C:\\Users\\AdministraGod\\Desktop\\proyectoUTN\\SistemaNewSysAcadUTN\\Proyecto_Grupal\\Logic\\Logic.csproj"
             }
           }
         }

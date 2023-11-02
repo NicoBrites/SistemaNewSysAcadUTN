@@ -21,7 +21,7 @@ namespace SysAcad
             GestorCursos cursos = new GestorCursos();
             try
             {
-                List<Cursos> listaCursos = cursos.GetCursos();
+                List<Cursos> listaCursos = cursos.GetCursosDB();
                 dataGridView1.DataSource = listaCursos;
             }
             catch { }

@@ -44,7 +44,7 @@ namespace SysAcad
                 Aulas enumAulas = (Aulas)Enum.Parse(typeof(Aulas), aula);
                 Turnos enumTurno = (Turnos)Enum.Parse(typeof(Turnos), turno);*/
 
-                    cursos.CrearCurso(new Cursos(nuevoNombre, nuevoCodigoValidado, nuevoDescripcion, nuevoCupoMaxValidado, diaSemana, aula, turno));
+                    cursos.CrearCursoDB(new Cursos(nuevoNombre, nuevoCodigoValidado, nuevoDescripcion, nuevoCupoMaxValidado, diaSemana, aula, turno));
 
                     MessageBox.Show("Se creo el curso correctamente", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

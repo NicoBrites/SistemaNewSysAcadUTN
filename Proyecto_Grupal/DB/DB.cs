@@ -150,5 +150,50 @@ namespace DB
 
             return jsonNuevo;
         }
-    }
+
+        public static List<Cursos> ReturnAllCursos()
+        {
+
+            var listaCursos = new List<Cursos>();
+
+            try
+            {
+                conexion.Open();
+
+                var query = "SELECT * FROM Cursos";
+                comando.CommandText = query;
+
+                using (var reader = comando.ExecuteReader())
+                {
+                    if (reader != null)
+                    {
+                        while (reader.Read())
+                        {
+                            var nombre = reader["Nombre"].ToString();
+                            var descripcion = reader["Descripcion"].ToString();
+                            var codigo = Convert.ToInt32(reader["Codigo"]);
+                            var diaSemana = reader["DiaSemana"].ToString();
+                            var aula = reader["Aula"].ToString();
+                            var cupoMaximo = Convert.ToInt32(reader["CupoMaximo"]);
+                            var turno = reader["Turno"].ToString();
+
+                            listaCursos.Add(new Cursos(nombre, codigo, descripcion, cupoMaximo, diaSemana, aula, turno));
+
+                        }
+                    }
+                    else
+                    {
+                        return listaCursos;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return listaCursos;
+            }
+            finally { conexion.Close(); }
+
+            return listaCursos;
+        }
+    }   
 }

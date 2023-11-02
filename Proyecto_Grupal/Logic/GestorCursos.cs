@@ -40,6 +40,23 @@ namespace Logic
             }
         }
 
+        public List<Cursos> GetCursosDB()
+        {
+            try
+            {
+                List<Cursos> listaCursos = DB.DB.ReturnAllCursos(); ;
+                return listaCursos;
+            }
+            catch (ExcepcionPropia ex)
+            {
+                throw new ExcepcionPropia(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         /// <summary>
         /// Obtiene una lista de estudiantes por curso desde un archivo JSON.
         /// </summary>
@@ -126,6 +143,53 @@ namespace Logic
                     curso.CupoMaximo, curso.DiaSemana, curso.Aula, curso.Turno);
                     listaNueva.Add(crearCurso);
                     string msj = _gestorArchivos.GuardarAJson(listaNueva, path);       
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+
+        }
+
+        public void CrearCursoDB(Cursos curso)
+        {
+            try
+            {
+                List<Cursos> listaCursos = GetCursosDB();
+                foreach (Cursos cursos in listaCursos)
+                {
+                    if (curso.Codigo == cursos.Codigo)
+                    {
+                        throw new Exception("El codigo del curso ya esta en uso");
+                    }
+                    if (curso.Aula == cursos.Aula && curso.Turno == cursos.Turno && curso.DiaSemana == cursos.DiaSemana)
+                    {
+                        throw new Exception("Ya hay un curso ese dia en ese turno en ese aula");
+                    }
+                }
+              
+
+                Cursos crearCurso = new Cursos(curso.Nombre, curso.Codigo, curso.Descripcion,
+                    curso.CupoMaximo, curso.DiaSemana, curso.Aula, curso.Turno);
+
+
+                var query = "INSERT INTO Cursos (Codigo, Nombre, Descripcion, CupoMaximo, DiaSemana, Aula, Turno)" +
+                    $"VALUES ('{curso.Codigo}', '{curso.Nombre}', '{curso.Descripcion}', '{curso.CupoMaximo}'," +
+                    $" '{curso.DiaSemana}', '{curso.Aula}', '{curso.Turno}');";
+
+                DB.DB.Guardar(query);
+            }
+            catch (ExcepcionPropia)
+            {
+                Cursos crearCurso = new Cursos(curso.Nombre, curso.Codigo, curso.Descripcion,
+                   curso.CupoMaximo, curso.DiaSemana, curso.Aula, curso.Turno);
+
+
+                var query = "INSERT INTO Cursos (Codigo, Nombre, Descripcion, CupoMaximo, DiaSemana, Aula, Turno)" +
+                    $"VALUES ('{curso.Codigo}', '{curso.Nombre}', '{curso.Descripcion}', '{curso.CupoMaximo}'," +
+                    $" '{curso.DiaSemana}', '{curso.Aula}', '{curso.Turno}');";
+
+                DB.DB.Guardar(query);
             }
             catch (Exception e)
             {

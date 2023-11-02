@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wRww6jmjcJK7lV/ZnGY95vF7wVQQboOFLm1aNXdHqrU/nC4pc33dnPr4kpfEb4agtDO9BRrIG5+x9pihr07uug==",
+  "dgSpecHash": "fBQHfksSU0uRZgRjG9E6nIl7lvi6R3cqnmhccROv2xQmew0JokemBYaQmJJNV2+XZjXTAsqMisIP+FjUW8wn5Q==",
   "success": true,
-  "projectFilePath": "C:\\PruebaLabNet\\SistemaNewSysAcadUTN\\Proyecto_Grupal\\Logic\\Logic.csproj",
+  "projectFilePath": "C:\\Users\\AdministraGod\\Desktop\\proyectoUTN\\SistemaNewSysAcadUTN\\Proyecto_Grupal\\Logic\\Logic.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\AdministraGod\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\AdministraGod\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

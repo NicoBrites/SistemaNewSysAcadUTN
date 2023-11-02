@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "PBuvwpxg0IC0gkOvwIgLKgx+A+An6lK0baXud2qFNLX3wJNFDbilP9dF1iW8uLtgO6nzMCIQ+bcRcQxUGPyrUw==",
+  "dgSpecHash": "pHn2+gDPhmIqf31KMEhcBG4LzR3tTfZtWbcSigErPiijwdO89jSW7dU6P95qcDngb2FFUwp45aFHw/JGHsylHA==",
   "success": true,
-  "projectFilePath": "C:\\PruebaLabNet\\SistemaNewSysAcadUTN\\SysAcad\\SysAcad.csproj",
+  "projectFilePath": "C:\\Users\\AdministraGod\\Desktop\\proyectoUTN\\SistemaNewSysAcadUTN\\SysAcad\\SysAcad.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\AdministraGod\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\AdministraGod\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

@@ -20,7 +20,7 @@ namespace SysAcad
 
             try
             {
-                Object usuario = funciones.AutentificarUsuarioS(correo, contraseña);
+                Object usuario = funciones.AutentificarUsuarioSDB(correo, contraseña);
 
                 if (usuario is Administrador)
                 {

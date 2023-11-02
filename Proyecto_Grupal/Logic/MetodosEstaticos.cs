@@ -118,7 +118,7 @@ namespace Logic
 
                 string claveConHash = GetHash("clave123");
 
-                var query = "INSERT INTO Personas (TipoEntidad, ID, Nombre, Apellido, Dni, Clave, Correo)" +
+                var query = "INSERT INTO Usuarios (TipoEntidad, ID, Nombre, Apellido, Dni, Clave, Correo)" +
                     $"VALUES ('Administradores', 1, 'Hernesto', 'Guevara', 0, '{claveConHash}', 'correo123');";
 
                 DB.DB.Guardar(query);
