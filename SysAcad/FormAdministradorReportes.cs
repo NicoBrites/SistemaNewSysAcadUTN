@@ -40,6 +40,44 @@ namespace SysAcad
                     }
                 }
             }
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (row.Cells["Check"].Value != null && (bool)row.Cells["Check"].Value == true)
+                {
+                    int filaSeleccionadaIndex = dataGridView1.SelectedCells[0].RowIndex;
+                    // El CheckBox en esta fila está marcado.
+                    // Puedes acceder a los datos de la fila y trabajar con ellos.
+                    int codigo = int.Parse(dataGridView1.Rows[filaSeleccionadaIndex].Cells["codigoDataGridViewTextBoxColumn"].Value.ToString());
+
+                    if (codigo == 1)
+                    {
+                        label1.Text = "Seleccione un periodo:";
+                        label1.Visible = true;
+                        comboBox1.Visible = true;
+                    }
+                    if (codigo == 2)
+                    {
+                        label2.Text = "Seleccione el curso:";
+                        label2.Visible = true;
+                        comboBox2.Visible = true;
+                    }
+                    if (codigo == 3)
+                    {
+                        label3.Text = "Seleccione el consepto de pago:";
+                        label3.Visible = true;
+                        comboBox3.Visible = true;
+                    }
+                    if (codigo == 4)
+                    {
+                        label4.Text = "Seleccione el curso:";
+                        label4.Visible = true;
+                        comboBox4.Visible = true;
+                    }
+                }
+            }
+
+
+
         }
 
 
