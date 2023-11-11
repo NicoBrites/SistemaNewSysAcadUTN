@@ -92,6 +92,7 @@
             generarReportes.TabIndex = 1;
             generarReportes.Text = "Generar Reportes";
             generarReportes.UseVisualStyleBackColor = true;
+            generarReportes.Click += generarReportes_Click;
             // 
             // volver
             // 
@@ -196,6 +197,7 @@
             Controls.Add(dataGridView1);
             Name = "FormAdministradorReportes";
             Text = "FormAdministradorReportes";
+            Load += FormAdministradorReportes_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)reportesBindingSource).EndInit();
             ResumeLayout(false);

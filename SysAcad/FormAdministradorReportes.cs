@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Entidades.Enums;
 
 namespace SysAcad
 {
@@ -22,6 +23,8 @@ namespace SysAcad
 
             List<Reportes> listaInformes = gestorReportes.GenerarOpcionesRepórtes();
             dataGridView1.DataSource = listaInformes;
+
+            CargarComboBoxs();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -40,6 +43,18 @@ namespace SysAcad
                     }
                 }
             }
+
+
+        }
+
+        private void FormAdministradorReportes_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void generarReportes_Click(object sender, EventArgs e)
+        {
+            bool selecciono = false;
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 if (row.Cells["Check"].Value != null && (bool)row.Cells["Check"].Value == true)
@@ -54,32 +69,78 @@ namespace SysAcad
                         label1.Text = "Seleccione un periodo:";
                         label1.Visible = true;
                         comboBox1.Visible = true;
+                        selecciono = true;
+                    }
+                    else
+                    {
+                        label1.Visible = false;
+                        comboBox1.Visible = false;
                     }
                     if (codigo == 2)
                     {
                         label2.Text = "Seleccione el curso:";
                         label2.Visible = true;
                         comboBox2.Visible = true;
+                        selecciono = true;
+                    }
+                    else
+                    {
+                        label2.Visible = false;
+                        comboBox2.Visible = false;
                     }
                     if (codigo == 3)
                     {
                         label3.Text = "Seleccione el consepto de pago:";
                         label3.Visible = true;
                         comboBox3.Visible = true;
+                        selecciono = true;
+                    }
+                    else
+                    {
+                        label3.Visible = false;
+                        comboBox3.Visible = false;
                     }
                     if (codigo == 4)
                     {
                         label4.Text = "Seleccione el curso:";
                         label4.Visible = true;
                         comboBox4.Visible = true;
+                        selecciono = true;
+                    }
+                    else
+                    {
+                        label4.Visible = false;
+                        comboBox4.Visible = false;
                     }
                 }
             }
+            if (selecciono == false)
+            {
+                MessageBox.Show("No selecciono ningun tipo de informe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
 
+            }
+        }
+        
+        private void CargarComboBoxs()
+        {
+            GestorCursos gestorCursos = new GestorCursos();
+            GestorPagos gestorPagos = new GestorPagos();
 
+            comboBox1.Items.Add("Primer cuatrimestre");
+            comboBox1.Items.Add("Segundo Cuatrimestre");
+
+            foreach (Cursos cursos in gestorCursos.GetCursosDB())
+            {
+                comboBox2.Items.Add(cursos.Nombre);
+            }
+            foreach (ConseptoDePago conseptoDePago in gestorPagos.ConseptoDePagos())
+            {
+                comboBox3.Items.Add(conseptoDePago.Concepto);
+            }
 
         }
-
-
     }
 }
