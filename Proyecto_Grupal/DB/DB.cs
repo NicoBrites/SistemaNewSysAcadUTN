@@ -222,7 +222,7 @@ namespace DB
                             var aula = reader["Aula"].ToString();
                             var turno = reader["Turno"].ToString();
 
-                            listaEstudiantesPorCurso.Add(new EstudiantePorCurso(codigoEstudiante,nombreEstudiante,apellidoEstudiante,codigoCurso,nombreCurso, diaSemana, turno, aula));
+                            listaEstudiantesPorCurso.Add(new EstudiantePorCurso(codigoEstudiante,nombreEstudiante,apellidoEstudiante,codigoCurso,nombreCurso, diaSemana, turno, aula, DateTime.Now));
 
                         }
                     }

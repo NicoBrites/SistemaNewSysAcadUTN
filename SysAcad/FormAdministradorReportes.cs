@@ -100,18 +100,6 @@ namespace SysAcad
                         label3.Visible = false;
                         comboBox3.Visible = false;
                     }
-                    if (codigo == 4)
-                    {
-                        label4.Text = "Seleccione el curso:";
-                        label4.Visible = true;
-                        comboBox4.Visible = true;
-                        selecciono = true;
-                    }
-                    else
-                    {
-                        label4.Visible = false;
-                        comboBox4.Visible = false;
-                    }
                 }
             }
             if (selecciono == false)

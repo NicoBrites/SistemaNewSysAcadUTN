@@ -360,7 +360,7 @@ namespace Logic
                         {
                             string path = @"C:\PruebaLabNet\SistemaNewSysAcadUTN\Json\EstudiantePorCurso";
                             listaEstudiantesPorCurso.Add(new EstudiantePorCurso(estudiante.Id, estudiante.Nombre, estudiante.Apellido, cursoEnQueSeAgrega.Codigo,
-                                   cursoEnQueSeAgrega.Nombre, cursoEnQueSeAgrega.DiaSemana, cursoEnQueSeAgrega.Turno, cursoEnQueSeAgrega.Aula));
+                                   cursoEnQueSeAgrega.Nombre, cursoEnQueSeAgrega.DiaSemana, cursoEnQueSeAgrega.Turno, cursoEnQueSeAgrega.Aula, DateTime.Now));
                             _gestorArchivos.GuardarAJson(listaEstudiantesPorCurso, path);
                             break;
                         }
@@ -374,7 +374,7 @@ namespace Logic
                 List<EstudiantePorCurso> listaEstudiantesPorCurso = new List<EstudiantePorCurso>();
 
                 listaEstudiantesPorCurso.Add(new EstudiantePorCurso(estudiante.Id, estudiante.Nombre, estudiante.Apellido, cursoEnQueSeAgrega.Codigo,
-                            cursoEnQueSeAgrega.Nombre, cursoEnQueSeAgrega.DiaSemana, cursoEnQueSeAgrega.Turno, cursoEnQueSeAgrega.Aula));
+                            cursoEnQueSeAgrega.Nombre, cursoEnQueSeAgrega.DiaSemana, cursoEnQueSeAgrega.Turno, cursoEnQueSeAgrega.Aula, DateTime.Now));
                 _gestorArchivos.GuardarAJson(listaEstudiantesPorCurso, path);
             }
             catch (Exception ex)
@@ -398,9 +398,9 @@ namespace Logic
                         if (ValidadorAgregarAlumnosACurso(cursos, listaEstudiantesPorCurso, estudiante, cursoEnQueSeAgrega, cupoActual))
                         {
                             var query = "INSERT INTO EstudiantePorCurso (CodigoEstudiante, NombreEstudiante, ApellidoEstudiante," +
-                                " CodigoCurso, NombreCurso, DiaSemana, Aula, Turno)" +
+                                " CodigoCurso, NombreCurso, DiaSemana, Aula, Turno, Fecha)" +
                                     $"VALUES ('{estudiante.Id}', '{estudiante.Nombre}', '{estudiante.Apellido}', '{cursoEnQueSeAgrega.Codigo}'," +
-                                    $" '{cursoEnQueSeAgrega.Nombre}', '{cursoEnQueSeAgrega.DiaSemana}', '{cursoEnQueSeAgrega.Aula}', '{cursoEnQueSeAgrega.Turno}');";
+                                    $" '{cursoEnQueSeAgrega.Nombre}', '{cursoEnQueSeAgrega.DiaSemana}', '{cursoEnQueSeAgrega.Aula}', '{cursoEnQueSeAgrega.Turno}', '{DateTime.Now}');";
 
                             DB.DB.Guardar(query);
                             break;
@@ -411,9 +411,9 @@ namespace Logic
             catch (ExcepcionPropia)
             {
                 var query = "INSERT INTO EstudiantePorCurso (CodigoEstudiante, NombreEstudiante, ApellidoEstudiante," +
-                            " CodigoCurso, NombreCurso, DiaSemana, Aula, Turno)" +
+                            " CodigoCurso, NombreCurso, DiaSemana, Aula, Turno, Fecha)" +
                             $"VALUES ('{estudiante.Id}', '{estudiante.Nombre}', '{estudiante.Apellido}', '{cursoEnQueSeAgrega.Codigo}'," +
-                            $" '{cursoEnQueSeAgrega.Nombre}', '{cursoEnQueSeAgrega.DiaSemana}', '{cursoEnQueSeAgrega.Aula}' '{cursoEnQueSeAgrega.Turno}');";
+                            $" '{cursoEnQueSeAgrega.Nombre}', '{cursoEnQueSeAgrega.DiaSemana}', '{cursoEnQueSeAgrega.Aula}' '{cursoEnQueSeAgrega.Turno}', '{DateTime.Now}' );";
 
                 DB.DB.Guardar(query);
             }

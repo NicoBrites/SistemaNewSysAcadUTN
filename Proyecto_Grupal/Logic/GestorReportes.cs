@@ -23,5 +23,9 @@ namespace Logic
             return listaOpciones;
         }
 
+        public void ReporteInscripcionesPorPeriodo(string periodo)
+        {
+
+        }
     }
 }

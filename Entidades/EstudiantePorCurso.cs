@@ -11,9 +11,10 @@ namespace Entidades
         private string _diaSemana;
         private string _turno;
         private string _aula;
+        private DateTime _fecha;
 
         public EstudiantePorCurso(int codigoEstudiante, string nombreEstudiante, string apellidoEstudiante,
-            int codigoCurso, string nombreCurso, string diaSemana, string turno, string aula)
+            int codigoCurso, string nombreCurso, string diaSemana, string turno, string aula, DateTime fecha)
         {
             _codigoEstudiante = codigoEstudiante;
             _nombreEstudiante = nombreEstudiante;
@@ -23,6 +24,7 @@ namespace Entidades
             _diaSemana = diaSemana;
             _turno = turno;
             _aula = aula;
+            _fecha = fecha;
         }
         public int CodigoEstudiante
         {  get { return _codigoEstudiante;} }
@@ -36,5 +38,6 @@ namespace Entidades
         public string Turno { get { return _turno;} } 
         public string Aula { get { return _aula;} }
 
+        public DateTime Fecha { get { return _fecha; } }
     }
 }
