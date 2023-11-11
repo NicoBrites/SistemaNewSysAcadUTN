@@ -79,6 +79,7 @@ namespace SysAcad
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(635, 150);
             dataGridView1.TabIndex = 2;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // Check
             // 

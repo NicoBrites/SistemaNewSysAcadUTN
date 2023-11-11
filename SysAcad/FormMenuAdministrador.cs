@@ -37,5 +37,12 @@ namespace SysAcad
             formlogin.Show();
             this.Hide();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            FormAdministradorReportes formAdministrarReportes = new();
+            formAdministrarReportes.Show();
+            this.Hide();
+        }
     }
 }

@@ -33,6 +33,7 @@ namespace SysAcad
             btnRegistrarEstudiante = new Button();
             btnGestionarCursos = new Button();
             button1 = new Button();
+            btnGestorInformes = new Button();
             SuspendLayout();
             // 
             // btnRegistrarEstudiante
@@ -65,11 +66,22 @@ namespace SysAcad
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click_2;
             // 
+            // button2
+            // 
+            btnGestorInformes.Location = new Point(235, 217);
+            btnGestorInformes.Name = "btnGestorInformes";
+            btnGestorInformes.Size = new Size(363, 49);
+            btnGestorInformes.TabIndex = 3;
+            btnGestorInformes.Text = "Generar Reportes";
+            btnGestorInformes.UseVisualStyleBackColor = true;
+            btnGestorInformes.Click += button2_Click;
+            // 
             // FormMenuAdministrador
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnGestorInformes);
             Controls.Add(button1);
             Controls.Add(btnGestionarCursos);
             Controls.Add(btnRegistrarEstudiante);
@@ -83,6 +95,6 @@ namespace SysAcad
         private Button btnRegistrarEstudiante;
         private Button btnGestionarCursos;
         private Button button1;
-
+        private Button btnGestorInformes;
     }
 }

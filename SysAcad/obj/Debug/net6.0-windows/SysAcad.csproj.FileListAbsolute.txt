@@ -168,3 +168,4 @@ C:\Users\AdministraGod\Desktop\proyectoUTN\SistemaNewSysAcadUTN\SysAcad\obj\Debu
 C:\Users\AdministraGod\Desktop\proyectoUTN\SistemaNewSysAcadUTN\SysAcad\obj\Debug\net6.0-windows\SysAcad.pdb
 C:\Users\AdministraGod\Desktop\proyectoUTN\SistemaNewSysAcadUTN\SysAcad\obj\Debug\net6.0-windows\SysAcad.genruntimeconfig.cache
 C:\Users\AdministraGod\Desktop\proyectoUTN\SistemaNewSysAcadUTN\SysAcad\obj\Debug\net6.0-windows\ref\SysAcad.dll
+C:\Users\AdministraGod\Desktop\proyectoUTN\SistemaNewSysAcadUTN\SysAcad\obj\Debug\net6.0-windows\SysAcad.FormAdministradorReportes.resources

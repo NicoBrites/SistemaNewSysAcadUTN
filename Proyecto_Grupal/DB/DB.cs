@@ -26,7 +26,6 @@ namespace DB
 
         }
 
-
         public static Cursos MapCurso(IDataRecord reader)
         {
             var nombre = reader["Nombre"].ToString();
