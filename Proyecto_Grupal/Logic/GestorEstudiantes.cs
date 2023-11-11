@@ -87,7 +87,7 @@ namespace Logic
             ultimoId++;
             string claveConHash = MetodosEstaticos.GetHash(nuevEstudiante.Clave);
             Estudiantes nuevoEstudiante = new Estudiantes(ultimoId, nuevEstudiante.Nombre, nuevEstudiante.Apellido, nuevEstudiante.Dni,
-                nuevEstudiante.Telefono, nuevEstudiante.Direccion, claveConHash, nuevEstudiante.Correo);
+                nuevEstudiante.Telefono, nuevEstudiante.Direccion, claveConHash, nuevEstudiante.Correo, DateTime.Now);
          
             estudiantes.Add(nuevoEstudiante);
 
@@ -125,14 +125,23 @@ namespace Logic
             ultimoId++;
             string claveConHash = MetodosEstaticos.GetHash(nuevEstudiante.Clave);
 
-            var query = "INSERT INTO Usuarios (TipoEntidad, ID, Nombre, Apellido, Dni, Telefono, Direccion, Clave, Correo)" +
+            var query = "INSERT INTO Usuarios (TipoEntidad, ID, Nombre, Apellido, Dni, Telefono, Direccion, Clave, Correo, Fecha)" +
                       $"VALUES ('Estudiantes', '{ultimoId}', '{nuevEstudiante.Nombre}'," +
                       $" '{nuevEstudiante.Apellido}', '{nuevEstudiante.Dni}', '{nuevEstudiante.Telefono}', '{nuevEstudiante.Direccion}'," +
-                      $" '{claveConHash}', '{nuevEstudiante.Correo}');";
+                      $" '{claveConHash}', '{nuevEstudiante.Correo}', '{DateTime.Now}');";
 
             DB.DB.Guardar(query);
 
             //bool funco = Email.SendMessageSmtp(nuevEstudiante.Correo, nuevEstudiante.Clave, nuevEstudiante.Nombre, nuevEstudiante.Apellido);
+        }
+
+        public List<Estudiantes> GetListaEstudiantes()
+        {
+            JsonUsuariosFormato json = DB.DB.ReturnAllUsers();
+
+            List<Estudiantes> estudiantes = json.Estudiantes;
+
+            return estudiantes;
         }
     }
 }

@@ -131,7 +131,7 @@ namespace DB
                                 var telefono = Convert.ToInt32(reader["Telefono"]);
                                 var direccion = reader["Direccion"].ToString();
 
-                                jsonNuevo.Estudiantes.Add(new Estudiantes(id,nombre,apellido,dni,telefono,direccion,clave,correo));
+                                jsonNuevo.Estudiantes.Add(new Estudiantes(id,nombre,apellido,dni,telefono,direccion,clave,correo, DateTime.Now));
                             }
                         }
                     }

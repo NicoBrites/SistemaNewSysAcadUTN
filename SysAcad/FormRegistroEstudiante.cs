@@ -38,7 +38,7 @@ namespace SysAcad
                     int nuevoTelValidado = int.Parse(nuevoNumTelefono);
                     int nuevoDniValidado = int.Parse(nuevoDni);
 
-                    estudiantes.CrearEstudianteNewDB(new Estudiantes(0, nuevoNombre, nuevoApellido, nuevoDniValidado, nuevoTelValidado, nuevaDireccion, nuevaContraseñaProv, nuevoCorreoElectronico));
+                    estudiantes.CrearEstudianteNewDB(new Estudiantes(0, nuevoNombre, nuevoApellido, nuevoDniValidado, nuevoTelValidado, nuevaDireccion, nuevaContraseñaProv, nuevoCorreoElectronico, DateTime.Now));
 
                     MessageBox.Show("Se creo el estudiante correctamente", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

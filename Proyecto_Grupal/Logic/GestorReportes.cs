@@ -9,8 +9,13 @@ namespace Logic
 {
     public class GestorReportes
     {
-
-        public GestorReportes() { }
+        private GestorCursos _gestorCursos;
+        private GestorEstudiantes _gestorEstudiantes;
+        public GestorReportes() 
+        {
+            _gestorCursos = new GestorCursos();
+            _gestorEstudiantes = new GestorEstudiantes();
+        }
         public List<Reportes> GenerarOpcionesRepórtes()
         {
             List<Reportes> listaOpciones = new List<Reportes>
@@ -25,6 +30,22 @@ namespace Logic
 
         public void ReporteInscripcionesPorPeriodo(string periodo)
         {
+
+            List<Estudiantes> listaEstudiantes = _gestorEstudiantes.GetListaEstudiantes();
+            int contadorPrimerCuatrimestre = 0;
+            int contadorSegundoCuatrimestre = 0;
+
+            foreach (Estudiantes estudiante in listaEstudiantes)
+            {
+                if (estudiante.Fecha.Month < 6)
+                {
+                    contadorPrimerCuatrimestre++;
+                }
+                else
+                {
+                    contadorSegundoCuatrimestre++;
+                }
+            }
 
         }
     }
