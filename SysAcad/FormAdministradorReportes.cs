@@ -15,13 +15,14 @@ namespace SysAcad
 {
     public partial class FormAdministradorReportes : Form
     {
+        private GestorReportes _gestorReportes;
         public FormAdministradorReportes()
         {
             InitializeComponent();
 
-            GestorReportes gestorReportes = new GestorReportes();
+            _gestorReportes = new GestorReportes();
 
-            List<Reportes> listaInformes = gestorReportes.GenerarOpcionesRepórtes();
+            List<Reportes> listaInformes = _gestorReportes.GenerarOpcionesRepórtes();
             dataGridView1.DataSource = listaInformes;
 
             CargarComboBoxs();
@@ -55,6 +56,7 @@ namespace SysAcad
         private void generarReportes_Click(object sender, EventArgs e)
         {
             bool selecciono = false;
+            int codigo = 0;
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 if (row.Cells["Check"].Value != null && (bool)row.Cells["Check"].Value == true)
@@ -62,7 +64,7 @@ namespace SysAcad
                     int filaSeleccionadaIndex = dataGridView1.SelectedCells[0].RowIndex;
                     // El CheckBox en esta fila está marcado.
                     // Puedes acceder a los datos de la fila y trabajar con ellos.
-                    int codigo = int.Parse(dataGridView1.Rows[filaSeleccionadaIndex].Cells["codigoDataGridViewTextBoxColumn"].Value.ToString());
+                    codigo = int.Parse(dataGridView1.Rows[filaSeleccionadaIndex].Cells["codigoDataGridViewTextBoxColumn"].Value.ToString());
 
                     if (codigo == 1)
                     {
@@ -108,7 +110,17 @@ namespace SysAcad
             }
             else
             {
-
+                if (codigo == 1)
+                {
+                    if (comboBox1 == null || comboBox1.Text == "")
+                    {
+                        MessageBox.Show("No selecciono el periodo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        string informe = _gestorReportes.ReporteInscripcionesPorPeriodo(comboBox1.Text);
+                    }
+                }
             }
         }
         
@@ -118,7 +130,7 @@ namespace SysAcad
             GestorPagos gestorPagos = new GestorPagos();
 
             comboBox1.Items.Add("Primer cuatrimestre");
-            comboBox1.Items.Add("Segundo Cuatrimestre");
+            comboBox1.Items.Add("Segundo cuatrimestre");
 
             foreach (Cursos cursos in gestorCursos.GetCursosDB())
             {

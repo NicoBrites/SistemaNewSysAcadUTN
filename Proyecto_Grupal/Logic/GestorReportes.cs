@@ -1,4 +1,5 @@
 ﻿using Entidades;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,25 +29,39 @@ namespace Logic
             return listaOpciones;
         }
 
-        public void ReporteInscripcionesPorPeriodo(string periodo)
+        public string ReporteInscripcionesPorPeriodo(string periodo)
         {
 
             List<Estudiantes> listaEstudiantes = _gestorEstudiantes.GetListaEstudiantes();
-            int contadorPrimerCuatrimestre = 0;
-            int contadorSegundoCuatrimestre = 0;
+            int contadorEstudiantesPorPeriodo = 0;
+            string informe;
 
             foreach (Estudiantes estudiante in listaEstudiantes)
             {
-                if (estudiante.Fecha.Month < 6)
+                if (periodo == "Primer cuatrimestre")
                 {
-                    contadorPrimerCuatrimestre++;
+                    if (estudiante.Fecha.Month < 6)
+                    {
+                        contadorEstudiantesPorPeriodo++;
+                    }
                 }
                 else
                 {
-                    contadorSegundoCuatrimestre++;
+                    if (estudiante.Fecha.Month > 6)
+                    {
+                        contadorEstudiantesPorPeriodo++;
+                    }
                 }
             }
 
+            informe = $@"Universidad Tecnologica Nacional, {DateTime.Now.Date.ToString("yyyy-MM-dd")}
+
+                Informe de Inscricpciones en el {periodo}
+
+Cantidad de estudiantes inscriptos : {contadorEstudiantesPorPeriodo}
+";
+                      
+            return informe;
         }
     }
 }
