@@ -41,12 +41,14 @@ namespace SysAcad
                     {
                         DataGridViewCheckBoxCell checkBox = (DataGridViewCheckBoxCell)row.Cells["Check"];
                         checkBox.Value = false;
+
+                        btnParametros.Visible = true;
+                        generarReportes.Visible = false;
                     }
                 }
             }
 
-            btnParametros.Visible = true;
-            generarReportes.Visible = false;
+            
 
         }
 
@@ -68,7 +70,7 @@ namespace SysAcad
                     codigo = int.Parse(dataGridView1.Rows[filaSeleccionadaIndex].Cells["codigoDataGridViewTextBoxColumn"].Value.ToString());
                 }
             }
-         
+
             if (codigo == 1)
             {
                 if (comboBox1 == null || comboBox1.Text == "")
@@ -78,6 +80,16 @@ namespace SysAcad
                 else
                 {
                     string informe = _gestorReportes.ReporteInscripcionesPorPeriodo(comboBox1.Text);
+
+                    FormAdministradorInforme formAdministradorInforme = new FormAdministradorInforme();
+                    AddOwnedForm(formAdministradorInforme);
+
+                    formAdministradorInforme.label1.Text = informe;
+                    formAdministradorInforme.informe = informe;
+
+                    formAdministradorInforme.Show();
+                    this.Hide();
+
                 }
             }
             if (codigo == 2)
@@ -89,6 +101,15 @@ namespace SysAcad
                 else
                 {
                     string informe = _gestorReportes.ReporteInscripcionesPorCurso(comboBox2.Text);
+
+                    FormAdministradorInforme formAdministradorInforme = new FormAdministradorInforme();
+                    AddOwnedForm(formAdministradorInforme);
+
+                    formAdministradorInforme.label1.Text = informe;
+                    formAdministradorInforme.informe = informe;
+
+                    formAdministradorInforme.Show();
+                    this.Hide();
                 }
             }
             if (codigo == 3)
@@ -100,6 +121,15 @@ namespace SysAcad
                 else
                 {
                     string informe = _gestorReportes.ReporteIngresosPorConseptoDePago(comboBox3.Text);
+
+                    FormAdministradorInforme formAdministradorInforme = new FormAdministradorInforme();
+                    AddOwnedForm(formAdministradorInforme);
+
+                    formAdministradorInforme.label1.Text = informe;
+                    formAdministradorInforme.informe = informe;
+
+                    formAdministradorInforme.Show();
+                    this.Hide();
                 }
             }
 
@@ -150,7 +180,7 @@ namespace SysAcad
                         label1.Visible = false;
                         comboBox1.Visible = false;
                     }
-                    if (codigo == 2)
+                    if (codigo == 2 || codigo == 4)
                     {
                         label2.Text = "Seleccione el curso:";
                         label2.Visible = true;
@@ -174,6 +204,7 @@ namespace SysAcad
                         label3.Visible = false;
                         comboBox3.Visible = false;
                     }
+
                 }
             }
             if (selecciono == false)
@@ -186,6 +217,14 @@ namespace SysAcad
                 generarReportes.Visible = true;
                 btnParametros.Visible = false;
             }
+        }
+
+        private void volver_Click(object sender, EventArgs e)
+        {
+            FormMenuAdministrador formMenuAdministrador = new FormMenuAdministrador();
+            formMenuAdministrador.Show();
+            this.Hide();
+
         }
     }
 }

@@ -62,6 +62,7 @@ namespace SysAcad
             Controls.Add(comprobanteDePago);
             Name = "FormComprobanteDePago";
             Text = "Comprobante De Pago";
+            Load += FormComprobanteDePago_Load;
             ResumeLayout(false);
             PerformLayout();
         }

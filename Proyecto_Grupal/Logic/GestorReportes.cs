@@ -12,10 +12,12 @@ namespace Logic
     {
         private GestorCursos _gestorCursos;
         private GestorEstudiantes _gestorEstudiantes;
+        private PDF _pdf;
         public GestorReportes() 
         {
             _gestorCursos = new GestorCursos();
             _gestorEstudiantes = new GestorEstudiantes();
+            _pdf = new PDF();
         }
         public List<Reportes> GenerarOpcionesRepórtes()
         {
@@ -54,9 +56,9 @@ namespace Logic
                 }
             }
 
-            informe = $@"Universidad Tecnologica Nacional, {DateTime.Now.Date.ToString("yyyy-MM-dd")}
+            informe = $@"Universidad Tecnologica Nacional             {DateTime.Now.Date.ToString("yyyy-MM-dd")}
 
-                Informe de Inscricpciones en el {periodo}
+Informe de Inscricpciones en el {periodo}
 
 Cantidad de estudiantes inscriptos : {contadorEstudiantesPorPeriodo}
 ";
@@ -78,9 +80,9 @@ Cantidad de estudiantes inscriptos : {contadorEstudiantesPorPeriodo}
                 }
             }
 
-            informe = $@"Universidad Tecnologica Nacional, {DateTime.Now.Date.ToString("yyyy-MM-dd")}
+            informe = $@"Universidad Tecnologica Nacional            {DateTime.Now.Date.ToString("yyyy-MM-dd")}
 
-                Informe de Inscricpciones en el {nombreCurso}
+Informe de Inscricpciones en el {nombreCurso}
 
 Cantidad de estudiantes inscriptos : {contadorEstudiantesPorCursoo}
 ";
@@ -102,9 +104,9 @@ Cantidad de estudiantes inscriptos : {contadorEstudiantesPorCursoo}
                 }
             }
 
-            informe = $@"Universidad Tecnologica Nacional, {DateTime.Now.Date.ToString("yyyy-MM-dd")}
+            informe = $@"Universidad Tecnologica Nacional            {DateTime.Now.Date.ToString("yyyy-MM-dd")}
 
-                Informe de Inscricpciones en el {nombreConsepto}
+Informe de Inscricpciones en el {nombreConsepto}
 
 Cantidad de estudiantes inscriptos : {contadorEstudiantesPorCursoo}
 ";

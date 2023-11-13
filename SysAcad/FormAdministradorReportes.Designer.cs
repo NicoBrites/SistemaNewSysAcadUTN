@@ -104,6 +104,7 @@
             volver.TabIndex = 2;
             volver.Text = "Volver";
             volver.UseVisualStyleBackColor = true;
+            volver.Click += volver_Click;
             // 
             // label1
             // 

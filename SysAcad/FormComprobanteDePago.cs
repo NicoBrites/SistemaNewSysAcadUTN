@@ -27,5 +27,10 @@ namespace SysAcad
             formEstudiantePagos.Show();
             this.Hide();
         }
+
+        private void FormComprobanteDePago_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
