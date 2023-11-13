@@ -44,6 +44,7 @@
             comboBox3 = new ComboBox();
             label4 = new Label();
             comboBox4 = new ComboBox();
+            btnParametros = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)reportesBindingSource).BeginInit();
             SuspendLayout();
@@ -92,6 +93,7 @@
             generarReportes.TabIndex = 1;
             generarReportes.Text = "Generar Reportes";
             generarReportes.UseVisualStyleBackColor = true;
+            generarReportes.Visible = false;
             generarReportes.Click += generarReportes_Click;
             // 
             // volver
@@ -179,11 +181,22 @@
             comboBox4.TabIndex = 10;
             comboBox4.Visible = false;
             // 
+            // btnParametros
+            // 
+            btnParametros.Location = new Point(239, 330);
+            btnParametros.Name = "btnParametros";
+            btnParametros.Size = new Size(255, 23);
+            btnParametros.TabIndex = 11;
+            btnParametros.Text = "Ingresar parametros";
+            btnParametros.UseVisualStyleBackColor = true;
+            btnParametros.Click += btnParametros_Click;
+            // 
             // FormAdministradorReportes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnParametros);
             Controls.Add(comboBox4);
             Controls.Add(label4);
             Controls.Add(comboBox3);
@@ -222,5 +235,6 @@
         private ComboBox comboBox3;
         private Label label4;
         private ComboBox comboBox4;
+        private Button btnParametros;
     }
 }

@@ -63,5 +63,53 @@ Cantidad de estudiantes inscriptos : {contadorEstudiantesPorPeriodo}
                       
             return informe;
         }
+
+        public string ReporteInscripcionesPorCurso(string nombreCurso) // DUDA : CURSO FILTRADO POR NOMBRE O POR CODIGO DE CURSO
+        {
+            List<EstudiantePorCurso> listaEstudiantesPorCurso = _gestorCursos.GetEstudiantePorCursoDB();
+            int contadorEstudiantesPorCursoo = 0;
+            string informe;
+
+            foreach (EstudiantePorCurso estudiante in listaEstudiantesPorCurso)
+            {
+                if (nombreCurso == estudiante.NombreCurso)
+                {
+                    contadorEstudiantesPorCursoo++;
+                }
+            }
+
+            informe = $@"Universidad Tecnologica Nacional, {DateTime.Now.Date.ToString("yyyy-MM-dd")}
+
+                Informe de Inscricpciones en el {nombreCurso}
+
+Cantidad de estudiantes inscriptos : {contadorEstudiantesPorCursoo}
+";
+
+            return informe;
+        }
+
+        public string ReporteIngresosPorConseptoDePago(string nombreConsepto) // TENGO QUE REGISTRAR LOS METODOS DE PAGO
+        {
+            List<EstudiantePorCurso> listaEstudiantesPorCurso = _gestorCursos.GetEstudiantePorCursoDB();
+            int contadorEstudiantesPorCursoo = 0;
+            string informe;
+
+            foreach (EstudiantePorCurso estudiante in listaEstudiantesPorCurso)
+            {
+                if (nombreConsepto == estudiante.NombreCurso)
+                {
+                    contadorEstudiantesPorCursoo++;
+                }
+            }
+
+            informe = $@"Universidad Tecnologica Nacional, {DateTime.Now.Date.ToString("yyyy-MM-dd")}
+
+                Informe de Inscricpciones en el {nombreConsepto}
+
+Cantidad de estudiantes inscriptos : {contadorEstudiantesPorCursoo}
+";
+
+            return informe;
+        }
     }
 }

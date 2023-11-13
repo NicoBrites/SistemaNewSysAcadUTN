@@ -45,6 +45,8 @@ namespace SysAcad
                 }
             }
 
+            btnParametros.Visible = true;
+            generarReportes.Visible = false;
 
         }
 
@@ -54,6 +56,76 @@ namespace SysAcad
         }
 
         private void generarReportes_Click(object sender, EventArgs e)
+        {
+            int codigo = 0;
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (row.Cells["Check"].Value != null && (bool)row.Cells["Check"].Value == true)
+                {
+                    int filaSeleccionadaIndex = dataGridView1.SelectedCells[0].RowIndex;
+                    // El CheckBox en esta fila está marcado.
+                    // Puedes acceder a los datos de la fila y trabajar con ellos.
+                    codigo = int.Parse(dataGridView1.Rows[filaSeleccionadaIndex].Cells["codigoDataGridViewTextBoxColumn"].Value.ToString());
+                }
+            }
+         
+            if (codigo == 1)
+            {
+                if (comboBox1 == null || comboBox1.Text == "")
+                {
+                    MessageBox.Show("No selecciono el periodo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    string informe = _gestorReportes.ReporteInscripcionesPorPeriodo(comboBox1.Text);
+                }
+            }
+            if (codigo == 2)
+            {
+                if (comboBox2 == null || comboBox2.Text == "")
+                {
+                    MessageBox.Show("No selecciono el curso", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    string informe = _gestorReportes.ReporteInscripcionesPorCurso(comboBox2.Text);
+                }
+            }
+            if (codigo == 3)
+            {
+                if (comboBox3 == null || comboBox3.Text == "")
+                {
+                    MessageBox.Show("No selecciono el consepto de pago", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    string informe = _gestorReportes.ReporteIngresosPorConseptoDePago(comboBox3.Text);
+                }
+            }
+
+
+        }
+
+        private void CargarComboBoxs()
+        {
+            GestorCursos gestorCursos = new GestorCursos();
+            GestorPagos gestorPagos = new GestorPagos();
+
+            comboBox1.Items.Add("Primer cuatrimestre");
+            comboBox1.Items.Add("Segundo cuatrimestre");
+
+            foreach (Cursos cursos in gestorCursos.GetCursosDB())
+            {
+                comboBox2.Items.Add(cursos.Nombre);
+            }
+            foreach (ConseptoDePago conseptoDePago in gestorPagos.ConseptoDePagos())
+            {
+                comboBox3.Items.Add(conseptoDePago.Concepto);
+            }
+
+        }
+
+        private void btnParametros_Click(object sender, EventArgs e)
         {
             bool selecciono = false;
             int codigo = 0;
@@ -110,37 +182,10 @@ namespace SysAcad
             }
             else
             {
-                if (codigo == 1)
-                {
-                    if (comboBox1 == null || comboBox1.Text == "")
-                    {
-                        MessageBox.Show("No selecciono el periodo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else
-                    {
-                        string informe = _gestorReportes.ReporteInscripcionesPorPeriodo(comboBox1.Text);
-                    }
-                }
+                MessageBox.Show("Ingrese los parametros para el informe", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                generarReportes.Visible = true;
+                btnParametros.Visible = false;
             }
-        }
-        
-        private void CargarComboBoxs()
-        {
-            GestorCursos gestorCursos = new GestorCursos();
-            GestorPagos gestorPagos = new GestorPagos();
-
-            comboBox1.Items.Add("Primer cuatrimestre");
-            comboBox1.Items.Add("Segundo cuatrimestre");
-
-            foreach (Cursos cursos in gestorCursos.GetCursosDB())
-            {
-                comboBox2.Items.Add(cursos.Nombre);
-            }
-            foreach (ConseptoDePago conseptoDePago in gestorPagos.ConseptoDePagos())
-            {
-                comboBox3.Items.Add(conseptoDePago.Concepto);
-            }
-
         }
     }
 }
