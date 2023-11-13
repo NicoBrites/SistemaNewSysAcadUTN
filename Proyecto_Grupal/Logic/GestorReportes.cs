@@ -37,6 +37,7 @@ namespace Logic
             List<Estudiantes> listaEstudiantes = _gestorEstudiantes.GetListaEstudiantes();
             int contadorEstudiantesPorPeriodo = 0;
             string informe;
+            StringBuilder listadoEstudiantes = new StringBuilder("");
 
             foreach (Estudiantes estudiante in listaEstudiantes)
             {
@@ -44,6 +45,7 @@ namespace Logic
                 {
                     if (estudiante.Fecha.Month < 6)
                     {
+                        listadoEstudiantes.Append($"{estudiante.Apellido} {estudiante.Nombre}\n");
                         contadorEstudiantesPorPeriodo++;
                     }
                 }
@@ -51,6 +53,7 @@ namespace Logic
                 {
                     if (estudiante.Fecha.Month > 6)
                     {
+                        listadoEstudiantes.Append($"{estudiante.Apellido} {estudiante.Nombre}\n");
                         contadorEstudiantesPorPeriodo++;
                     }
                 }
@@ -61,9 +64,11 @@ namespace Logic
 Informe de Inscricpciones en el {periodo}
 
 Cantidad de estudiantes inscriptos : {contadorEstudiantesPorPeriodo}
+
+Estudiantes :                   
 ";
-                      
-            return informe;
+
+            return informe + listadoEstudiantes;
         }
 
         public string ReporteInscripcionesPorCurso(string nombreCurso) // DUDA : CURSO FILTRADO POR NOMBRE O POR CODIGO DE CURSO
@@ -71,11 +76,13 @@ Cantidad de estudiantes inscriptos : {contadorEstudiantesPorPeriodo}
             List<EstudiantePorCurso> listaEstudiantesPorCurso = _gestorCursos.GetEstudiantePorCursoDB();
             int contadorEstudiantesPorCursoo = 0;
             string informe;
+            StringBuilder listadoEstudiantes = new StringBuilder("");
 
             foreach (EstudiantePorCurso estudiante in listaEstudiantesPorCurso)
             {
                 if (nombreCurso == estudiante.NombreCurso)
                 {
+                    listadoEstudiantes.Append($"{estudiante.ApellidoEstudiante} {estudiante.NombreEstudiante}            {estudiante.Fecha.ToString("yyyy-MM-dd")}\n");
                     contadorEstudiantesPorCursoo++;
                 }
             }
@@ -85,9 +92,11 @@ Cantidad de estudiantes inscriptos : {contadorEstudiantesPorPeriodo}
 Informe de Inscricpciones en el {nombreCurso}
 
 Cantidad de estudiantes inscriptos : {contadorEstudiantesPorCursoo}
+
+Nombre                   Fecha de inscripcion
 ";
 
-            return informe;
+            return informe + listadoEstudiantes;
         }
 
         public string ReporteIngresosPorConseptoDePago(string nombreConsepto) // TENGO QUE REGISTRAR LOS METODOS DE PAGO
@@ -95,11 +104,13 @@ Cantidad de estudiantes inscriptos : {contadorEstudiantesPorCursoo}
             List<EstudiantePorCurso> listaEstudiantesPorCurso = _gestorCursos.GetEstudiantePorCursoDB();
             int contadorEstudiantesPorCursoo = 0;
             string informe;
+            StringBuilder listadoEstudiantes = new StringBuilder("");
 
             foreach (EstudiantePorCurso estudiante in listaEstudiantesPorCurso)
             {
                 if (nombreConsepto == estudiante.NombreCurso)
                 {
+                    listadoEstudiantes.Append($"{estudiante.ApellidoEstudiante} {estudiante.NombreEstudiante}            {estudiante.Fecha.ToString("yyyy-MM-dd")}\n");
                     contadorEstudiantesPorCursoo++;
                 }
             }
@@ -109,9 +120,11 @@ Cantidad de estudiantes inscriptos : {contadorEstudiantesPorCursoo}
 Informe de Inscricpciones en el {nombreConsepto}
 
 Cantidad de estudiantes inscriptos : {contadorEstudiantesPorCursoo}
+
+Nombre                   Fecha de inscripcion
 ";
 
-            return informe;
+            return informe + listadoEstudiantes;
         }
     }
 }

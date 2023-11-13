@@ -124,14 +124,16 @@ namespace DB
                             {
                                 var nivel = Convert.ToInt32(reader["Nivel"]);
 
-                                jsonNuevo.Administradores.Add(new Administrador(id, nombre, apellido, nivel, clave, correo));
+                                jsonNuevo.Administradores.Add(new Administrador(id, nombre,
+                                    apellido, nivel, clave, correo));
                             }
                             if (tipoEntidad == "Estudiantes")
                             {
                                 var telefono = Convert.ToInt32(reader["Telefono"]);
                                 var direccion = reader["Direccion"].ToString();
 
-                                jsonNuevo.Estudiantes.Add(new Estudiantes(id,nombre,apellido,dni,telefono,direccion,clave,correo, DateTime.Now));
+                                jsonNuevo.Estudiantes.Add(new Estudiantes(id,nombre,apellido,
+                                    dni,telefono,direccion,clave,correo, DateTime.Now));
                             }
                         }
                     }
@@ -176,7 +178,8 @@ namespace DB
                             var cupoMaximo = Convert.ToInt32(reader["CupoMaximo"]);
                             var turno = reader["Turno"].ToString();
 
-                            listaCursos.Add(new Cursos(nombre, codigo, descripcion, cupoMaximo, diaSemana, aula, turno));
+                            listaCursos.Add(new Cursos(nombre, codigo, descripcion, 
+                                cupoMaximo, diaSemana, aula, turno));
 
                         }
                     }
@@ -222,7 +225,9 @@ namespace DB
                             var aula = reader["Aula"].ToString();
                             var turno = reader["Turno"].ToString();
 
-                            listaEstudiantesPorCurso.Add(new EstudiantePorCurso(codigoEstudiante,nombreEstudiante,apellidoEstudiante,codigoCurso,nombreCurso, diaSemana, turno, aula, DateTime.Now));
+                            listaEstudiantesPorCurso.Add(new EstudiantePorCurso(codigoEstudiante,
+                                nombreEstudiante,apellidoEstudiante,codigoCurso,nombreCurso, diaSemana,
+                                turno, aula, DateTime.Now));
 
                         }
                     }
@@ -240,5 +245,54 @@ namespace DB
 
             return listaEstudiantesPorCurso;
         }
-    }   
-}
+        public static List<PagoDeEstudiante> ReturnAllConseptosDePago()
+        {
+
+            var listaPagoDeEstudiante = new List<PagoDeEstudiante>();
+
+            try
+            {
+                conexion.Open();
+
+                var query = "SELECT * FROM PagosDeEstudiantes";
+                comando.CommandText = query;
+
+                using (var reader = comando.ExecuteReader())
+                {
+                    if (reader != null)
+                    {
+                        while (reader.Read())
+                        {
+                            var consepto = reader["Consepto"].ToString();
+                            var nombre = reader["nombre"].ToString();
+                            var monto = Convert.ToInt32(reader["monto"]);
+                            var apellido = reader["apellido"].ToString();
+                            var idPago = Convert.ToInt32(reader["monto"]);
+                            var idEstudiante = Convert.ToInt32(reader["idEstudiante"]);
+                            var fecha = reader.GetDateTime(reader.GetOrdinal("fecha"));
+
+                            listaPagoDeEstudiante.Add(new PagoDeEstudiante(consepto,monto,nombre,apellido,idEstudiante,fecha));
+
+                        }
+                    }
+                    else
+                    {
+                        return listaPagoDeEstudiante;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return listaPagoDeEstudiante;
+            }
+            finally { conexion.Close(); }
+
+            return listaPagoDeEstudiante;
+        }
+
+
+    }
+
+    
+}   
+

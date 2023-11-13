@@ -116,7 +116,7 @@ namespace SysAcad
                     {
                         if (fallo == false && listaPagosAPagar.Count > 0)
                         {
-                            label2.Text = gestorPagos.GenerarCuentaTransferencia();
+                            label2.Text = gestorPagos.GenerarCuentaTransferencia(listaPagosAPagar, estudiante);
                             label2.Visible = true;
                         }
                     }

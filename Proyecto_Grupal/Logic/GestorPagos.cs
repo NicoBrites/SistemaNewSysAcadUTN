@@ -1,4 +1,6 @@
 ﻿using Entidades;
+using System.ComponentModel;
+using System.Text;
 
 namespace Logic
 {
@@ -9,9 +11,9 @@ namespace Logic
         /// <summary>
         /// Constructor de la clase GestorPagos.
         /// </summary>
-        public GestorPagos() 
+        public GestorPagos()
         {
-            _validadorTextosVacios = new ValidadorTextosVacios();     
+            _validadorTextosVacios = new ValidadorTextosVacios();
         }
 
         /// <summary>
@@ -25,14 +27,17 @@ namespace Logic
         {
             int cantidad = 0;
             int montoTotal = 0;
+            StringBuilder consepto = new StringBuilder("");
 
-            foreach(ConseptoDePago conseptoDePago in conseptosDePagos)
+
+            foreach (ConseptoDePago conseptoDePago in conseptosDePagos)
             {
                 montoTotal += conseptoDePago.Monto;
                 cantidad++;
+                consepto.Append($"{conseptoDePago.Concepto}, ");
             }
 
-            // ACA IRIA CARGAR LOS PAGOS AL SQL, PREGUNTAR CON ADMINISTRAR LA INFORMACION EN SQL
+            CrearPagoDB(new PagoDeEstudiante(consepto.ToString(),montoTotal,estudiante.Nombre,estudiante.Apellido,estudiante.Id,DateTime.Now));
 
             return GenerarComprobanteTarjeta(tarjeta, montoTotal, cantidad, estudiante);
         }
@@ -73,7 +78,7 @@ namespace Logic
             int fechaAño;
             int codigoSeguridad;
             if (long.TryParse(tarjeta.NumeroTarjeta, out numeroTarjeta) && int.TryParse(tarjeta.CodigoSeguridad, out codigoSeguridad) &&
-                int.TryParse(tarjeta.CodigoPostal, out numero) && int.TryParse(tarjeta.Telefono, out numero)&&
+                int.TryParse(tarjeta.CodigoPostal, out numero) && int.TryParse(tarjeta.Telefono, out numero) &&
                 int.TryParse(tarjeta.FechaAñoCaducidad, out fechaAño))
             {
                 if (_validadorTextosVacios.ValidarTextosVacios(tarjeta.MetodoPago) &&
@@ -83,7 +88,7 @@ namespace Logic
                     _validadorTextosVacios.ValidarTextosVacios(tarjeta.Localidad) &&
                     _validadorTextosVacios.ValidarTextosVacios(tarjeta.DirFacturacion))
                 {
-                    if (fechaAño>= DateTime.Today.Year && fechaAño < 2048
+                    if (fechaAño >= DateTime.Today.Year && fechaAño < 2048
                         && numeroTarjeta.ToString().Length == 16 &&
                         codigoSeguridad.ToString().Length == 3)
                     {
@@ -102,10 +107,10 @@ namespace Logic
         /// <param name="cantidad">Cantidad de conceptos de pago abonados.</param>
         /// <param name="estudiante">Objeto Estudiantes que representa al estudiante que realiza el pago.</param>
         /// <returns>Un comprobante de pago en formato de texto.</returns>
-        public string GenerarComprobanteTarjeta(TarjetaAValidar tarjeta, int montoTotal, int cantidad, Estudiantes estudiante )
+        public string GenerarComprobanteTarjeta(TarjetaAValidar tarjeta, int montoTotal, int cantidad, Estudiantes estudiante)
         {
             Random random = new Random();
-            int numeroPedido = random.Next( 0, 10000 );
+            int numeroPedido = random.Next(0, 10000);
             DateTime fechaActual = DateTime.Now;
 
             return new string(@$"
@@ -132,8 +137,22 @@ Gracias por tu compra.");
         /// Genera un comprobante de pago.
         /// </summary>
         /// <returns>Un comprobante de pago en formato de texto.</returns>
-        public string GenerarCuentaTransferencia()
+        public string GenerarCuentaTransferencia(List<ConseptoDePago> conseptosDePagos, Estudiantes estudiante)
         {
+            int cantidad = 0;
+            int montoTotal = 0;
+            StringBuilder consepto = new StringBuilder("");
+
+
+            foreach (ConseptoDePago conseptoDePago in conseptosDePagos)
+            {
+                montoTotal += conseptoDePago.Monto;
+                cantidad++;
+                consepto.Append($"{conseptoDePago.Concepto}, ");
+            }
+
+            CrearPagoDB(new PagoDeEstudiante(consepto.ToString(), montoTotal, estudiante.Nombre, estudiante.Apellido, estudiante.Id, DateTime.Now));
+
             return @"Alias: TIENDA.TECNOLOGICA.NACIONAL
 Banco: Citibank
 Tipo de cuenta: Cuenta corriente en pesos
@@ -143,7 +162,33 @@ A nombre de: Hernesto Hugo UTN
 CUIT: 30-4561231-8";
         }
 
-    }
 
-   
+
+        public void CrearPagoDB(PagoDeEstudiante pagoDeEstudiante)
+        {
+            try
+            {
+                var query = "INSERT INTO PagosDeEstudiantes (monto, nombre, apellido, idEstudiante, fecha, Conseptos)" +
+                    $"VALUES ('{pagoDeEstudiante.Monto}', '{pagoDeEstudiante.Nombre}', '{pagoDeEstudiante.Apellido}'," +
+                    $" '{pagoDeEstudiante.IdEstudiante}'," +
+                    $" '{pagoDeEstudiante.Fecha}', '{pagoDeEstudiante.Consepto}');";
+
+                DB.DB.Guardar(query);
+            }
+            catch (ExcepcionPropia)
+            {
+                var query = "INSERT INTO PagosDeEstudiantes (monto, nombre, apellido, idEstudiante, fecha, Conseptos)" +
+                     $"VALUES ('{pagoDeEstudiante.Monto}', '{pagoDeEstudiante.Nombre}', '{pagoDeEstudiante.Apellido}'," +
+                     $" '{pagoDeEstudiante.IdEstudiante}'," +
+                     $" '{pagoDeEstudiante.Fecha}', '{pagoDeEstudiante.Consepto}');";
+
+                DB.DB.Guardar(query);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+
+        }
+    }
 }
