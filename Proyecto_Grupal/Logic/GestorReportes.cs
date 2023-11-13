@@ -99,27 +99,31 @@ Nombre                   Fecha de inscripcion
             return informe + listadoEstudiantes;
         }
 
-        public string ReporteIngresosPorConseptoDePago(string nombreConsepto) // TENGO QUE REGISTRAR LOS METODOS DE PAGO
+        public string ReporteIngresosPorConseptoDePago(string nombreConsepto)
         {
-            List<EstudiantePorCurso> listaEstudiantesPorCurso = _gestorCursos.GetEstudiantePorCursoDB();
-            int contadorEstudiantesPorCursoo = 0;
+            List<PagoDeEstudiante> listaPagoDeEstudianteo = DB.DB.ReturnAllPagoDeEstudiante();
+            int contadorMontoIngresado = 0;
+            int cantidadEstudiantesPagaron = 0;
             string informe;
             StringBuilder listadoEstudiantes = new StringBuilder("");
 
-            foreach (EstudiantePorCurso estudiante in listaEstudiantesPorCurso)
+            foreach (PagoDeEstudiante pago in listaPagoDeEstudianteo)
             {
-                if (nombreConsepto == estudiante.NombreCurso)
+                if (pago.Consepto.Contains(nombreConsepto))
                 {
-                    listadoEstudiantes.Append($"{estudiante.ApellidoEstudiante} {estudiante.NombreEstudiante}            {estudiante.Fecha.ToString("yyyy-MM-dd")}\n");
-                    contadorEstudiantesPorCursoo++;
+                    listadoEstudiantes.Append($"{pago.Apellido} {pago.Nombre}            {pago.Fecha.ToString("yyyy-MM-dd")}\n");
+                    cantidadEstudiantesPagaron++;
+                    contadorMontoIngresado += 20000;
                 }
             }
 
             informe = $@"Universidad Tecnologica Nacional            {DateTime.Now.Date.ToString("yyyy-MM-dd")}
 
-Informe de Inscricpciones en el {nombreConsepto}
+Informe de Ingresos por {nombreConsepto}
 
-Cantidad de estudiantes inscriptos : {contadorEstudiantesPorCursoo}
+Cantidad de estudiantes que pagaron : {cantidadEstudiantesPagaron}
+
+Monto total recaudado : {contadorMontoIngresado}
 
 Nombre                   Fecha de inscripcion
 ";

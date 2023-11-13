@@ -16,6 +16,23 @@ namespace Logic
             _validadorTextosVacios = new ValidadorTextosVacios();
         }
 
+        public List<PagoDeEstudiante> GetPagosDB()
+        {
+            try
+            {
+                List<PagoDeEstudiante> listaPagos = DB.DB.ReturnAllPagoDeEstudiante(); ;
+                return listaPagos;
+            }
+            catch (ExcepcionPropia ex)
+            {
+                throw new ExcepcionPropia(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         /// <summary>
         /// Realiza un pago utilizando una tarjeta de crédito o débito.
         /// </summary>
@@ -161,8 +178,6 @@ CBU: 0168888810000090458621556
 A nombre de: Hernesto Hugo UTN
 CUIT: 30-4561231-8";
         }
-
-
 
         public void CrearPagoDB(PagoDeEstudiante pagoDeEstudiante)
         {

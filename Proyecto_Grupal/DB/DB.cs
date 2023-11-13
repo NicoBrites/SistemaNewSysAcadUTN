@@ -245,7 +245,7 @@ namespace DB
 
             return listaEstudiantesPorCurso;
         }
-        public static List<PagoDeEstudiante> ReturnAllConseptosDePago()
+        public static List<PagoDeEstudiante> ReturnAllPagoDeEstudiante()
         {
 
             var listaPagoDeEstudiante = new List<PagoDeEstudiante>();
@@ -263,7 +263,7 @@ namespace DB
                     {
                         while (reader.Read())
                         {
-                            var consepto = reader["Consepto"].ToString();
+                            var consepto = reader["Conseptos"].ToString();
                             var nombre = reader["nombre"].ToString();
                             var monto = Convert.ToInt32(reader["monto"]);
                             var apellido = reader["apellido"].ToString();
