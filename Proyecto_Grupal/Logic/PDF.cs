@@ -5,9 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
-
-
-
 using System.IO;
 
 namespace Logic
