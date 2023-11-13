@@ -32,6 +32,8 @@ namespace Logic
                 cantidad++;
             }
 
+            // ACA IRIA CARGAR LOS PAGOS AL SQL, PREGUNTAR CON ADMINISTRAR LA INFORMACION EN SQL
+
             return GenerarComprobanteTarjeta(tarjeta, montoTotal, cantidad, estudiante);
         }
 
