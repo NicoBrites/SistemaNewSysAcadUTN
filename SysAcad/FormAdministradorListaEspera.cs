@@ -28,7 +28,7 @@ namespace SysAcad
                 // MessageBox.Show("No se encontro la lista de cursos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        /*
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.ColumnIndex == dataGridView1.Columns["Check"].Index)
@@ -45,8 +45,8 @@ namespace SysAcad
 
 
 
-                        /*btnParametros.Visible = true;
-                        generarReportes.Visible = false;*/
+                       // btnParametros.Visible = true;
+                       // generarReportes.Visible = false;
                     }
                 }
                 int filaSeleccionadaIndex = dataGridView1.SelectedCells[0].RowIndex;
@@ -57,16 +57,21 @@ namespace SysAcad
 
 
 
-            }
 
-        }
+            }
+        }   */
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int filaSeleccionadaIndex = dataGridView1.SelectedCells[0].RowIndex;
+            /* int filaSeleccionadaIndex = dataGridView1.SelectedCells[0].RowIndex;
 
-            // Ahora puedes acceder a los valores de las celdas en la fila seleccionada.
-            string codigo = dataGridView1.Rows[filaSeleccionadaIndex].Cells["codigoDataGridViewTextBoxColumn"].Value.ToString();
+             // Ahora puedes acceder a los valores de las celdas en la fila seleccionada.
+             string codigo = dataGridView1.Rows[filaSeleccionadaIndex].Cells["codigoDataGridViewTextBoxColumn"].Value.ToString();*/
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }
