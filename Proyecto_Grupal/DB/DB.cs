@@ -289,7 +289,53 @@ namespace DB
 
             return listaPagoDeEstudiante;
         }
+        public static List<EstudiantePorCurso> ReturnAllEstudiantesEnListaEspera()
+        {
 
+            var listaEstudiantesPorCurso = new List<EstudiantePorCurso>();
+
+            try
+            {
+                conexion.Open();
+
+                var query = "SELECT * FROM ListaDeEspera";
+                comando.CommandText = query;
+
+                using (var reader = comando.ExecuteReader())
+                {
+                    if (reader != null)
+                    {
+                        while (reader.Read())
+                        {
+                            var nombreEstudiante = reader["NombreEstudiante"].ToString();
+                            var apellidoEstudiante = reader["ApellidoEstudiante"].ToString();
+                            var codigoEstudiante = Convert.ToInt32(reader["CodigoEstudiante"]);
+                            var nombreCurso = reader["NombreCurso"].ToString();
+                            var diaSemana = reader["DiaSemana"].ToString();
+                            var codigoCurso = Convert.ToInt32(reader["CodigoCurso"]);
+                            var aula = reader["Aula"].ToString();
+                            var turno = reader["Turno"].ToString();
+
+                            listaEstudiantesPorCurso.Add(new EstudiantePorCurso(codigoEstudiante,
+                                nombreEstudiante, apellidoEstudiante, codigoCurso, nombreCurso, diaSemana,
+                                turno, aula, DateTime.Now));
+
+                        }
+                    }
+                    else
+                    {
+                        return listaEstudiantesPorCurso;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return listaEstudiantesPorCurso;
+            }
+            finally { conexion.Close(); }
+
+            return listaEstudiantesPorCurso;
+        }
 
     }
 

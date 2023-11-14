@@ -131,6 +131,23 @@ namespace Logic
             }
         }
 
+        public List<EstudiantePorCurso> GetEstudianteEnListaEspera()
+        {
+            try
+            {
+                List<EstudiantePorCurso> listaEstudiantesEspera = DB.DB.ReturnAllEstudiantesEnListaEspera();
+                return listaEstudiantesEspera;
+            }
+            catch (ExcepcionPropia ex)
+            {
+                throw new ExcepcionPropia(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         /// <summary>
         /// Valida si los datos de un curso son válidos antes de crearlo.
         /// </summary>
@@ -369,6 +386,34 @@ namespace Logic
             return true;         
         }
 
+        public bool ValidadorAgregarAlumnosAListaEspera(Cursos cursos, List<EstudiantePorCurso> listaEstudiantesPorCurso,
+           EstudianteEnCursos estudiante, CursosEnEstudiantes cursoEnQueSeAgrega, List<EstudiantePorCurso> listaDeEspera)
+        {
+            foreach (EstudiantePorCurso estudiantePorCurso in listaEstudiantesPorCurso)
+            {
+                if (estudiantePorCurso.NombreCurso == cursoEnQueSeAgrega.Nombre && estudiantePorCurso.CodigoEstudiante == estudiante.Id)
+                {
+                    throw new Exception($"El estudiante ya esta inscripto en el curso {cursos.Nombre}");
+                }
+                if (estudiantePorCurso.DiaSemana == cursoEnQueSeAgrega.DiaSemana && estudiantePorCurso.Turno == cursoEnQueSeAgrega.Turno &&
+                    estudiantePorCurso.CodigoEstudiante == estudiante.Id)
+                {
+                    throw new Exception($"El estudiante no se pudo inscribir a {cursoEnQueSeAgrega.Nombre}" +
+                        $" porque ya esta inscripto en un curso el " +
+                        $"{estudiantePorCurso.DiaSemana} en el turno {estudiantePorCurso.Turno}");
+                }
+
+            }
+            foreach (EstudiantePorCurso estudianteEnEspera in listaDeEspera)
+            {
+                if (estudianteEnEspera.NombreCurso == cursoEnQueSeAgrega.Nombre && estudianteEnEspera.CodigoEstudiante == estudiante.Id)
+                {
+                    throw new Exception($"El estudiante ya esta en la lista de espera del curso {cursos.Nombre}");
+                }
+            }
+            return true;
+        }
+
         /// <summary>
         /// Agrega un estudiante a un curso y actualiza la lista de inscripciones en un archivo JSON.
         /// </summary>
@@ -443,6 +488,47 @@ namespace Logic
             catch (ExcepcionPropia)
             {
                 var query = "INSERT INTO EstudiantePorCurso (CodigoEstudiante, NombreEstudiante, ApellidoEstudiante," +
+                            " CodigoCurso, NombreCurso, DiaSemana, Aula, Turno, Fecha)" +
+                            $"VALUES ('{estudiante.Id}', '{estudiante.Nombre}', '{estudiante.Apellido}', '{cursoEnQueSeAgrega.Codigo}'," +
+                            $" '{cursoEnQueSeAgrega.Nombre}', '{cursoEnQueSeAgrega.DiaSemana}', '{cursoEnQueSeAgrega.Aula}' '{cursoEnQueSeAgrega.Turno}', '{DateTime.Now}' );";
+
+                DB.DB.Guardar(query);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void AgregarAlumnoAListaDeEsperaDB(EstudianteEnCursos estudiante, CursosEnEstudiantes cursoEnQueSeAgrega)
+        {
+            try
+            {
+                List<EstudiantePorCurso> listaEstudiantesPorCurso = GetEstudiantePorCursoDB();
+                List<Cursos> listaCursos = GetCursosDB();
+                List<EstudiantePorCurso> listaEstudiantesEnEspera = GetEstudianteEnListaEspera();
+
+                int cupoActual = DevolverCupoActual(cursoEnQueSeAgrega.Codigo, listaEstudiantesPorCurso);
+
+                foreach (Cursos cursos in listaCursos)
+                {
+                    if (cursos.Codigo == cursoEnQueSeAgrega.Codigo)
+                    {
+                        if (ValidadorAgregarAlumnosAListaEspera(cursos, listaEstudiantesPorCurso, estudiante, cursoEnQueSeAgrega, listaEstudiantesEnEspera))
+                        {
+                            var query = "INSERT INTO ListaDeEspera (CodigoEstudiante, NombreEstudiante, ApellidoEstudiante," +
+                                " CodigoCurso, NombreCurso, DiaSemana, Aula, Turno, Fecha)" +
+                                $"VALUES ('{estudiante.Id}', '{estudiante.Nombre}', '{estudiante.Apellido}', '{cursoEnQueSeAgrega.Codigo}'," +
+                                $" '{cursoEnQueSeAgrega.Nombre}', '{cursoEnQueSeAgrega.DiaSemana}', '{cursoEnQueSeAgrega.Aula}', '{cursoEnQueSeAgrega.Turno}', '{DateTime.Now}');";
+
+                            DB.DB.Guardar(query);
+                        }
+                    }
+                }
+            }
+            catch (ExcepcionPropia)
+            {
+                var query = "INSERT INTO ListaDeEspera (CodigoEstudiante, NombreEstudiante, ApellidoEstudiante," +
                             " CodigoCurso, NombreCurso, DiaSemana, Aula, Turno, Fecha)" +
                             $"VALUES ('{estudiante.Id}', '{estudiante.Nombre}', '{estudiante.Apellido}', '{cursoEnQueSeAgrega.Codigo}'," +
                             $" '{cursoEnQueSeAgrega.Nombre}', '{cursoEnQueSeAgrega.DiaSemana}', '{cursoEnQueSeAgrega.Aula}' '{cursoEnQueSeAgrega.Turno}', '{DateTime.Now}' );";

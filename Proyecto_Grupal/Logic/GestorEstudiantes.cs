@@ -103,6 +103,14 @@ namespace Logic
             //bool funco = Email.SendMessageSmtp(nuevEstudiante.Correo, nuevEstudiante.Clave, nuevEstudiante.Nombre, nuevEstudiante.Apellido);
         }
 
+        public List<Estudiantes> GetListEstudiantes()
+        {
+            JsonUsuariosFormato json = DB.DB.ReturnAllUsers();
+
+            List<Estudiantes> estudiantes = json.Estudiantes;
+
+            return estudiantes;
+        }
         public void CrearEstudianteNewDB(Estudiantes nuevEstudiante)
         {
             int ultimoId = 0;

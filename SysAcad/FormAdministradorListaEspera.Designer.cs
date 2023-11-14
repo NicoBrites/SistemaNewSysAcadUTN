@@ -35,19 +35,25 @@
             nombreDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             Apellido = new DataGridViewTextBoxColumn();
             Id = new DataGridViewTextBoxColumn();
+            estudianteEnCursosBindingSource = new BindingSource(components);
             estudiantesBindingSource = new BindingSource(components);
             horariosDataGridBindingSource = new BindingSource(components);
             btnAgregar = new Button();
             dataGridView1 = new DataGridView();
+            btnMostrarListaEspera = new Button();
+            label1 = new Label();
+            textBox1 = new TextBox();
+            Check = new DataGridViewCheckBoxColumn();
             nombreDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             codigoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             descripcionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             cupoMaximoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            diaSemanaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            aulaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            turnoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            DiaSemana = new DataGridViewTextBoxColumn();
+            Aula = new DataGridViewTextBoxColumn();
+            Turno = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)cursosBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)estudianteEnCursosBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)estudiantesBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)horariosDataGridBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -62,16 +68,16 @@
             dataGridView2.AutoGenerateColumns = false;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView2.Columns.AddRange(new DataGridViewColumn[] { Check2, nombreDataGridViewTextBoxColumn1, Apellido, Id });
-            dataGridView2.DataSource = estudiantesBindingSource;
-            dataGridView2.Location = new Point(366, 183);
+            dataGridView2.DataSource = estudianteEnCursosBindingSource;
+            dataGridView2.Location = new Point(466, 183);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.RowTemplate.Height = 25;
             dataGridView2.Size = new Size(430, 276);
             dataGridView2.TabIndex = 1;
+            dataGridView2.Visible = false;
             // 
             // Check2
             // 
-            Check2.DataPropertyName = "Telefono";
             Check2.HeaderText = "Check";
             Check2.Name = "Check2";
             // 
@@ -87,12 +93,18 @@
             Apellido.DataPropertyName = "Apellido";
             Apellido.HeaderText = "Apellido";
             Apellido.Name = "Apellido";
+            Apellido.ReadOnly = true;
             // 
             // Id
             // 
             Id.DataPropertyName = "Id";
             Id.HeaderText = "Id";
             Id.Name = "Id";
+            Id.ReadOnly = true;
+            // 
+            // estudianteEnCursosBindingSource
+            // 
+            estudianteEnCursosBindingSource.DataSource = typeof(Entidades.EstudianteEnCursos);
             // 
             // estudiantesBindingSource
             // 
@@ -104,7 +116,7 @@
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(63, 202);
+            btnAgregar.Location = new Point(70, 336);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(184, 23);
             btnAgregar.TabIndex = 2;
@@ -116,14 +128,45 @@
             // 
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { nombreDataGridViewTextBoxColumn, codigoDataGridViewTextBoxColumn, descripcionDataGridViewTextBoxColumn, cupoMaximoDataGridViewTextBoxColumn, diaSemanaDataGridViewTextBoxColumn, aulaDataGridViewTextBoxColumn, turnoDataGridViewTextBoxColumn });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Check, nombreDataGridViewTextBoxColumn, codigoDataGridViewTextBoxColumn, descripcionDataGridViewTextBoxColumn, cupoMaximoDataGridViewTextBoxColumn, DiaSemana, Aula, Turno });
             dataGridView1.DataSource = cursosBindingSource;
             dataGridView1.Location = new Point(45, 27);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(751, 150);
+            dataGridView1.Size = new Size(851, 150);
             dataGridView1.TabIndex = 3;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            // 
+            // btnMostrarListaEspera
+            // 
+            btnMostrarListaEspera.Location = new Point(70, 216);
+            btnMostrarListaEspera.Name = "btnMostrarListaEspera";
+            btnMostrarListaEspera.Size = new Size(184, 23);
+            btnMostrarListaEspera.TabIndex = 4;
+            btnMostrarListaEspera.Text = "Mostrar la Lista de Espera";
+            btnMostrarListaEspera.UseVisualStyleBackColor = true;
+            btnMostrarListaEspera.Click += button1_Click_1;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(70, 376);
+            label1.Name = "label1";
+            label1.Size = new Size(79, 15);
+            label1.TabIndex = 5;
+            label1.Text = "ID Estudiante:";
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(70, 394);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(114, 23);
+            textBox1.TabIndex = 6;
+            // 
+            // Check
+            // 
+            Check.HeaderText = "Check";
+            Check.Name = "Check";
             // 
             // nombreDataGridViewTextBoxColumn
             // 
@@ -149,29 +192,32 @@
             cupoMaximoDataGridViewTextBoxColumn.HeaderText = "CupoMaximo";
             cupoMaximoDataGridViewTextBoxColumn.Name = "cupoMaximoDataGridViewTextBoxColumn";
             // 
-            // diaSemanaDataGridViewTextBoxColumn
+            // DiaSemana
             // 
-            diaSemanaDataGridViewTextBoxColumn.DataPropertyName = "DiaSemana";
-            diaSemanaDataGridViewTextBoxColumn.HeaderText = "DiaSemana";
-            diaSemanaDataGridViewTextBoxColumn.Name = "diaSemanaDataGridViewTextBoxColumn";
+            DiaSemana.DataPropertyName = "DiaSemana";
+            DiaSemana.HeaderText = "DiaSemana";
+            DiaSemana.Name = "DiaSemana";
             // 
-            // aulaDataGridViewTextBoxColumn
+            // Aula
             // 
-            aulaDataGridViewTextBoxColumn.DataPropertyName = "Aula";
-            aulaDataGridViewTextBoxColumn.HeaderText = "Aula";
-            aulaDataGridViewTextBoxColumn.Name = "aulaDataGridViewTextBoxColumn";
+            Aula.DataPropertyName = "Aula";
+            Aula.HeaderText = "Aula";
+            Aula.Name = "Aula";
             // 
-            // turnoDataGridViewTextBoxColumn
+            // Turno
             // 
-            turnoDataGridViewTextBoxColumn.DataPropertyName = "Turno";
-            turnoDataGridViewTextBoxColumn.HeaderText = "Turno";
-            turnoDataGridViewTextBoxColumn.Name = "turnoDataGridViewTextBoxColumn";
+            Turno.DataPropertyName = "Turno";
+            Turno.HeaderText = "Turno";
+            Turno.Name = "Turno";
             // 
             // FormAdministradorListaEspera
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(834, 631);
+            ClientSize = new Size(992, 631);
+            Controls.Add(textBox1);
+            Controls.Add(label1);
+            Controls.Add(btnMostrarListaEspera);
             Controls.Add(dataGridView1);
             Controls.Add(btnAgregar);
             Controls.Add(dataGridView2);
@@ -179,10 +225,12 @@
             Text = "FormAdministradorListaEspera";
             ((System.ComponentModel.ISupportInitialize)cursosBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)estudianteEnCursosBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)estudiantesBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)horariosDataGridBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -190,18 +238,23 @@
         private DataGridView dataGridView2;
         private BindingSource estudiantesBindingSource;
         private BindingSource horariosDataGridBindingSource;
+        private Button btnAgregar;
+        private DataGridView dataGridView1;
         private DataGridViewCheckBoxColumn Check2;
         private DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn Apellido;
         private DataGridViewTextBoxColumn Id;
-        private Button btnAgregar;
-        private DataGridView dataGridView1;
+        private Button btnMostrarListaEspera;
+        private BindingSource estudianteEnCursosBindingSource;
+        private Label label1;
+        private TextBox textBox1;
+        private DataGridViewCheckBoxColumn Check;
         private DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn codigoDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn descripcionDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn cupoMaximoDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn diaSemanaDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn aulaDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn turnoDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn DiaSemana;
+        private DataGridViewTextBoxColumn Aula;
+        private DataGridViewTextBoxColumn Turno;
     }
 }
