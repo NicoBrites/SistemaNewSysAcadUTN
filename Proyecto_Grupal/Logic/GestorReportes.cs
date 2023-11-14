@@ -125,7 +125,7 @@ Cantidad de estudiantes que pagaron : {cantidadEstudiantesPagaron}
 
 Monto total recaudado : {contadorMontoIngresado}
 
-Nombre                   Fecha de inscripcion
+Nombre                   Fecha de Pago
 ";
 
             return informe + listadoEstudiantes;

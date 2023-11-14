@@ -59,6 +59,38 @@ namespace Logic
             }
         }
 
+        public List<Cursos> GetCursosCupoLlenoDB()
+        {
+            try
+            {
+                List<EstudiantePorCurso> listaEstudiantesPorCurso = GetEstudiantePorCursoDB();
+                List<Cursos> listaCursos = GetCursosDB();
+
+                List<Cursos> listaCursosCupoLleno = new List<Cursos>();
+
+                int cupoActual;
+               
+                foreach (Cursos curso in listaCursos)
+                {
+                    cupoActual = DevolverCupoActual(curso.Codigo, listaEstudiantesPorCurso);
+                    if (cupoActual == curso.CupoMaximo)
+                    {
+                        listaCursosCupoLleno.Add(curso);
+                    }
+                }
+
+                return listaCursosCupoLleno;
+            }
+            catch (ExcepcionPropia ex)
+            {
+                throw new ExcepcionPropia(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         /// <summary>
         /// Obtiene una lista de estudiantes por curso desde un archivo JSON.
         /// </summary>

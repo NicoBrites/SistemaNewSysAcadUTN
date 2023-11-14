@@ -42,8 +42,6 @@
             comboBox2 = new ComboBox();
             label3 = new Label();
             comboBox3 = new ComboBox();
-            label4 = new Label();
-            comboBox4 = new ComboBox();
             btnParametros = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)reportesBindingSource).BeginInit();
@@ -163,25 +161,6 @@
             comboBox3.TabIndex = 8;
             comboBox3.Visible = false;
             // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(635, 248);
-            label4.Name = "label4";
-            label4.Size = new Size(38, 15);
-            label4.TabIndex = 9;
-            label4.Text = "label4";
-            label4.Visible = false;
-            // 
-            // comboBox4
-            // 
-            comboBox4.FormattingEnabled = true;
-            comboBox4.Location = new Point(635, 266);
-            comboBox4.Name = "comboBox4";
-            comboBox4.Size = new Size(121, 23);
-            comboBox4.TabIndex = 10;
-            comboBox4.Visible = false;
-            // 
             // btnParametros
             // 
             btnParametros.Location = new Point(239, 330);
@@ -198,8 +177,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(btnParametros);
-            Controls.Add(comboBox4);
-            Controls.Add(label4);
             Controls.Add(comboBox3);
             Controls.Add(label3);
             Controls.Add(comboBox2);
@@ -234,8 +211,6 @@
         private ComboBox comboBox2;
         private Label label3;
         private ComboBox comboBox3;
-        private Label label4;
-        private ComboBox comboBox4;
         private Button btnParametros;
     }
 }

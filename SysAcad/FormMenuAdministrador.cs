@@ -44,5 +44,12 @@ namespace SysAcad
             formAdministrarReportes.Show();
             this.Hide();
         }
+
+        private void btnListaEspera_Click(object sender, EventArgs e)
+        {
+            FormAdministradorListaEspera formAdministradorListaEspera = new();
+            formAdministradorListaEspera.Show();
+            this.Hide();
+        }
     }
 }

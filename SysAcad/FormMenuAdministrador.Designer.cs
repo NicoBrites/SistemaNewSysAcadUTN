@@ -34,6 +34,7 @@ namespace SysAcad
             btnGestionarCursos = new Button();
             button1 = new Button();
             btnGestorInformes = new Button();
+            btnListaEspera = new Button();
             SuspendLayout();
             // 
             // btnRegistrarEstudiante
@@ -66,7 +67,7 @@ namespace SysAcad
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click_2;
             // 
-            // button2
+            // btnGestorInformes
             // 
             btnGestorInformes.Location = new Point(235, 217);
             btnGestorInformes.Name = "btnGestorInformes";
@@ -76,11 +77,22 @@ namespace SysAcad
             btnGestorInformes.UseVisualStyleBackColor = true;
             btnGestorInformes.Click += button2_Click;
             // 
+            // btnListaEspera
+            // 
+            btnListaEspera.Location = new Point(235, 292);
+            btnListaEspera.Name = "btnListaEspera";
+            btnListaEspera.Size = new Size(363, 49);
+            btnListaEspera.TabIndex = 4;
+            btnListaEspera.Text = "Manejar Lista de Espera";
+            btnListaEspera.UseVisualStyleBackColor = true;
+            btnListaEspera.Click += btnListaEspera_Click;
+            // 
             // FormMenuAdministrador
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnListaEspera);
             Controls.Add(btnGestorInformes);
             Controls.Add(button1);
             Controls.Add(btnGestionarCursos);
@@ -96,5 +108,6 @@ namespace SysAcad
         private Button btnGestionarCursos;
         private Button button1;
         private Button btnGestorInformes;
+        private Button btnListaEspera;
     }
 }
