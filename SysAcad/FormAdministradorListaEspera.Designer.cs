@@ -40,9 +40,6 @@
             horariosDataGridBindingSource = new BindingSource(components);
             btnAgregar = new Button();
             dataGridView1 = new DataGridView();
-            btnMostrarListaEspera = new Button();
-            label1 = new Label();
-            textBox1 = new TextBox();
             Check = new DataGridViewCheckBoxColumn();
             nombreDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             codigoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -51,6 +48,10 @@
             DiaSemana = new DataGridViewTextBoxColumn();
             Aula = new DataGridViewTextBoxColumn();
             Turno = new DataGridViewTextBoxColumn();
+            btnMostrarListaEspera = new Button();
+            label1 = new Label();
+            textBox1 = new TextBox();
+            btnEliminar = new Button();
             ((System.ComponentModel.ISupportInitialize)cursosBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)estudianteEnCursosBindingSource).BeginInit();
@@ -116,7 +117,7 @@
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(70, 336);
+            btnAgregar.Location = new Point(70, 298);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(184, 23);
             btnAgregar.TabIndex = 2;
@@ -136,32 +137,6 @@
             dataGridView1.Size = new Size(851, 150);
             dataGridView1.TabIndex = 3;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
-            // 
-            // btnMostrarListaEspera
-            // 
-            btnMostrarListaEspera.Location = new Point(70, 216);
-            btnMostrarListaEspera.Name = "btnMostrarListaEspera";
-            btnMostrarListaEspera.Size = new Size(184, 23);
-            btnMostrarListaEspera.TabIndex = 4;
-            btnMostrarListaEspera.Text = "Mostrar la Lista de Espera";
-            btnMostrarListaEspera.UseVisualStyleBackColor = true;
-            btnMostrarListaEspera.Click += button1_Click_1;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(70, 376);
-            label1.Name = "label1";
-            label1.Size = new Size(79, 15);
-            label1.TabIndex = 5;
-            label1.Text = "ID Estudiante:";
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(70, 394);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(114, 23);
-            textBox1.TabIndex = 6;
             // 
             // Check
             // 
@@ -210,11 +185,48 @@
             Turno.HeaderText = "Turno";
             Turno.Name = "Turno";
             // 
+            // btnMostrarListaEspera
+            // 
+            btnMostrarListaEspera.Location = new Point(70, 216);
+            btnMostrarListaEspera.Name = "btnMostrarListaEspera";
+            btnMostrarListaEspera.Size = new Size(184, 23);
+            btnMostrarListaEspera.TabIndex = 4;
+            btnMostrarListaEspera.Text = "Mostrar la Lista de Espera";
+            btnMostrarListaEspera.UseVisualStyleBackColor = true;
+            btnMostrarListaEspera.Click += button1_Click_1;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(70, 324);
+            label1.Name = "label1";
+            label1.Size = new Size(79, 15);
+            label1.TabIndex = 5;
+            label1.Text = "ID Estudiante:";
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(70, 342);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(114, 23);
+            textBox1.TabIndex = 6;
+            // 
+            // btnEliminar
+            // 
+            btnEliminar.Location = new Point(276, 258);
+            btnEliminar.Name = "btnEliminar";
+            btnEliminar.Size = new Size(184, 23);
+            btnEliminar.TabIndex = 7;
+            btnEliminar.Text = "Eliminar Estudiante";
+            btnEliminar.UseVisualStyleBackColor = true;
+            btnEliminar.Click += button1_Click_2;
+            // 
             // FormAdministradorListaEspera
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(992, 631);
+            Controls.Add(btnEliminar);
             Controls.Add(textBox1);
             Controls.Add(label1);
             Controls.Add(btnMostrarListaEspera);
@@ -256,5 +268,6 @@
         private DataGridViewTextBoxColumn DiaSemana;
         private DataGridViewTextBoxColumn Aula;
         private DataGridViewTextBoxColumn Turno;
+        private Button btnEliminar;
     }
 }

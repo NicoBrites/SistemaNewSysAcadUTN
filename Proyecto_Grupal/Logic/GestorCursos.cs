@@ -351,6 +351,16 @@ namespace Logic
 
         }
 
+        public void EliminarEstudianteListaEsperaDB(int codigo)
+        {
+
+            var query = "DELETE FROM ListaDeEspera " +
+                        $"WHERE CodigoEstudiante = {codigo}; ";
+
+            DB.DB.Guardar(query);
+
+        }
+
         /// <summary>
         /// Valida si un estudiante puede ser inscrito en un curso.
         /// </summary>

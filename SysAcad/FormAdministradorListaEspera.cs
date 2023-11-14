@@ -1,5 +1,6 @@
 ﻿using Entidades;
 using Logic;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -99,10 +100,14 @@ namespace SysAcad
                                         _gestorCursos.AgregarAlumnoAListaDeEsperaDB(new EstudianteEnCursos(estudiante.Id, estudiante.Nombre, estudiante.Apellido),
                                             new CursosEnEstudiantes(nombre, codigo, diaSemana, turno, aula));
 
+                                        dataGridView2.Visible = false;
+
+
+
                                         MessageBox.Show("Se ha agregado al alumno correctamente a la lista de espera", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                         break;
                                     }
-                                    catch (Exception ex) 
+                                    catch (Exception ex)
                                     {
                                         MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     }
@@ -115,7 +120,7 @@ namespace SysAcad
                         }
                         else
                         {
-                           
+
                             MessageBox.Show("No ingreso un id valido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
@@ -159,6 +164,7 @@ namespace SysAcad
                                 {
                                     listaEsperaDeEseCurso.Add(new EstudianteEnCursos(estudiantesEspera.CodigoEstudiante,
                                         estudiantesEspera.NombreEstudiante, estudiantesEspera.ApellidoEstudiante));
+
                                 }
                             }
                             if (listaEsperaDeEseCurso.Count == 0 || listaEsperaDeEseCurso == null)
@@ -180,52 +186,47 @@ namespace SysAcad
                 MessageBox.Show("No selecciono ningun curso", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
 
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            bool selecciono = false;
+            int id = 0;
+            bool codigoCorrecto = false;
+            int numero;
+            List<Estudiantes> listaEstudiantes = new List<Estudiantes>();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            /*
-
-
-            List<EstudiantePorCurso> listaEspera = _gestorCursos.GetEstudianteEnListaEspera();
-            List<EstudiantePorCurso> listaEsperaDeEseCurso = new List<EstudiantePorCurso>();
-
-            if (listaEspera.Count == 0 || listaEspera == null)
+            foreach (DataGridViewRow row in dataGridView2.Rows)
             {
-
-            }
-            else
-            {
-                foreach (EstudiantePorCurso estudiantesEspera in listaEspera)
+                if (row.Cells["Check2"].Value != null && (bool)row.Cells["Check2"].Value == true)
                 {
-                    if (estudiantesEspera.CodigoCurso == codigo)
-                    {
+                    int filaSeleccionadaIndex = dataGridView2.SelectedCells[0].RowIndex;
+                    // El CheckBox en esta fila está marcado.
+                    // Puedes acceder a los datos de la fila y trabajar con ellos.
+                    id = int.Parse(dataGridView2.Rows[filaSeleccionadaIndex].Cells["id"].Value.ToString());
+                    string nombre = row.Cells["nombreDataGridViewTextBoxColumn1"].Value.ToString();
+                    string apellido = row.Cells["Apellido"].Value.ToString();
 
+                    if (id != null)
+                    {
+                        selecciono = true;
+
+                        DialogResult resultado = MessageBox.Show($"Esta seguro que desea eliminar a {nombre} {apellido} de la lista de espera?",
+                            "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                        if (resultado == DialogResult.Yes)
+                        {
+                            _gestorCursos.EliminarEstudianteListaEsperaDB(id);
+
+                            dataGridView2.Visible = false;
+                        }
                     }
                 }
-
-
             }
-
-
-            */
-
-
-
-
+            if (selecciono == false)
+            {
+                MessageBox.Show("No selecciono ningun Estudiante de la lista de espera", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

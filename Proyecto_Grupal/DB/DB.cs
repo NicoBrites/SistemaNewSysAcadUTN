@@ -298,7 +298,8 @@ namespace DB
             {
                 conexion.Open();
 
-                var query = "SELECT * FROM ListaDeEspera";
+                var query = "SELECT * FROM ListaDeEspera " +
+                    "ORDER BY Fecha";
                 comando.CommandText = query;
 
                 using (var reader = comando.ExecuteReader())
