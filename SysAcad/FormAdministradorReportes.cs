@@ -132,8 +132,28 @@ namespace SysAcad
                     this.Hide();
                 }
             }
+            if (codigo == 4)
+            {
+                if (comboBox2 == null || comboBox2.Text == "")
+                {
+                    MessageBox.Show("No selecciono el curso", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    string informe = _gestorReportes.ReporteListaDeEsperaPorCurso(comboBox2.Text);
+
+                    FormAdministradorInforme formAdministradorInforme = new FormAdministradorInforme();
+                    AddOwnedForm(formAdministradorInforme);
+
+                    formAdministradorInforme.label1.Text = informe;
+                    formAdministradorInforme.informe = informe;
+
+                    formAdministradorInforme.Show();
+                    this.Hide();
+                }
 
 
+            }
         }
 
         private void CargarComboBoxs()

@@ -13,7 +13,7 @@ namespace Logic
         private GestorCursos _gestorCursos;
         private GestorEstudiantes _gestorEstudiantes;
         private PDF _pdf;
-        public GestorReportes() 
+        public GestorReportes()
         {
             _gestorCursos = new GestorCursos();
             _gestorEstudiantes = new GestorEstudiantes();
@@ -170,7 +170,53 @@ Nombre                   Fecha de Pago
 ";
                     }
                 }
-            }        
+            }
+
+            return informe + listadoEstudiantes;
+        }
+
+        public string ReporteListaDeEsperaPorCurso(string nombreCurso)
+        {
+            List<EstudiantePorCurso> listaEstudiantesPorCurso = _gestorCursos.GetEstudianteEnListaEspera();
+            int contadorEstudiantesPorCursoo = 0;
+            string informe = "";
+            StringBuilder listadoEstudiantes = new StringBuilder("");
+
+            foreach (EstudiantePorCurso estudiante in listaEstudiantesPorCurso)
+            {
+                if (nombreCurso == "Todos")
+                {
+                    listadoEstudiantes.Append($"{estudiante.ApellidoEstudiante} {estudiante.NombreEstudiante}        " +
+                        $"    {estudiante.Fecha.ToString("yyyy-MM-dd")}     {estudiante.NombreCurso}\n");
+                    contadorEstudiantesPorCursoo++;
+
+                    informe = $@"Universidad Tecnologica Nacional            {DateTime.Now.Date.ToString("yyyy-MM-dd")}
+
+Informe de Lista de Espera en todos los cursos
+
+Cantidad de estudiantes inscriptos : {contadorEstudiantesPorCursoo}
+
+Nombre                   Fecha de inscripcion         Curso
+";
+                }
+                else
+                {
+                    if (nombreCurso == estudiante.NombreCurso)
+                    {
+                        listadoEstudiantes.Append($"{estudiante.ApellidoEstudiante} {estudiante.NombreEstudiante}            {estudiante.Fecha.ToString("yyyy-MM-dd")}\n");
+                        contadorEstudiantesPorCursoo++;
+
+                        informe = $@"Universidad Tecnologica Nacional            {DateTime.Now.Date.ToString("yyyy-MM-dd")}
+
+Informe de Lista de espera en el {nombreCurso}
+
+Cantidad de estudiantes inscriptos : {contadorEstudiantesPorCursoo}
+
+Nombre                   Fecha de inscripcion
+";
+                    }
+                }
+            }
 
             return informe + listadoEstudiantes;
         }
