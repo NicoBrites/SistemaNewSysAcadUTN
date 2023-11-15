@@ -50,13 +50,9 @@ namespace SysAcad
                         DataGridViewCheckBoxCell checkBox = (DataGridViewCheckBoxCell)row.Cells["Check"];
                         checkBox.Value = false;
 
-
-
                         dataGridView2.Visible = false;
-                        // generarReportes.Visible = false;
                     }
                 }
-
             }
         }
 
@@ -102,8 +98,6 @@ namespace SysAcad
 
                                         dataGridView2.Visible = false;
 
-
-
                                         MessageBox.Show("Se ha agregado al alumno correctamente a la lista de espera", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                         break;
                                     }
@@ -120,7 +114,6 @@ namespace SysAcad
                         }
                         else
                         {
-
                             MessageBox.Show("No ingreso un id valido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
@@ -176,7 +169,6 @@ namespace SysAcad
                                 dataGridView2.DataSource = listaEsperaDeEseCurso;
                                 dataGridView2.Visible = true;
                             }
-
                         }
                     }
                 }
@@ -185,7 +177,6 @@ namespace SysAcad
             {
                 MessageBox.Show("No selecciono ningun curso", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
         private void button1_Click_2(object sender, EventArgs e)
@@ -227,6 +218,13 @@ namespace SysAcad
             {
                 MessageBox.Show("No selecciono ningun Estudiante de la lista de espera", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void button1_Click_3(object sender, EventArgs e)
+        {
+            FormMenuAdministrador formMenuAdministrador = new FormMenuAdministrador();
+            formMenuAdministrador.Show();
+            this.Hide();
         }
     }
 }

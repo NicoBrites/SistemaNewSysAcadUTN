@@ -143,16 +143,18 @@ namespace SysAcad
 
             comboBox1.Items.Add("Primer cuatrimestre");
             comboBox1.Items.Add("Segundo cuatrimestre");
+            comboBox1.Items.Add("Ambos cuatrimestres");
 
             foreach (Cursos cursos in gestorCursos.GetCursosDB())
             {
                 comboBox2.Items.Add(cursos.Nombre);
             }
+            comboBox2.Items.Add("Todos");
             foreach (ConseptoDePago conseptoDePago in gestorPagos.ConseptoDePagos())
             {
                 comboBox3.Items.Add(conseptoDePago.Concepto);
             }
-
+            comboBox3.Items.Add("Todos");
         }
 
         private void btnParametros_Click(object sender, EventArgs e)

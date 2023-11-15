@@ -52,6 +52,7 @@
             label1 = new Label();
             textBox1 = new TextBox();
             btnEliminar = new Button();
+            btnVolver = new Button();
             ((System.ComponentModel.ISupportInitialize)cursosBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)estudianteEnCursosBindingSource).BeginInit();
@@ -221,11 +222,22 @@
             btnEliminar.UseVisualStyleBackColor = true;
             btnEliminar.Click += button1_Click_2;
             // 
+            // btnVolver
+            // 
+            btnVolver.Location = new Point(295, 436);
+            btnVolver.Name = "btnVolver";
+            btnVolver.Size = new Size(75, 23);
+            btnVolver.TabIndex = 8;
+            btnVolver.Text = "Volver";
+            btnVolver.UseVisualStyleBackColor = true;
+            btnVolver.Click += button1_Click_3;
+            // 
             // FormAdministradorListaEspera
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(992, 631);
+            ClientSize = new Size(916, 489);
+            Controls.Add(btnVolver);
             Controls.Add(btnEliminar);
             Controls.Add(textBox1);
             Controls.Add(label1);
@@ -269,5 +281,6 @@
         private DataGridViewTextBoxColumn Aula;
         private DataGridViewTextBoxColumn Turno;
         private Button btnEliminar;
+        private Button btnVolver;
     }
 }
