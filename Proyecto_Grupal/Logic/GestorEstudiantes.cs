@@ -140,7 +140,7 @@ namespace Logic
 
             DB.DB.Guardar(query);
 
-            //bool funco = Email.SendMessageSmtp(nuevEstudiante.Correo, nuevEstudiante.Clave, nuevEstudiante.Nombre, nuevEstudiante.Apellido);
+            bool funco = Email.SendMessageSmtp(nuevEstudiante.Correo, nuevEstudiante.Clave, nuevEstudiante.Nombre, nuevEstudiante.Apellido);
         }
 
         public List<Estudiantes> GetListaEstudiantes()
