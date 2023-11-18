@@ -330,9 +330,13 @@ namespace Logic
                 $"Nombre: {curso.Nombre} - Descripcion: {curso.Descripcion} - Codigo: {curso.Codigo} \n" +
                 $"Dia Semana: {curso.DiaSemana} - Aula: {curso.Aula} - Turno: {curso.Turno}";
 
+
             EventoCambioEstado.Invoke(notificacion, codigoAnteriorParseado);
 
             DB.DB.Guardar(query);
+
+
+
         }
 
 
@@ -345,16 +349,21 @@ namespace Logic
             List<EstudiantePorCurso> listaEstudiantesPorCurso = DB.DB.ReturnAllEstudiantesPorCurso();
             List<Estudiantes> listaEstudiantes = _gestorEstudiantes.GetListaEstudiantes();
 
-            foreach (EstudiantePorCurso estudiantePorCurso in listaEstudiantesPorCurso)
+            List<EstudiantePorCurso> listaEstudiantesEnEseCurso = listaEstudiantesPorCurso.Where(estudiante => estudiante.CodigoCurso == codigo).ToList();
+            
+            var listaDatosEstudiantesEnEseCuros = listaEstudiantesEnEseCurso.Join(listaEstudiantes,
+                estudianteEnCurso => estudianteEnCurso.CodigoEstudiante,
+                estudiante => estudiante.Id,
+                (estudianteEnCurso, estudiante) => new {EstudianteEnCurso =estudianteEnCurso, Estudiante = estudiante }
+                );
+
+            foreach(var datosEstudianteEnEseCurso in listaDatosEstudiantesEnEseCuros)
             {
-                foreach (Estudiantes estudiante in listaEstudiantes)
-                {
-                    if (estudiantePorCurso.CodigoCurso == codigo && estudiante.Id == estudiantePorCurso.CodigoEstudiante)
-                    {
-                        bool funco = Email.SendMessageSmtp(estudiante.Correo, estudiante.Clave, estudiante.Nombre, estudiante.Apellido, "Cambio curso", cambio);
-                    }
-                }
+                bool funco = Email.SendMessageSmtp(datosEstudianteEnEseCurso.Estudiante.Correo, datosEstudianteEnEseCurso.Estudiante.Clave, datosEstudianteEnEseCurso.Estudiante.Nombre,
+                    datosEstudianteEnEseCurso.Estudiante.Apellido, "Cambio curso", cambio);
             }
+
+
         }
 
         /// <summary>
