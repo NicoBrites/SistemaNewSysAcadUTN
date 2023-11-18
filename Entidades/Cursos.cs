@@ -76,8 +76,5 @@ namespace Entidades
             set { _turno = value; }
         }
 
-        public delegate void CambioEstado(string msg);
-
-        public event CambioEstado EventoCambioEstado;
     }
 }

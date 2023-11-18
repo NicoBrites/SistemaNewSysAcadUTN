@@ -14,15 +14,16 @@ namespace SysAcad
 {
     public partial class FormCursosModificar : Form
     {
+        private GestorCursos _gestorCursos;
         public FormCursosModificar()
         {
             InitializeComponent();
+            _gestorCursos = new GestorCursos();
+            _gestorCursos.EventoCambioEstado += Notificar;
         }
 
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
-
-            GestorCursos cursos = new GestorCursos();
 
             string nuevoNombre = textNombre.Text;
             string nuevoCodigo = textCodigoNuevo.Text;
@@ -35,7 +36,7 @@ namespace SysAcad
 
             try
             {
-                if (cursos.ValidadorCursos(new CursoAValidar(nuevoNombre, nuevoCodigo, nuevoDescripcion, nuevoCupoMax, diaSemana, aula, turno)))
+                if (_gestorCursos.ValidadorCursos(new CursoAValidar(nuevoNombre, nuevoCodigo, nuevoDescripcion, nuevoCupoMax, diaSemana, aula, turno)))
                 {
                     int nuevoCodigoValidado = int.Parse(nuevoCodigo);
                     int nuevoCupoMaxValidado = int.Parse(nuevoCupoMax);/*
@@ -43,7 +44,8 @@ namespace SysAcad
                     Aulas enumAulas = (Aulas)Enum.Parse(typeof(Aulas), aula);
                     Turnos enumTurno = (Turnos)Enum.Parse(typeof(Turnos), turno);*/
 
-                    cursos.ModificarCursoDB(new Cursos(nuevoNombre, nuevoCodigoValidado, nuevoDescripcion, nuevoCupoMaxValidado, diaSemana, aula, turno), codigoAnterior);
+                    _gestorCursos.ModificarCursoDB(new Cursos(nuevoNombre, nuevoCodigoValidado, nuevoDescripcion, nuevoCupoMaxValidado, diaSemana, aula, turno), codigoAnterior);
+
 
                     MessageBox.Show("Se modifico el curso correctamente", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -72,6 +74,12 @@ namespace SysAcad
             this.Hide();
         }
 
+        private void Notificar(string notificacion, int codigoAnterior)
+        {
+            _gestorCursos.NotificarCambio(notificacion, codigoAnterior);
+
+            MessageBox.Show("Se mando un mail a los alumnos inscriptos avisando la moficacion del curso", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
         private void textDescripcion_TextChanged(object sender, EventArgs e)
         {
 

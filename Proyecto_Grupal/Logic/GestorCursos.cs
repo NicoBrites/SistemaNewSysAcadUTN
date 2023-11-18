@@ -9,6 +9,7 @@ namespace Logic
     {
         private Archivos _gestorArchivos;
         private ValidadorTextosVacios _validadorTextosVacios;
+        private GestorEstudiantes _gestorEstudiantes;
 
         /// <summary>
         /// Constructor de la clase GestorCursos. Inicializa el gestor de archivos y el validador de textos vacíos.
@@ -17,6 +18,7 @@ namespace Logic
         {
             _gestorArchivos = new Archivos();
             _validadorTextosVacios = new ValidadorTextosVacios();
+            _gestorEstudiantes = new GestorEstudiantes();
         }
 
         /// <summary>
@@ -307,7 +309,7 @@ namespace Logic
                 {
                     throw new Exception("El codigo del curso ya esta en uso en otro curso");
                 }
-                if (curso.Aula == cursos.Aula && curso.Turno == cursos.Turno && curso.DiaSemana == cursos.DiaSemana)
+                if (curso.Aula == cursos.Aula && curso.Turno == cursos.Turno && curso.DiaSemana == cursos.DiaSemana && cursos.Codigo != codigoAnteriorParseado)
                 {
                     throw new Exception("Ya hay un curso ese dia en ese turno en ese aula");
                 }
@@ -323,7 +325,36 @@ namespace Logic
               $"  DiaSemana = '{curso.DiaSemana}', Aula = '{curso.Aula}', Turno = '{curso.Turno}'" +
               $"WHERE CodigoCurso = {codigoAnteriorParseado}";
 
+            string notificacion = $"Se realizo un cambio en el curso Codigo:{codigoAnteriorParseado} \n" +
+                $"Los datos del curso al que te inscribiste ahora son: \n" +
+                $"Nombre: {curso.Nombre} - Descripcion: {curso.Descripcion} - Codigo: {curso.Codigo} \n" +
+                $"Dia Semana: {curso.DiaSemana} - Aula: {curso.Aula} - Turno: {curso.Turno}";
+
+            EventoCambioEstado.Invoke(notificacion, codigoAnteriorParseado);
+
             DB.DB.Guardar(query);
+        }
+
+
+        public delegate void CambioEstado(string msg, int codigo);
+
+        public event CambioEstado EventoCambioEstado;
+
+        public void NotificarCambio(string cambio, int codigo)
+        {
+            List<EstudiantePorCurso> listaEstudiantesPorCurso = DB.DB.ReturnAllEstudiantesPorCurso();
+            List<Estudiantes> listaEstudiantes = _gestorEstudiantes.GetListaEstudiantes();
+
+            foreach (EstudiantePorCurso estudiantePorCurso in listaEstudiantesPorCurso)
+            {
+                foreach (Estudiantes estudiante in listaEstudiantes)
+                {
+                    if (estudiantePorCurso.CodigoCurso == codigo && estudiante.Id == estudiantePorCurso.CodigoEstudiante)
+                    {
+                        bool funco = Email.SendMessageSmtp(estudiante.Correo, estudiante.Clave, estudiante.Nombre, estudiante.Apellido, "Cambio curso", cambio);
+                    }
+                }
+            }
         }
 
         /// <summary>
