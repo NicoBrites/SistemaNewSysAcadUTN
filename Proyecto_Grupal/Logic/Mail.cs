@@ -10,7 +10,7 @@ namespace Logic
         /// Envia un email de confirmacion al usuario registrado
         /// </summary>
         /// <param name="email"></param>
-        public static bool SendMessageSmtp(string email, string contraseña, string nombre, string apellido)
+        public static bool SendMessageSmtp(string email, string contraseña, string nombre, string apellido, bool creacionEstudiante)
         {
             
             MimeMessage mail = new MimeMessage();
@@ -18,11 +18,23 @@ namespace Logic
             string password = ConfigurationManager.AppSettings["mailgunPassword"]!;
             mail.From.Add(new MailboxAddress("Sistema Sysacad", $"foo@{host}"));
             mail.To.Add(new MailboxAddress($"{apellido},{nombre}", email));
-            mail.Subject = "Registro de alumno";
-            mail.Body = new TextPart("plain")
+            if (creacionEstudiante == true)
             {
-                Text = @$"Registro exitoso, bienvenido al nuevo SistemaSysacad. Tu contraseña es: {contraseña} y tu usario es tu Correo",
-            };
+                mail.Subject = "Registro de alumno";
+                mail.Body = new TextPart("plain")
+                {
+                    Text = @$"Registro exitoso, bienvenido al nuevo SistemaSysacad. Tu contraseña es: {contraseña} y tu usario es tu Correo",
+                };
+            }
+            else
+            {
+                mail.Subject = "Registro de alumno";
+                mail.Body = new TextPart("plain")
+                {
+                    Text = @$"Registro exitoso, bienvenido al nuevo SistemaSysacad. Tu contraseña es: {contraseña} y tu usario es tu Correo",
+                };
+            }
+
             try
             {
                 using (var client = new MailKit.Net.Smtp.SmtpClient())

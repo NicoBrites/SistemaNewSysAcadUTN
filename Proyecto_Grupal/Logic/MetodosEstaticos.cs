@@ -126,5 +126,15 @@ namespace Logic
             }
 
         }
+
+        public static void SistemaNotificaciones()
+        {
+
+
+
+
+
+
+        }
     }
 }

@@ -75,11 +75,9 @@ namespace Entidades
             get { return _turno; }
             set { _turno = value; }
         }
-        /*
-        public static explicit operator Cursos(SqlDataReader v)
-        {
-            //throw new NotImplementedException();
-            //return new Cursos(v["nombre"], v["codigo"]);
-        }*/
+
+        public delegate void CambioEstado(string msg);
+
+        public event CambioEstado EventoCambioEstado;
     }
 }

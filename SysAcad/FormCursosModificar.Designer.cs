@@ -111,7 +111,7 @@
             BtnModificar.Name = "BtnModificar";
             BtnModificar.Size = new Size(75, 23);
             BtnModificar.TabIndex = 10;
-            BtnModificar.Text = "Agregar";
+            BtnModificar.Text = "Modificar";
             BtnModificar.UseVisualStyleBackColor = true;
             BtnModificar.Click += BtnAgregar_Click;
             // 

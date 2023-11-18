@@ -300,7 +300,7 @@ namespace Logic
         {
             int codigoAnteriorParseado = Convert.ToInt32(codigoAnterior);
 
-            List<Cursos> listaCursos = GetCursos();
+            List<Cursos> listaCursos = GetCursosDB();
             foreach (Cursos cursos in listaCursos)
             {
                 if (codigoAnteriorParseado != curso.Codigo && curso.Codigo == cursos.Codigo)
@@ -317,7 +317,11 @@ namespace Logic
             var query = "UPDATE Cursos " +
               $"SET Nombre = '{curso.Nombre}', Descripcion = '{curso.Descripcion}', Codigo = '{curso.Codigo}'," +
               $" CupoMaximo = '{curso.CupoMaximo}', DiaSemana = '{curso.DiaSemana}', Aula = '{curso.Aula}', Turno = '{curso.Turno}'" +
-              $"WHERE Codigo = {codigoAnteriorParseado};";
+              $"WHERE Codigo = {codigoAnteriorParseado};" +
+              $"UPDATE EstudiantePorCurso " +
+              $"SET NombreCurso = '{curso.Nombre}', CodigoCurso = '{curso.Codigo}'," +  // PARTE NUEVA AGREGADO PARA EL SEG PARCIAL
+              $"  DiaSemana = '{curso.DiaSemana}', Aula = '{curso.Aula}', Turno = '{curso.Turno}'" +
+              $"WHERE CodigoCurso = {codigoAnteriorParseado}";
 
             DB.DB.Guardar(query);
         }
