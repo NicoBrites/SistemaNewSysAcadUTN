@@ -106,7 +106,6 @@ namespace DB
 
             return jsonNuevo;
         }
-
         public List<Cursos> ReturnAllCursos()
         {
 
@@ -152,7 +151,6 @@ namespace DB
 
             return listaCursos;
         }
-
         public List<EstudiantePorCurso> ReturnAllEstudiantesPorCurso()
         {
 
@@ -291,6 +289,64 @@ namespace DB
             finally { conexion.Close(); }
 
             return listaEstudiantesPorCurso;
+        }
+
+        public void CrearCurso(Cursos curso)
+        {
+            var query = "INSERT INTO Cursos (Codigo, Nombre, Descripcion, CupoMaximo, DiaSemana, Aula, Turno)" +
+                   $"VALUES ('{curso.Codigo}', '{curso.Nombre}', '{curso.Descripcion}', '{curso.CupoMaximo}'," +
+                   $" '{curso.DiaSemana}', '{curso.Aula}', '{curso.Turno}');";
+
+            Guardar(query);
+        }
+        public void ModificarCurso(Cursos curso, int codigoAnteriorParseado)
+        {
+            var query = "UPDATE Cursos " +
+              $"SET Nombre = '{curso.Nombre}', Descripcion = '{curso.Descripcion}', Codigo = '{curso.Codigo}'," +
+              $" CupoMaximo = '{curso.CupoMaximo}', DiaSemana = '{curso.DiaSemana}', Aula = '{curso.Aula}', Turno = '{curso.Turno}'" +
+              $"WHERE Codigo = {codigoAnteriorParseado};" +
+              $"UPDATE EstudiantePorCurso " +
+              $"SET NombreCurso = '{curso.Nombre}', CodigoCurso = '{curso.Codigo}'," +  // PARTE NUEVA AGREGADO PARA EL SEG PARCIAL
+              $"  DiaSemana = '{curso.DiaSemana}', Aula = '{curso.Aula}', Turno = '{curso.Turno}'" +
+              $"WHERE CodigoCurso = {codigoAnteriorParseado}";
+
+            Guardar(query);
+        }
+
+        public void EliminarCurso(int codigo)
+        {
+            var query = "DELETE FROM Cursos " +
+                       $"WHERE Codigo = {codigo}; ";
+
+            Guardar(query);
+        }
+
+        public void EliminarEstudianteEnListaDeEspera(int codigo)
+        {
+            var query = "DELETE FROM Cursos " +
+                       $"WHERE Codigo = {codigo}; ";
+
+            Guardar(query);
+        }
+
+        public void AgregarAlumnoAlCurso(EstudianteEnCursos estudiante, CursosEnEstudiantes cursoEnQueSeAgrega)
+        {
+            var query = "INSERT INTO EstudiantePorCurso (CodigoEstudiante, NombreEstudiante, ApellidoEstudiante," +
+                        " CodigoCurso, NombreCurso, DiaSemana, Aula, Turno, Fecha)" +
+                        $"VALUES ('{estudiante.Id}', '{estudiante.Nombre}', '{estudiante.Apellido}', '{cursoEnQueSeAgrega.Codigo}'," +
+                        $" '{cursoEnQueSeAgrega.Nombre}', '{cursoEnQueSeAgrega.DiaSemana}', '{cursoEnQueSeAgrega.Aula}', '{cursoEnQueSeAgrega.Turno}', '{DateTime.Now}');";
+
+            Guardar(query);
+        }
+
+        public void AgregarAlumnoAListaDeEspera(EstudianteEnCursos estudiante, CursosEnEstudiantes cursoEnQueSeAgrega)
+        {
+            var query = "INSERT INTO ListaDeEspera (CodigoEstudiante, NombreEstudiante, ApellidoEstudiante," +
+                        " CodigoCurso, NombreCurso, DiaSemana, Aula, Turno, Fecha)" +
+                        $"VALUES ('{estudiante.Id}', '{estudiante.Nombre}', '{estudiante.Apellido}', '{cursoEnQueSeAgrega.Codigo}'," +
+                        $" '{cursoEnQueSeAgrega.Nombre}', '{cursoEnQueSeAgrega.DiaSemana}', '{cursoEnQueSeAgrega.Aula}', '{cursoEnQueSeAgrega.Turno}', '{DateTime.Now}');";
+
+            Guardar(query);
         }
     }    
 }   

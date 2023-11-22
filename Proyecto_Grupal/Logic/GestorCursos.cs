@@ -260,21 +260,11 @@ namespace Logic
                         throw new Exception("Ya hay un curso ese dia en ese turno en ese aula");
                     }
                 }
-
-                var query = "INSERT INTO Cursos (Codigo, Nombre, Descripcion, CupoMaximo, DiaSemana, Aula, Turno)" +
-                    $"VALUES ('{curso.Codigo}', '{curso.Nombre}', '{curso.Descripcion}', '{curso.CupoMaximo}'," +
-                    $" '{curso.DiaSemana}', '{curso.Aula}', '{curso.Turno}');";
-
-                _gestorDB.Guardar(query);
+                _gestorDB.CrearCurso(curso);
             }
             catch (ExcepcionPropia)
             {
-
-                var query = "INSERT INTO Cursos (Codigo, Nombre, Descripcion, CupoMaximo, DiaSemana, Aula, Turno)" +
-                    $"VALUES ('{curso.Codigo}', '{curso.Nombre}', '{curso.Descripcion}', '{curso.CupoMaximo}'," +
-                    $" '{curso.DiaSemana}', '{curso.Aula}', '{curso.Turno}');";
-
-                _gestorDB.Guardar(query);
+                _gestorDB.CrearCurso(curso);
             }
             catch (Exception e)
             {
@@ -339,27 +329,14 @@ namespace Logic
  
             }
 
-            var query = "UPDATE Cursos " +
-              $"SET Nombre = '{curso.Nombre}', Descripcion = '{curso.Descripcion}', Codigo = '{curso.Codigo}'," +
-              $" CupoMaximo = '{curso.CupoMaximo}', DiaSemana = '{curso.DiaSemana}', Aula = '{curso.Aula}', Turno = '{curso.Turno}'" +
-              $"WHERE Codigo = {codigoAnteriorParseado};" +
-              $"UPDATE EstudiantePorCurso " +
-              $"SET NombreCurso = '{curso.Nombre}', CodigoCurso = '{curso.Codigo}'," +  // PARTE NUEVA AGREGADO PARA EL SEG PARCIAL
-              $"  DiaSemana = '{curso.DiaSemana}', Aula = '{curso.Aula}', Turno = '{curso.Turno}'" +
-              $"WHERE CodigoCurso = {codigoAnteriorParseado}";
+            _gestorDB.ModificarCurso(curso, codigoAnteriorParseado);
 
             string notificacion = $"Se realizo un cambio en el curso Codigo:{codigoAnteriorParseado} \n" +
                 $"Los datos del curso al que te inscribiste ahora son: \n" +
                 $"Nombre: {curso.Nombre} - Descripcion: {curso.Descripcion} - Codigo: {curso.Codigo} \n" +
                 $"Dia Semana: {curso.DiaSemana} - Aula: {curso.Aula} - Turno: {curso.Turno}";
 
-
             EventoCambioEstado.Invoke(notificacion, codigoAnteriorParseado);
-
-            _gestorDB.Guardar(query);
-
-
-
         }
 
 
@@ -409,22 +386,12 @@ namespace Logic
 
         public void EliminarCursoDB(int codigo)
         {
-
-            var query = "DELETE FROM Cursos " +
-                        $"WHERE Codigo = {codigo}; ";
-
-            _gestorDB.Guardar(query);
-
+            _gestorDB.EliminarCurso(codigo);
         }
 
         public void EliminarEstudianteListaEsperaDB(int codigo)
         {
-
-            var query = "DELETE FROM ListaDeEspera " +
-                        $"WHERE CodigoEstudiante = {codigo}; ";
-
-            _gestorDB.Guardar(query);
-
+            _gestorDB.EliminarEstudianteEnListaDeEspera(codigo);
         }
 
         /// <summary>
@@ -550,12 +517,7 @@ namespace Logic
                     {
                         if (ValidadorAgregarAlumnosACurso(cursos, listaEstudiantesPorCurso, estudiante, cursoEnQueSeAgrega, cupoActual))
                         {
-                            var query = "INSERT INTO EstudiantePorCurso (CodigoEstudiante, NombreEstudiante, ApellidoEstudiante," +
-                                " CodigoCurso, NombreCurso, DiaSemana, Aula, Turno, Fecha)" +
-                                    $"VALUES ('{estudiante.Id}', '{estudiante.Nombre}', '{estudiante.Apellido}', '{cursoEnQueSeAgrega.Codigo}'," +
-                                    $" '{cursoEnQueSeAgrega.Nombre}', '{cursoEnQueSeAgrega.DiaSemana}', '{cursoEnQueSeAgrega.Aula}', '{cursoEnQueSeAgrega.Turno}', '{DateTime.Now}');";
-
-                            _gestorDB.Guardar(query);
+                            _gestorDB.AgregarAlumnoAlCurso(estudiante, cursoEnQueSeAgrega);
                             break;
                         }
                     }
@@ -563,12 +525,7 @@ namespace Logic
             }
             catch (ExcepcionPropia)
             {
-                var query = "INSERT INTO EstudiantePorCurso (CodigoEstudiante, NombreEstudiante, ApellidoEstudiante," +
-                            " CodigoCurso, NombreCurso, DiaSemana, Aula, Turno, Fecha)" +
-                            $"VALUES ('{estudiante.Id}', '{estudiante.Nombre}', '{estudiante.Apellido}', '{cursoEnQueSeAgrega.Codigo}'," +
-                            $" '{cursoEnQueSeAgrega.Nombre}', '{cursoEnQueSeAgrega.DiaSemana}', '{cursoEnQueSeAgrega.Aula}' '{cursoEnQueSeAgrega.Turno}', '{DateTime.Now}' );";
-
-                _gestorDB.Guardar(query);
+                _gestorDB.AgregarAlumnoAlCurso(estudiante, cursoEnQueSeAgrega);
             }
             catch (Exception ex)
             {
@@ -592,24 +549,14 @@ namespace Logic
                     {
                         if (ValidadorAgregarAlumnosAListaEspera(cursos, listaEstudiantesPorCurso, estudiante, cursoEnQueSeAgrega, listaEstudiantesEnEspera))
                         {
-                            var query = "INSERT INTO ListaDeEspera (CodigoEstudiante, NombreEstudiante, ApellidoEstudiante," +
-                                " CodigoCurso, NombreCurso, DiaSemana, Aula, Turno, Fecha)" +
-                                $"VALUES ('{estudiante.Id}', '{estudiante.Nombre}', '{estudiante.Apellido}', '{cursoEnQueSeAgrega.Codigo}'," +
-                                $" '{cursoEnQueSeAgrega.Nombre}', '{cursoEnQueSeAgrega.DiaSemana}', '{cursoEnQueSeAgrega.Aula}', '{cursoEnQueSeAgrega.Turno}', '{DateTime.Now}');";
-
-                            _gestorDB.Guardar(query);
+                            _gestorDB.AgregarAlumnoAListaDeEspera(estudiante, cursoEnQueSeAgrega);
                         }
                     }
                 }
             }
             catch (ExcepcionPropia)
             {
-                var query = "INSERT INTO ListaDeEspera (CodigoEstudiante, NombreEstudiante, ApellidoEstudiante," +
-                            " CodigoCurso, NombreCurso, DiaSemana, Aula, Turno, Fecha)" +
-                            $"VALUES ('{estudiante.Id}', '{estudiante.Nombre}', '{estudiante.Apellido}', '{cursoEnQueSeAgrega.Codigo}'," +
-                            $" '{cursoEnQueSeAgrega.Nombre}', '{cursoEnQueSeAgrega.DiaSemana}', '{cursoEnQueSeAgrega.Aula}' '{cursoEnQueSeAgrega.Turno}', '{DateTime.Now}' );";
-
-                _gestorDB.Guardar(query);
+                _gestorDB.AgregarAlumnoAListaDeEspera(estudiante, cursoEnQueSeAgrega);
             }
             catch (Exception ex)
             {
