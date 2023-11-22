@@ -1,5 +1,5 @@
 ﻿using Entidades;
-
+using DB;
 namespace Logic
 {
     public static class MetodosEstaticos
@@ -89,11 +89,12 @@ namespace Logic
         }
         public static void CrearAdministradorInicialEnDB()
         {
+            DB.DB dB = new DB.DB();
 
             bool hayAdministrador = false;
             try
             {
-                JsonUsuariosFormato json = DB.DB.ReturnAllUsers();
+                JsonUsuariosFormato json = dB.ReturnAllUsers();
 
                 List<Administrador> administradores = json.Administradores;
 
@@ -109,7 +110,7 @@ namespace Logic
                     var query = "INSERT INTO Usuarios (TipoEntidad, ID, Nombre, Apellido, Dni, Clave, Correo, Nivel)" +
                         $"VALUES ('Administradores', 1, 'Hernesto', 'Guevara', 0, '{claveConHash}', 'correo123', 1);";
 
-                    DB.DB.Guardar(query);
+                    dB.Guardar(query);
                 }
 
             }
@@ -121,7 +122,7 @@ namespace Logic
                 var query = "INSERT INTO Usuarios (TipoEntidad, ID, Nombre, Apellido, Dni, Clave, Correo)" +
                     $"VALUES ('Administradores', 1, 'Hernesto', 'Guevara', 0, '{claveConHash}', 'correo123');";
 
-                DB.DB.Guardar(query);
+                dB.Guardar(query);
 
             }
 

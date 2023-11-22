@@ -34,3 +34,4 @@ C:\Users\AdministraGod\Desktop\proyectoUTN\SistemaNewSysAcadUTN\Entidades\obj\De
 C:\Users\AdministraGod\Desktop\proyectoUTN\SistemaNewSysAcadUTN\Entidades\obj\Debug\net6.0\refint\Entidades.dll
 C:\Users\AdministraGod\Desktop\proyectoUTN\SistemaNewSysAcadUTN\Entidades\obj\Debug\net6.0\Entidades.pdb
 C:\Users\AdministraGod\Desktop\proyectoUTN\SistemaNewSysAcadUTN\Entidades\obj\Debug\net6.0\ref\Entidades.dll
+C:\Users\AdministraGod\Desktop\proyectoUTN\SistemaNewSysAcadUTN\Entidades\obj\Debug\net6.0\Entidades.sourcelink.json

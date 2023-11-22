@@ -13,11 +13,13 @@ namespace Logic
         private GestorCursos _gestorCursos;
         private GestorEstudiantes _gestorEstudiantes;
         private PDF _pdf;
+        private DB.DB _gestorDB;
         public GestorReportes()
         {
             _gestorCursos = new GestorCursos();
             _gestorEstudiantes = new GestorEstudiantes();
             _pdf = new PDF();
+            _gestorDB = new DB.DB();
         }
         public List<Reportes> GenerarOpcionesRepórtes()
         {
@@ -124,7 +126,7 @@ Nombre                   Fecha de inscripcion
 
         public string ReporteIngresosPorConseptoDePago(string nombreConsepto)
         {
-            List<PagoDeEstudiante> listaPagoDeEstudianteo = DB.DB.ReturnAllPagoDeEstudiante();
+            List<PagoDeEstudiante> listaPagoDeEstudianteo = _gestorDB.ReturnAllPagoDeEstudiante();
             int contadorMontoIngresado = 0;
             int cantidadEstudiantesPagaron = 0;
             string informe = "";

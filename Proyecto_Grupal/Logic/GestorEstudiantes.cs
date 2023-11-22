@@ -1,4 +1,5 @@
-﻿using Entidades;
+﻿using DB;
+using Entidades;
 using System.Text.RegularExpressions;
 
 namespace Logic
@@ -7,6 +8,7 @@ namespace Logic
     {
         private Archivos _gestorArchivos;
         private ValidadorTextosVacios _validadorTextosVacios;
+        private DB.DB _gestorDB;
 
         /// <summary>
         /// Constructor de la clase GestorEstudiantes.
@@ -15,6 +17,7 @@ namespace Logic
         {
              _gestorArchivos = new Archivos();
             _validadorTextosVacios = new ValidadorTextosVacios();
+            _gestorDB = new DB.DB();
         }
 
         /// <summary>
@@ -106,7 +109,7 @@ namespace Logic
         {
             int ultimoId = 0;
 
-            JsonUsuariosFormato json = DB.DB.ReturnAllUsers();
+            JsonUsuariosFormato json = _gestorDB.ReturnAllUsers();
 
             List<Estudiantes> estudiantes = json.Estudiantes;
 
@@ -129,14 +132,14 @@ namespace Logic
                       $" '{nuevEstudiante.Apellido}', '{nuevEstudiante.Dni}', '{nuevEstudiante.Telefono}', '{nuevEstudiante.Direccion}'," +
                       $" '{claveConHash}', '{nuevEstudiante.Correo}', '{DateTime.Now}');";
 
-            DB.DB.Guardar(query);
+            _gestorDB.Guardar(query);
 
             bool funco = Email.SendMessageSmtp(nuevEstudiante.Correo, nuevEstudiante.Clave, nuevEstudiante.Nombre, nuevEstudiante.Apellido, "Registro estudiante");
         }
 
         public List<Estudiantes> GetListaEstudiantes()
         {
-            JsonUsuariosFormato json = DB.DB.ReturnAllUsers();
+            JsonUsuariosFormato json = _gestorDB.ReturnAllUsers();
 
             List<Estudiantes> estudiantes = json.Estudiantes;
 

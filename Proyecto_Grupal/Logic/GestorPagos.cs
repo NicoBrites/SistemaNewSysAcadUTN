@@ -7,6 +7,7 @@ namespace Logic
     public class GestorPagos
     {
         private ValidadorTextosVacios _validadorTextosVacios;
+        private DB.DB _gestorDB;
 
         /// <summary>
         /// Constructor de la clase GestorPagos.
@@ -14,13 +15,14 @@ namespace Logic
         public GestorPagos()
         {
             _validadorTextosVacios = new ValidadorTextosVacios();
+            _gestorDB = new DB.DB();
         }
 
         public List<PagoDeEstudiante> GetPagosDB()
         {
             try
             {
-                List<PagoDeEstudiante> listaPagos = DB.DB.ReturnAllPagoDeEstudiante(); ;
+                List<PagoDeEstudiante> listaPagos = _gestorDB.ReturnAllPagoDeEstudiante(); ;
                 return listaPagos;
             }
             catch (ExcepcionPropia ex)
@@ -188,7 +190,7 @@ CUIT: 30-4561231-8";
                     $" '{pagoDeEstudiante.IdEstudiante}'," +
                     $" '{pagoDeEstudiante.Fecha}', '{pagoDeEstudiante.Consepto}');";
 
-                DB.DB.Guardar(query);
+                _gestorDB.Guardar(query);
             }
             catch (ExcepcionPropia)
             {
@@ -197,7 +199,7 @@ CUIT: 30-4561231-8";
                      $" '{pagoDeEstudiante.IdEstudiante}'," +
                      $" '{pagoDeEstudiante.Fecha}', '{pagoDeEstudiante.Consepto}');";
 
-                DB.DB.Guardar(query);
+                _gestorDB.Guardar(query);
             }
             catch (Exception e)
             {

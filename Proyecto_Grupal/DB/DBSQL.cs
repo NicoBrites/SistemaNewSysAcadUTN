@@ -15,7 +15,7 @@ namespace DB
 
         public DBSQL()
         {
-            _conexion = DB.conexion;
+           // _conexion = DB.conexion;
             _comando = new SqlCommand();
             _comando.CommandType = CommandType.Text;
             _comando.Connection = _conexion;

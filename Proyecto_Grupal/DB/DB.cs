@@ -11,11 +11,11 @@ namespace DB
 {
     public class DB
     {
-        public static SqlConnection conexion;
-        private static string cadenaConexion;
-        private static SqlCommand comando;
+        private SqlConnection conexion;
+        private string cadenaConexion;
+        private SqlCommand comando;
 
-        static DB()
+        public DB()
         {
             cadenaConexion = @"Server=DESKTOP-SB7OU3P\SQLEXPRESS;Database=SysAcad;Trusted_Connection=True;TrustServerCertificate=True;";
             conexion = new SqlConnection(cadenaConexion);
@@ -23,54 +23,9 @@ namespace DB
             comando = new SqlCommand();
             comando.CommandType = CommandType.Text;
             comando.Connection = conexion;
-
         }
 
-        public static Cursos MapCurso(IDataRecord reader)
-        {
-            var nombre = reader["Nombre"].ToString();
-            var id = Convert.ToInt32(reader["id"]);
-
-            //Cursos curso2 = (Cursos)reader;
-            var curso = new Cursos("asd", 2, "123", 1, "1", "2", "1");
-            return curso;
-        }
-        public static void Query()
-        {
-            Console.WriteLine("asd");
-
-            var cursos = new List<Cursos>();
-            try
-            {
-                conexion.Open();
-
-                var query = "SELECT * FROM Cursos";
-                comando.CommandText = query;
-
-                using (var reader = comando.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        var nombre = reader["Nombre"].ToString();
-                        var id = Convert.ToInt32(reader["id"]);
-
-                        //Cursos curso2 = (Cursos)reader;
-                        var curso = new Cursos("asd", 2, "123", 1, "1", "2", "1");
-                        cursos.Add(curso);
-                    }
-                }
-                //return cursos;
-
-                //comando.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-
-            }
-            finally { conexion.Close(); }
-        }
-
-        public static void Guardar(string query)
+        public void Guardar(string query)
         {
             try
             {
@@ -89,7 +44,7 @@ namespace DB
             finally { conexion.Close(); }
         }
 
-        public static JsonUsuariosFormato ReturnAllUsers()
+        public JsonUsuariosFormato ReturnAllUsers()
         {
 
             JsonUsuariosFormato jsonNuevo = new JsonUsuariosFormato
@@ -152,7 +107,7 @@ namespace DB
             return jsonNuevo;
         }
 
-        public static List<Cursos> ReturnAllCursos()
+        public List<Cursos> ReturnAllCursos()
         {
 
             var listaCursos = new List<Cursos>();
@@ -198,7 +153,7 @@ namespace DB
             return listaCursos;
         }
 
-        public static List<EstudiantePorCurso> ReturnAllEstudiantesPorCurso()
+        public List<EstudiantePorCurso> ReturnAllEstudiantesPorCurso()
         {
 
             var listaEstudiantesPorCurso = new List<EstudiantePorCurso>();
@@ -245,7 +200,7 @@ namespace DB
 
             return listaEstudiantesPorCurso;
         }
-        public static List<PagoDeEstudiante> ReturnAllPagoDeEstudiante()
+        public List<PagoDeEstudiante> ReturnAllPagoDeEstudiante()
         {
 
             var listaPagoDeEstudiante = new List<PagoDeEstudiante>();
@@ -289,7 +244,7 @@ namespace DB
 
             return listaPagoDeEstudiante;
         }
-        public static List<EstudiantePorCurso> ReturnAllEstudiantesEnListaEspera()
+        public List<EstudiantePorCurso> ReturnAllEstudiantesEnListaEspera()
         {
 
             var listaEstudiantesPorCurso = new List<EstudiantePorCurso>();
@@ -337,9 +292,6 @@ namespace DB
 
             return listaEstudiantesPorCurso;
         }
-
-    }
-
-    
+    }    
 }   
 

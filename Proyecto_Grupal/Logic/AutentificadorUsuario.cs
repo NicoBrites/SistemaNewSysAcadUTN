@@ -5,6 +5,7 @@ namespace Logic
     public class AutentificadorUsuario
     {
         private Archivos _gestorArchivos;
+        private DB.DB _gestorDB;
 
         /// <summary>
         /// Constructor de la clase AutentificadorUsuario. Inicializa el gestor de archivos.
@@ -12,6 +13,7 @@ namespace Logic
         public AutentificadorUsuario()
         {
             _gestorArchivos = new Archivos();
+            _gestorDB = new DB.DB();
         }
 
         /// <summary>
@@ -59,7 +61,7 @@ namespace Logic
         public Object AutentificarUsuarioSDB(string correo, string contraseña)
         {
 
-            JsonUsuariosFormato json = DB.DB.ReturnAllUsers();
+            JsonUsuariosFormato json = _gestorDB.ReturnAllUsers();
 
             List<Administrador> administradores = json.Administradores;
             List<Estudiantes> estudiantes = json.Estudiantes;

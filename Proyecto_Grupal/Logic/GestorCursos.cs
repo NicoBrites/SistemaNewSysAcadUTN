@@ -1,4 +1,5 @@
-﻿using Entidades;
+﻿using DB;
+using Entidades;
 using Microsoft.VisualBasic;
 using System.Collections.Generic;
 using static Entidades.Enums;
@@ -10,6 +11,7 @@ namespace Logic
         private Archivos _gestorArchivos;
         private ValidadorTextosVacios _validadorTextosVacios;
         private GestorEstudiantes _gestorEstudiantes;
+        private DB.DB _gestorDB;
 
         /// <summary>
         /// Constructor de la clase GestorCursos. Inicializa el gestor de archivos y el validador de textos vacíos.
@@ -19,6 +21,7 @@ namespace Logic
             _gestorArchivos = new Archivos();
             _validadorTextosVacios = new ValidadorTextosVacios();
             _gestorEstudiantes = new GestorEstudiantes();
+            _gestorDB = new DB.DB();
         }
 
         /// <summary>
@@ -43,12 +46,17 @@ namespace Logic
                 throw new Exception(ex.Message);
             }
         }
-
+        /// <summary>
+        /// Obtiene todos los cursos almacenados en la base de datos.
+        /// </summary>
+        /// <returns>Lista de objetos de la clase Cursos representando todos los cursos en la base de datos.</returns>
+        /// <exception cref="ExcepcionPropia">Se lanza si ocurre una excepción específica de la aplicación.</exception>
+        /// <exception cref="Exception">Se lanza si ocurre una excepción general.</exception>
         public List<Cursos> GetCursosDB()
         {
             try
             {
-                List<Cursos> listaCursos = DB.DB.ReturnAllCursos(); ;
+                List<Cursos> listaCursos = _gestorDB.ReturnAllCursos(); ;
                 return listaCursos;
             }
             catch (ExcepcionPropia ex)
@@ -60,7 +68,12 @@ namespace Logic
                 throw new Exception(ex.Message);
             }
         }
-
+        /// <summary>
+        /// Obtiene los cursos cuyo cupo está completamente lleno.
+        /// </summary>
+        /// <returns>Lista de objetos de la clase Cursos representando cursos con el cupo lleno.</returns>
+        /// <exception cref="ExcepcionPropia">Se lanza si ocurre una excepción específica de la aplicación.</exception>
+        /// <exception cref="Exception">Se lanza si ocurre una excepción general.</exception>
         public List<Cursos> GetCursosCupoLlenoDB()
         {
             try
@@ -115,12 +128,17 @@ namespace Logic
                 throw new Exception(ex.Message);
             }
         }
-
+        /// <summary>
+        /// Obtiene todos los cursos almacenados en la base de datos.
+        /// </summary>
+        /// <returns>Lista de objetos de la clase Cursos representando todos los cursos en la base de datos.</returns>
+        /// <exception cref="ExcepcionPropia">Se lanza si ocurre una excepción específica de la aplicación.</exception>
+        /// <exception cref="Exception">Se lanza si ocurre una excepción general.</exception>
         public List<EstudiantePorCurso> GetEstudiantePorCursoDB()
         {
             try
             {
-                List<EstudiantePorCurso> listaEstudiantesCursos = DB.DB.ReturnAllEstudiantesPorCurso();
+                List<EstudiantePorCurso> listaEstudiantesCursos = _gestorDB.ReturnAllEstudiantesPorCurso();
                 return listaEstudiantesCursos;
             }
             catch (ExcepcionPropia ex)
@@ -132,12 +150,17 @@ namespace Logic
                 throw new Exception(ex.Message);
             }
         }
-
+        /// <summary>
+        /// Obtiene los cursos cuyo cupo está completamente lleno.
+        /// </summary>
+        /// <returns>Lista de objetos de la clase Cursos representando cursos con el cupo lleno.</returns>
+        /// <exception cref="ExcepcionPropia">Se lanza si ocurre una excepción específica de la aplicación.</exception>
+        /// <exception cref="Exception">Se lanza si ocurre una excepción general.</exception>
         public List<EstudiantePorCurso> GetEstudianteEnListaEspera()
         {
             try
             {
-                List<EstudiantePorCurso> listaEstudiantesEspera = DB.DB.ReturnAllEstudiantesEnListaEspera();
+                List<EstudiantePorCurso> listaEstudiantesEspera = _gestorDB.ReturnAllEstudiantesEnListaEspera();
                 return listaEstudiantesEspera;
             }
             catch (ExcepcionPropia ex)
@@ -242,7 +265,7 @@ namespace Logic
                     $"VALUES ('{curso.Codigo}', '{curso.Nombre}', '{curso.Descripcion}', '{curso.CupoMaximo}'," +
                     $" '{curso.DiaSemana}', '{curso.Aula}', '{curso.Turno}');";
 
-                DB.DB.Guardar(query);
+                _gestorDB.Guardar(query);
             }
             catch (ExcepcionPropia)
             {
@@ -251,7 +274,7 @@ namespace Logic
                     $"VALUES ('{curso.Codigo}', '{curso.Nombre}', '{curso.Descripcion}', '{curso.CupoMaximo}'," +
                     $" '{curso.DiaSemana}', '{curso.Aula}', '{curso.Turno}');";
 
-                DB.DB.Guardar(query);
+                _gestorDB.Guardar(query);
             }
             catch (Exception e)
             {
@@ -333,7 +356,7 @@ namespace Logic
 
             EventoCambioEstado.Invoke(notificacion, codigoAnteriorParseado);
 
-            DB.DB.Guardar(query);
+            _gestorDB.Guardar(query);
 
 
 
@@ -346,10 +369,11 @@ namespace Logic
 
         public void NotificarCambio(string cambio, int codigo)
         {
-            List<EstudiantePorCurso> listaEstudiantesPorCurso = DB.DB.ReturnAllEstudiantesPorCurso();
+            List<EstudiantePorCurso> listaEstudiantesPorCurso = _gestorDB.ReturnAllEstudiantesPorCurso();
             List<Estudiantes> listaEstudiantes = _gestorEstudiantes.GetListaEstudiantes();
 
-            List<EstudiantePorCurso> listaEstudiantesEnEseCurso = listaEstudiantesPorCurso.Where(estudiante => estudiante.CodigoCurso == codigo).ToList();
+            List<EstudiantePorCurso> listaEstudiantesEnEseCurso = listaEstudiantesPorCurso.Where(
+                estudiante => estudiante.CodigoCurso == codigo).ToList();
             
             var listaDatosEstudiantesEnEseCuros = listaEstudiantesEnEseCurso.Join(listaEstudiantes,
                 estudianteEnCurso => estudianteEnCurso.CodigoEstudiante,
@@ -362,8 +386,6 @@ namespace Logic
                 bool funco = Email.SendMessageSmtp(datosEstudianteEnEseCurso.Estudiante.Correo, datosEstudianteEnEseCurso.Estudiante.Clave, datosEstudianteEnEseCurso.Estudiante.Nombre,
                     datosEstudianteEnEseCurso.Estudiante.Apellido, "Cambio curso", cambio);
             }
-
-
         }
 
         /// <summary>
@@ -391,7 +413,7 @@ namespace Logic
             var query = "DELETE FROM Cursos " +
                         $"WHERE Codigo = {codigo}; ";
 
-            DB.DB.Guardar(query);
+            _gestorDB.Guardar(query);
 
         }
 
@@ -401,7 +423,7 @@ namespace Logic
             var query = "DELETE FROM ListaDeEspera " +
                         $"WHERE CodigoEstudiante = {codigo}; ";
 
-            DB.DB.Guardar(query);
+            _gestorDB.Guardar(query);
 
         }
 
@@ -533,7 +555,7 @@ namespace Logic
                                     $"VALUES ('{estudiante.Id}', '{estudiante.Nombre}', '{estudiante.Apellido}', '{cursoEnQueSeAgrega.Codigo}'," +
                                     $" '{cursoEnQueSeAgrega.Nombre}', '{cursoEnQueSeAgrega.DiaSemana}', '{cursoEnQueSeAgrega.Aula}', '{cursoEnQueSeAgrega.Turno}', '{DateTime.Now}');";
 
-                            DB.DB.Guardar(query);
+                            _gestorDB.Guardar(query);
                             break;
                         }
                     }
@@ -546,7 +568,7 @@ namespace Logic
                             $"VALUES ('{estudiante.Id}', '{estudiante.Nombre}', '{estudiante.Apellido}', '{cursoEnQueSeAgrega.Codigo}'," +
                             $" '{cursoEnQueSeAgrega.Nombre}', '{cursoEnQueSeAgrega.DiaSemana}', '{cursoEnQueSeAgrega.Aula}' '{cursoEnQueSeAgrega.Turno}', '{DateTime.Now}' );";
 
-                DB.DB.Guardar(query);
+                _gestorDB.Guardar(query);
             }
             catch (Exception ex)
             {
@@ -575,7 +597,7 @@ namespace Logic
                                 $"VALUES ('{estudiante.Id}', '{estudiante.Nombre}', '{estudiante.Apellido}', '{cursoEnQueSeAgrega.Codigo}'," +
                                 $" '{cursoEnQueSeAgrega.Nombre}', '{cursoEnQueSeAgrega.DiaSemana}', '{cursoEnQueSeAgrega.Aula}', '{cursoEnQueSeAgrega.Turno}', '{DateTime.Now}');";
 
-                            DB.DB.Guardar(query);
+                            _gestorDB.Guardar(query);
                         }
                     }
                 }
@@ -587,7 +609,7 @@ namespace Logic
                             $"VALUES ('{estudiante.Id}', '{estudiante.Nombre}', '{estudiante.Apellido}', '{cursoEnQueSeAgrega.Codigo}'," +
                             $" '{cursoEnQueSeAgrega.Nombre}', '{cursoEnQueSeAgrega.DiaSemana}', '{cursoEnQueSeAgrega.Aula}' '{cursoEnQueSeAgrega.Turno}', '{DateTime.Now}' );";
 
-                DB.DB.Guardar(query);
+                _gestorDB.Guardar(query);
             }
             catch (Exception ex)
             {

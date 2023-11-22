@@ -194,3 +194,4 @@ C:\Users\AdministraGod\Desktop\proyectoUTN\SistemaNewSysAcadUTN\SysAcad\bin\Debu
 C:\Users\AdministraGod\Desktop\proyectoUTN\SistemaNewSysAcadUTN\SysAcad\obj\Debug\net6.0-windows\SysAcad.FormAdministradorListaEspera.resources
 C:\Users\AdministraGod\Desktop\proyectoUTN\SistemaNewSysAcadUTN\SysAcad\bin\Debug\net6.0-windows\System.Security.Cryptography.ProtectedData.dll
 C:\Users\AdministraGod\Desktop\proyectoUTN\SistemaNewSysAcadUTN\SysAcad\bin\Debug\net6.0-windows\SysAcad.dll.config
+C:\Users\AdministraGod\Desktop\proyectoUTN\SistemaNewSysAcadUTN\SysAcad\obj\Debug\net6.0-windows\SysAcad.sourcelink.json
