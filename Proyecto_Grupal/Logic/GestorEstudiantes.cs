@@ -127,12 +127,7 @@ namespace Logic
             ultimoId++;
             string claveConHash = MetodosEstaticos.GetHash(nuevEstudiante.Clave);
 
-            var query = "INSERT INTO Usuarios (TipoEntidad, ID, Nombre, Apellido, Dni, Telefono, Direccion, Clave, Correo, Fecha)" +
-                      $"VALUES ('Estudiantes', '{ultimoId}', '{nuevEstudiante.Nombre}'," +
-                      $" '{nuevEstudiante.Apellido}', '{nuevEstudiante.Dni}', '{nuevEstudiante.Telefono}', '{nuevEstudiante.Direccion}'," +
-                      $" '{claveConHash}', '{nuevEstudiante.Correo}', '{DateTime.Now}');";
-
-            _gestorDB.Guardar(query);
+            _gestorDB.CrearEstudiante(nuevEstudiante, ultimoId, claveConHash);
 
             bool funco = Email.SendMessageSmtp(nuevEstudiante.Correo, nuevEstudiante.Clave, nuevEstudiante.Nombre, nuevEstudiante.Apellido, "Registro estudiante");
         }

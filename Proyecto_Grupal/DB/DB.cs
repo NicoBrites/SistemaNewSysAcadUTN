@@ -291,6 +291,16 @@ namespace DB
             return listaEstudiantesPorCurso;
         }
 
+        public void CrearEstudiante(Estudiantes nuevEstudiante, int ultimoId, string claveConHash)
+        {
+            var query = "INSERT INTO Usuarios (TipoEntidad, ID, Nombre, Apellido, Dni, Telefono, Direccion, Clave, Correo, Fecha)" +
+                      $"VALUES ('Estudiantes', '{ultimoId}', '{nuevEstudiante.Nombre}'," +
+                      $" '{nuevEstudiante.Apellido}', '{nuevEstudiante.Dni}', '{nuevEstudiante.Telefono}', '{nuevEstudiante.Direccion}'," +
+                      $" '{claveConHash}', '{nuevEstudiante.Correo}', '{DateTime.Now}');";
+
+            Guardar(query);
+        }
+
         public void CrearCurso(Cursos curso)
         {
             var query = "INSERT INTO Cursos (Codigo, Nombre, Descripcion, CupoMaximo, DiaSemana, Aula, Turno)" +
@@ -345,6 +355,16 @@ namespace DB
                         " CodigoCurso, NombreCurso, DiaSemana, Aula, Turno, Fecha)" +
                         $"VALUES ('{estudiante.Id}', '{estudiante.Nombre}', '{estudiante.Apellido}', '{cursoEnQueSeAgrega.Codigo}'," +
                         $" '{cursoEnQueSeAgrega.Nombre}', '{cursoEnQueSeAgrega.DiaSemana}', '{cursoEnQueSeAgrega.Aula}', '{cursoEnQueSeAgrega.Turno}', '{DateTime.Now}');";
+
+            Guardar(query);
+        }
+
+        public void CrearPago(PagoDeEstudiante pagoDeEstudiante)
+        {
+            var query = "INSERT INTO PagosDeEstudiantes (monto, nombre, apellido, idEstudiante, fecha, Conseptos)" +
+                  $"VALUES ('{pagoDeEstudiante.Monto}', '{pagoDeEstudiante.Nombre}', '{pagoDeEstudiante.Apellido}'," +
+                  $" '{pagoDeEstudiante.IdEstudiante}'," +
+                  $" '{pagoDeEstudiante.Fecha}', '{pagoDeEstudiante.Consepto}');";
 
             Guardar(query);
         }

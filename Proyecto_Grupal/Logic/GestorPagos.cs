@@ -185,21 +185,11 @@ CUIT: 30-4561231-8";
         {
             try
             {
-                var query = "INSERT INTO PagosDeEstudiantes (monto, nombre, apellido, idEstudiante, fecha, Conseptos)" +
-                    $"VALUES ('{pagoDeEstudiante.Monto}', '{pagoDeEstudiante.Nombre}', '{pagoDeEstudiante.Apellido}'," +
-                    $" '{pagoDeEstudiante.IdEstudiante}'," +
-                    $" '{pagoDeEstudiante.Fecha}', '{pagoDeEstudiante.Consepto}');";
-
-                _gestorDB.Guardar(query);
+               _gestorDB.CrearPago(pagoDeEstudiante);
             }
             catch (ExcepcionPropia)
             {
-                var query = "INSERT INTO PagosDeEstudiantes (monto, nombre, apellido, idEstudiante, fecha, Conseptos)" +
-                     $"VALUES ('{pagoDeEstudiante.Monto}', '{pagoDeEstudiante.Nombre}', '{pagoDeEstudiante.Apellido}'," +
-                     $" '{pagoDeEstudiante.IdEstudiante}'," +
-                     $" '{pagoDeEstudiante.Fecha}', '{pagoDeEstudiante.Consepto}');";
-
-                _gestorDB.Guardar(query);
+                _gestorDB.CrearPago(pagoDeEstudiante);
             }
             catch (Exception e)
             {
