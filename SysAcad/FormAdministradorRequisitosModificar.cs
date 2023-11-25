@@ -31,13 +31,13 @@ namespace SysAcad
             {
                 // MessageBox.Show("No se encontro la lista de cursos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             string cursosPreRequisito = "";
             bool noCheck = true;
+            bool sinRequisitos = false;
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 if (row.Cells["Check"].Value != null && (bool)row.Cells["Check"].Value == true)
@@ -62,23 +62,27 @@ namespace SysAcad
             }
             if (noCheck)
             {
-                MessageBox.Show($"No selecciono ninguna materia",
-                                          "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DialogResult result = MessageBox.Show($"No selecciono un curso. Quiere que el curso {requisitosCurso.Nombre} no tenga requisitos ?", "Confirmación", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    sinRequisitos = true;
+                    cursosPreRequisito = "Este curso no tiene Cursos Previos";
+                }
+            }
+            if (ValidadorTextBox() && sinRequisitos == true)
+            {
+                int creditosAcumulados = int.Parse(textBox2.Text);
+                int promedioAcademico = int.Parse(textBox3.Text);
+                _gestorRequisitos.ModificarRequisitos(new RequisitosCurso(requisitosCurso.Nombre, requisitosCurso.Codigo, cursosPreRequisito, creditosAcumulados, promedioAcademico));
+
+                MessageBox.Show("Los requisitos se han guardado correctamente", "Exito",
+                  MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                if (ValidadorTextBox())
-                {
-                    int creditosAcumulados = int.Parse(textBox2.Text);
-                    int promedioAcademico = int.Parse(textBox3.Text);
-                    _gestorRequisitos.ModificarRequisitos(new RequisitosCurso(requisitosCurso.Nombre, requisitosCurso.Codigo, cursosPreRequisito, creditosAcumulados, promedioAcademico));
-                }
-                else
-                {
-                    MessageBox.Show("Ingreso mal un dato o dejo una caja vacia", "Error",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ingreso mal un dato o dejo una caja vacia", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                }
             }
            
 

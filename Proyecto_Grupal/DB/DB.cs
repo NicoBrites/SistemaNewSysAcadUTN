@@ -251,7 +251,7 @@ namespace DB
             {
                 conexion.Open();
 
-                var query = "SELECT * FROM RequisitosDelCurso";
+                var query = "SELECT * FROM RequisitosCurso";
                 comando.CommandText = query;
 
                 using (var reader = comando.ExecuteReader())

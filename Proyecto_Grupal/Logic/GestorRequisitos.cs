@@ -19,7 +19,7 @@ namespace Logic
         {
             try
             {
-                List<RequisitosCurso> listaRequisitos = _gestorDB.ReturnAllRequisitosDelCurso(); ;
+                List<RequisitosCurso> listaRequisitos = _gestorDB.ReturnAllRequisitosDelCurso();
                 return listaRequisitos;
             }
             catch (ExcepcionPropia ex)
