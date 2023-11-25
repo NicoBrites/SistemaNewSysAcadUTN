@@ -14,14 +14,16 @@ namespace SysAcad
 {
     public partial class FormRegistroEstudiante : FormPadre
     {
+        private GestorEstudiantes _gestorEstudiantes;
         public FormRegistroEstudiante()
         {
             InitializeComponent();
+            _gestorEstudiantes = new GestorEstudiantes();
+            _gestorEstudiantes.EventoCreoNuevo += Notificar;
         }
 
         public void button1_Click(object sender, EventArgs e)
         {
-            GestorEstudiantes estudiantes = new GestorEstudiantes();
 
             string nuevoNombre = textNombre.Text;
             string nuevoApellido = textApellido.Text;
@@ -33,12 +35,12 @@ namespace SysAcad
 
             try
             {
-                if (estudiantes.ValidadorEstudiante(new EstudianteAValidar(nuevoNombre, nuevoApellido, nuevoDni, nuevoNumTelefono, nuevaDireccion, nuevaContraseñaProv, nuevoCorreoElectronico)))
+                if (_gestorEstudiantes.ValidadorEstudiante(new EstudianteAValidar(nuevoNombre, nuevoApellido, nuevoDni, nuevoNumTelefono, nuevaDireccion, nuevaContraseñaProv, nuevoCorreoElectronico)))
                 {
                     int nuevoTelValidado = int.Parse(nuevoNumTelefono);
                     int nuevoDniValidado = int.Parse(nuevoDni);
 
-                    estudiantes.CrearEstudianteNewDB(new Estudiantes(0, nuevoNombre, nuevoApellido, nuevoDniValidado, nuevoTelValidado, nuevaDireccion, nuevaContraseñaProv, nuevoCorreoElectronico, DateTime.Now));
+                    _gestorEstudiantes.CrearEstudianteNewDB(new Estudiantes(0, nuevoNombre, nuevoApellido, nuevoDniValidado, nuevoTelValidado, nuevaDireccion, nuevaContraseñaProv, nuevoCorreoElectronico, DateTime.Now));
 
                     MessageBox.Show("Se creo el estudiante correctamente", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -62,9 +64,9 @@ namespace SysAcad
 
             this.Hide();
         }
-
-        private void FormRegistroEstudiante_Load(object sender, EventArgs e)
+        private void Notificar(Estudiantes estudiante)
         {
+            _gestorEstudiantes.NotificarANuevoEstudiante(estudiante);
 
         }
     }

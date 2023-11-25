@@ -130,6 +130,22 @@ namespace Logic
             _gestorDB.CrearEstudiante(nuevEstudiante, ultimoId, claveConHash);
 
             bool funco = Email.SendMessageSmtp(nuevEstudiante.Correo, nuevEstudiante.Clave, nuevEstudiante.Nombre, nuevEstudiante.Apellido, "Registro estudiante");
+
+            EventoCreoNuevo.Invoke(nuevEstudiante);
+
+        }
+
+        public delegate void CreoNuevo(Estudiantes estudiante);
+
+        public event CreoNuevo EventoCreoNuevo;
+        public void NotificarANuevoEstudiante(Estudiantes estudiante)
+        {
+            string notificacion = "Se le infoma al estudiante que las fechas de inscripcion a los finales son 20 y 21 de diciembre \n" +
+                "Tambien se le recuenda que las fechas limite de pago de la cuota son el 15 de cada mes, despues de esta fecha tendran un recargo.";
+          
+            bool funco = Email.SendMessageSmtp(estudiante.Correo, estudiante.Clave, estudiante.Nombre,
+                estudiante.Apellido, "Creo estudiante", notificacion);
+        
         }
 
         public List<Estudiantes> GetListaEstudiantes()

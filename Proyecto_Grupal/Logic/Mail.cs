@@ -34,6 +34,14 @@ namespace Logic
                     Text = @$"{msj}",
                 };
             }
+            else if (tipoEvento == "Creo estudiante")
+            {
+                mail.Subject = "Informacion para el estudiante";
+                mail.Body = new TextPart("plain")
+                {
+                    Text = @$"{msj}",
+                };
+            }
 
             try
             {
