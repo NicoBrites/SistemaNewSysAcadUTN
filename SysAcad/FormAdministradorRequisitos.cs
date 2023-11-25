@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace SysAcad
 {
@@ -40,7 +41,7 @@ namespace SysAcad
             bool tieneCargados = false; 
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
-                if (row.Cells["Check"].Value != null && (bool)row.Cells["Check"].Value == true)
+                if (row.Cells["Check1"].Value != null && (bool)row.Cells["Check1"].Value == true)
                 {
                     int filaSeleccionadaIndex = dataGridView1.SelectedCells[0].RowIndex;
                     // El CheckBox en esta fila está marcado.
@@ -64,7 +65,6 @@ namespace SysAcad
                                 if (requisitoDelCurso.Codigo == codigo)
                                 {
                                     CargarRequisitos(requisitoDelCurso);
-                                    BtnModificarRequisitos.Visible = true;
                                     tieneCargados = true;
                                     break;
                                 }
@@ -96,8 +96,60 @@ namespace SysAcad
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            bool selecciono = false;
+            int codigo = 0;
+            string nombre = "";
+            bool tieneCargados = false;
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (row.Cells["Check1"].Value != null && (bool)row.Cells["Check1"].Value == true)
+                {
+                    int filaSeleccionadaIndex = dataGridView1.SelectedCells[0].RowIndex;
+                    // El CheckBox en esta fila está marcado.
+                    // Puedes acceder a los datos de la fila y trabajar con ellos.
+                    codigo = int.Parse(dataGridView1.Rows[filaSeleccionadaIndex].Cells["codigoDataGridViewTextBoxColumn"].Value.ToString());
+                    nombre = dataGridView1.Rows[filaSeleccionadaIndex].Cells["nombreDataGridViewTextBoxColumn"].Value.ToString();
 
+
+                    List<RequisitosCurso> listaRequisitos = _gestorRequisitos.GetRequisitosCursos();
+
+                    if (codigo != null)
+                    {
+                        selecciono = true;
+
+                        foreach (RequisitosCurso requisitoDelCurso in listaRequisitos)
+                        {
+                            if (requisitoDelCurso.Codigo == codigo)
+                            {
+                                FormAdministradorRequisitosModificar formAdministradorRequisitosModificar = new();
+                                AddOwnedForm(formAdministradorRequisitosModificar);
+                                formAdministradorRequisitosModificar.requisitosCurso = requisitoDelCurso;
+
+                                formAdministradorRequisitosModificar.Show();
+                                this.Hide();
+
+                                tieneCargados = true;
+                                break;
+                            }
+                        }
+                        if (tieneCargados == false)
+                        {
+                            FormAdministradorRequisitosModificar formAdministradorRequisitosModificar = new();
+                            AddOwnedForm(formAdministradorRequisitosModificar);
+                            formAdministradorRequisitosModificar.requisitosCurso = new RequisitosCurso(nombre,codigo,"",0,0);
+
+                            formAdministradorRequisitosModificar.Show();
+                            this.Hide();
+                        }
+                    }
+                }
+            }
+            if (selecciono == false)
+            {
+                MessageBox.Show("No selecciono ningun curso", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+    
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -113,7 +165,6 @@ namespace SysAcad
                         DataGridViewCheckBoxCell checkBox = (DataGridViewCheckBoxCell)row.Cells["Check1"];
                         checkBox.Value = false;
 
-                        BtnModificarRequisitos.Visible = false;
                         label4.Visible = false;
                         label5.Visible = false;
                         label6.Visible = false;
