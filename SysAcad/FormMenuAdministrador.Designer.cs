@@ -35,11 +35,12 @@ namespace SysAcad
             button1 = new Button();
             btnGestorInformes = new Button();
             btnListaEspera = new Button();
+            button2 = new Button();
             SuspendLayout();
             // 
             // btnRegistrarEstudiante
             // 
-            btnRegistrarEstudiante.Location = new Point(235, 59);
+            btnRegistrarEstudiante.Location = new Point(235, 33);
             btnRegistrarEstudiante.Name = "btnRegistrarEstudiante";
             btnRegistrarEstudiante.Size = new Size(363, 49);
             btnRegistrarEstudiante.TabIndex = 0;
@@ -49,7 +50,7 @@ namespace SysAcad
             // 
             // btnGestionarCursos
             // 
-            btnGestionarCursos.Location = new Point(235, 141);
+            btnGestionarCursos.Location = new Point(235, 88);
             btnGestionarCursos.Name = "btnGestionarCursos";
             btnGestionarCursos.Size = new Size(363, 50);
             btnGestionarCursos.TabIndex = 1;
@@ -69,7 +70,7 @@ namespace SysAcad
             // 
             // btnGestorInformes
             // 
-            btnGestorInformes.Location = new Point(235, 217);
+            btnGestorInformes.Location = new Point(235, 144);
             btnGestorInformes.Name = "btnGestorInformes";
             btnGestorInformes.Size = new Size(363, 49);
             btnGestorInformes.TabIndex = 3;
@@ -79,7 +80,7 @@ namespace SysAcad
             // 
             // btnListaEspera
             // 
-            btnListaEspera.Location = new Point(235, 292);
+            btnListaEspera.Location = new Point(235, 199);
             btnListaEspera.Name = "btnListaEspera";
             btnListaEspera.Size = new Size(363, 49);
             btnListaEspera.TabIndex = 4;
@@ -87,11 +88,22 @@ namespace SysAcad
             btnListaEspera.UseVisualStyleBackColor = true;
             btnListaEspera.Click += btnListaEspera_Click;
             // 
+            // button2
+            // 
+            button2.Location = new Point(235, 254);
+            button2.Name = "button2";
+            button2.Size = new Size(363, 49);
+            button2.TabIndex = 5;
+            button2.Text = "Gestionar Requisitos Academicos";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click_1;
+            // 
             // FormMenuAdministrador
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 464);
+            Controls.Add(button2);
             Controls.Add(btnListaEspera);
             Controls.Add(btnGestorInformes);
             Controls.Add(button1);
@@ -109,5 +121,6 @@ namespace SysAcad
         private Button button1;
         private Button btnGestorInformes;
         private Button btnListaEspera;
+        private Button button2;
     }
 }

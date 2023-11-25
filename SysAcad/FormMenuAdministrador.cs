@@ -51,5 +51,12 @@ namespace SysAcad
             formAdministradorListaEspera.Show();
             this.Hide();
         }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            FormAdministradorRequisitos formAdministradorRequisitos = new();
+            formAdministradorRequisitos.Show();
+            this.Hide();
+        }
     }
 }
