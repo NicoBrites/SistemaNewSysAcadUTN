@@ -204,6 +204,7 @@
             BtnModificarRequisitos.Text = "Modificar Requisitos";
             BtnModificarRequisitos.UseVisualStyleBackColor = true;
             BtnModificarRequisitos.Click += button1_Click_1;
+            BtnModificarRequisitos.Visible = false;
             // 
             // button1
             // 

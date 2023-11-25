@@ -242,6 +242,48 @@ namespace DB
 
             return listaPagoDeEstudiante;
         }
+
+        public List<RequisitosCurso> ReturnAllRequisitosDelCurso()
+        {
+            var listaRequisitos= new List<RequisitosCurso>();
+
+            try
+            {
+                conexion.Open();
+
+                var query = "SELECT * FROM RequisitosDelCurso";
+                comando.CommandText = query;
+
+                using (var reader = comando.ExecuteReader())
+                {
+                    if (reader != null)
+                    {
+                        while (reader.Read())
+                        {
+                            var nombre = reader["Nombre"].ToString();
+                            var codigo = Convert.ToInt32(reader["Codigo"]);
+                            var cursosPreRequisito = reader["CursosPreRequisito"].ToString();
+                            var creditosAcumulados = Convert.ToInt32(reader["CreditosAcumulados"]);
+                            var promedioAcademico = Convert.ToInt32(reader["PromedioAcademico"]);
+
+                            listaRequisitos.Add(new RequisitosCurso(nombre, codigo, cursosPreRequisito,
+                                creditosAcumulados, promedioAcademico));
+                        }
+                    }
+                    else
+                    {
+                        return listaRequisitos;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return listaRequisitos;
+            }
+            finally { conexion.Close(); }
+
+            return listaRequisitos;
+        }
         public List<EstudiantePorCurso> ReturnAllEstudiantesEnListaEspera()
         {
 
