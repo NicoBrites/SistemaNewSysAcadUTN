@@ -343,6 +343,16 @@ namespace DB
             Guardar(query);
         }
 
+        public void CrearProfesor(Profesores nuevProfesor, int ultimoId, string claveConHash)
+        {
+            var query = "INSERT INTO Usuarios (TipoEntidad, ID, Nombre, Apellido, Dni, Telefono, Especializacion, Clave, Correo, Fecha)" +
+                      $"VALUES ('Profesor', '{ultimoId}', '{nuevProfesor.Nombre}'," +
+                      $" '{nuevProfesor.Apellido}', '{nuevProfesor.Dni}', '{nuevProfesor.Telefono}', '{nuevProfesor.Especializacion}'," +
+                      $" '{claveConHash}', '{nuevProfesor.Correo}', '{DateTime.Now}');";
+
+            Guardar(query);
+        }
+
         public void CrearCurso(Cursos curso)
         {
             var query = "INSERT INTO Cursos (Codigo, Nombre, Descripcion, CupoMaximo, DiaSemana, Aula, Turno)" +

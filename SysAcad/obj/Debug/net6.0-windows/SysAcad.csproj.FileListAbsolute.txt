@@ -166,8 +166,10 @@ C:\Users\AdministraGod\Desktop\proyectoUTN\SistemaNewSysAcadUTN\SysAcad\bin\Debu
 C:\Users\AdministraGod\Desktop\proyectoUTN\SistemaNewSysAcadUTN\SysAcad\obj\Debug\net6.0-windows\SysAcad.csproj.AssemblyReference.cache
 C:\Users\AdministraGod\Desktop\proyectoUTN\SistemaNewSysAcadUTN\SysAcad\obj\Debug\net6.0-windows\SysAcad.FormAdministradorInforme.resources
 C:\Users\AdministraGod\Desktop\proyectoUTN\SistemaNewSysAcadUTN\SysAcad\obj\Debug\net6.0-windows\SysAcad.FormAdministradorListaEspera.resources
+C:\Users\AdministraGod\Desktop\proyectoUTN\SistemaNewSysAcadUTN\SysAcad\obj\Debug\net6.0-windows\SysAcad.FormAdministradorProfesores.resources
 C:\Users\AdministraGod\Desktop\proyectoUTN\SistemaNewSysAcadUTN\SysAcad\obj\Debug\net6.0-windows\SysAcad.FormAdministradorReportes.resources
 C:\Users\AdministraGod\Desktop\proyectoUTN\SistemaNewSysAcadUTN\SysAcad\obj\Debug\net6.0-windows\SysAcad.FormAdministradorRequisitos.resources
+C:\Users\AdministraGod\Desktop\proyectoUTN\SistemaNewSysAcadUTN\SysAcad\obj\Debug\net6.0-windows\SysAcad.FormAdministradorRequisitosModificar.resources
 C:\Users\AdministraGod\Desktop\proyectoUTN\SistemaNewSysAcadUTN\SysAcad\obj\Debug\net6.0-windows\SysAcad.FormComprobanteDePago.resources
 C:\Users\AdministraGod\Desktop\proyectoUTN\SistemaNewSysAcadUTN\SysAcad\obj\Debug\net6.0-windows\SysAcad.FormCursos.resources
 C:\Users\AdministraGod\Desktop\proyectoUTN\SistemaNewSysAcadUTN\SysAcad\obj\Debug\net6.0-windows\SysAcad.FormCursosAgregar.resources
@@ -196,4 +198,3 @@ C:\Users\AdministraGod\Desktop\proyectoUTN\SistemaNewSysAcadUTN\SysAcad\obj\Debu
 C:\Users\AdministraGod\Desktop\proyectoUTN\SistemaNewSysAcadUTN\SysAcad\obj\Debug\net6.0-windows\SysAcad.pdb
 C:\Users\AdministraGod\Desktop\proyectoUTN\SistemaNewSysAcadUTN\SysAcad\obj\Debug\net6.0-windows\SysAcad.genruntimeconfig.cache
 C:\Users\AdministraGod\Desktop\proyectoUTN\SistemaNewSysAcadUTN\SysAcad\obj\Debug\net6.0-windows\ref\SysAcad.dll
-C:\Users\AdministraGod\Desktop\proyectoUTN\SistemaNewSysAcadUTN\SysAcad\obj\Debug\net6.0-windows\SysAcad.FormAdministradorRequisitosModificar.resources
