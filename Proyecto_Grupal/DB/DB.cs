@@ -410,6 +410,29 @@ namespace DB
 
             Guardar(query);
         }
+
+        public void ModificarRequisito(RequisitosCurso requisito, bool existe)
+        {
+            if (existe == false) 
+            {
+               var  query = "INSERT INTO RequisitosCurso (Nombre, Codigo, CursosPreRequisito, CreditosAcumulados, PromedioAcademico)" +
+                 $"VALUES ('{requisito.Nombre}', '{requisito.Codigo}', '{requisito.CursosPreRequisito}'," +
+                 $" '{requisito.CreditosAcumulados}'," +
+                 $" '{requisito.PromedioAcademico}');";
+                Guardar(query);
+
+            }
+            else
+            {
+               var  query = "UPDATE RequisitosCurso " +
+                  $"SET CursosPreRequisito = '{requisito.CursosPreRequisito}'," +
+                  $" CreditosAcumulados = '{requisito.CreditosAcumulados}'," +
+                  $" PromedioAcademico = '{requisito.PromedioAcademico}'" +
+                  $"WHERE Codigo = {requisito.Codigo};";
+                Guardar(query);
+            }
+            
+        }
     }    
 }   
 

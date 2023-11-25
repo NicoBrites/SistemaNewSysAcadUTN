@@ -1,4 +1,6 @@
-﻿namespace SysAcad
+﻿using Entidades;
+
+namespace SysAcad
 {
     partial class FormAdministradorRequisitos
     {
@@ -264,5 +266,6 @@
         private Label label6;
         private Button BtnModificarRequisitos;
         private Button button1;
+        public RequisitosCurso requisitosCurso;
     }
 }
