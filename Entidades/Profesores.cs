@@ -7,7 +7,8 @@ namespace Entidades
         private int _telefono;
  
 
-        public Profesores(int id, string nombre, string apellido, int dni, string especializacion, string clave, string correo, int telefono)
+        public Profesores(int id, string nombre, string apellido, int dni, string especializacion, 
+            string clave, string correo, int telefono)
             : base(id, nombre, apellido, dni, clave, correo) 
         {
             _especializacion = especializacion;

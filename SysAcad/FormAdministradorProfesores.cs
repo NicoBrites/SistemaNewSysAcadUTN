@@ -55,5 +55,43 @@ namespace SysAcad
                 }
             }
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedCells.Count > 0)
+            {
+                int filaSeleccionadaIndex = dataGridView1.SelectedCells[0].RowIndex;
+
+                // Ahora puedes acceder a los valores de las celdas en la fila seleccionada.
+                string id = dataGridView1.Rows[filaSeleccionadaIndex].Cells["idDataGridViewTextBoxColumn"].Value.ToString();
+                string nombre = dataGridView1.Rows[filaSeleccionadaIndex].Cells["nombreDataGridViewTextBoxColumn"].Value.ToString();
+                string apellido = dataGridView1.Rows[filaSeleccionadaIndex].Cells["apellidoDataGridViewTextBoxColumn"].Value.ToString();
+                string especializacion = dataGridView1.Rows[filaSeleccionadaIndex].Cells["Especializacion"].Value.ToString();
+                string telefono = dataGridView1.Rows[filaSeleccionadaIndex].Cells["Telefono"].Value.ToString();
+                string dni = dataGridView1.Rows[filaSeleccionadaIndex].Cells["dniDataGridViewTextBoxColumn"].Value.ToString();
+                string correo = dataGridView1.Rows[filaSeleccionadaIndex].Cells["correoDataGridViewTextBoxColumn"].Value.ToString();
+
+                // Haz lo que necesites con los valores de la fila seleccionada.
+                FormProfesorModificar formProfesorModificar = new();
+
+                AddOwnedForm(formProfesorModificar);
+
+                formProfesorModificar.textNombre.Text = nombre;
+                formProfesorModificar.textID.Text = id;
+                formProfesorModificar.textEspecializacion.Text = especializacion;
+                formProfesorModificar.textApellido.Text = apellido;
+                formProfesorModificar.textTelefono.Text = telefono;
+                formProfesorModificar.textDni.Text = dni;
+                formProfesorModificar.textCorreo.Text = correo;
+
+                formProfesorModificar.Show();
+
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Ninguna celda seleccionada.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
     }
 }

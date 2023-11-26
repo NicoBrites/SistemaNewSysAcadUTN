@@ -30,7 +30,10 @@
         {
             components = new System.ComponentModel.Container();
             dataGridView1 = new DataGridView();
-            Check = new DataGridViewCheckBoxColumn();
+            profesoresBindingSource = new BindingSource(components);
+            reportesBindingSource = new BindingSource(components);
+            BtnAgregar = new Button();
+            button1 = new Button();
             idDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             nombreDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             apellidoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -38,9 +41,6 @@
             Telefono = new DataGridViewTextBoxColumn();
             dniDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             correoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            profesoresBindingSource = new BindingSource(components);
-            reportesBindingSource = new BindingSource(components);
-            BtnAgregar = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)profesoresBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)reportesBindingSource).BeginInit();
@@ -50,19 +50,42 @@
             // 
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Check, idDataGridViewTextBoxColumn, nombreDataGridViewTextBoxColumn, apellidoDataGridViewTextBoxColumn, Especializacion, Telefono, dniDataGridViewTextBoxColumn, correoDataGridViewTextBoxColumn });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { idDataGridViewTextBoxColumn, nombreDataGridViewTextBoxColumn, apellidoDataGridViewTextBoxColumn, Especializacion, Telefono, dniDataGridViewTextBoxColumn, correoDataGridViewTextBoxColumn });
             dataGridView1.DataSource = profesoresBindingSource;
             dataGridView1.Location = new Point(23, 24);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(854, 218);
+            dataGridView1.Size = new Size(747, 218);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
-            // Check
+            // profesoresBindingSource
             // 
-            Check.HeaderText = "Check";
-            Check.Name = "Check";
+            profesoresBindingSource.DataSource = typeof(Entidades.Profesores);
+            // 
+            // reportesBindingSource
+            // 
+            reportesBindingSource.DataSource = typeof(Entidades.Reportes);
+            // 
+            // BtnAgregar
+            // 
+            BtnAgregar.Location = new Point(23, 271);
+            BtnAgregar.Name = "BtnAgregar";
+            BtnAgregar.Size = new Size(255, 23);
+            BtnAgregar.TabIndex = 1;
+            BtnAgregar.Text = "Agregar Profesor";
+            BtnAgregar.UseVisualStyleBackColor = true;
+            BtnAgregar.Click += button1_Click;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(23, 300);
+            button1.Name = "button1";
+            button1.Size = new Size(255, 23);
+            button1.TabIndex = 2;
+            button1.Text = "Modificar Profesor";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click_1;
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -106,29 +129,12 @@
             correoDataGridViewTextBoxColumn.HeaderText = "Correo";
             correoDataGridViewTextBoxColumn.Name = "correoDataGridViewTextBoxColumn";
             // 
-            // profesoresBindingSource
-            // 
-            profesoresBindingSource.DataSource = typeof(Entidades.Profesores);
-            // 
-            // reportesBindingSource
-            // 
-            reportesBindingSource.DataSource = typeof(Entidades.Reportes);
-            // 
-            // BtnAgregar
-            // 
-            BtnAgregar.Location = new Point(23, 271);
-            BtnAgregar.Name = "BtnAgregar";
-            BtnAgregar.Size = new Size(255, 23);
-            BtnAgregar.TabIndex = 1;
-            BtnAgregar.Text = "Agregar Profesor";
-            BtnAgregar.UseVisualStyleBackColor = true;
-            BtnAgregar.Click += button1_Click;
-            // 
             // FormAdministradorProfesores
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1018, 600);
+            Controls.Add(button1);
             Controls.Add(BtnAgregar);
             Controls.Add(dataGridView1);
             Name = "FormAdministradorProfesores";
@@ -145,7 +151,8 @@
         private DataGridViewTextBoxColumn materiaDataGridViewTextBoxColumn;
         private BindingSource profesoresBindingSource;
         private BindingSource reportesBindingSource;
-        private DataGridViewCheckBoxColumn Check;
+        private Button BtnAgregar;
+        private Button button1;
         private DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn apellidoDataGridViewTextBoxColumn;
@@ -153,6 +160,5 @@
         private DataGridViewTextBoxColumn Telefono;
         private DataGridViewTextBoxColumn dniDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn correoDataGridViewTextBoxColumn;
-        private Button BtnAgregar;
     }
 }
