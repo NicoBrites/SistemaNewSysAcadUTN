@@ -54,6 +54,7 @@
             btnVolver.TabIndex = 31;
             btnVolver.Text = "Volver";
             btnVolver.UseVisualStyleBackColor = true;
+            btnVolver.Click += btnVolver_Click;
             // 
             // textContraseñaProv
             // 

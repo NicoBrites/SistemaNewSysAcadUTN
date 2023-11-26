@@ -19,6 +19,14 @@ namespace Logic
             _gestorDB = new DB.DB();
         }
 
+        public List<Profesores> GetListaProfesores()
+        {
+            JsonUsuariosFormato json = _gestorDB.ReturnAllUsers();
+
+            List<Profesores> profesores = json.Profesores;
+
+            return profesores;
+        }
         public bool ValidadorProfesores(ProfesorAValidar profesores)
         {
             int numero;

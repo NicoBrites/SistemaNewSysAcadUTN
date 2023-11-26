@@ -34,7 +34,7 @@ namespace SysAcad
 
             try
             {
-                if (_gestorProfesores.ValidadorProfesores(new ProfesorAValidar(nuevoNombre, nuevoApellido, nuevoDni, nuevoNumTelefono, 
+                if (_gestorProfesores.ValidadorProfesores(new ProfesorAValidar(nuevoNombre, nuevoApellido, nuevoDni, nuevoNumTelefono,
                     nuevaEspecialidad, nuevaContraseñaProv, nuevoCorreoElectronico)))
                 {
                     int nuevoTelValidado = int.Parse(nuevoNumTelefono);
@@ -55,7 +55,13 @@ namespace SysAcad
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            // _gestorProfesores.CrearProfesor()
+        }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            FormAdministradorProfesores formAdministradorProfesores = new();
+            formAdministradorProfesores.Show();
+            this.Hide();
         }
     }
 }

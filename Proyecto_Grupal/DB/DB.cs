@@ -90,6 +90,15 @@ namespace DB
                                 jsonNuevo.Estudiantes.Add(new Estudiantes(id,nombre,apellido,
                                     dni,telefono,direccion,clave,correo, DateTime.Now));
                             }
+                            if (tipoEntidad == "Profesores")
+                            {
+                                var telefono = Convert.ToInt32(reader["Telefono"]);
+                                var direccion = reader["Direccion"].ToString();
+                                var especialidad = reader["Especializacion"].ToString();
+
+                                jsonNuevo.Profesores.Add(new Profesores(id, nombre, apellido,
+                                    dni, especialidad, clave, correo, telefono));
+                            }
                         }
                     }
                     else
@@ -346,7 +355,7 @@ namespace DB
         public void CrearProfesor(Profesores nuevProfesor, int ultimoId, string claveConHash)
         {
             var query = "INSERT INTO Usuarios (TipoEntidad, ID, Nombre, Apellido, Dni, Telefono, Especializacion, Clave, Correo, Fecha)" +
-                      $"VALUES ('Profesor', '{ultimoId}', '{nuevProfesor.Nombre}'," +
+                      $"VALUES ('Profesores', '{ultimoId}', '{nuevProfesor.Nombre}'," +
                       $" '{nuevProfesor.Apellido}', '{nuevProfesor.Dni}', '{nuevProfesor.Telefono}', '{nuevProfesor.Especializacion}'," +
                       $" '{claveConHash}', '{nuevProfesor.Correo}', '{DateTime.Now}');";
 
