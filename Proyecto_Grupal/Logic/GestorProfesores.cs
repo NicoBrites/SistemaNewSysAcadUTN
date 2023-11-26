@@ -12,11 +12,13 @@ namespace Logic
     {
         private ValidadorTextosVacios _validadorTextosVacios;
         private DB.DB _gestorDB;
+        private GestorCursos _gestorCursos;
 
         public GestorProfesores()
         {
             _validadorTextosVacios = new ValidadorTextosVacios();
             _gestorDB = new DB.DB();
+            _gestorCursos = new GestorCursos();
         }
 
         public List<Profesores> GetListaProfesores()
@@ -79,7 +81,7 @@ namespace Logic
 
         }
 
-        public void ModificarProfesor(Profesores profesor, string codigoAnterior)
+        public void ModificarProfesor(Profesores profesor, string codigoAnterior) // modificar para que no explote
         {
             int codigoAnteriorParseado = Convert.ToInt32(codigoAnterior);
 
@@ -104,5 +106,74 @@ namespace Logic
             _gestorDB.EliminarProfesor(correo);
         }
 
+        public bool ValidadorAgregarProfesorACurso(Cursos cursos, List<ProfesorEnCurso> listaProfesorPorCurso,
+            Profesores profesor, CursosEnEstudiantes cursoEnQueSeAgrega)
+        {
+
+            foreach (ProfesorEnCurso profesorPorCurso in listaProfesorPorCurso)
+            {
+                if (profesorPorCurso.NombreCurso == cursoEnQueSeAgrega.Nombre && profesorPorCurso.CodigoProfesor == profesor.Id)
+                {
+                    throw new Exception($"El profesor ya esta asignado al curso {cursos.Nombre}");
+                }
+                if (profesorPorCurso.DiaSemana == cursoEnQueSeAgrega.DiaSemana && profesorPorCurso.Turno == cursoEnQueSeAgrega.Turno &&
+                    profesorPorCurso.CodigoProfesor == profesor.Id)
+                {
+                    throw new Exception($"El profesor no se pudo asignar a {cursoEnQueSeAgrega.Nombre}" +
+                        $" porque ya esta asignado en un curso el " +
+                        $"{profesorPorCurso.DiaSemana} en el turno {profesorPorCurso.Turno}");
+                }
+
+            }
+            return true;
+        }
+
+        public void AgregarProfesorAlCursoDB(Profesores profesor, CursosEnEstudiantes cursoEnQueSeAgrega)
+        {
+            try
+            {
+                List<EstudiantePorCurso> listaEstudiantesPorCurso = GetEstudiantePorCursoDB();
+                List<Cursos> listaCursos = _gestorCursos.GetCursosDB();
+
+                int cupoActual = DevolverCupoActual(cursoEnQueSeAgrega.Codigo, listaEstudiantesPorCurso);
+
+                foreach (Cursos cursos in listaCursos)
+                {
+                    if (cursos.Codigo == cursoEnQueSeAgrega.Codigo)
+                    {
+                        if (ValidadorAgregarAlumnosACurso(cursos, listaEstudiantesPorCurso, estudiante, cursoEnQueSeAgrega, cupoActual))
+                        {
+                            _gestorDB.AgregarAlumnoAlCurso(estudiante, cursoEnQueSeAgrega);
+                            break;
+                        }
+                    }
+                }
+            }
+            catch (ExcepcionPropia)
+            {
+                _gestorDB.AgregarAlumnoAlCurso(estudiante, cursoEnQueSeAgrega);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public List<ProfesorEnCurso> GetProfesorPorCursoDB()
+        {
+            try
+            {
+                List<ProfesorEnCurso> listaProfesoresCursos = _gestorDB.ReturnAllEstudiantesPorCurso();
+                return listaProfesoresCursos;
+            }
+            catch (ExcepcionPropia ex)
+            {
+                throw new ExcepcionPropia(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

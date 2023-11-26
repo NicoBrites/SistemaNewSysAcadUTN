@@ -70,9 +70,6 @@ namespace SysAcad
                 MessageBox.Show($"No selecciono ninguna materia",
                                           "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
-
-
         }
 
         private void btnVolver_Click(object sender, EventArgs e)

@@ -43,12 +43,13 @@
             button1 = new Button();
             button2 = new Button();
             dataGridView2 = new DataGridView();
+            Check = new DataGridViewCheckBoxColumn();
             nombreDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            codigoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             diaSemanaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             aulaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             turnoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             cursosBindingSource = new BindingSource(components);
+            button3 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)profesoresBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)reportesBindingSource).BeginInit();
@@ -153,7 +154,7 @@
             // 
             dataGridView2.AutoGenerateColumns = false;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { nombreDataGridViewTextBoxColumn1, codigoDataGridViewTextBoxColumn, diaSemanaDataGridViewTextBoxColumn, aulaDataGridViewTextBoxColumn, turnoDataGridViewTextBoxColumn });
+            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { Check, nombreDataGridViewTextBoxColumn1, diaSemanaDataGridViewTextBoxColumn, aulaDataGridViewTextBoxColumn, turnoDataGridViewTextBoxColumn });
             dataGridView2.DataSource = cursosBindingSource;
             dataGridView2.Location = new Point(314, 271);
             dataGridView2.Name = "dataGridView2";
@@ -161,17 +162,16 @@
             dataGridView2.Size = new Size(561, 264);
             dataGridView2.TabIndex = 4;
             // 
+            // Check
+            // 
+            Check.HeaderText = "Check";
+            Check.Name = "Check";
+            // 
             // nombreDataGridViewTextBoxColumn1
             // 
             nombreDataGridViewTextBoxColumn1.DataPropertyName = "Nombre";
             nombreDataGridViewTextBoxColumn1.HeaderText = "Nombre";
             nombreDataGridViewTextBoxColumn1.Name = "nombreDataGridViewTextBoxColumn1";
-            // 
-            // codigoDataGridViewTextBoxColumn
-            // 
-            codigoDataGridViewTextBoxColumn.DataPropertyName = "Codigo";
-            codigoDataGridViewTextBoxColumn.HeaderText = "Codigo";
-            codigoDataGridViewTextBoxColumn.Name = "codigoDataGridViewTextBoxColumn";
             // 
             // diaSemanaDataGridViewTextBoxColumn
             // 
@@ -195,11 +195,22 @@
             // 
             cursosBindingSource.DataSource = typeof(Entidades.Cursos);
             // 
+            // button3
+            // 
+            button3.Location = new Point(23, 358);
+            button3.Name = "button3";
+            button3.Size = new Size(255, 23);
+            button3.TabIndex = 5;
+            button3.Text = "Asignar Curso";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
+            // 
             // FormAdministradorProfesores
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(899, 600);
+            Controls.Add(button3);
             Controls.Add(dataGridView2);
             Controls.Add(button2);
             Controls.Add(button1);
@@ -232,11 +243,12 @@
         private DataGridViewTextBoxColumn correoDataGridViewTextBoxColumn;
         private Button button2;
         private DataGridView dataGridView2;
+        private BindingSource cursosBindingSource;
+        private DataGridViewCheckBoxColumn Check;
         private DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn codigoDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn diaSemanaDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn aulaDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn turnoDataGridViewTextBoxColumn;
-        private BindingSource cursosBindingSource;
+        private Button button3;
     }
 }

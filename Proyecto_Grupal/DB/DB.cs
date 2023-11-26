@@ -207,6 +207,54 @@ namespace DB
 
             return listaEstudiantesPorCurso;
         }
+
+        public List<ProfesorEnCurso> ReturnAllProfesoresPorCurso()
+        {
+
+            var listaProfesoresPorCurso = new List<ProfesorEnCurso>();
+
+            try
+            {
+                conexion.Open();
+
+                var query = "SELECT * FROM EstudiantePorCurso";
+                comando.CommandText = query;
+
+                using (var reader = comando.ExecuteReader())
+                {
+                    if (reader != null)
+                    {
+                        while (reader.Read())
+                        {
+                            var nombreProfesor = reader["nombreProfesor"].ToString();
+                            var apellidoProfesor = reader["apellidoProfesor"].ToString();
+                            var codigoProfesor = Convert.ToInt32(reader["codigoProfesor"]);
+                            var nombreCurso = reader["nombreCurso"].ToString();
+                            var diaSemana = reader["diaSemana"].ToString();
+                            var codigoCurso = Convert.ToInt32(reader["codigoCurso"]);
+                            var aula = reader["aula"].ToString();
+                            var turno = reader["turno"].ToString();
+
+                            listaProfesoresPorCurso.Add(new ProfesorEnCurso(codigoProfesor,
+                                nombreProfesor, apellidoProfesor, codigoCurso, nombreCurso, diaSemana,
+                                turno, aula));
+
+                        }
+                    }
+                    else
+                    {
+                        return listaProfesoresPorCurso;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return listaProfesoresPorCurso;
+            }
+            finally { conexion.Close(); }
+
+            return listaProfesoresPorCurso;
+        }
         public List<PagoDeEstudiante> ReturnAllPagoDeEstudiante()
         {
 
