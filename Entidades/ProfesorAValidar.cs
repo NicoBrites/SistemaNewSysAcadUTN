@@ -17,13 +17,13 @@ namespace Entidades
         private string _correo;
 
         public ProfesorAValidar(string nombre, string apellido,
-        string dni, string telefono, string direccion, string clave, string correo)
+        string dni, string telefono, string especializacion, string clave, string correo)
         {
             _nombre = nombre;
             _apellido = apellido;
             _dni = dni;
             _telefono = telefono;
-            _especializacion = direccion;
+            _especializacion = especializacion;
             _clave = clave;
             _correo = correo;
         }
