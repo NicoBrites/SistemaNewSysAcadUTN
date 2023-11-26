@@ -43,13 +43,14 @@
             button1 = new Button();
             button2 = new Button();
             dataGridView2 = new DataGridView();
+            cursosBindingSource = new BindingSource(components);
+            button3 = new Button();
             Check = new DataGridViewCheckBoxColumn();
+            Codigo = new DataGridViewTextBoxColumn();
             nombreDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             diaSemanaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             aulaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             turnoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            cursosBindingSource = new BindingSource(components);
-            button3 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)profesoresBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)reportesBindingSource).BeginInit();
@@ -66,7 +67,7 @@
             dataGridView1.Location = new Point(23, 24);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(852, 218);
+            dataGridView1.Size = new Size(943, 218);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -154,18 +155,38 @@
             // 
             dataGridView2.AutoGenerateColumns = false;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { Check, nombreDataGridViewTextBoxColumn1, diaSemanaDataGridViewTextBoxColumn, aulaDataGridViewTextBoxColumn, turnoDataGridViewTextBoxColumn });
+            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { Check, Codigo, nombreDataGridViewTextBoxColumn1, diaSemanaDataGridViewTextBoxColumn, aulaDataGridViewTextBoxColumn, turnoDataGridViewTextBoxColumn });
             dataGridView2.DataSource = cursosBindingSource;
             dataGridView2.Location = new Point(314, 271);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.RowTemplate.Height = 25;
-            dataGridView2.Size = new Size(561, 264);
+            dataGridView2.Size = new Size(652, 264);
             dataGridView2.TabIndex = 4;
+            // 
+            // cursosBindingSource
+            // 
+            cursosBindingSource.DataSource = typeof(Entidades.Cursos);
+            // 
+            // button3
+            // 
+            button3.Location = new Point(23, 358);
+            button3.Name = "button3";
+            button3.Size = new Size(255, 23);
+            button3.TabIndex = 5;
+            button3.Text = "Asignar Curso";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // Check
             // 
             Check.HeaderText = "Check";
             Check.Name = "Check";
+            // 
+            // Codigo
+            // 
+            Codigo.DataPropertyName = "Codigo";
+            Codigo.HeaderText = "Codigo";
+            Codigo.Name = "Codigo";
             // 
             // nombreDataGridViewTextBoxColumn1
             // 
@@ -191,25 +212,11 @@
             turnoDataGridViewTextBoxColumn.HeaderText = "Turno";
             turnoDataGridViewTextBoxColumn.Name = "turnoDataGridViewTextBoxColumn";
             // 
-            // cursosBindingSource
-            // 
-            cursosBindingSource.DataSource = typeof(Entidades.Cursos);
-            // 
-            // button3
-            // 
-            button3.Location = new Point(23, 358);
-            button3.Name = "button3";
-            button3.Size = new Size(255, 23);
-            button3.TabIndex = 5;
-            button3.Text = "Asignar Curso";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
-            // 
             // FormAdministradorProfesores
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(899, 600);
+            ClientSize = new Size(991, 600);
             Controls.Add(button3);
             Controls.Add(dataGridView2);
             Controls.Add(button2);
@@ -244,11 +251,12 @@
         private Button button2;
         private DataGridView dataGridView2;
         private BindingSource cursosBindingSource;
+        private Button button3;
         private DataGridViewCheckBoxColumn Check;
+        private DataGridViewTextBoxColumn Codigo;
         private DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn diaSemanaDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn aulaDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn turnoDataGridViewTextBoxColumn;
-        private Button button3;
     }
 }

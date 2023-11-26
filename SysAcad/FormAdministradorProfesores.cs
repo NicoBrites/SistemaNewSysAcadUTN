@@ -123,10 +123,39 @@ namespace SysAcad
 
         private void button3_Click(object sender, EventArgs e)
         {
-            GestorCursos gestorCursos = new GestorCursos();
             int contador = -1;
             bool noCheck = true;
-            foreach (DataGridViewRow row in dataGridView1.Rows)
+            int idProfe = -1;
+            string nombreProfe = "";
+            string apellidoProfe = "";
+            string especializacionProfe = "";
+            int telefonoProfe = -1;
+            int dniProfe = -1;
+            string correoProfe = "";
+
+
+
+            if (dataGridView1.SelectedCells.Count > 0)
+            {
+                int filaSeleccionadaIndex = dataGridView1.SelectedCells[0].RowIndex;
+
+                // Ahora puedes acceder a los valores de las celdas en la fila seleccionada.
+                idProfe = int.Parse(dataGridView1.Rows[filaSeleccionadaIndex].Cells["idDataGridViewTextBoxColumn"].Value.ToString());
+                nombreProfe = dataGridView1.Rows[filaSeleccionadaIndex].Cells["nombreDataGridViewTextBoxColumn"].Value.ToString();
+                apellidoProfe = dataGridView1.Rows[filaSeleccionadaIndex].Cells["apellidoDataGridViewTextBoxColumn"].Value.ToString();
+                especializacionProfe = dataGridView1.Rows[filaSeleccionadaIndex].Cells["Especializacion"].Value.ToString();
+                telefonoProfe = int.Parse(dataGridView1.Rows[filaSeleccionadaIndex].Cells["Telefono"].Value.ToString());
+                dniProfe = int.Parse(dataGridView1.Rows[filaSeleccionadaIndex].Cells["dniDataGridViewTextBoxColumn"].Value.ToString());
+                correoProfe = dataGridView1.Rows[filaSeleccionadaIndex].Cells["correoDataGridViewTextBoxColumn"].Value.ToString();
+
+            }
+            else
+            {
+                MessageBox.Show("Ninguna celda de profesor seleccionada.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+
+            foreach (DataGridViewRow row in dataGridView2.Rows)
             {
                 contador++;
                 if (row.Cells["Check"].Value != null && (bool)row.Cells["Check"].Value == true)
@@ -136,20 +165,20 @@ namespace SysAcad
                     int filaSeleccionadaIndex = dataGridView1.SelectedCells[0].RowIndex;
                     // El CheckBox en esta fila está marcado.
                     // Puedes acceder a los datos de la fila y trabajar con ellos.
-                    int codigo = int.Parse(row.Cells["codigoDataGridViewTextBoxColumn"].Value.ToString());
-                    string nombre = row.Cells["nombreDataGridViewTextBoxColumn"].Value.ToString();
-                    string diaSemana = row.Cells["DiaSemana"].Value.ToString();
-                    string aula = row.Cells["Aula"].Value.ToString();
-                    string turno = row.Cells["Turno"].Value.ToString();
+                    int codigo = int.Parse(row.Cells["Codigo"].Value.ToString());
+                    string nombre = row.Cells["nombreDataGridViewTextBoxColumn1"].Value.ToString();
+                    string diaSemana = row.Cells["diaSemanaDataGridViewTextBoxColumn"].Value.ToString();
+                    string aula = row.Cells["aulaDataGridViewTextBoxColumn"].Value.ToString();
+                    string turno = row.Cells["turnoDataGridViewTextBoxColumn"].Value.ToString();
 
                     // Ejemplo: Obtener el valor de una celda en una columna específica (por ejemplo, la columna "Nombre"):
 
                     try
                     {
-                        gestorCursos.AgregarAlumnoAlCursoDB(new EstudianteEnCursos(estudiante.Id, estudiante.Nombre, estudiante.Apellido),
-                            new CursosEnEstudiantes(nombre, codigo, diaSemana, turno, aula));
+                        _gestorProfesores.AgregarProfesorAlCursoDB(new Profesores(idProfe, nombreProfe, apellidoProfe, dniProfe, especializacionProfe,
+                            "", correoProfe, telefonoProfe),new CursosEnEstudiantes(nombre, codigo, diaSemana, turno, aula));
 
-                        MessageBox.Show($"Se inscribio a {nombre} satisfactoriamente ", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show($"Se asigno a {nombreProfe} al curso {nombre} satisfactoriamente ", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
                     {

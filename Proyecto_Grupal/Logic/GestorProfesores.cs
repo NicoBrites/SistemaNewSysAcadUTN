@@ -132,18 +132,16 @@ namespace Logic
         {
             try
             {
-                List<EstudiantePorCurso> listaEstudiantesPorCurso = GetEstudiantePorCursoDB();
+                List<ProfesorEnCurso> listaProfesoressPorCurso = GetProfesorPorCursoDB();
                 List<Cursos> listaCursos = _gestorCursos.GetCursosDB();
-
-                int cupoActual = DevolverCupoActual(cursoEnQueSeAgrega.Codigo, listaEstudiantesPorCurso);
 
                 foreach (Cursos cursos in listaCursos)
                 {
                     if (cursos.Codigo == cursoEnQueSeAgrega.Codigo)
                     {
-                        if (ValidadorAgregarAlumnosACurso(cursos, listaEstudiantesPorCurso, estudiante, cursoEnQueSeAgrega, cupoActual))
+                        if (ValidadorAgregarProfesorACurso(cursos, listaProfesoressPorCurso, profesor, cursoEnQueSeAgrega))
                         {
-                            _gestorDB.AgregarAlumnoAlCurso(estudiante, cursoEnQueSeAgrega);
+                            _gestorDB.AgregarProfesorAlCurso(profesor, cursoEnQueSeAgrega);
                             break;
                         }
                     }
@@ -151,7 +149,7 @@ namespace Logic
             }
             catch (ExcepcionPropia)
             {
-                _gestorDB.AgregarAlumnoAlCurso(estudiante, cursoEnQueSeAgrega);
+                _gestorDB.AgregarProfesorAlCurso(profesor, cursoEnQueSeAgrega);
             }
             catch (Exception ex)
             {
@@ -163,7 +161,7 @@ namespace Logic
         {
             try
             {
-                List<ProfesorEnCurso> listaProfesoresCursos = _gestorDB.ReturnAllEstudiantesPorCurso();
+                List<ProfesorEnCurso> listaProfesoresCursos = _gestorDB.ReturnAllProfesoresPorCurso();
                 return listaProfesoresCursos;
             }
             catch (ExcepcionPropia ex)

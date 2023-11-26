@@ -217,7 +217,7 @@ namespace DB
             {
                 conexion.Open();
 
-                var query = "SELECT * FROM EstudiantePorCurso";
+                var query = "SELECT * FROM ProfesorEnCurso";
                 comando.CommandText = query;
 
                 using (var reader = comando.ExecuteReader())
@@ -454,6 +454,16 @@ namespace DB
                         " CodigoCurso, NombreCurso, DiaSemana, Aula, Turno, Fecha)" +
                         $"VALUES ('{estudiante.Id}', '{estudiante.Nombre}', '{estudiante.Apellido}', '{cursoEnQueSeAgrega.Codigo}'," +
                         $" '{cursoEnQueSeAgrega.Nombre}', '{cursoEnQueSeAgrega.DiaSemana}', '{cursoEnQueSeAgrega.Aula}', '{cursoEnQueSeAgrega.Turno}', '{DateTime.Now}');";
+
+            Guardar(query);
+        }
+
+        public void AgregarProfesorAlCurso(Profesores profesor, CursosEnEstudiantes cursoEnQueSeAgrega)
+        {
+            var query = "INSERT INTO ProfesorEnCurso (codigoProfesor, nombreProfesor, apellidoProfesor," +
+                        " codigoCurso, nombreCurso, diaSemana, aula, turno)" +
+                        $"VALUES ('{profesor.Id}', '{profesor.Nombre}', '{profesor.Apellido}', '{cursoEnQueSeAgrega.Codigo}'," +
+                        $" '{cursoEnQueSeAgrega.Nombre}', '{cursoEnQueSeAgrega.DiaSemana}', '{cursoEnQueSeAgrega.Aula}', '{cursoEnQueSeAgrega.Turno}');";
 
             Guardar(query);
         }
