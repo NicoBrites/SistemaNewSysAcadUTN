@@ -79,5 +79,30 @@ namespace Logic
 
         }
 
+        public void ModificarProfesor(Profesores profesor, string codigoAnterior)
+        {
+            int codigoAnteriorParseado = Convert.ToInt32(codigoAnterior);
+
+            List<Profesores> listaProfesores = GetListaProfesores();
+
+            foreach (Profesores profesores in listaProfesores)
+            {
+                if ((profesores.Correo == profesor.Correo || profesores.Dni == profesor.Dni) && profesor.Id != codigoAnteriorParseado)
+                {
+                    throw new Exception("El ID del Profesor ya esta en uso en otro Profe");
+                }
+                
+               
+            }
+
+            _gestorDB.ModificarProfesor(profesor, codigoAnteriorParseado);
+
+        }
+
+        public void EliminarProfesor(string correo)
+        {
+            _gestorDB.EliminarProfesor(correo);
+        }
+
     }
 }

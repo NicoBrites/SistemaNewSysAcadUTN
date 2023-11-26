@@ -452,6 +452,25 @@ namespace DB
             }
             
         }
-    }    
+
+        public void ModificarProfesor(Profesores profesor, int codigoAnteriorParseado)
+        {
+            var query = "UPDATE Usuarios " +
+              $"SET Nombre = '{profesor.Nombre}', Apellido = '{profesor.Apellido}', Dni = '{profesor.Dni}'," +
+              $" Especializacion = '{profesor.Especializacion}', Correo = '{profesor.Correo}', Telefono = '{profesor.Telefono}'" +
+              $"WHERE ID = {codigoAnteriorParseado};";
+
+
+            Guardar(query);
+        }
+
+        public void EliminarProfesor(string correo)
+        {
+            var query = "DELETE FROM Usuarios " +
+                       $"WHERE Correo = {correo}; ";
+
+            Guardar(query);
+        }
+    }
 }   
 

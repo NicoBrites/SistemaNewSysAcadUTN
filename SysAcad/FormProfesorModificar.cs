@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Entidades;
+using Logic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,12 @@ namespace SysAcad
 {
     public partial class FormProfesorModificar : Form
     {
+        private GestorProfesores _gestorProfesores;
         public FormProfesorModificar()
         {
             InitializeComponent();
+
+            _gestorProfesores = new GestorProfesores(); 
         }
 
 
@@ -23,7 +28,45 @@ namespace SysAcad
             FormAdministradorProfesores formAdministradorProfesores = new();
             formAdministradorProfesores.Show();
             this.Hide();
+        }
 
+        private void BtnModificar_Click(object sender, EventArgs e)
+        {
+            string nuevoNombre = textNombre.Text;
+            string nuevoApellido = textApellido.Text;
+            string nuevoDni = textDni.Text;
+            string nuevoId = textIdNuevo.Text;
+            string especializacion = textEspecializacion.Text;
+            string correo = textCorreo.Text;
+            string telefono = textTelefono.Text;
+            string idAnterior = textID.Text;
+
+            try
+            {
+                if (_gestorProfesores.ValidadorProfesores(new ProfesorAValidar(nuevoNombre, nuevoApellido, nuevoDni, telefono, especializacion, "asd", correo)))
+                {
+                    int nuevoTelefonoValidado = int.Parse(telefono);
+                    int nuevoDniValidado = int.Parse(nuevoDni);
+                    int idAnteriorParseado = int.Parse(idAnterior);
+
+                    _gestorProfesores.ModificarProfesor(new Profesores(idAnteriorParseado, nuevoNombre,nuevoApellido, nuevoDniValidado, especializacion,"",correo, nuevoTelefonoValidado), idAnterior);
+
+                    MessageBox.Show("Se modifico el curso correctamente", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    FormCursos formCursos = new();
+                    formCursos.Show();
+
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Ingreso mal un dato o dejo alguna caja de texto vacia.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
     }

@@ -113,7 +113,6 @@
             textNombre.Name = "textNombre";
             textNombre.Size = new Size(100, 23);
             textNombre.TabIndex = 29;
-            textNombre.TextChanged += textNombre_TextChanged;
             // 
             // BtnModificar
             // 
@@ -123,6 +122,7 @@
             BtnModificar.TabIndex = 28;
             BtnModificar.Text = "Modificar";
             BtnModificar.UseVisualStyleBackColor = true;
+            BtnModificar.Click += BtnModificar_Click;
             // 
             // label1
             // 

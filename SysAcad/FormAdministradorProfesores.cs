@@ -93,5 +93,27 @@ namespace SysAcad
                 MessageBox.Show("Ninguna celda seleccionada.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedCells.Count > 0)
+            {
+                int filaSeleccionadaIndex = dataGridView1.SelectedCells[0].RowIndex;
+
+                // Ahora puedes acceder a los valores de las celdas en la fila seleccionada.
+                string correo = dataGridView1.Rows[filaSeleccionadaIndex].Cells["correoDataGridViewTextBoxColumn"].Value.ToString();
+
+                // Haz lo que necesites con los valores de la fila seleccionada.
+                _gestorProfesores.EliminarProfesor(correo);
+
+                FormAdministradorProfesores formAdministradorProfesores = new();
+                formAdministradorProfesores.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Ninguna celda seleccionada.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
     }
 }

@@ -30,10 +30,6 @@
         {
             components = new System.ComponentModel.Container();
             dataGridView1 = new DataGridView();
-            profesoresBindingSource = new BindingSource(components);
-            reportesBindingSource = new BindingSource(components);
-            BtnAgregar = new Button();
-            button1 = new Button();
             idDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             nombreDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             apellidoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -41,6 +37,11 @@
             Telefono = new DataGridViewTextBoxColumn();
             dniDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             correoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            profesoresBindingSource = new BindingSource(components);
+            reportesBindingSource = new BindingSource(components);
+            BtnAgregar = new Button();
+            button1 = new Button();
+            button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)profesoresBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)reportesBindingSource).BeginInit();
@@ -58,34 +59,6 @@
             dataGridView1.Size = new Size(747, 218);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
-            // 
-            // profesoresBindingSource
-            // 
-            profesoresBindingSource.DataSource = typeof(Entidades.Profesores);
-            // 
-            // reportesBindingSource
-            // 
-            reportesBindingSource.DataSource = typeof(Entidades.Reportes);
-            // 
-            // BtnAgregar
-            // 
-            BtnAgregar.Location = new Point(23, 271);
-            BtnAgregar.Name = "BtnAgregar";
-            BtnAgregar.Size = new Size(255, 23);
-            BtnAgregar.TabIndex = 1;
-            BtnAgregar.Text = "Agregar Profesor";
-            BtnAgregar.UseVisualStyleBackColor = true;
-            BtnAgregar.Click += button1_Click;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(23, 300);
-            button1.Name = "button1";
-            button1.Size = new Size(255, 23);
-            button1.TabIndex = 2;
-            button1.Text = "Modificar Profesor";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click_1;
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -129,11 +102,50 @@
             correoDataGridViewTextBoxColumn.HeaderText = "Correo";
             correoDataGridViewTextBoxColumn.Name = "correoDataGridViewTextBoxColumn";
             // 
+            // profesoresBindingSource
+            // 
+            profesoresBindingSource.DataSource = typeof(Entidades.Profesores);
+            // 
+            // reportesBindingSource
+            // 
+            reportesBindingSource.DataSource = typeof(Entidades.Reportes);
+            // 
+            // BtnAgregar
+            // 
+            BtnAgregar.Location = new Point(23, 271);
+            BtnAgregar.Name = "BtnAgregar";
+            BtnAgregar.Size = new Size(255, 23);
+            BtnAgregar.TabIndex = 1;
+            BtnAgregar.Text = "Agregar Profesor";
+            BtnAgregar.UseVisualStyleBackColor = true;
+            BtnAgregar.Click += button1_Click;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(23, 300);
+            button1.Name = "button1";
+            button1.Size = new Size(255, 23);
+            button1.TabIndex = 2;
+            button1.Text = "Modificar Profesor";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click_1;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(23, 329);
+            button2.Name = "button2";
+            button2.Size = new Size(255, 23);
+            button2.TabIndex = 3;
+            button2.Text = "Eliminar Profesor";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
             // FormAdministradorProfesores
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1018, 600);
+            Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(BtnAgregar);
             Controls.Add(dataGridView1);
@@ -160,5 +172,6 @@
         private DataGridViewTextBoxColumn Telefono;
         private DataGridViewTextBoxColumn dniDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn correoDataGridViewTextBoxColumn;
+        private Button button2;
     }
 }
