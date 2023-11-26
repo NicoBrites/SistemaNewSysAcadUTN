@@ -15,15 +15,20 @@ namespace SysAcad
     public partial class FormAdministradorProfesores : Form
     {
         private GestorProfesores _gestorProfesores;
+        private GestorCursos _gestorCursos;
         public FormAdministradorProfesores()
         {
             InitializeComponent();
 
             _gestorProfesores = new GestorProfesores();
+            _gestorCursos = new GestorCursos();
             try
             {
                 List<Profesores> listaProfesores = _gestorProfesores.GetListaProfesores();
+                List<Cursos> listaCursos = _gestorCursos.GetCursosDB();
+
                 dataGridView1.DataSource = listaProfesores;
+                dataGridView2.DataSource = listaCursos;
             }
             catch { }
             {

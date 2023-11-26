@@ -42,9 +42,18 @@
             BtnAgregar = new Button();
             button1 = new Button();
             button2 = new Button();
+            dataGridView2 = new DataGridView();
+            nombreDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            codigoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            diaSemanaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            aulaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            turnoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            cursosBindingSource = new BindingSource(components);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)profesoresBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)reportesBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)cursosBindingSource).BeginInit();
             SuspendLayout();
             // 
             // dataGridView1
@@ -56,7 +65,7 @@
             dataGridView1.Location = new Point(23, 24);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(747, 218);
+            dataGridView1.Size = new Size(852, 218);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -140,11 +149,58 @@
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
+            // dataGridView2
+            // 
+            dataGridView2.AutoGenerateColumns = false;
+            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { nombreDataGridViewTextBoxColumn1, codigoDataGridViewTextBoxColumn, diaSemanaDataGridViewTextBoxColumn, aulaDataGridViewTextBoxColumn, turnoDataGridViewTextBoxColumn });
+            dataGridView2.DataSource = cursosBindingSource;
+            dataGridView2.Location = new Point(314, 271);
+            dataGridView2.Name = "dataGridView2";
+            dataGridView2.RowTemplate.Height = 25;
+            dataGridView2.Size = new Size(561, 264);
+            dataGridView2.TabIndex = 4;
+            // 
+            // nombreDataGridViewTextBoxColumn1
+            // 
+            nombreDataGridViewTextBoxColumn1.DataPropertyName = "Nombre";
+            nombreDataGridViewTextBoxColumn1.HeaderText = "Nombre";
+            nombreDataGridViewTextBoxColumn1.Name = "nombreDataGridViewTextBoxColumn1";
+            // 
+            // codigoDataGridViewTextBoxColumn
+            // 
+            codigoDataGridViewTextBoxColumn.DataPropertyName = "Codigo";
+            codigoDataGridViewTextBoxColumn.HeaderText = "Codigo";
+            codigoDataGridViewTextBoxColumn.Name = "codigoDataGridViewTextBoxColumn";
+            // 
+            // diaSemanaDataGridViewTextBoxColumn
+            // 
+            diaSemanaDataGridViewTextBoxColumn.DataPropertyName = "DiaSemana";
+            diaSemanaDataGridViewTextBoxColumn.HeaderText = "DiaSemana";
+            diaSemanaDataGridViewTextBoxColumn.Name = "diaSemanaDataGridViewTextBoxColumn";
+            // 
+            // aulaDataGridViewTextBoxColumn
+            // 
+            aulaDataGridViewTextBoxColumn.DataPropertyName = "Aula";
+            aulaDataGridViewTextBoxColumn.HeaderText = "Aula";
+            aulaDataGridViewTextBoxColumn.Name = "aulaDataGridViewTextBoxColumn";
+            // 
+            // turnoDataGridViewTextBoxColumn
+            // 
+            turnoDataGridViewTextBoxColumn.DataPropertyName = "Turno";
+            turnoDataGridViewTextBoxColumn.HeaderText = "Turno";
+            turnoDataGridViewTextBoxColumn.Name = "turnoDataGridViewTextBoxColumn";
+            // 
+            // cursosBindingSource
+            // 
+            cursosBindingSource.DataSource = typeof(Entidades.Cursos);
+            // 
             // FormAdministradorProfesores
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1018, 600);
+            ClientSize = new Size(899, 600);
+            Controls.Add(dataGridView2);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(BtnAgregar);
@@ -154,6 +210,8 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)profesoresBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)reportesBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)cursosBindingSource).EndInit();
             ResumeLayout(false);
         }
 
@@ -173,5 +231,12 @@
         private DataGridViewTextBoxColumn dniDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn correoDataGridViewTextBoxColumn;
         private Button button2;
+        private DataGridView dataGridView2;
+        private DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn codigoDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn diaSemanaDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn aulaDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn turnoDataGridViewTextBoxColumn;
+        private BindingSource cursosBindingSource;
     }
 }
