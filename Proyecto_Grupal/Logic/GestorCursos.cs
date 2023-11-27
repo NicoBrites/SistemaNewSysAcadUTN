@@ -244,7 +244,7 @@ namespace Logic
 
         }
 
-        public void CrearCursoDB(Cursos curso)
+        public async void CrearCursoDB(Cursos curso)
         {
             try
             {
@@ -260,11 +260,11 @@ namespace Logic
                         throw new Exception("Ya hay un curso ese dia en ese turno en ese aula");
                     }
                 }
-                _gestorDB.CrearCurso(curso);
+                await _gestorDB.CrearCurso(curso);
             }
             catch (ExcepcionPropia)
             {
-                _gestorDB.CrearCurso(curso);
+                await _gestorDB.CrearCurso(curso);
             }
             catch (Exception e)
             {
@@ -311,7 +311,7 @@ namespace Logic
 
         }
 
-        public void ModificarCursoDB(Cursos curso, string codigoAnterior)
+        public async void ModificarCursoDB(Cursos curso, string codigoAnterior)
         {
             int codigoAnteriorParseado = Convert.ToInt32(codigoAnterior);
 
@@ -329,7 +329,7 @@ namespace Logic
  
             }
 
-            _gestorDB.ModificarCurso(curso, codigoAnteriorParseado);
+           await _gestorDB.ModificarCurso(curso, codigoAnteriorParseado);
 
             string notificacion = $"Se realizo un cambio en el curso Codigo:{codigoAnteriorParseado} \n" +
                 $"Los datos del curso al que te inscribiste ahora son: \n" +
@@ -384,14 +384,14 @@ namespace Logic
 
         }
 
-        public void EliminarCursoDB(int codigo)
+        public async void EliminarCursoDB(int codigo)
         {
-            _gestorDB.EliminarCurso(codigo);
+          await  _gestorDB.EliminarCurso(codigo);
         }
 
-        public void EliminarEstudianteListaEsperaDB(int codigo)
+        public async void EliminarEstudianteListaEsperaDB(int codigo)
         {
-            _gestorDB.EliminarEstudianteEnListaDeEspera(codigo);
+           await _gestorDB.EliminarEstudianteEnListaDeEspera(codigo);
         }
 
         /// <summary>
@@ -502,7 +502,7 @@ namespace Logic
                 throw new Exception(ex.Message);
             }          
         }
-        public void AgregarAlumnoAlCursoDB(EstudianteEnCursos estudiante, CursosEnEstudiantes cursoEnQueSeAgrega)
+        public async void AgregarAlumnoAlCursoDB(EstudianteEnCursos estudiante, CursosEnEstudiantes cursoEnQueSeAgrega)
         {
             try
             {
@@ -517,7 +517,7 @@ namespace Logic
                     {
                         if (ValidadorAgregarAlumnosACurso(cursos, listaEstudiantesPorCurso, estudiante, cursoEnQueSeAgrega, cupoActual))
                         {
-                            _gestorDB.AgregarAlumnoAlCurso(estudiante, cursoEnQueSeAgrega);
+                            await  _gestorDB.AgregarAlumnoAlCurso(estudiante, cursoEnQueSeAgrega);
                             break;
                         }
                     }
@@ -525,7 +525,7 @@ namespace Logic
             }
             catch (ExcepcionPropia)
             {
-                _gestorDB.AgregarAlumnoAlCurso(estudiante, cursoEnQueSeAgrega);
+                  await _gestorDB.AgregarAlumnoAlCurso(estudiante, cursoEnQueSeAgrega);
             }
             catch (Exception ex)
             {
@@ -533,7 +533,7 @@ namespace Logic
             }
         }
 
-        public void AgregarAlumnoAListaDeEsperaDB(EstudianteEnCursos estudiante, CursosEnEstudiantes cursoEnQueSeAgrega)
+        public async void AgregarAlumnoAListaDeEsperaDB(EstudianteEnCursos estudiante, CursosEnEstudiantes cursoEnQueSeAgrega)
         {
             try
             {
@@ -549,14 +549,14 @@ namespace Logic
                     {
                         if (ValidadorAgregarAlumnosAListaEspera(cursos, listaEstudiantesPorCurso, estudiante, cursoEnQueSeAgrega, listaEstudiantesEnEspera))
                         {
-                            _gestorDB.AgregarAlumnoAListaDeEspera(estudiante, cursoEnQueSeAgrega);
+                            await  _gestorDB.AgregarAlumnoAListaDeEspera(estudiante, cursoEnQueSeAgrega);
                         }
                     }
                 }
             }
             catch (ExcepcionPropia)
             {
-                _gestorDB.AgregarAlumnoAListaDeEspera(estudiante, cursoEnQueSeAgrega);
+                await _gestorDB.AgregarAlumnoAListaDeEspera(estudiante, cursoEnQueSeAgrega);
             }
             catch (Exception ex)
             {

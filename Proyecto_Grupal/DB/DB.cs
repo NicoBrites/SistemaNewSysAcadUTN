@@ -390,7 +390,7 @@ namespace DB
             return listaEstudiantesPorCurso;
         }
 
-        public void CrearEstudiante(Estudiantes nuevEstudiante, int ultimoId, string claveConHash)
+        public async Task CrearEstudiante(Estudiantes nuevEstudiante, int ultimoId, string claveConHash)
         {
             var query = "INSERT INTO Usuarios (TipoEntidad, ID, Nombre, Apellido, Dni, Telefono, Direccion, Clave, Correo, Fecha)" +
                       $"VALUES ('Estudiantes', '{ultimoId}', '{nuevEstudiante.Nombre}'," +
@@ -410,7 +410,7 @@ namespace DB
             Guardar(query);
         }
 
-        public void CrearCurso(Cursos curso)
+        public async Task CrearCurso(Cursos curso)
         {
             var query = "INSERT INTO Cursos (Codigo, Nombre, Descripcion, CupoMaximo, DiaSemana, Aula, Turno)" +
                    $"VALUES ('{curso.Codigo}', '{curso.Nombre}', '{curso.Descripcion}', '{curso.CupoMaximo}'," +
@@ -418,7 +418,7 @@ namespace DB
 
             Guardar(query);
         }
-        public void ModificarCurso(Cursos curso, int codigoAnteriorParseado)
+        public async Task ModificarCurso(Cursos curso, int codigoAnteriorParseado)
         {
             var query = "UPDATE Cursos " +
               $"SET Nombre = '{curso.Nombre}', Descripcion = '{curso.Descripcion}', Codigo = '{curso.Codigo}'," +
@@ -432,7 +432,7 @@ namespace DB
             Guardar(query);
         }
 
-        public void EliminarCurso(int codigo)
+        public async Task EliminarCurso(int codigo)
         {
             var query = "DELETE FROM Cursos " +
                        $"WHERE Codigo = {codigo}; ";
@@ -440,15 +440,15 @@ namespace DB
             Guardar(query);
         }
 
-        public void EliminarEstudianteEnListaDeEspera(int codigo)
+        public async Task EliminarEstudianteEnListaDeEspera(int codigo)
         {
-            var query = "DELETE FROM Cursos " +
-                       $"WHERE Codigo = {codigo}; ";
+            var query = "DELETE FROM ListaDeEspera " +
+                       $"WHERE CodigoEstudiante = {codigo}; ";
 
             Guardar(query);
         }
 
-        public void AgregarAlumnoAlCurso(EstudianteEnCursos estudiante, CursosEnEstudiantes cursoEnQueSeAgrega)
+        public async Task AgregarAlumnoAlCurso(EstudianteEnCursos estudiante, CursosEnEstudiantes cursoEnQueSeAgrega)
         {
             var query = "INSERT INTO EstudiantePorCurso (CodigoEstudiante, NombreEstudiante, ApellidoEstudiante," +
                         " CodigoCurso, NombreCurso, DiaSemana, Aula, Turno, Fecha)" +
@@ -468,7 +468,7 @@ namespace DB
             Guardar(query);
         }
 
-        public void AgregarAlumnoAListaDeEspera(EstudianteEnCursos estudiante, CursosEnEstudiantes cursoEnQueSeAgrega)
+        public async Task AgregarAlumnoAListaDeEspera(EstudianteEnCursos estudiante, CursosEnEstudiantes cursoEnQueSeAgrega)
         {
             var query = "INSERT INTO ListaDeEspera (CodigoEstudiante, NombreEstudiante, ApellidoEstudiante," +
                         " CodigoCurso, NombreCurso, DiaSemana, Aula, Turno, Fecha)" +
@@ -478,7 +478,7 @@ namespace DB
             Guardar(query);
         }
 
-        public void CrearPago(PagoDeEstudiante pagoDeEstudiante)
+        public async Task CrearPago(PagoDeEstudiante pagoDeEstudiante)
         {
             var query = "INSERT INTO PagosDeEstudiantes (monto, nombre, apellido, idEstudiante, fecha, Conseptos)" +
                   $"VALUES ('{pagoDeEstudiante.Monto}', '{pagoDeEstudiante.Nombre}', '{pagoDeEstudiante.Apellido}'," +
@@ -488,7 +488,7 @@ namespace DB
             Guardar(query);
         }
 
-        public void ModificarRequisito(RequisitosCurso requisito, bool existe)
+        public async Task ModificarRequisito(RequisitosCurso requisito, bool existe)
         {
             if (existe == false) 
             {

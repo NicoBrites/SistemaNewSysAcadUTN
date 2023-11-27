@@ -32,7 +32,7 @@ namespace Logic
             }
         }
 
-        public void ModificarRequisitos(RequisitosCurso requisitos)
+        public async void ModificarRequisitos(RequisitosCurso requisitos)
         {
             List<RequisitosCurso> listaRequisitos = GetRequisitosCursos();
             bool existe = false;
@@ -41,14 +41,14 @@ namespace Logic
             { 
                 if (requisitosCurso.Codigo == requisitos.Codigo)
                 {
-                    _gestorDB.ModificarRequisito(requisitos, true);
+                    await _gestorDB.ModificarRequisito(requisitos, true);
                     existe = true;
                     break;
                 }
             }
             if (existe == false)
             {
-                _gestorDB.ModificarRequisito(requisitos, existe);
+                await _gestorDB.ModificarRequisito(requisitos, existe);
 
             }
         }

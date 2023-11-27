@@ -105,7 +105,7 @@ namespace Logic
 
             //bool funco = Email.SendMessageSmtp(nuevEstudiante.Correo, nuevEstudiante.Clave, nuevEstudiante.Nombre, nuevEstudiante.Apellido);
         }
-        public void CrearEstudianteNewDB(Estudiantes nuevEstudiante)
+        public async void CrearEstudianteNewDB(Estudiantes nuevEstudiante)
         {
             int ultimoId = 0;
 
@@ -127,7 +127,7 @@ namespace Logic
             ultimoId++;
             string claveConHash = MetodosEstaticos.GetHash(nuevEstudiante.Clave);
 
-            _gestorDB.CrearEstudiante(nuevEstudiante, ultimoId, claveConHash);
+            await _gestorDB.CrearEstudiante(nuevEstudiante, ultimoId, claveConHash);
 
             bool funco = Email.SendMessageSmtp(nuevEstudiante.Correo, nuevEstudiante.Clave, nuevEstudiante.Nombre, nuevEstudiante.Apellido, "Registro estudiante");
 

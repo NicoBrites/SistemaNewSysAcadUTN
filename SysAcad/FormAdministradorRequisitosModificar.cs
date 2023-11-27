@@ -37,7 +37,7 @@ namespace SysAcad
         {
             string cursosPreRequisito = "";
             bool noCheck = true;
-            bool sinRequisitos = false;
+            bool Requisitos = false;
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 if (row.Cells["Check"].Value != null && (bool)row.Cells["Check"].Value == true)
@@ -57,6 +57,7 @@ namespace SysAcad
                     else
                     {
                         cursosPreRequisito += $"{nombre},";
+                        Requisitos = true;
                     }
                 }
             }
@@ -65,11 +66,11 @@ namespace SysAcad
                 DialogResult result = MessageBox.Show($"No selecciono un curso. Quiere que el curso {requisitosCurso.Nombre} no tenga requisitos ?", "Confirmación", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                    sinRequisitos = true;
+                    Requisitos = true;
                     cursosPreRequisito = "Este curso no tiene Cursos Previos";
                 }
             }
-            if (ValidadorTextBox() && sinRequisitos == true)
+            if (ValidadorTextBox() && Requisitos == true)
             {
                 int creditosAcumulados = int.Parse(textBox2.Text);
                 int promedioAcademico = int.Parse(textBox3.Text);

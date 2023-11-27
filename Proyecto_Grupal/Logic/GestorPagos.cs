@@ -181,15 +181,15 @@ A nombre de: Hernesto Hugo UTN
 CUIT: 30-4561231-8";
         }
 
-        public void CrearPagoDB(PagoDeEstudiante pagoDeEstudiante)
+        public async void CrearPagoDB(PagoDeEstudiante pagoDeEstudiante)
         {
             try
             {
-               _gestorDB.CrearPago(pagoDeEstudiante);
+                await _gestorDB.CrearPago(pagoDeEstudiante);
             }
             catch (ExcepcionPropia)
             {
-                _gestorDB.CrearPago(pagoDeEstudiante);
+                await  _gestorDB.CrearPago(pagoDeEstudiante);
             }
             catch (Exception e)
             {
