@@ -12,7 +12,7 @@ using Entidades;
 
 namespace SysAcad
 {
-    public partial class FormAdministradorRequisitosModificar : Form
+    public partial class FormAdministradorRequisitosModificar : FormPadre
     {
         private GestorRequisitos _gestorRequisitos;
         private GestorCursos _gestorCursos;

@@ -24,7 +24,10 @@ namespace DB
             comando.CommandType = CommandType.Text;
             comando.Connection = conexion;
         }
-
+        /// <summary>
+        /// Ejecuta una consulta SQL en la base de datos y muestra el número de filas afectadas.
+        /// </summary>
+        /// <param name="query">Consulta SQL a ejecutar.</param>
         public void Guardar(string query)
         {
             try
@@ -43,7 +46,10 @@ namespace DB
             }
             finally { conexion.Close(); }
         }
-
+        /// <summary>
+        /// Obtiene y devuelve todos los usuarios de la base de datos en un formato JSON personalizado.
+        /// </summary>
+        /// <returns>Objeto JsonUsuariosFormato con listas separadas para Administradores, Estudiantes y Profesores.</returns>
         public JsonUsuariosFormato ReturnAllUsers()
         {
 
@@ -115,6 +121,10 @@ namespace DB
 
             return jsonNuevo;
         }
+        /// <summary>
+        /// Obtiene y devuelve una lista de todos los cursos desde la base de datos.
+        /// </summary>
+        /// <returns>Lista de objetos Cursos que representan la información de los cursos.</returns>
         public List<Cursos> ReturnAllCursos()
         {
 
@@ -207,7 +217,10 @@ namespace DB
 
             return listaEstudiantesPorCurso;
         }
-
+        /// <summary>
+        /// Obtiene y devuelve una lista de todos los registros de estudiantes por curso desde la base de datos.
+        /// </summary>
+        /// <returns>Lista de objetos EstudiantePorCurso que representan la información de la relación entre estudiantes y cursos.</returns>
         public List<ProfesorEnCurso> ReturnAllProfesoresPorCurso()
         {
 
@@ -255,6 +268,10 @@ namespace DB
 
             return listaProfesoresPorCurso;
         }
+        /// <summary>
+        /// Obtiene y devuelve una lista de todos los registros de pagos de estudiantes desde la base de datos.
+        /// </summary>
+        /// <returns>Lista de objetos PagoDeEstudiante que representan la información de los pagos realizados por los estudiantes.</returns>
         public List<PagoDeEstudiante> ReturnAllPagoDeEstudiante()
         {
 
@@ -299,7 +316,10 @@ namespace DB
 
             return listaPagoDeEstudiante;
         }
-
+        /// <summary>
+        /// Obtiene y devuelve una lista de todos los requisitos de cursos desde la base de datos.
+        /// </summary>
+        /// <returns>Lista de objetos RequisitosCurso que representan la información de los requisitos para cada curso.</returns>
         public List<RequisitosCurso> ReturnAllRequisitosDelCurso()
         {
             var listaRequisitos= new List<RequisitosCurso>();
@@ -341,6 +361,10 @@ namespace DB
 
             return listaRequisitos;
         }
+        /// <summary>
+        /// Obtiene y devuelve una lista de todos los registros de estudiantes en lista de espera desde la base de datos.
+        /// </summary>
+        /// <returns>Lista de objetos EstudiantePorCurso que representan la información de los estudiantes en lista de espera.</returns>
         public List<EstudiantePorCurso> ReturnAllEstudiantesEnListaEspera()
         {
 
@@ -389,7 +413,13 @@ namespace DB
 
             return listaEstudiantesPorCurso;
         }
-
+        /// <summary>
+        /// Crea un nuevo registro de estudiante en la base de datos.
+        /// </summary>
+        /// <param name="nuevoEstudiante">Objeto Estudiantes con la información del nuevo estudiante.</param>
+        /// <param name="ultimoId">ID del último registro en la tabla Usuarios.</param>
+        /// <param name="claveConHash">Contraseña del estudiante con hash.</param>
+        /// <returns>Una tarea asincrónica.</returns>
         public async Task CrearEstudiante(Estudiantes nuevEstudiante, int ultimoId, string claveConHash)
         {
             var query = "INSERT INTO Usuarios (TipoEntidad, ID, Nombre, Apellido, Dni, Telefono, Direccion, Clave, Correo, Fecha)" +
@@ -399,7 +429,13 @@ namespace DB
 
             Guardar(query);
         }
-
+        /// <summary>
+        /// Crea un nuevo registro de profesor en la base de datos.
+        /// </summary>
+        /// <param name="nuevoProfesor">Objeto Profesores con la información del nuevo profesor.</param>
+        /// <param name="ultimoId">ID del último registro en la tabla Usuarios.</param>
+        /// <param name="claveConHash">Contraseña del profesor con hash.</param>
+        /// <returns>Una tarea asincrónica.</returns>
         public async Task CrearProfesor(Profesores nuevProfesor, int ultimoId, string claveConHash)
         {
             var query = "INSERT INTO Usuarios (TipoEntidad, ID, Nombre, Apellido, Dni, Telefono, Especializacion, Clave, Correo, Fecha)" +
@@ -409,7 +445,11 @@ namespace DB
 
             Guardar(query);
         }
-
+        /// <summary>
+        /// Crea un nuevo registro de curso en la base de datos.
+        /// </summary>
+        /// <param name="curso">Objeto Cursos con la información del nuevo curso.</param>
+        /// <returns>Una tarea asincrónica.</returns>
         public async Task CrearCurso(Cursos curso)
         {
             var query = "INSERT INTO Cursos (Codigo, Nombre, Descripcion, CupoMaximo, DiaSemana, Aula, Turno)" +
@@ -418,6 +458,12 @@ namespace DB
 
             Guardar(query);
         }
+        /// <summary>
+        /// Modifica un registro de curso en la base de datos y actualiza la información relacionada en la tabla EstudiantePorCurso.
+        /// </summary>
+        /// <param name="curso">Objeto Cursos con la nueva información del curso.</param>
+        /// <param name="codigoAnteriorParseado">Código anterior del curso a modificar.</param>
+        /// <returns>Una tarea asincrónica.</returns>
         public async Task ModificarCurso(Cursos curso, int codigoAnteriorParseado)
         {
             var query = "UPDATE Cursos " +
@@ -431,7 +477,11 @@ namespace DB
 
             Guardar(query);
         }
-
+        /// <summary>
+        /// Elimina un curso y sus asociaciones en la base de datos.
+        /// </summary>
+        /// <param name="codigo">Código del curso a eliminar.</param>
+        /// <returns>Una tarea asincrónica.</returns>
         public async Task EliminarCurso(int codigo)
         {
             var query = "DELETE FROM Cursos " +
@@ -439,7 +489,11 @@ namespace DB
 
             Guardar(query);
         }
-
+        /// <summary>
+        /// Elimina un estudiante de la lista de espera en la base de datos.
+        /// </summary>
+        /// <param name="codigo">Código del estudiante a eliminar de la lista de espera.</param>
+        /// <returns>Una tarea asincrónica.</returns>
         public async Task EliminarEstudianteEnListaDeEspera(int codigo)
         {
             var query = "DELETE FROM ListaDeEspera " +
@@ -447,7 +501,12 @@ namespace DB
 
             Guardar(query);
         }
-
+        /// <summary>
+        /// Agrega un estudiante a un curso en la base de datos.
+        /// </summary>
+        /// <param name="estudiante">Objeto EstudianteEnCursos con la información del estudiante.</param>
+        /// <param name="cursoEnQueSeAgrega">Objeto CursosEnEstudiantes con la información del curso al que se agrega el estudiante.</param>
+        /// <returns>Una tarea asincrónica.</returns>
         public async Task AgregarAlumnoAlCurso(EstudianteEnCursos estudiante, CursosEnEstudiantes cursoEnQueSeAgrega)
         {
             var query = "INSERT INTO EstudiantePorCurso (CodigoEstudiante, NombreEstudiante, ApellidoEstudiante," +
@@ -457,7 +516,12 @@ namespace DB
 
             Guardar(query);
         }
-
+        /// <summary>
+        /// Agrega un profesor a un curso en la base de datos.
+        /// </summary>
+        /// <param name="profesor">Objeto Profesores con la información del profesor.</param>
+        /// <param name="cursoEnQueSeAgrega">Objeto CursosEnEstudiantes con la información del curso al que se agrega el profesor.</param>
+        /// <returns>Una tarea asincrónica.</returns>
         public async Task AgregarProfesorAlCurso(Profesores profesor, CursosEnEstudiantes cursoEnQueSeAgrega)
         {
             var query = "INSERT INTO ProfesorEnCurso (codigoProfesor, nombreProfesor, apellidoProfesor," +
@@ -467,7 +531,12 @@ namespace DB
 
             Guardar(query);
         }
-
+        /// <summary>
+        /// Agrega un estudiante a la lista de espera en la base de datos.
+        /// </summary>
+        /// <param name="estudiante">Objeto EstudianteEnCursos con la información del estudiante.</param>
+        /// <param name="cursoEnQueSeAgrega">Objeto CursosEnEstudiantes con la información del curso al que se intenta agregar el estudiante.</param>
+        /// <returns>Una tarea asincrónica.</returns>
         public async Task AgregarAlumnoAListaDeEspera(EstudianteEnCursos estudiante, CursosEnEstudiantes cursoEnQueSeAgrega)
         {
             var query = "INSERT INTO ListaDeEspera (CodigoEstudiante, NombreEstudiante, ApellidoEstudiante," +
@@ -477,7 +546,11 @@ namespace DB
 
             Guardar(query);
         }
-
+        /// <summary>
+        /// Crea un nuevo registro de pago de estudiante en la base de datos.
+        /// </summary>
+        /// <param name="pagoDeEstudiante">Objeto PagoDeEstudiante con la información del nuevo pago.</param>
+        /// <returns>Una tarea asincrónica.</returns>
         public async Task CrearPago(PagoDeEstudiante pagoDeEstudiante)
         {
             var query = "INSERT INTO PagosDeEstudiantes (monto, nombre, apellido, idEstudiante, fecha, Conseptos)" +
@@ -487,7 +560,12 @@ namespace DB
 
             Guardar(query);
         }
-
+        /// <summary>
+        /// Modifica un requisito de curso en la base de datos.
+        /// </summary>
+        /// <param name="requisito">Objeto RequisitosCurso con la información del requisito a modificar.</param>
+        /// <param name="existe">Indica si el requisito ya existe en la base de datos.</param>
+        /// <returns>Una tarea asincrónica.</returns>
         public async Task ModificarRequisito(RequisitosCurso requisito, bool existe)
         {
             if (existe == false) 
@@ -510,7 +588,12 @@ namespace DB
             }
             
         }
-
+        /// <summary>
+        /// Modifica un registro de profesor en la base de datos.
+        /// </summary>
+        /// <param name="profesor">Objeto Profesores con la nueva información del profesor.</param>
+        /// <param name="codigoAnteriorParseado">Código anterior del profesor a modificar.</param>
+        /// <returns>Una tarea asincrónica.</returns>
         public async Task ModificarProfesor(Profesores profesor, int codigoAnteriorParseado)
         {
             var query = $"DELETE FROM Usuarios \n" +
@@ -522,7 +605,11 @@ namespace DB
 
             Guardar(query);
         }
-
+        /// <summary>
+        /// Elimina un profesor de la base de datos.
+        /// </summary>
+        /// <param name="correo">Correo del profesor a eliminar.</param>
+        /// <returns>Una tarea asincrónica.</returns>
         public async Task EliminarProfesor(string correo)
         {
             var query = "DELETE FROM Usuarios " +

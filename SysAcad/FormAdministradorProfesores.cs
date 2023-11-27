@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace SysAcad
 {
-    public partial class FormAdministradorProfesores : Form
+    public partial class FormAdministradorProfesores : FormPadre
     {
         private GestorProfesores _gestorProfesores;
         private GestorCursos _gestorCursos;
@@ -176,7 +176,7 @@ namespace SysAcad
                     try
                     {
                         _gestorProfesores.AgregarProfesorAlCursoDB(new Profesores(idProfe, nombreProfe, apellidoProfe, dniProfe, especializacionProfe,
-                            "", correoProfe, telefonoProfe),new CursosEnEstudiantes(nombre, codigo, diaSemana, turno, aula));
+                            "", correoProfe, telefonoProfe), new CursosEnEstudiantes(nombre, codigo, diaSemana, turno, aula));
 
                         MessageBox.Show($"Se asigno a {nombreProfe} al curso {nombre} satisfactoriamente ", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -192,6 +192,13 @@ namespace SysAcad
                 MessageBox.Show($"No selecciono ninguna materia",
                                           "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            FormMenuAdministrador formMenuAdministrador = new FormMenuAdministrador();
+            formMenuAdministrador.Show();
+            this.Hide();
         }
     }
 }

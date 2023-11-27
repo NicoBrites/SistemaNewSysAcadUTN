@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace SysAcad
 {
-    public partial class FormAdministradorInforme : Form
+    public partial class FormAdministradorInforme : FormPadre
     {
         private PDF _pdf;
         public FormAdministradorInforme()

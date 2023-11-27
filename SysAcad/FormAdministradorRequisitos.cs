@@ -13,7 +13,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace SysAcad
 {
-    public partial class FormAdministradorRequisitos : Form
+    public partial class FormAdministradorRequisitos : FormPadre
     {
         private GestorCursos _gestorCursos;
         private GestorRequisitos _gestorRequisitos;

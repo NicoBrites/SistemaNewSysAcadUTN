@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace SysAcad
 {
-    public partial class FormProfesorAgregar : Form
+    public partial class FormProfesorAgregar : FormPadre
     {
         private GestorProfesores _gestorProfesores;
         public FormProfesorAgregar()

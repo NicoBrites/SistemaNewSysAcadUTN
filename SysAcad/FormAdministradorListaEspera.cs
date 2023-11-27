@@ -14,7 +14,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace SysAcad
 {
-    public partial class FormAdministradorListaEspera : Form
+    public partial class FormAdministradorListaEspera : FormPadre
     {
         private GestorCursos _gestorCursos;
         private GestorEstudiantes _gestorEstudiantes;
