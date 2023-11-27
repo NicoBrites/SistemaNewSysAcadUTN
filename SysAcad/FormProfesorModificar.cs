@@ -53,8 +53,8 @@ namespace SysAcad
 
                     MessageBox.Show("Se modifico el curso correctamente", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    FormCursos formCursos = new();
-                    formCursos.Show();
+                    FormProfesorModificar formProfesorModificar = new();
+                    formProfesorModificar.Show();
 
                     this.Hide();
                 }

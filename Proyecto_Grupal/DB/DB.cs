@@ -513,11 +513,12 @@ namespace DB
 
         public void ModificarProfesor(Profesores profesor, int codigoAnteriorParseado)
         {
-            var query = "UPDATE Usuarios " +
-              $"SET Nombre = '{profesor.Nombre}', Apellido = '{profesor.Apellido}', Dni = '{profesor.Dni}'," +
-              $" Especializacion = '{profesor.Especializacion}', Correo = '{profesor.Correo}', Telefono = '{profesor.Telefono}'" +
-              $"WHERE ID = {codigoAnteriorParseado};";
-
+            var query = $"DELETE FROM Usuarios \n" +
+                      $"WHERE ID = {codigoAnteriorParseado} AND TipoEntidad = 'Profesores';" +
+                        "INSERT INTO Usuarios (TipoEntidad, ID, Nombre, Apellido, Dni, Telefono, Especializacion, Clave, Correo, Fecha)" +
+                      $"VALUES ('Profesores', '{codigoAnteriorParseado}', '{profesor.Nombre}'," +
+                      $" '{profesor.Apellido}', '{profesor.Dni}', '{profesor.Telefono}', '{profesor.Especializacion}'," +
+                      $" '{profesor}', '{profesor.Correo}', '{DateTime.Now}');\n";
 
             Guardar(query);
         }
