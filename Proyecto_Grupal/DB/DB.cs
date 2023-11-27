@@ -400,7 +400,7 @@ namespace DB
             Guardar(query);
         }
 
-        public void CrearProfesor(Profesores nuevProfesor, int ultimoId, string claveConHash)
+        public async Task CrearProfesor(Profesores nuevProfesor, int ultimoId, string claveConHash)
         {
             var query = "INSERT INTO Usuarios (TipoEntidad, ID, Nombre, Apellido, Dni, Telefono, Especializacion, Clave, Correo, Fecha)" +
                       $"VALUES ('Profesores', '{ultimoId}', '{nuevProfesor.Nombre}'," +
@@ -458,7 +458,7 @@ namespace DB
             Guardar(query);
         }
 
-        public void AgregarProfesorAlCurso(Profesores profesor, CursosEnEstudiantes cursoEnQueSeAgrega)
+        public async Task AgregarProfesorAlCurso(Profesores profesor, CursosEnEstudiantes cursoEnQueSeAgrega)
         {
             var query = "INSERT INTO ProfesorEnCurso (codigoProfesor, nombreProfesor, apellidoProfesor," +
                         " codigoCurso, nombreCurso, diaSemana, aula, turno)" +
@@ -511,7 +511,7 @@ namespace DB
             
         }
 
-        public void ModificarProfesor(Profesores profesor, int codigoAnteriorParseado)
+        public async Task ModificarProfesor(Profesores profesor, int codigoAnteriorParseado)
         {
             var query = $"DELETE FROM Usuarios \n" +
                       $"WHERE ID = {codigoAnteriorParseado} AND TipoEntidad = 'Profesores';" +
@@ -523,10 +523,10 @@ namespace DB
             Guardar(query);
         }
 
-        public void EliminarProfesor(string correo)
+        public async Task EliminarProfesor(string correo)
         {
             var query = "DELETE FROM Usuarios " +
-                       $"WHERE Correo = {correo}; ";
+                       $"WHERE Correo = '{correo}'; ";
 
             Guardar(query);
         }

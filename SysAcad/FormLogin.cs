@@ -1,4 +1,5 @@
 using Entidades;
+using Logic;
 using System.Windows.Forms;
 
 namespace SysAcad
@@ -9,6 +10,9 @@ namespace SysAcad
         {
             InitializeComponent();
 
+            Almanaque almanaque = new Almanaque();
+            almanaque.DiaDeVencimiento += NotificarFechaVencimiento;
+            almanaque.Ejecutar();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -17,7 +21,7 @@ namespace SysAcad
             string correo = textCorreo.Text;
             string contraseña = textContraseña.Text;
 
-            Logic.AutentificadorUsuario funciones = new();
+            AutentificadorUsuario funciones = new();
 
             try
             {
@@ -45,6 +49,13 @@ namespace SysAcad
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+        private void NotificarFechaVencimiento(object almanaque, EventoPropioFechaActual info) 
+        {
+            GestorEstudiantes gestorEstudiantes = new();
+
+            gestorEstudiantes.NotificarVencimiento(almanaque, info);
         }
 
     }

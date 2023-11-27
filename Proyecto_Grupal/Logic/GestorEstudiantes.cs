@@ -148,6 +148,23 @@ namespace Logic
         
         }
 
+        public void NotificarVencimiento(object almanaque, EventoPropioFechaActual info)
+        {
+            GestorPagos gestorPagos = new GestorPagos();
+
+            List<Estudiantes> listaEstudiantes = GetListaEstudiantes();
+
+            string notificacion = "Se le infoma al estudiante que mañana se vence el pago de la cuota del mes \n\n" +
+                $"Recuerde que el valor de la cuota es $20.000 \n" +
+                "Si ya realizo el pago ignore este mail";
+
+            foreach (Estudiantes estudiante in listaEstudiantes)
+            {
+                bool funco = Email.SendMessageSmtp(estudiante.Correo, estudiante.Clave, estudiante.Nombre,
+                    estudiante.Apellido, "Notificacion vencimiento", notificacion);
+            }
+        }
+
         public List<Estudiantes> GetListaEstudiantes()
         {
             JsonUsuariosFormato json = _gestorDB.ReturnAllUsers();

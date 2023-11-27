@@ -55,7 +55,7 @@ namespace Logic
             return Regex.IsMatch(email, pattern);
         }
 
-        public void CrearProfesorNewDB(Profesores nuevProfesor)
+        public async void CrearProfesorNewDB(Profesores nuevProfesor)
         {
             int ultimoId = 0;
 
@@ -77,11 +77,11 @@ namespace Logic
             ultimoId++;
             string claveConHash = MetodosEstaticos.GetHash(nuevProfesor.Clave);
 
-            _gestorDB.CrearProfesor(nuevProfesor, ultimoId, claveConHash);
+            await _gestorDB.CrearProfesor(nuevProfesor, ultimoId, claveConHash);
 
         }
 
-        public void ModificarProfesor(Profesores profesor, string codigoAnterior) // modificar para que no explote
+        public async void ModificarProfesor(Profesores profesor, string codigoAnterior) // modificar para que no explote
         {
             int codigoAnteriorParseado = Convert.ToInt32(codigoAnterior);
 
@@ -97,13 +97,13 @@ namespace Logic
                
             }
 
-            _gestorDB.ModificarProfesor(profesor, codigoAnteriorParseado);
+            await _gestorDB.ModificarProfesor(profesor, codigoAnteriorParseado);
 
         }
 
-        public void EliminarProfesor(string correo)
+        public  async void EliminarProfesor(string correo)
         {
-            _gestorDB.EliminarProfesor(correo);
+            await _gestorDB.EliminarProfesor(correo);
         }
 
         public bool ValidadorAgregarProfesorACurso(Cursos cursos, List<ProfesorEnCurso> listaProfesorPorCurso,
@@ -128,7 +128,7 @@ namespace Logic
             return true;
         }
 
-        public void AgregarProfesorAlCursoDB(Profesores profesor, CursosEnEstudiantes cursoEnQueSeAgrega)
+        public async void AgregarProfesorAlCursoDB(Profesores profesor, CursosEnEstudiantes cursoEnQueSeAgrega)
         {
             try
             {
@@ -141,7 +141,7 @@ namespace Logic
                     {
                         if (ValidadorAgregarProfesorACurso(cursos, listaProfesoressPorCurso, profesor, cursoEnQueSeAgrega))
                         {
-                            _gestorDB.AgregarProfesorAlCurso(profesor, cursoEnQueSeAgrega);
+                            await _gestorDB.AgregarProfesorAlCurso(profesor, cursoEnQueSeAgrega);
                             break;
                         }
                     }
@@ -149,7 +149,7 @@ namespace Logic
             }
             catch (ExcepcionPropia)
             {
-                _gestorDB.AgregarProfesorAlCurso(profesor, cursoEnQueSeAgrega);
+                await _gestorDB.AgregarProfesorAlCurso(profesor, cursoEnQueSeAgrega);
             }
             catch (Exception ex)
             {

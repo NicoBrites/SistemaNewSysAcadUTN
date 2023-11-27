@@ -42,6 +42,14 @@ namespace Logic
                     Text = @$"{msj}",
                 };
             }
+            else if (tipoEvento == "Notificacion vencimiento")
+            {
+                mail.Subject = "Notificacion vencimiento de Cuota";
+                mail.Body = new TextPart("plain")
+                {
+                    Text = @$"{msj}",
+                };
+            }
 
             try
             {
@@ -63,5 +71,6 @@ namespace Logic
             }
             return true;
         }
+
     }
 }
