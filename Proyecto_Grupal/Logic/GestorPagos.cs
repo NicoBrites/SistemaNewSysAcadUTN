@@ -1,5 +1,4 @@
 ﻿using Entidades;
-using System.ComponentModel;
 using System.Text;
 
 namespace Logic
@@ -17,7 +16,10 @@ namespace Logic
             _validadorTextosVacios = new ValidadorTextosVacios();
             _gestorDB = new DB.DB();
         }
-
+        /// <summary>
+        /// Obtiene la lista de pagos de estudiantes almacenada en la base de datos.
+        /// </summary>
+        /// <returns>Lista de pagos de estudiantes.</returns>
         public List<PagoDeEstudiante> GetPagosDB()
         {
             try
@@ -180,7 +182,10 @@ CBU: 0168888810000090458621556
 A nombre de: Hernesto Hugo UTN
 CUIT: 30-4561231-8";
         }
-
+        /// <summary>
+        /// Crea un nuevo registro de pago de estudiante en la base de datos.
+        /// </summary>
+        /// <param name="pagoDeEstudiante">Información del pago a almacenar.</param>
         public async void CrearPagoDB(PagoDeEstudiante pagoDeEstudiante)
         {
             try

@@ -1,7 +1,6 @@
 ﻿using MimeKit;
 using System.Configuration;
 
-
 namespace Logic
 {
     public static class Email
@@ -17,7 +16,7 @@ namespace Logic
             string host = ConfigurationManager.AppSettings["mailgunHost"]!;
             string password = ConfigurationManager.AppSettings["mailgunPassword"]!;
             mail.From.Add(new MailboxAddress("Sistema Sysacad", $"foo@{host}"));
-            mail.To.Add(new MailboxAddress($"{apellido},{nombre}", email));
+            mail.To.Add(new MailboxAddress($"{apellido},{nombre}", "m.rampi@sistemas-utnfra.com.ar"));
             if (tipoEvento == "Registro estudiante")
             {
                 mail.Subject = "Registro de alumno";

@@ -1,9 +1,4 @@
 ﻿using Entidades;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Logic
 {
@@ -14,7 +9,10 @@ namespace Logic
         {
             _gestorDB = new DB.DB();
         }
-
+        /// <summary>
+        /// Obtiene la lista de requisitos de cursos.
+        /// </summary>
+        /// <returns>Lista de requisitos de cursos.</returns>
         public List<RequisitosCurso> GetRequisitosCursos()
         {
             try
@@ -31,7 +29,10 @@ namespace Logic
                 throw new Exception(ex.Message);
             }
         }
-
+        /// <summary>
+        /// Modifica los requisitos del curso.
+        /// </summary>
+        /// <param name="requisitos">Requisitos a modificar.</param>
         public async void ModificarRequisitos(RequisitosCurso requisitos)
         {
             List<RequisitosCurso> listaRequisitos = GetRequisitosCursos();

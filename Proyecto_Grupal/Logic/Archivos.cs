@@ -1,7 +1,6 @@
 ﻿using Entidades;
 using Newtonsoft.Json;
 
-
 namespace Logic
 {
     public class Archivos

@@ -57,7 +57,12 @@ namespace Logic
             }
             throw new Exception("No coincide la contraseña o el correo");
         }
-
+        /// <summary>
+        /// Autentifica a un usuario en la base de datos SysAcad comparando el correo y contraseña proporcionados.
+        /// </summary>
+        /// <param name="correo">Correo electrónico del usuario.</param>
+        /// <param name="contraseña">Contraseña del usuario.</param>
+        /// <returns>Objeto del tipo Administrador, Estudiantes o Profesores si la autenticación es exitosa; de lo contrario, lanza una excepción.</returns>
         public Object AutentificarUsuarioSDB(string correo, string contraseña)
         {
 

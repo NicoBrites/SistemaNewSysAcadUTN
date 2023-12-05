@@ -1,5 +1,4 @@
-﻿using DB;
-using Entidades;
+﻿using Entidades;
 using System.Text.RegularExpressions;
 
 namespace Logic
@@ -105,6 +104,10 @@ namespace Logic
 
             //bool funco = Email.SendMessageSmtp(nuevEstudiante.Correo, nuevEstudiante.Clave, nuevEstudiante.Nombre, nuevEstudiante.Apellido);
         }
+        /// <summary>
+        /// Crea un nuevo estudiante en la base de datos, realizando validaciones previas.
+        /// </summary>
+        /// <param name="nuevEstudiante">Información del nuevo estudiante.</param>
         public async void CrearEstudianteNewDB(Estudiantes nuevEstudiante)
         {
             int ultimoId = 0;
@@ -138,6 +141,10 @@ namespace Logic
         public delegate void CreoNuevo(Estudiantes estudiante);
 
         public event CreoNuevo EventoCreoNuevo;
+        /// <summary>
+        /// Notifica a un nuevo estudiante sobre fechas de inscripción a finales y fechas límite de pago.
+        /// </summary>
+        /// <param name="estudiante">Estudiante al que se le enviará la notificación.</param>
         public void NotificarANuevoEstudiante(Estudiantes estudiante)
         {
             string notificacion = "Se le infoma al estudiante que las fechas de inscripcion a los finales son 20 y 21 de diciembre \n" +
@@ -147,6 +154,11 @@ namespace Logic
                 estudiante.Apellido, "Creo estudiante", notificacion);
         
         }
+        /// <summary>
+        /// Notifica a los estudiantes sobre el vencimiento del pago de la cuota del mes.
+        /// </summary>
+        /// <param name="almanaque">Objeto que representa el almanaque o calendario.</param>
+        /// <param name="info">Información sobre la fecha actual.</param>
 
         public void NotificarVencimiento(object almanaque, EventoPropioFechaActual info)
         {
@@ -164,7 +176,10 @@ namespace Logic
                     estudiante.Apellido, "Notificacion vencimiento", notificacion);
             }
         }
-
+        /// <summary>
+        /// Obtiene la lista de estudiantes del sistema.
+        /// </summary>
+        /// <returns>Lista de estudiantes.</returns>
         public List<Estudiantes> GetListaEstudiantes()
         {
             JsonUsuariosFormato json = _gestorDB.ReturnAllUsers();

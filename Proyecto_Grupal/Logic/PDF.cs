@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using iTextSharp.text;
+﻿using iTextSharp.text;
 using iTextSharp.text.pdf;
-using System.IO;
 
 namespace Logic
 {
     public class PDF
     {
         public PDF() { }
-
+        /// <summary>
+        /// Crea un archivo PDF con el texto proporcionado.
+        /// </summary>
+        /// <param name="texto">Texto que se incluirá en el PDF.</param>
         public void CrearPDF(string texto)
         {
             Document document = new Document();

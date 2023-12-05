@@ -1,10 +1,5 @@
 ﻿using Entidades;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace Logic
 {
@@ -20,7 +15,10 @@ namespace Logic
             _gestorDB = new DB.DB();
             _gestorCursos = new GestorCursos();
         }
-
+        /// <summary>
+        /// Obtiene la lista de profesores almacenados en la base de datos.
+        /// </summary>
+        /// <returns>Lista de profesores.</returns>
         public List<Profesores> GetListaProfesores()
         {
             JsonUsuariosFormato json = _gestorDB.ReturnAllUsers();
@@ -29,6 +27,11 @@ namespace Logic
 
             return profesores;
         }
+        /// <summary>
+        /// Valida los datos de un profesor antes de su creación o modificación.
+        /// </summary>
+        /// <param name="profesores">Objeto que contiene los datos del profesor a validar.</param>
+        /// <returns>True si los datos son válidos, False en caso contrario.</returns>
         public bool ValidadorProfesores(ProfesorAValidar profesores)
         {
             int numero;
@@ -48,13 +51,21 @@ namespace Logic
             }
             return false;
         }
+        /// <summary>
+        /// Valida el formato de un correo electrónico.
+        /// </summary>
+        /// <param name="email">Correo electrónico a validar.</param>
+        /// <returns>True si el formato es válido, False en caso contrario.</returns>
         public bool ValidarEmail(string email)
         {
             string pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
 
             return Regex.IsMatch(email, pattern);
         }
-
+        /// <summary>
+        /// Crea un nuevo profesor en la base de datos.
+        /// </summary>
+        /// <param name="nuevProfesor">Datos del nuevo profesor.</param>
         public async void CrearProfesorNewDB(Profesores nuevProfesor)
         {
             int ultimoId = 0;
@@ -80,7 +91,11 @@ namespace Logic
             await _gestorDB.CrearProfesor(nuevProfesor, ultimoId, claveConHash);
 
         }
-
+        /// <summary>
+        /// Modifica los datos de un profesor en la base de datos.
+        /// </summary>
+        /// <param name="profesor">Datos actualizados del profesor.</param>
+        /// <param name="codigoAnterior">ID del profesor antes de la modificación.</param>
         public async void ModificarProfesor(Profesores profesor, string codigoAnterior) // modificar para que no explote
         {
             int codigoAnteriorParseado = Convert.ToInt32(codigoAnterior);
@@ -100,12 +115,22 @@ namespace Logic
             await _gestorDB.ModificarProfesor(profesor, codigoAnteriorParseado);
 
         }
-
-        public  async void EliminarProfesor(string correo)
+        /// <summary>
+        /// Elimina un profesor de la base de datos.
+        /// </summary>
+        /// <param name="correo">Correo electrónico del profesor a eliminar.</param>
+        public async void EliminarProfesor(string correo)
         {
             await _gestorDB.EliminarProfesor(correo);
         }
-
+        /// <summary>
+        /// Valida si es posible agregar un profesor a un curso.
+        /// </summary>
+        /// <param name="cursos">Curso al que se desea agregar el profesor.</param>
+        /// <param name="listaProfesorPorCurso">Lista de profesores asignados a cursos.</param>
+        /// <param name="profesor">Profesor que se desea agregar al curso.</param>
+        /// <param name="cursoEnQueSeAgrega">Curso al que se desea agregar el profesor.</param>
+        /// <returns>True si es posible agregar el profesor al curso, de lo contrario, lanza una excepción.</returns>
         public bool ValidadorAgregarProfesorACurso(Cursos cursos, List<ProfesorEnCurso> listaProfesorPorCurso,
             Profesores profesor, CursosEnEstudiantes cursoEnQueSeAgrega)
         {
@@ -127,7 +152,11 @@ namespace Logic
             }
             return true;
         }
-
+        /// <summary>
+        /// Agrega un profesor a un curso en la base de datos.
+        /// </summary>
+        /// <param name="profesor">Profesor que se desea agregar al curso.</param>
+        /// <param name="cursoEnQueSeAgrega">Curso al que se desea agregar el profesor.</param>
         public async void AgregarProfesorAlCursoDB(Profesores profesor, CursosEnEstudiantes cursoEnQueSeAgrega)
         {
             try
@@ -156,7 +185,10 @@ namespace Logic
                 throw new Exception(ex.Message);
             }
         }
-
+        /// <summary>
+        /// Obtiene la lista de profesores asignados a cursos desde la base de datos.
+        /// </summary>
+        /// <returns>Lista de profesores asignados a cursos.</returns>
         public List<ProfesorEnCurso> GetProfesorPorCursoDB()
         {
             try

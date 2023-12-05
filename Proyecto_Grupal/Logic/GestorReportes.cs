@@ -1,10 +1,5 @@
 ﻿using Entidades;
-using Microsoft.VisualBasic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Logic
 {
@@ -21,6 +16,10 @@ namespace Logic
             _pdf = new PDF();
             _gestorDB = new DB.DB();
         }
+        /// <summary>
+        /// Genera una lista de opciones de informes y reportes.
+        /// </summary>
+        /// <returns>Lista de opciones de informes y reportes.</returns>
         public List<Reportes> GenerarOpcionesRepórtes()
         {
             List<Reportes> listaOpciones = new List<Reportes>
@@ -32,7 +31,11 @@ namespace Logic
             };
             return listaOpciones;
         }
-
+        /// <summary>
+        /// Genera un informe de inscripciones por período.
+        /// </summary>
+        /// <param name="periodo">Período para el informe (Primer cuatrimestre, Segundo cuatrimestre, o cualquier otro).</param>
+        /// <returns>Informe de inscripciones por período.</returns>
         public string ReporteInscripcionesPorPeriodo(string periodo)
         {
 
@@ -77,7 +80,11 @@ Estudiantes :
 
             return informe + listadoEstudiantes;
         }
-
+        /// <summary>
+        /// Genera un informe de inscripciones por curso.
+        /// </summary>
+        /// <param name="nombreCurso">Nombre del curso para el informe (Todos para incluir todos los cursos).</param>
+        /// <returns>Informe de inscripciones por curso.</returns>
         public string ReporteInscripcionesPorCurso(string nombreCurso) // DUDA : CURSO FILTRADO POR NOMBRE O POR CODIGO DE CURSO
         {
             List<EstudiantePorCurso> listaEstudiantesPorCurso = _gestorCursos.GetEstudiantePorCursoDB();
@@ -123,7 +130,11 @@ Nombre                   Fecha de inscripcion
 
             return informe + listadoEstudiantes;
         }
-
+        /// <summary>
+        /// Genera un informe de ingresos por concepto de pago.
+        /// </summary>
+        /// <param name="nombreConcepto">Nombre del concepto de pago para el informe (Todos para incluir todos los conceptos).</param>
+        /// <returns>Informe de ingresos por concepto de pago.</returns>
         public string ReporteIngresosPorConseptoDePago(string nombreConsepto)
         {
             List<PagoDeEstudiante> listaPagoDeEstudianteo = _gestorDB.ReturnAllPagoDeEstudiante();
@@ -176,7 +187,11 @@ Nombre                   Fecha de Pago
 
             return informe + listadoEstudiantes;
         }
-
+        /// <summary>
+        /// Genera un informe de lista de espera por curso.
+        /// </summary>
+        /// <param name="nombreCurso">Nombre del curso para el informe (Todos para incluir todos los cursos).</param>
+        /// <returns>Informe de lista de espera por curso.</returns>
         public string ReporteListaDeEsperaPorCurso(string nombreCurso)
         {
             List<EstudiantePorCurso> listaEstudiantesPorCurso = _gestorCursos.GetEstudianteEnListaEspera();

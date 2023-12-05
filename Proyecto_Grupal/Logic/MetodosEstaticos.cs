@@ -1,5 +1,4 @@
 ﻿using Entidades;
-using DB;
 namespace Logic
 {
     public static class MetodosEstaticos
@@ -87,6 +86,9 @@ namespace Logic
                 string msj = archivos.GuardarAJson(jsonNuevo, path);
             }
         }
+        /// <summary>
+        /// Crea un administrador inicial en la base de datos si no existe.
+        /// </summary>
         public static void CrearAdministradorInicialEnDB()
         {
             DB.DB dB = new DB.DB();

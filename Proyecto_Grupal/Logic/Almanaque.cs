@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Logic
 {
     public class Almanaque
@@ -15,6 +10,10 @@ namespace Logic
         public int mes;
 
         public Almanaque() { }
+        /// <summary>
+        /// Ejecuta las operaciones programadas para el día actual, incluyendo la notificación del evento DiaDeVencimiento
+        /// en caso de que haya suscriptores y sea el día 14 del mes. Además, guarda el día y mes actuales.
+        /// </summary>
         public void Ejecutar()
         {       
             DateTime dt = DateTime.Now;

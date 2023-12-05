@@ -1,11 +1,6 @@
 ﻿using Entidades;
 using Microsoft.Data.SqlClient;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DB
 {
@@ -422,12 +417,15 @@ namespace DB
         /// <returns>Una tarea asincrónica.</returns>
         public async Task CrearEstudiante(Estudiantes nuevEstudiante, int ultimoId, string claveConHash)
         {
-            var query = "INSERT INTO Usuarios (TipoEntidad, ID, Nombre, Apellido, Dni, Telefono, Direccion, Clave, Correo, Fecha)" +
-                      $"VALUES ('Estudiantes', '{ultimoId}', '{nuevEstudiante.Nombre}'," +
-                      $" '{nuevEstudiante.Apellido}', '{nuevEstudiante.Dni}', '{nuevEstudiante.Telefono}', '{nuevEstudiante.Direccion}'," +
-                      $" '{claveConHash}', '{nuevEstudiante.Correo}', '{DateTime.Now}');";
+            await Task.Run(() =>
+            {
+                var query = "INSERT INTO Usuarios (TipoEntidad, ID, Nombre, Apellido, Dni, Telefono, Direccion, Clave, Correo, Fecha)" +
+                          $"VALUES ('Estudiantes', '{ultimoId}', '{nuevEstudiante.Nombre}'," +
+                          $" '{nuevEstudiante.Apellido}', '{nuevEstudiante.Dni}', '{nuevEstudiante.Telefono}', '{nuevEstudiante.Direccion}'," +
+                          $" '{claveConHash}', '{nuevEstudiante.Correo}', '{DateTime.Now}');";
 
-            Guardar(query);
+                Guardar(query);
+            });
         }
         /// <summary>
         /// Crea un nuevo registro de profesor en la base de datos.
@@ -438,12 +436,15 @@ namespace DB
         /// <returns>Una tarea asincrónica.</returns>
         public async Task CrearProfesor(Profesores nuevProfesor, int ultimoId, string claveConHash)
         {
-            var query = "INSERT INTO Usuarios (TipoEntidad, ID, Nombre, Apellido, Dni, Telefono, Especializacion, Clave, Correo, Fecha)" +
+            await Task.Run(() =>
+            {
+                var query = "INSERT INTO Usuarios (TipoEntidad, ID, Nombre, Apellido, Dni, Telefono, Especializacion, Clave, Correo, Fecha)" +
                       $"VALUES ('Profesores', '{ultimoId}', '{nuevProfesor.Nombre}'," +
                       $" '{nuevProfesor.Apellido}', '{nuevProfesor.Dni}', '{nuevProfesor.Telefono}', '{nuevProfesor.Especializacion}'," +
                       $" '{claveConHash}', '{nuevProfesor.Correo}', '{DateTime.Now}');";
 
-            Guardar(query);
+                Guardar(query);
+            });
         }
         /// <summary>
         /// Crea un nuevo registro de curso en la base de datos.
@@ -452,11 +453,14 @@ namespace DB
         /// <returns>Una tarea asincrónica.</returns>
         public async Task CrearCurso(Cursos curso)
         {
-            var query = "INSERT INTO Cursos (Codigo, Nombre, Descripcion, CupoMaximo, DiaSemana, Aula, Turno)" +
+            await Task.Run(() =>
+            {
+                var query = "INSERT INTO Cursos (Codigo, Nombre, Descripcion, CupoMaximo, DiaSemana, Aula, Turno)" +
                    $"VALUES ('{curso.Codigo}', '{curso.Nombre}', '{curso.Descripcion}', '{curso.CupoMaximo}'," +
                    $" '{curso.DiaSemana}', '{curso.Aula}', '{curso.Turno}');";
 
-            Guardar(query);
+                Guardar(query);
+            });
         }
         /// <summary>
         /// Modifica un registro de curso en la base de datos y actualiza la información relacionada en la tabla EstudiantePorCurso.
@@ -466,7 +470,9 @@ namespace DB
         /// <returns>Una tarea asincrónica.</returns>
         public async Task ModificarCurso(Cursos curso, int codigoAnteriorParseado)
         {
-            var query = "UPDATE Cursos " +
+            await Task.Run(() =>
+            {
+                var query = "UPDATE Cursos " +
               $"SET Nombre = '{curso.Nombre}', Descripcion = '{curso.Descripcion}', Codigo = '{curso.Codigo}'," +
               $" CupoMaximo = '{curso.CupoMaximo}', DiaSemana = '{curso.DiaSemana}', Aula = '{curso.Aula}', Turno = '{curso.Turno}'" +
               $"WHERE Codigo = {codigoAnteriorParseado};" +
@@ -475,7 +481,8 @@ namespace DB
               $"  DiaSemana = '{curso.DiaSemana}', Aula = '{curso.Aula}', Turno = '{curso.Turno}'" +
               $"WHERE CodigoCurso = {codigoAnteriorParseado}";
 
-            Guardar(query);
+                Guardar(query);
+            });
         }
         /// <summary>
         /// Elimina un curso y sus asociaciones en la base de datos.
@@ -484,10 +491,13 @@ namespace DB
         /// <returns>Una tarea asincrónica.</returns>
         public async Task EliminarCurso(int codigo)
         {
-            var query = "DELETE FROM Cursos " +
+            await Task.Run(() =>
+            {
+                var query = "DELETE FROM Cursos " +
                        $"WHERE Codigo = {codigo}; ";
 
             Guardar(query);
+            });
         }
         /// <summary>
         /// Elimina un estudiante de la lista de espera en la base de datos.
@@ -496,10 +506,13 @@ namespace DB
         /// <returns>Una tarea asincrónica.</returns>
         public async Task EliminarEstudianteEnListaDeEspera(int codigo)
         {
-            var query = "DELETE FROM ListaDeEspera " +
-                       $"WHERE CodigoEstudiante = {codigo}; ";
+            await Task.Run(() =>
+            {
+                var query = "DELETE FROM ListaDeEspera " +
+                    $"WHERE CodigoEstudiante = {codigo}; ";
 
             Guardar(query);
+            });
         }
         /// <summary>
         /// Agrega un estudiante a un curso en la base de datos.
@@ -509,12 +522,15 @@ namespace DB
         /// <returns>Una tarea asincrónica.</returns>
         public async Task AgregarAlumnoAlCurso(EstudianteEnCursos estudiante, CursosEnEstudiantes cursoEnQueSeAgrega)
         {
-            var query = "INSERT INTO EstudiantePorCurso (CodigoEstudiante, NombreEstudiante, ApellidoEstudiante," +
-                        " CodigoCurso, NombreCurso, DiaSemana, Aula, Turno, Fecha)" +
-                        $"VALUES ('{estudiante.Id}', '{estudiante.Nombre}', '{estudiante.Apellido}', '{cursoEnQueSeAgrega.Codigo}'," +
-                        $" '{cursoEnQueSeAgrega.Nombre}', '{cursoEnQueSeAgrega.DiaSemana}', '{cursoEnQueSeAgrega.Aula}', '{cursoEnQueSeAgrega.Turno}', '{DateTime.Now}');";
+            await Task.Run(() =>
+            {
+                var query = "INSERT INTO EstudiantePorCurso (CodigoEstudiante, NombreEstudiante, ApellidoEstudiante," +
+                " CodigoCurso, NombreCurso, DiaSemana, Aula, Turno, Fecha)" +
+                $"VALUES ('{estudiante.Id}', '{estudiante.Nombre}', '{estudiante.Apellido}', '{cursoEnQueSeAgrega.Codigo}'," +
+                $" '{cursoEnQueSeAgrega.Nombre}', '{cursoEnQueSeAgrega.DiaSemana}', '{cursoEnQueSeAgrega.Aula}', '{cursoEnQueSeAgrega.Turno}', '{DateTime.Now}');";
 
-            Guardar(query);
+                Guardar(query);
+            });
         }
         /// <summary>
         /// Agrega un profesor a un curso en la base de datos.
@@ -524,12 +540,15 @@ namespace DB
         /// <returns>Una tarea asincrónica.</returns>
         public async Task AgregarProfesorAlCurso(Profesores profesor, CursosEnEstudiantes cursoEnQueSeAgrega)
         {
-            var query = "INSERT INTO ProfesorEnCurso (codigoProfesor, nombreProfesor, apellidoProfesor," +
-                        " codigoCurso, nombreCurso, diaSemana, aula, turno)" +
-                        $"VALUES ('{profesor.Id}', '{profesor.Nombre}', '{profesor.Apellido}', '{cursoEnQueSeAgrega.Codigo}'," +
-                        $" '{cursoEnQueSeAgrega.Nombre}', '{cursoEnQueSeAgrega.DiaSemana}', '{cursoEnQueSeAgrega.Aula}', '{cursoEnQueSeAgrega.Turno}');";
+            await Task.Run(() =>
+            {
+                var query = "INSERT INTO ProfesorEnCurso (codigoProfesor, nombreProfesor, apellidoProfesor," +
+            " codigoCurso, nombreCurso, diaSemana, aula, turno)" +
+            $"VALUES ('{profesor.Id}', '{profesor.Nombre}', '{profesor.Apellido}', '{cursoEnQueSeAgrega.Codigo}'," +
+            $" '{cursoEnQueSeAgrega.Nombre}', '{cursoEnQueSeAgrega.DiaSemana}', '{cursoEnQueSeAgrega.Aula}', '{cursoEnQueSeAgrega.Turno}');";
 
-            Guardar(query);
+                Guardar(query);
+            });
         }
         /// <summary>
         /// Agrega un estudiante a la lista de espera en la base de datos.
@@ -539,12 +558,15 @@ namespace DB
         /// <returns>Una tarea asincrónica.</returns>
         public async Task AgregarAlumnoAListaDeEspera(EstudianteEnCursos estudiante, CursosEnEstudiantes cursoEnQueSeAgrega)
         {
-            var query = "INSERT INTO ListaDeEspera (CodigoEstudiante, NombreEstudiante, ApellidoEstudiante," +
+            await Task.Run(() =>
+            {
+                var query = "INSERT INTO ListaDeEspera (CodigoEstudiante, NombreEstudiante, ApellidoEstudiante," +
                         " CodigoCurso, NombreCurso, DiaSemana, Aula, Turno, Fecha)" +
                         $"VALUES ('{estudiante.Id}', '{estudiante.Nombre}', '{estudiante.Apellido}', '{cursoEnQueSeAgrega.Codigo}'," +
                         $" '{cursoEnQueSeAgrega.Nombre}', '{cursoEnQueSeAgrega.DiaSemana}', '{cursoEnQueSeAgrega.Aula}', '{cursoEnQueSeAgrega.Turno}', '{DateTime.Now}');";
 
-            Guardar(query);
+                Guardar(query);
+            });
         }
         /// <summary>
         /// Crea un nuevo registro de pago de estudiante en la base de datos.
@@ -553,12 +575,15 @@ namespace DB
         /// <returns>Una tarea asincrónica.</returns>
         public async Task CrearPago(PagoDeEstudiante pagoDeEstudiante)
         {
-            var query = "INSERT INTO PagosDeEstudiantes (monto, nombre, apellido, idEstudiante, fecha, Conseptos)" +
+            await Task.Run(() =>
+            {
+                var query = "INSERT INTO PagosDeEstudiantes (monto, nombre, apellido, idEstudiante, fecha, Conseptos)" +
                   $"VALUES ('{pagoDeEstudiante.Monto}', '{pagoDeEstudiante.Nombre}', '{pagoDeEstudiante.Apellido}'," +
                   $" '{pagoDeEstudiante.IdEstudiante}'," +
                   $" '{pagoDeEstudiante.Fecha}', '{pagoDeEstudiante.Consepto}');";
 
-            Guardar(query);
+                Guardar(query);
+            });
         }
         /// <summary>
         /// Modifica un requisito de curso en la base de datos.
@@ -568,24 +593,27 @@ namespace DB
         /// <returns>Una tarea asincrónica.</returns>
         public async Task ModificarRequisito(RequisitosCurso requisito, bool existe)
         {
-            if (existe == false) 
+            await Task.Run(() =>
             {
-               var  query = "INSERT INTO RequisitosCurso (Nombre, Codigo, CursosPreRequisito, CreditosAcumulados, PromedioAcademico)" +
-                 $"VALUES ('{requisito.Nombre}', '{requisito.Codigo}', '{requisito.CursosPreRequisito}'," +
-                 $" '{requisito.CreditosAcumulados}'," +
-                 $" '{requisito.PromedioAcademico}');";
-                Guardar(query);
+                if (existe == false)
+                {
+                    var query = "INSERT INTO RequisitosCurso (Nombre, Codigo, CursosPreRequisito, CreditosAcumulados, PromedioAcademico)" +
+                      $"VALUES ('{requisito.Nombre}', '{requisito.Codigo}', '{requisito.CursosPreRequisito}'," +
+                      $" '{requisito.CreditosAcumulados}'," +
+                      $" '{requisito.PromedioAcademico}');";
+                    Guardar(query);
 
-            }
-            else
-            {
-               var  query = "UPDATE RequisitosCurso " +
-                  $"SET CursosPreRequisito = '{requisito.CursosPreRequisito}'," +
-                  $" CreditosAcumulados = '{requisito.CreditosAcumulados}'," +
-                  $" PromedioAcademico = '{requisito.PromedioAcademico}'" +
-                  $"WHERE Codigo = {requisito.Codigo};";
-                Guardar(query);
-            }
+                }
+                else
+                {
+                    var query = "UPDATE RequisitosCurso " +
+                       $"SET CursosPreRequisito = '{requisito.CursosPreRequisito}'," +
+                       $" CreditosAcumulados = '{requisito.CreditosAcumulados}'," +
+                       $" PromedioAcademico = '{requisito.PromedioAcademico}'" +
+                       $"WHERE Codigo = {requisito.Codigo};";
+                    Guardar(query);
+                }
+            });
             
         }
         /// <summary>
@@ -596,14 +624,17 @@ namespace DB
         /// <returns>Una tarea asincrónica.</returns>
         public async Task ModificarProfesor(Profesores profesor, int codigoAnteriorParseado)
         {
-            var query = $"DELETE FROM Usuarios \n" +
+            await Task.Run(() =>
+            {
+                var query = $"DELETE FROM Usuarios \n" +
                       $"WHERE ID = {codigoAnteriorParseado} AND TipoEntidad = 'Profesores';" +
                         "INSERT INTO Usuarios (TipoEntidad, ID, Nombre, Apellido, Dni, Telefono, Especializacion, Clave, Correo, Fecha)" +
                       $"VALUES ('Profesores', '{codigoAnteriorParseado}', '{profesor.Nombre}'," +
                       $" '{profesor.Apellido}', '{profesor.Dni}', '{profesor.Telefono}', '{profesor.Especializacion}'," +
                       $" '{profesor}', '{profesor.Correo}', '{DateTime.Now}');\n";
 
-            Guardar(query);
+                Guardar(query);
+            });
         }
         /// <summary>
         /// Elimina un profesor de la base de datos.
@@ -612,10 +643,13 @@ namespace DB
         /// <returns>Una tarea asincrónica.</returns>
         public async Task EliminarProfesor(string correo)
         {
-            var query = "DELETE FROM Usuarios " +
+            await Task.Run(() =>
+            {
+                var query = "DELETE FROM Usuarios " +
                        $"WHERE Correo = '{correo}'; ";
 
-            Guardar(query);
+                Guardar(query);
+            });
         }
     }
 }   

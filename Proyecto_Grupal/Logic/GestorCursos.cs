@@ -1,7 +1,4 @@
-﻿using DB;
-using Entidades;
-using Microsoft.VisualBasic;
-using System.Collections.Generic;
+﻿using Entidades;
 using static Entidades.Enums;
 
 namespace Logic
@@ -243,7 +240,11 @@ namespace Logic
             }
 
         }
-
+        /// <summary>
+        /// Crea un nuevo curso en la base de datos, verificando la disponibilidad del código, aula, turno y día en la lista de cursos existentes.
+        /// </summary>
+        /// <param name="curso">Objeto Cursos con la información del curso a crear.</param>
+        /// <returns>Una tarea asincrónica.</returns>
         public async void CrearCursoDB(Cursos curso)
         {
             try
@@ -310,7 +311,12 @@ namespace Logic
             string msj = _gestorArchivos.GuardarAJson(listaCursos, path);
 
         }
-
+        /// <summary>
+        /// Modifica un curso en la base de datos, verificando la disponibilidad del nuevo código, aula, turno y día en la lista de cursos existentes.
+        /// </summary>
+        /// <param name="curso">Objeto Cursos con la nueva información del curso.</param>
+        /// <param name="codigoAnterior">Código anterior del curso a modificar.</param>
+        /// <returns>Una tarea asincrónica.</returns>
         public async void ModificarCursoDB(Cursos curso, string codigoAnterior)
         {
             int codigoAnteriorParseado = Convert.ToInt32(codigoAnterior);
@@ -343,7 +349,11 @@ namespace Logic
         public delegate void CambioEstado(string msg, int codigo);
 
         public event CambioEstado EventoCambioEstado;
-
+        /// <summary>
+        /// Notifica a los estudiantes de un curso sobre un cambio en el curso mediante el envío de correos electrónicos.
+        /// </summary>
+        /// <param name="cambio">Mensaje que describe el cambio en el curso.</param>
+        /// <param name="codigo">Código del curso afectado.</param>
         public void NotificarCambio(string cambio, int codigo)
         {
             List<EstudiantePorCurso> listaEstudiantesPorCurso = _gestorDB.ReturnAllEstudiantesPorCurso();
@@ -383,12 +393,18 @@ namespace Logic
             string msj = _gestorArchivos.GuardarAJson(listaCursos, path);
 
         }
-
+        /// <summary>
+        /// Elimina un curso de la base de datos, incluyendo la notificación a los estudiantes inscritos en ese curso.
+        /// </summary>
+        /// <param name="codigo">Código del curso a eliminar.</param>
         public async void EliminarCursoDB(int codigo)
         {
           await  _gestorDB.EliminarCurso(codigo);
         }
-
+        /// <summary>
+        /// Elimina a un estudiante de la lista de espera en la base de datos.
+        /// </summary>
+        /// <param name="codigo">Código del estudiante a eliminar de la lista de espera.</param>
         public async void EliminarEstudianteListaEsperaDB(int codigo)
         {
            await _gestorDB.EliminarEstudianteEnListaDeEspera(codigo);
@@ -428,7 +444,15 @@ namespace Logic
             }
             return true;         
         }
-
+        /// <summary>
+        /// Valida la posibilidad de agregar a un estudiante a la lista de espera de un curso.
+        /// </summary>
+        /// <param name="cursos">Curso al que se intenta agregar al estudiante.</param>
+        /// <param name="listaEstudiantesPorCurso">Lista de estudiantes inscritos en cursos.</param>
+        /// <param name="estudiante">Estudiante que se intenta agregar.</param>
+        /// <param name="cursoEnQueSeAgrega">Información sobre el curso al que se intenta agregar al estudiante.</param>
+        /// <param name="listaDeEspera">Lista de estudiantes en lista de espera.</param>
+        /// <returns>True si la operación es válida; de lo contrario, lanza una excepción.</returns>
         public bool ValidadorAgregarAlumnosAListaEspera(Cursos cursos, List<EstudiantePorCurso> listaEstudiantesPorCurso,
            EstudianteEnCursos estudiante, CursosEnEstudiantes cursoEnQueSeAgrega, List<EstudiantePorCurso> listaDeEspera)
         {
@@ -502,6 +526,11 @@ namespace Logic
                 throw new Exception(ex.Message);
             }          
         }
+        /// <summary>
+        /// Agrega un estudiante a un curso en la base de datos, realizando validaciones previas.
+        /// </summary>
+        /// <param name="estudiante">Estudiante que se desea agregar al curso.</param>
+        /// <param name="cursoEnQueSeAgrega">Información sobre el curso al que se desea agregar al estudiante.</param>
         public async void AgregarAlumnoAlCursoDB(EstudianteEnCursos estudiante, CursosEnEstudiantes cursoEnQueSeAgrega)
         {
             try
@@ -532,7 +561,11 @@ namespace Logic
                 throw new Exception(ex.Message);
             }
         }
-
+        /// <summary>
+        /// Agrega un estudiante a la lista de espera de un curso en la base de datos, realizando validaciones previas.
+        /// </summary>
+        /// <param name="estudiante">Estudiante que se desea agregar a la lista de espera.</param>
+        /// <param name="cursoEnQueSeAgrega">Información sobre el curso al que se desea agregar al estudiante.</param>
         public async void AgregarAlumnoAListaDeEsperaDB(EstudianteEnCursos estudiante, CursosEnEstudiantes cursoEnQueSeAgrega)
         {
             try
